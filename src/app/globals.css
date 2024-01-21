@@ -11,8 +11,8 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: black;
-    --background-start-rgb: pink;
-    --background-end-rgb: 0, 0, 0;
+    --background-start-rgb: #FDEDEE;
+    --background-end-rgb: #E8EBF3;
   }
 }
 
@@ -26,8 +26,8 @@ body {
     rgb(var(--background-start-rgb));
 }
 
-@layer utilities {
+/* @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
-}
+} */

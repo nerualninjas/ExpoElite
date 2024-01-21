@@ -2,7 +2,7 @@ import React from 'react';
 
 const Rightbar = () => {
     return (
-        <div className='w-32 border min-h-screen'>
+        <div className='w-56 bg-pink-50 shadow-2xl min-h-[100vh] flex-end '>
             Right Bar
         </div>
     );
