@@ -2,7 +2,7 @@
 
 const Navbar = () => {
     return (
-        <div className="border rounded-tr-lg rounded-tl-lg h-16">
+        <div className="p-2 h-16">
             Navbar
             
         </div>
