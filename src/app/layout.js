@@ -16,15 +16,15 @@ export default function RootLayout({ children }) {
     <html lang="en">
       
       <body  className={inter.className}>
-        <div className="px-20 pt-16 ">
+        <div className="lg:mx-60 md:ml-60 pt-16 ">
           <div className="bg-[#F9FAFE]  rounded-t-2xl">
 
              <div className="flex flex-1">
                 <Sidebar/> 
-            <div className=" w-full min-h-screen shadow-md rounded-t-2xl ">
+            <div className=" w-full  min-h-screen shadow-md rounded-t-2xl ">
                   <Navbar/> 
                   <div className="flex justify-between">
-                   {children}
+                  <div className="md:mx-20 mx-4 relative top-20"> {children}</div>
                     <Rightbar/>
                     </div>
                  </div>
