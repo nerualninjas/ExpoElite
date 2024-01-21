@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,500;1,600;1,700;1,800;1,900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,8 +12,8 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: black;
-    --background-start-rgb: #FDEDEE;
-    --background-end-rgb: #E8EBF3;
+    --background-start-rgb: #fdedee;
+    --background-end-rgb: #e8ebf3;
   }
 }
 
@@ -24,6 +25,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  font-family: "Poppins", sans-serif;
 }
 
 /* @layer utilities {
@@ -31,3 +33,12 @@ body {
     text-wrap: balance;
   }
 } */
+
+.btn-1 {
+  background-color: #ff385d;
+  transition: background-color 0.3s ease;
+  color: #ffffff;
+}
+.btn-1:hover {
+  background-color: hsl(342, 100%, 50%); /* Darker shade */
+}

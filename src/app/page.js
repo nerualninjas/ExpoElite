@@ -1,6 +1,6 @@
 
+import BestHomeSectionV2 from "@/components/BsetHome/BestHomeSectionV2";
 import Banner from "@/components/Homepages/Banner";
-import Image from "next/image";
 
 export default function Home() {
   return (
@@ -8,6 +8,8 @@ export default function Home() {
 <div className=" ">
 
 <Banner/>
+<BestHomeSectionV2/>
+{/* <BestHomeSection/> */}
 </div>
 
    
