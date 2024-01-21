@@ -15,9 +15,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       
-      <body className={inter.className}>
+      <body  className={inter.className}>
       <div className="px-16 pt-16 ">
-    <Navbar/> 
+<div className="bg-pink-50 rounded-t-2xl">
+<Navbar/> 
     <div className="flex justify-between rounded-lg border">
     <Sidebar/> 
 
@@ -26,6 +27,8 @@ export default function RootLayout({ children }) {
         {children}
         <Rightbar/>
         </div>
+</div>
+
         </div>
         </body>
     </html>
