@@ -3,10 +3,11 @@ import Link from "next/link";
 
 const Sidebar = () => {
     return (
-        <div className="w-32 border">
+        <div className="w-56 bg-[#FFFFFF] shadow-2xl  rounded-tl-2xl min-h-screen">
           
 
-           <ul>
+        <div className="p-4">
+        <ul>
            <li>
                 <Link href='/dashboard'>Dashboard</Link>
             </li>
@@ -14,6 +15,7 @@ const Sidebar = () => {
                 <Link href='/'>Homepage</Link>
             </li>
            </ul>
+        </div>
         </div>
     );
 };

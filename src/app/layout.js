@@ -16,18 +16,21 @@ export default function RootLayout({ children }) {
     <html lang="en">
       
       <body  className={inter.className}>
-      <div className="px-16 pt-16 ">
-<div className="bg-pink-50 rounded-t-2xl">
-<Navbar/> 
-    <div className="flex justify-between rounded-lg border">
-    <Sidebar/> 
+        <div className="px-20 pt-16 ">
+          <div className="bg-[#F9FAFE]  rounded-t-2xl">
 
-   
-
-        {children}
-        <Rightbar/>
-        </div>
-</div>
+             <div className="flex flex-1">
+                <Sidebar/> 
+            <div className=" w-full min-h-screen shadow-md rounded-t-2xl ">
+                  <Navbar/> 
+                  <div className="flex justify-between">
+                   {children}
+                    <Rightbar/>
+                    </div>
+                 </div>
+           
+           </div>
+          </div>
 
         </div>
         </body>
