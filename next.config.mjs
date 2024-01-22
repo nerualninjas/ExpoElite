@@ -9,8 +9,6 @@ const nextConfig = {
             }
         ]
     }
-=======        domains: ["i.postimg.cc"]
-      },
 
 };
 
