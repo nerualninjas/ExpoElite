@@ -36,8 +36,9 @@ const BestHomeSectionV2 = ({ house }) => {
             <div key={index} className=" card bg-base-100 shadow-xl">
               <figure className="p-3">
                 <img
-                  src={property.imageUrl}  
-                  alt={property.title}  
+
+                  src={property.imageUrl} // Use the actual property data
+                  alt={property.title} // Use the actual property data
                   className="rounded-xl "
                 />
               </figure>
@@ -49,6 +50,28 @@ const BestHomeSectionV2 = ({ house }) => {
 
                 <div className="flex text-xs  w-full    content-stretch justify-between pb-2">
                   <div className="w-1/3">
+
+                    <div className="flex items-center  gap-1">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Sign-check-icon.png/768px-Sign-check-icon.png"  alt="" className="w-5 "/> <span className="font-bold"> {property.bedrooms} </span>
+                    </div>
+                    <br />
+                      Bedrooms
+
+                  </div>
+                  <div className="w-1/3">
+                  <div className="flex items-center  gap-1">
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Sign-check-icon.png/768px-Sign-check-icon.png"  alt="" className="w-5 "/> <span className="font-bold"> {property.bathrooms} </span>
+                    </div>
+                    <br />
+                    Bathrooms
+
+                  </div> <div className="w-1/3">
+                  <div className="flex items-center  gap-1">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Sign-check-icon.png/768px-Sign-check-icon.png"  alt="" className="w-5 "/>  <span className="font-bold"> {property.livingRoom} </span>
+                    </div>
+                    <br />
+                    Living Area
+
                     <div className="flex items-center gap-1">
                       <FontAwesomeIcon
                         icon={faBed}
@@ -80,10 +103,20 @@ const BestHomeSectionV2 = ({ house }) => {
                     </div>
                     <br />
                     LivingRoom
+
                   </div>
                 </div>
 
                 <hr className="py-2" />
+
+                <div className="card-actions py-2 flex justify-between">
+                  <div className="">
+                    {" "}
+                    <p className="">view</p>
+                 
+                  </div>
+                  <button className="btn btn-1  btn-sm">view</button>
+
                 <div className="card-actions py-2 flex justify-between w-full">
                   <div className="text-xs w-2/4">
                     <div className="flex items-center gap-1">
