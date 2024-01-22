@@ -1,8 +1,6 @@
-
-import Location from "@/components/Location/Location";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import Location from "@/components/Location/Location";
 import React from "react";
 import {
   faMapMarkerAlt,
@@ -10,13 +8,13 @@ import {
   faBath,
   faCouch,
 } from "@fortawesome/free-solid-svg-icons";
+
 const Rightbar = () => {
   return (
-
-    <div className="w-64 hidden lg:block fixed -bottom-16 end-0 bg-pink-50 shadow-2xl min-h-[100vh] flex-end ">
-      <Location />
-
-    <div className=" hidden lg:block fixed -bottom-24 end-0  min-h-[100vh] flex-end ">
+    
+       <div className="w-64 hidden lg:block fixed -bottom-16 end-0   min-h-[100vh] flex-end ">
+      
+      <div className=" hidden lg:block fixed -bottom-24 end-0  min-h-[100vh] flex-end ">
       <h3 className="font-bold text-xl py-4">Product Details</h3>
       <div className="bg-base-100 w-72 rounded-lg shadow-2xl">
         <div className="card w-full p-2 bg-base-100 shadow-xl">
@@ -83,11 +81,21 @@ const Rightbar = () => {
             <div>
               <button className="btn btn-1  btn-sm">read more..</button>
             </div>
+            <Location />
           </div>
         </div>
       </div>
-
+    
+    </div>
     </div>
   );
 };
+
 export default Rightbar;
+
+
+
+
+
+   
+
