@@ -41,22 +41,36 @@ const BestHomeSectionV2 = ({ house }) => {
                 <div className="flex text-xs  w-full    content-stretch justify-between pb-2">
                   <div className="w-1/3">
                     <div className="flex items-center  gap-1">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Sign-check-icon.png/768px-Sign-check-icon.png"  alt="" className="w-5 "/> <span className="font-bold"> {property.bedrooms} </span>
+                      <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Sign-check-icon.png/768px-Sign-check-icon.png"
+                        alt=""
+                        className="w-5 "
+                      />{" "}
+                      <span className="font-bold"> {property.bedrooms} </span>
                     </div>
                     <br />
-                      Bedrooms
-
+                    Bedrooms
                   </div>
                   <div className="w-1/3">
-                  <div className="flex items-center  gap-1">
-                      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Sign-check-icon.png/768px-Sign-check-icon.png"  alt="" className="w-5 "/> <span className="font-bold"> {property.bathrooms} </span>
+                    <div className="flex items-center  gap-1">
+                      <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Sign-check-icon.png/768px-Sign-check-icon.png"
+                        alt=""
+                        className="w-5 "
+                      />{" "}
+                      <span className="font-bold"> {property.bathrooms} </span>
                     </div>
                     <br />
                     Bathrooms
-
-                  </div> <div className="w-1/3">
-                  <div className="flex items-center  gap-1">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Sign-check-icon.png/768px-Sign-check-icon.png"  alt="" className="w-5 "/>  <span className="font-bold"> {property.livingRoom} </span>
+                  </div>{" "}
+                  <div className="w-1/3">
+                    <div className="flex items-center  gap-1">
+                      <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Sign-check-icon.png/768px-Sign-check-icon.png"
+                        alt=""
+                        className="w-5 "
+                      />{" "}
+                      <span className="font-bold"> {property.livingRoom} </span>
                     </div>
                     <br />
                     Living Area
@@ -65,10 +79,16 @@ const BestHomeSectionV2 = ({ house }) => {
 
                 <hr className="py-2" />
                 <div className="card-actions py-2 flex justify-between">
-                  <div className="">
-                    {" "}
-                    <p className="">view</p>
-                    <p className="">view</p>
+                  <div className="text-xs">
+                    <div className="flex items-center  gap-1">
+                      <img
+                        src="https://static.thenounproject.com/png/3135900-200.png"
+                        alt=""
+                        className="w-5 "
+                      />
+
+                      {property.location}
+                    </div>
                   </div>
                   <button className="btn btn-1  btn-sm">view</button>
                 </div>

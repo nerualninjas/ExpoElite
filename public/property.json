@@ -34,17 +34,5 @@
     "location": "789 Elm Street, Villageton",
     "type": "Townhouse",
     "googleMapAddress": "https://maps.google.com/?q=789 Elm Street, Villageton"
-  },
-  {
-    "id": 4,
-    "title": "Luxury Penthouse",
-    "imageUrl": "https://helium.privateproperty.co.za/live-za-images/property/1315/45/8191315/images/property-8191315-75931464_sd.jpg",
-    "price": 800000,
-    "bedrooms": 5,
-    "bathrooms": 4,
-    "livingRoom": 3,
-    "location": "101 Pine Lane, Metropolis",
-    "type": "Penthouse",
-    "googleMapAddress": "https://maps.google.com/?q=101 Pine Lane, Metropolis"
   }
 ]
