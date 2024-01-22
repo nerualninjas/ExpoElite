@@ -6,7 +6,7 @@ import {
   faMapMarkerAlt,
   faBed,
   faBath,
-  faCouch
+  faCouch,
 } from "@fortawesome/free-solid-svg-icons";
 import { FaLocationArrow } from "react-icons/fa";
 
@@ -24,20 +24,44 @@ const BestHomeSectionV2 = ({ house }) => {
   }
 
   return (
-    <div className="w-[300px] lg:w-[800px]">
+    <div className="w-[300px] lg:w-[800px] ">
       <div className="container mx-auto ">
-        <h3 className="text-center">
-          <span className="heading float-left w-100">Featured properties</span>
+        <h3 className=" ">
+          <span className="heading  text-left w-100 text-xl font-bold text-gray-900">
+            Find your Best Home
+          </span>
         </h3>
         <br />
+        <form className="flex gap-4">
+          <div className="">
+            <p>Location </p>
+            <input
+              type="text"
+              placeholder="Type here"
+              className="input input-bordered input-md w-full max-w-xs"
+            />
+          </div>
+          <div className="">
+            <p>Type </p>
+            <input
+              type="text"
+              placeholder="Type here"
+              className="input input-bordered input-md w-full max-w-xs"
+            />
+          </div>
+          <div className="pt-6">
+            <button className="btn btn-1">Search</button>
+          </div>
+        </form>
+        <br />
 
-        <div className="grid grid-cols-3 gap-2">
+        <div className="mx-auto grid lg:grid-cols-3 md:grid-cols-2 gap-2">
           {properties.map((property, index) => (
             <div key={index} className=" card bg-base-100 shadow-xl">
               <figure className="p-3">
                 <img
-                  src={property.imageUrl}  
-                  alt={property.title}  
+                  src={property.imageUrl}
+                  alt={property.title}
                   className="rounded-xl "
                 />
               </figure>
@@ -95,7 +119,7 @@ const BestHomeSectionV2 = ({ house }) => {
                     </div>
                   </div>
                   <div className="w-1/4">
-                    <button className="btn btn-1  btn-sm">view</button> 
+                    <button className="btn btn-1  btn-sm">view</button>
                   </div>
                 </div>
               </div>
