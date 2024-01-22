@@ -1,5 +1,11 @@
+
 import Location from "@/components/Location/Location";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import Location from "@/components/Location/Location";
+
 import React from "react";
 import {
   faMapMarkerAlt,
@@ -8,6 +14,7 @@ import {
   faCouch,
 } from "@fortawesome/free-solid-svg-icons";
 
+
 const Rightbar = () => {
   return (
     <div className="w-72 hidden lg:block fixed -bottom-16 end-0 bg-pink-50 shadow-2xl min-h-screen flex-end">
@@ -15,6 +22,27 @@ const Rightbar = () => {
         <h3 className="font-bold text-xl py-4">Product Details</h3>
         <div className="bg-base-100 w-72 rounded-lg shadow-2xl">
           <div className="card w-full p-2 bg-base-100 shadow-xl">
+
+import ChatAllUserbox from "./Chat/ChatAllUserbox";
+
+const Rightbar = () => {
+  return (
+    
+       <div className="w-64 hidden lg:block   ">
+      
+      <div className=" z-50 fixed -bottom-0 top-10 end-0  max-h-[70vh] flex-end ">
+      <h3 className="font-bold text-xl py-2">Product Details</h3>
+      <div className="bg-base-100 w-72 rounded-lg shadow-2xl">
+        <div className="card w-full p-2 bg-base-100 shadow-xl">
+          <figure>
+            <img
+              className=" rounded-lg max-h-48 w-full"
+              src="https://assets-global.website-files.com/6151887923ecfa4ac66a9e69/648ae1ccbe0209d4f34b5216_hero-after-decompressed.jpeg"
+              alt="Shoes"
+            />
+          </figure>
+          <div className="flex p-1 gap-1">
+
             <figure>
               <img
                 className="rounded-lg max-h-48 w-full"
@@ -79,12 +107,30 @@ const Rightbar = () => {
                 <button className="btn btn-1 btn-sm">read more..</button>
               </div>
             </div>
+
+            {/* chat section */}
+            <section>
+
+    <ChatAllUserbox/>
+            </section>
+          
           </div>
-        </div>   <Location />
+        </div>   
+  <Location />
       </div>
+
    
+    </div>
+
     </div>
   );
 };
 
 export default Rightbar;
+
+
+
+
+
+   
+
