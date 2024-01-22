@@ -36,8 +36,8 @@ const BestHomeSectionV2 = ({ house }) => {
             <div key={index} className=" card bg-base-100 shadow-xl">
               <figure className="p-3">
                 <img
-                  src={property.imageUrl} // Use the actual property data
-                  alt={property.title} // Use the actual property data
+                  src={property.imageUrl}  
+                  alt={property.title}  
                   className="rounded-xl "
                 />
               </figure>
@@ -95,7 +95,7 @@ const BestHomeSectionV2 = ({ house }) => {
                     </div>
                   </div>
                   <div className="w-1/4">
-                    <button className="btn btn-1  btn-sm">view</button>{" "}
+                    <button className="btn btn-1  btn-sm">view</button> 
                   </div>
                 </div>
               </div>
