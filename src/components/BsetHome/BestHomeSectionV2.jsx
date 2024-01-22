@@ -120,12 +120,6 @@ const BestHomeSectionV2 = ({ house }) => {
                 <hr className="py-2" />
 
                 <div className="card-actions py-2 flex justify-between">
-                  <div className="">
-                    {" "}
-                    <p className="">view</p>
-                  </div>
-                  <button className="btn btn-1  btn-sm">view</button>
-
                   <div className="card-actions py-2 flex justify-between w-full">
                     <div className="text-xs w-2/4">
                       <div className="flex items-center gap-1">
