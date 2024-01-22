@@ -8,14 +8,15 @@ import {
   faBath,
   faCouch,
 } from "@fortawesome/free-solid-svg-icons";
+import ChatAllUserbox from "./Chat/ChatAllUserbox";
 
 const Rightbar = () => {
   return (
     
-       <div className="w-64 hidden lg:block fixed -bottom-16 end-0   min-h-[100vh] flex-end ">
+       <div className="w-64 hidden lg:block   ">
       
-      <div className=" hidden lg:block fixed -bottom-24 end-0  min-h-[100vh] flex-end ">
-      <h3 className="font-bold text-xl py-4">Product Details</h3>
+      <div className=" z-50 fixed -bottom-0 top-10 end-0  max-h-[70vh] flex-end ">
+      <h3 className="font-bold text-xl py-2">Product Details</h3>
       <div className="bg-base-100 w-72 rounded-lg shadow-2xl">
         <div className="card w-full p-2 bg-base-100 shadow-xl">
           <figure>
@@ -81,11 +82,16 @@ const Rightbar = () => {
             <div>
               <button className="btn btn-1  btn-sm">read more..</button>
             </div>
-            <Location />
+
+            {/* chat section */}
+            <section>
+
+    <ChatAllUserbox/>
+            </section>
+          
           </div>
         </div>
       </div>
-    
     </div>
     </div>
   );

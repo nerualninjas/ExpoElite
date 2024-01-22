@@ -24,20 +24,44 @@ const BestHomeSectionV2 = ({ house }) => {
   }
 
   return (
-    <div className="w-[300px] lg:w-[800px]">
+    <div className="w-[300px] lg:w-[800px] ">
       <div className="container mx-auto ">
-        <h3 className="text-center">
-          <span className="heading float-left w-100">Featured properties</span>
+        <h3 className=" ">
+          <span className="heading  text-left w-100 text-xl font-bold text-gray-900">
+            Find your Best Home
+          </span>
         </h3>
         <br />
+        <form className="flex gap-4">
+          <div className="">
+            <p>Location </p>
+            <input
+              type="text"
+              placeholder="Type here"
+              className="input input-bordered input-md w-full max-w-xs"
+            />
+          </div>
+          <div className="">
+            <p>Type </p>
+            <input
+              type="text"
+              placeholder="Type here"
+              className="input input-bordered input-md w-full max-w-xs"
+            />
+          </div>
+          <div className="pt-6">
+            <button className="btn btn-1">Search</button>
+          </div>
+        </form>
+        <br />
 
-        <div className="grid grid-cols-3 gap-2">
+        <div className="mx-auto grid lg:grid-cols-3 md:grid-cols-2 gap-2">
           {properties.map((property, index) => (
             <div key={index} className=" card bg-base-100 shadow-xl">
               <figure className="p-3">
                 <img
-                  src={property.imageUrl} // Use the actual property data
-                  alt={property.title} // Use the actual property data
+                  src={property.imageUrl}
+                  alt={property.title}
                   className="rounded-xl "
                 />
               </figure>
@@ -49,40 +73,6 @@ const BestHomeSectionV2 = ({ house }) => {
 
                 <div className="flex text-xs  w-full    content-stretch justify-between pb-2">
                   <div className="w-1/3">
-                    <div className="flex items-center  gap-1">
-                      <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Sign-check-icon.png/768px-Sign-check-icon.png"
-                        alt=""
-                        className="w-5 "
-                      />{" "}
-                      <span className="font-bold"> {property.bedrooms} </span>
-                    </div>
-                    <br />
-                    Bedrooms
-                  </div>
-                  <div className="w-1/3">
-                    <div className="flex items-center  gap-1">
-                      <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Sign-check-icon.png/768px-Sign-check-icon.png"
-                        alt=""
-                        className="w-5 "
-                      />{" "}
-                      <span className="font-bold"> {property.bathrooms} </span>
-                    </div>
-                    <br />
-                    Bathrooms
-                  </div>{" "}
-                  <div className="w-1/3">
-                    <div className="flex items-center  gap-1">
-                      <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Sign-check-icon.png/768px-Sign-check-icon.png"
-                        alt=""
-                        className="w-5 "
-                      />{" "}
-                      <span className="font-bold"> {property.livingRoom} </span>
-                    </div>
-                    <br />
-                    Living Area
                     <div className="flex items-center gap-1">
                       <FontAwesomeIcon
                         icon={faBed}
@@ -118,21 +108,18 @@ const BestHomeSectionV2 = ({ house }) => {
                 </div>
 
                 <hr className="py-2" />
-
-                <div className="card-actions py-2 flex justify-between">
-                  <div className="card-actions py-2 flex justify-between w-full">
-                    <div className="text-xs w-2/4">
-                      <div className="flex items-center gap-1">
-                        <FontAwesomeIcon
-                          icon={faMapMarkerAlt}
-                          className="text-gray-500 mr-1"
-                        />
-                        {property.location}
-                      </div>
+                <div className="card-actions py-2 flex justify-between w-full">
+                  <div className="text-xs w-2/4">
+                    <div className="flex items-center gap-1">
+                      <FontAwesomeIcon
+                        icon={faMapMarkerAlt}
+                        className="text-gray-500 mr-1"
+                      />
+                      {property.location}
                     </div>
-                    <div className="w-1/4">
-                      <button className="btn btn-1  btn-sm">view</button>
-                    </div>
+                  </div>
+                  <div className="w-1/4">
+                    <button className="btn btn-1  btn-sm">view</button>
                   </div>
                 </div>
               </div>
