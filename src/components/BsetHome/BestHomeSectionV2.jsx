@@ -1,6 +1,15 @@
 "use client";
 import { useEffect, useState } from "react";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faMapMarkerAlt,
+  faBed,
+  faBath,
+  faCouch
+} from "@fortawesome/free-solid-svg-icons";
+import { FaLocationArrow } from "react-icons/fa";
+
 const BestHomeSectionV2 = ({ house }) => {
   const [properties, setProperties] = useState([]);
 
@@ -40,57 +49,54 @@ const BestHomeSectionV2 = ({ house }) => {
 
                 <div className="flex text-xs  w-full    content-stretch justify-between pb-2">
                   <div className="w-1/3">
-                    <div className="flex items-center  gap-1">
-                      <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Sign-check-icon.png/768px-Sign-check-icon.png"
-                        alt=""
-                        className="w-5 "
-                      />{" "}
+                    <div className="flex items-center gap-1">
+                      <FontAwesomeIcon
+                        icon={faBed}
+                        className="text-gray-500 mr-1"
+                      />
                       <span className="font-bold"> {property.bedrooms} </span>
                     </div>
                     <br />
                     Bedrooms
                   </div>
                   <div className="w-1/3">
-                    <div className="flex items-center  gap-1">
-                      <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Sign-check-icon.png/768px-Sign-check-icon.png"
-                        alt=""
-                        className="w-5 "
-                      />{" "}
+                    <div className="flex items-center gap-1">
+                      <FontAwesomeIcon
+                        icon={faBath}
+                        className="text-gray-500 mr-1"
+                      />
                       <span className="font-bold"> {property.bathrooms} </span>
                     </div>
                     <br />
                     Bathrooms
-                  </div>{" "}
+                  </div>
                   <div className="w-1/3">
-                    <div className="flex items-center  gap-1">
-                      <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Sign-check-icon.png/768px-Sign-check-icon.png"
-                        alt=""
-                        className="w-5 "
-                      />{" "}
+                    <div className="flex items-center gap-1">
+                      <FontAwesomeIcon
+                        icon={faCouch}
+                        className="text-gray-500 mr-1"
+                      />
                       <span className="font-bold"> {property.livingRoom} </span>
                     </div>
                     <br />
-                    Living Area
+                    LivingRoom
                   </div>
                 </div>
 
                 <hr className="py-2" />
-                <div className="card-actions py-2 flex justify-between">
-                  <div className="text-xs">
-                    <div className="flex items-center  gap-1">
-                      <img
-                        src="https://static.thenounproject.com/png/3135900-200.png"
-                        alt=""
-                        className="w-5 "
+                <div className="card-actions py-2 flex justify-between w-full">
+                  <div className="text-xs w-2/4">
+                    <div className="flex items-center gap-1">
+                      <FontAwesomeIcon
+                        icon={faMapMarkerAlt}
+                        className="text-gray-500 mr-1"
                       />
-
                       {property.location}
                     </div>
                   </div>
-                  <button className="btn btn-1  btn-sm">view</button>
+                  <div className="w-1/4">
+                    <button className="btn btn-1  btn-sm">view</button>{" "}
+                  </div>
                 </div>
               </div>
             </div>
