@@ -14,11 +14,11 @@ const Testimonials = () => {
   }, []);
 
   return (
-    <div className='text-center bg-sky-100 h-[90vh] my-10 py-10 '>
+    <div className='text-center bg-sky-100  my-10 py-10 '>
       <h1 className='text-4xl mt-10 font-bold text-sky-950'>Our Testimonials</h1>
       <p className='mt-6'>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
 
-     <div className='grid grid-cols-1 md:grid-cols-3 pt-10 gap-4'>
+     <div className='grid grid-cols-1 md:grid-cols-3 pt-10  gap-4 place-items-center'>
      {persons.map((person, index) => (
         <div key={index} className='flex flex-col justify-center items-center w-60 h-72 rounded border-2 shadow-2xl my-10 '>
           <div className='bg-white h-36 px-6 pt-8 text-sm'>
