@@ -13,27 +13,26 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      
-      <body  className={inter.className}>
-        <div className="lg:mx-60 md:ml-60 pt-16 ">
+    <html lang="en" data-theme="light">
+      <body className={inter.className}>
+        <div>
           <div className="bg-[#F9FAFE]  rounded-t-2xl">
-
-             <div className="flex flex-1">
-                <Sidebar/> 
-            <div className=" w-full  min-h-screen shadow-md rounded-t-2xl ">
-                  <Navbar/> 
-                  <div className="flex justify-between">
-                  <div className="md:mx-20 mx-4 relative top-20"> {children}</div>
-                    <Rightbar/>
-                    </div>
-                 </div>
-           
-           </div>
+            <div className="flex flex-1">
+              <Sidebar />
+              <div className=" w-full  min-h-screen shadow-md rounded-t-2xl ">
+                <Navbar />
+                <div className="flex justify-between">
+                  <div className="md:mx-60 mx-4 relative top-16">
+                    {" "}
+                    {children}
+                  </div>
+                  <Rightbar />
+                </div>
+              </div>
+            </div>
           </div>
-
         </div>
-        </body>
+      </body>
     </html>
   );
 }
