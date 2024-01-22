@@ -17,10 +17,11 @@ const Sidebar = () => {
               </Link>
             </li>
             <li>
-              <Link className="flex items-center gap-2 text-rose-500 " href="/">
+              <Link className="flex items-center gap-2 text-rose-500 "
+               href="/discover">
                 {" "}
                 <Image src={homeIcon} width={22} height={20} alt="home" />{" "}
-                <h4> Menu 2</h4>
+                <h4> Discover</h4>
               </Link>
             </li>
             <li>
@@ -31,10 +32,11 @@ const Sidebar = () => {
               </Link>
             </li>
             <li>
-              <Link className="flex items-center gap-2 text-rose-500 " href="/">
+              <Link className="flex items-center gap-2 text-rose-500 "
+               href="/products">
                 {" "}
                 <Image src={homeIcon} width={22} height={20} alt="home" />{" "}
-                <h4> Menu 4</h4>
+                <h4>Products</h4>
               </Link>
             </li>
           </ul>
