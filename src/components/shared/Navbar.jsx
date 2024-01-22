@@ -6,8 +6,8 @@ const Navbar = () => {
   const nbtnActive = false;
   return (
     <div className="py-4 px-5 z-50 bg-[#F9FAFE] flex justify-between  lg:w-[calc(100vw-240px)] md:start-[14rem]  fixed h-20">
-      <h2 className="font-extrabold text-xl">
-        {" "}
+      <h2 className="font-extrabold text-4xl">
+      
         Good Morning, <span className="text-rose-400">Welcome ExpoElite</span>
       </h2>
       <div className="bg-gray-100 flex gap-2 p-2 rounded-xl">
