@@ -6,7 +6,7 @@
     "price": 500000,
     "bedrooms": 4,
     "bathrooms": 3,
-    "livingRoom": 1,
+    "livingRoom": 1112,
     "location": "123 Main Street, Cityville",
     "type": "Single Family",
     "googleMapAddress": "https://maps.google.com/?q=123 Main Street, Cityville"
@@ -18,7 +18,7 @@
     "price": 250000,
     "bedrooms": 2,
     "bathrooms": 1,
-    "livingRoom": 1,
+    "livingRoom": 1000,
     "location": "456 Oak Avenue, Townsville",
     "type": "Cottage",
     "googleMapAddress": "https://maps.google.com/?q=456 Oak Avenue, Townsville"
@@ -30,21 +30,9 @@
     "price": 350000,
     "bedrooms": 3,
     "bathrooms": 2,
-    "livingRoom": 2,
+    "livingRoom": 1200,
     "location": "789 Elm Street, Villageton",
     "type": "Townhouse",
     "googleMapAddress": "https://maps.google.com/?q=789 Elm Street, Villageton"
-  },
-  {
-    "id": 4,
-    "title": "Luxury Penthouse",
-    "imageUrl": "https://helium.privateproperty.co.za/live-za-images/property/1315/45/8191315/images/property-8191315-75931464_sd.jpg",
-    "price": 800000,
-    "bedrooms": 5,
-    "bathrooms": 4,
-    "livingRoom": 3,
-    "location": "101 Pine Lane, Metropolis",
-    "type": "Penthouse",
-    "googleMapAddress": "https://maps.google.com/?q=101 Pine Lane, Metropolis"
   }
 ]
