@@ -21,8 +21,8 @@ export default function RootLayout({ children }) {
               <Sidebar />
               <div className=" w-full  min-h-screen shadow-md rounded-t-2xl ">
                 <Navbar />
-                <div className="flex justify-between">
-                  <div className="md:mx-60 mx-4 relative top-20">
+                <div className="flex justify-between ">
+                  <div className="md:mx-60 mx-4 relative top-20 min-h-screen">
                     {" "}
                     {children}
                   </div>
