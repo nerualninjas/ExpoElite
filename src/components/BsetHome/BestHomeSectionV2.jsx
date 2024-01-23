@@ -62,7 +62,9 @@ const BestHomeSectionV2 = ({ house }) => {
           {properties.map((property, index) => (
             <div key={index} className="  card bg-base-100  " data-aos="fade-up">
               <figure className="p-3">
-                <img
+                <Image
+                width={300}
+                height={200}
                   src={property.imageUrl}
                   alt={property.title}
                   className="rounded-xl "
