@@ -5,9 +5,9 @@ const Navbar = () => {
   const btnActive = true;
   const nbtnActive = false;
   return (
-    <div className="py-4 px-5 z-50 bg-[#F9FAFE] flex justify-between  lg:w-[calc(100vw-240px)] md:start-[14rem]  fixed h-20">
-      <h2 className="font-extrabold lg:text-4xl">
-      
+    <div className="py-4 px-5 z-50 bg-[#F9FAFE] flex justify-between items-center  lg:w-[calc(100vw-240px)] md:start-[14rem]  fixed h-20">
+      <h2 className="text-2xl font-bold text-rose-400">ExpoLite</h2>
+      <h2 className="font-extrabold hidden lg:text-4xl">
         Good Morning, <span className="text-rose-400">Welcome ExpoElite</span>
       </h2>
       <div className="bg-gray-100 flex gap-2 p-2 rounded-xl">

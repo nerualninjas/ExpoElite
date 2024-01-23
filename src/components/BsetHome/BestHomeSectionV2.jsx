@@ -24,7 +24,7 @@ const BestHomeSectionV2 = ({ house }) => {
   }
 
   return (
-    <div className="w-[300px] lg:w-[800px] ">
+    <div className="w-full ">
       <div className="container mx-auto ">
         <h3 className=" ">
           <span className="heading  text-left w-100 text-xl font-bold text-gray-900">
@@ -38,7 +38,7 @@ const BestHomeSectionV2 = ({ house }) => {
             <input
               type="text"
               placeholder="Type here"
-              className="input input-bordered input-md w-full max-w-xs"
+              className="input input-bordered input-sm md:input-md w-full max-w-xs"
             />
           </div>
           <div className="">
@@ -46,16 +46,16 @@ const BestHomeSectionV2 = ({ house }) => {
             <input
               type="text"
               placeholder="Type here"
-              className="input input-bordered input-md w-full max-w-xs"
+              className="input input-bordered input-sm md:input-md w-full max-w-xs"
             />
           </div>
           <div className="pt-6">
-            <button className="btn btn-1">Search</button>
+            <button className="btn md:btn-md btn-sm btn-1">Search</button>
           </div>
         </form>
         <br />
 
-        <div className="mx-auto grid lg:grid-cols-3 md:grid-cols-2 gap-2">
+        <div className="mx-auto grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-2">
           {properties.map((property, index) => (
             <div key={index} className=" card bg-base-100 shadow-xl">
               <figure className="p-3">
