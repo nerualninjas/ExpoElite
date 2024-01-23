@@ -34,9 +34,9 @@ const AddProduct = () => {
 
         {/* Image URL */}
         <div className="space-y-1 text-sm">
-          <label className="block dark-text-gray-400">Image URL</label>
+          <label className="block dark-text-gray-400">Image </label>
           <input
-            {...register("image", { required: "Image URL is required" })}
+            {...register("image", { required: "Image is required" })}
             type="file"
             className="w-full bg-white text-black px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
           />
