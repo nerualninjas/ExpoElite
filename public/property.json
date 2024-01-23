@@ -15,7 +15,7 @@
   {
     "id": 2,
     "title": "Cozy Cottage",
-    "imageUrl": "https://helium.privateproperty.co.za/live-za-images/property/1315/45/8191315/images/property-8191315-75931464_sd.jpg",
+    "imageUrl": "https://images.crowdspring.com/blog/wp-content/uploads/2017/08/23163415/pexels-binyamin-mellish-106399.jpg",
     "price": 250000,
     "bedrooms": 2,
     "bathrooms": 1,
@@ -27,7 +27,7 @@
   {
     "id": 3,
     "title": "Spacious Townhouse",
-    "imageUrl": "https://helium.privateproperty.co.za/live-za-images/property/1315/45/8191315/images/property-8191315-75931464_sd.jpg",
+    "imageUrl": "https://cms.ezylegal.in/wp-content/uploads/2022/07/right-to-property-is-a-legal-right.jpg",
     "price": 350000,
     "bedrooms": 3,
     "bathrooms": 2,
@@ -39,7 +39,7 @@
   {
     "id": 4,
     "title": "Luxury Penthouse",
-    "imageUrl": "https://helium.privateproperty.co.za/live-za-images/property/1315/45/8191315/images/property-8191315-75931464_sd.jpg",
+    "imageUrl": "https://images.estately.net/155_72906013_0_1654358459_636x435.jpg",
     "price": 800000,
     "bedrooms": 5,
     "bathrooms": 4,
@@ -47,5 +47,77 @@
     "location": "789 Elm Street, Villageton",
     "type": "Townhouse",
     "googleMapAddress": "https://maps.google.com/?q=789 Elm Street, Villageton"
+  },
+  {
+    "id": 5,
+    "title": "Elegant Mansion",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTe6OBrnnhjlHev6Xc_kKosif1dgKF1FAG9NxB5BDvOG0zRloBGak_CFZPIjnOl8KtCQY&usqp=CAU",
+    "price": 1200000,
+    "bedrooms": 6,
+    "bathrooms": 5,
+    "livingRoom": 1500,
+    "location": "101 Grand Avenue, Estate City",
+    "type": "Mansion",
+    "googleMapAddress": "https://maps.google.com/?q=101 Grand Avenue, Estate City"
+  },
+  {
+    "id": 6,
+    "title": "Lakefront Retreat",
+    "imageUrl": "https://maximrealestateinc.com/wp-content/uploads/2014/06/exterior92-e1577876701100-300x178.jpg",
+    "price": 600000,
+    "bedrooms": 3,
+    "bathrooms": 2.5,
+    "livingRoom": 950,
+    "location": "567 Pine Street, Lakeside",
+    "type": "Retreat",
+    "googleMapAddress": "https://maps.google.com/?q=567 Pine Street, Lakeside"
+  },
+  {
+    "id": 7,
+    "title": "Rustic Log Cabin",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiqN-S1j1qB_kj1IP8lC1h1cZlZwq72GUS3Q&usqp=CAU",
+    "price": 300000,
+    "bedrooms": 2,
+    "bathrooms": 1.5,
+    "livingRoom": 800,
+    "location": "789 Forest Lane, Woodsville",
+    "type": "Log Cabin",
+    "googleMapAddress": "https://maps.google.com/?q=789 Forest Lane, Woodsville"
+  },
+  {
+    "id": 8,
+    "title": "Seaside Villa",
+    "imageUrl": "https://d2gwsgpe1caiom.cloudfront.net/addddeda24b8b9279d24f5107d564254e6736917-1-medium.jpeg",
+    "price": 900000,
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "livingRoom": 1200,
+    "location": "456 Ocean View Drive, Beachtown",
+    "type": "Villa",
+    "googleMapAddress": "https://maps.google.com/?q=456 Ocean View Drive, Beachtown"
+  },
+  {
+    "id": 9,
+    "title": "Urban Loft",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV3JRLBmiBPt3l7ZouKLkrsNSpIboljWlZ0nxo_-Seeau3JHzpMvyrJZxI9mVawEGBMa4&usqp=CAU",
+    "price": 400000,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "livingRoom": 850,
+    "location": "789 Loft Avenue, Cityscape",
+    "type": "Loft",
+    "googleMapAddress": "https://maps.google.com/?q=789 Loft Avenue, Cityscape"
+  },
+  {
+    "id": 10,
+    "title": "Mountain View Chalet",
+    "imageUrl": "https://cdn.britannica.com/05/157305-004-53D5D212.jpg",
+    "price": 700000,
+    "bedrooms": 3,
+    "bathrooms": 2.5,
+    "livingRoom": 1100,
+    "location": "234 Summit Road, Mountainville",
+    "type": "Chalet",
+    "googleMapAddress": "https://maps.google.com/?q=234 Summit Road, Mountainville"
   }
 ]
