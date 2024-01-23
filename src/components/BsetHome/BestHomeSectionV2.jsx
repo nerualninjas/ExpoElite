@@ -25,7 +25,7 @@ const BestHomeSectionV2 = ({ house }) => {
 
   return (
     <div className="w-full ">
-      <div className="container mx-auto ">
+      <div className=" container mx-auto ">
         <h3 className=" ">
           <span className="heading  text-left w-100 text-xl font-bold text-gray-900">
             Find your Best Home
@@ -55,7 +55,7 @@ const BestHomeSectionV2 = ({ house }) => {
         </form>
         <br />
 
-        <div className="mx-auto grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-2">
+        <div className="mx-auto grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2">
           {properties.map((property, index) => (
             <div key={index} className=" card bg-base-100 shadow-xl">
               <figure className="p-3">
@@ -72,7 +72,7 @@ const BestHomeSectionV2 = ({ house }) => {
                 </h2>
 
                 <div className="flex text-xs  w-full    content-stretch justify-between pb-2">
-                  <div className="w-1/3">
+                  <div>
                     <div className="flex items-center gap-1">
                       <FontAwesomeIcon
                         icon={faBed}
@@ -83,7 +83,7 @@ const BestHomeSectionV2 = ({ house }) => {
                     <br />
                     Bedrooms
                   </div>
-                  <div className="w-1/3">
+                  <div>
                     <div className="flex items-center gap-1">
                       <FontAwesomeIcon
                         icon={faBath}
@@ -94,7 +94,7 @@ const BestHomeSectionV2 = ({ house }) => {
                     <br />
                     Bathrooms
                   </div>
-                  <div className="w-1/3">
+                  <div>
                     <div className="flex items-center gap-1">
                       <FontAwesomeIcon
                         icon={faCouch}

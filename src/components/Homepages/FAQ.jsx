@@ -99,7 +99,7 @@ const FQ = () => {
                   <div className={`p-3 ${activeIndex === 1 ? "" : "hidden"}`}>
                     <p className="text-gray-500 dark:text-gray-400">
                       ExpoElite is a versatile platform, and you can list both
-                      residential and commercial properties. Whether it's a
+                      residential and commercial properties. Whether it&apos;s a
                       home, apartment, office space, or retail property, you can
                       showcase it on ExpoElite.
                     </p>
