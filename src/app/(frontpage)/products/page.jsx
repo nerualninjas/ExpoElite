@@ -4,16 +4,18 @@ import React from "react";
 
 const ProductPage = () => {
   return (
-    <div>
-      <button>Add New Product</button>
+    <div className=" w-full">
+      <div className="  font-bold  ">
+        Product management <hr /> <br />
+        <button
+          className="btn btn-1"
+          onClick={() => document.getElementById("my_modal_1").showModal()}
+        >
+          Add a Product
+        </button>
+      </div>
 
-      <button
-        className="btn"
-        onClick={() => document.getElementById("my_modal_1").showModal()}
-      >
-        open modal
-      </button>
-
+      {/* modal */}
       <dialog id="my_modal_1" className="modal">
         <div className="modal-box m-0 bg-base-300">
           <div className="modal-action">

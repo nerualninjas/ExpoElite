@@ -5,11 +5,13 @@
     "imageUrl": "https://helium.privateproperty.co.za/live-za-images/property/1315/45/8191315/images/property-8191315-75931464_sd.jpg",
     "price": 500000,
     "bedrooms": 4,
+
     "bathrooms": 3,
     "livingRoom": 1112,
     "location": "123 Main Street, Cityville",
     "type": "Single Family",
-    "googleMapAddress": "https://maps.google.com/?q=123 Main Street, Cityville"
+    "googleMapAddress": "https://maps.google.com/?q=123 Main Street, Cityville",
+    "ProductDescription": ""
   },
   {
     "id": 2,
@@ -42,7 +44,7 @@
     "price": 800000,
     "bedrooms": 5,
     "bathrooms": 4,
-      "livingRoom": 1200,
+    "livingRoom": 1200,
     "location": "789 Elm Street, Villageton",
     "type": "Townhouse",
     "googleMapAddress": "https://maps.google.com/?q=789 Elm Street, Villageton"

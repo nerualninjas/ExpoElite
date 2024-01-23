@@ -15,7 +15,6 @@ const AddProduct = () => {
 
   return (
     <div className="w-full  p-8  rounded-xl  ">
-       
       <h3 className="font-bold text-lg">Add a Product</h3>
       <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
         {/* Product Name */}
@@ -76,6 +75,58 @@ const AddProduct = () => {
           </div>
         </div>
 
+
+        <div className="flex w-full gap-4 flex-col lg:flex-row">
+          <div className="space-y-1 text-sm w-full lg:w-1/2">
+            <label className="block dark-text-gray-400">bedrooms</label>
+            <input
+              {...register("bedrooms", {
+                required: "bedrooms no is required",
+              })}
+              type="number"
+              className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+            />
+            {errors.bedrooms && (
+              <p className="text-red-500">{errors.bedrooms.message}</p>
+            )}
+          </div>
+          <div className="space-y-1 text-sm w-full lg:w-1/2">
+            <label className="block dark-text-gray-400">bathrooms</label>
+            <input
+              {...register("bathrooms", {
+                required: "bathrooms is required",
+              })}
+              type="number"
+              className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+            />
+            {errors.bathrooms && (
+              <p className="text-red-500">{errors.bathrooms.message}</p>
+            )}
+          </div>
+          <div className="space-y-1 text-sm w-full lg:w-1/2">
+            <label className="block dark-text-gray-400">Living Room(sq)</label>
+            <input
+              {...register("livingRoom", {
+                required: "livingRoom is required",
+              })}
+              type="number"
+              className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+            />
+            {errors.livingRoom && (
+              <p className="text-red-500">{errors.livingRoom.message}</p>
+            )}
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
         {/* Product Type/Tags */}
         <div className="space-y-1 text-sm">
           <label className="block dark-text-gray-400">Product Type/Tags</label>
@@ -101,31 +152,26 @@ const AddProduct = () => {
             Product Description
           </label>
           <textarea
-            {...register("ProductDescription", {
+            {...register("type", {
               required: "Product Description is required",
             })}
             className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 dark-bg-gray-900 dark-text-gray-100 focus:dark-border-violet-400"
           />
-          {errors.ProductDescription && (
-            <p className="text-red-500">{errors.ProductDescription.message}</p>
-          )}
+          {errors.type && <p className="text-red-500">{errors.type.message}</p>}
         </div>
 
         {/* Submit Button */}
-   <div className="flex gap-2 items-end justify-end">
-   <button
-          type="submit"
-          className="block p-3 text-center rounded-xl dark-text-gray-900 dark-bg-violet-400 btn   btn-1"
-        >
-          Add Product
-        </button>
-        <form method="dialog">
-              
-                <button className="btn btn-error">Close</button>
-              </form>
-     
-   </div>
-
+        <div className="flex gap-2 items-end justify-end">
+          <button
+            type="submit"
+            className="block p-3 text-center rounded-xl dark-text-gray-900 dark-bg-violet-400 btn   btn-1"
+          >
+            Add Product
+          </button>
+          <form method="dialog">
+            <button className="btn btn-error text-white">Close</button>
+          </form>
+        </div>
       </form>
     </div>
   );
