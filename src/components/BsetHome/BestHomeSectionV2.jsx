@@ -1,6 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
+import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMapMarkerAlt,
@@ -17,6 +19,7 @@ const BestHomeSectionV2 = ({ house }) => {
     fetch("property.json")
       .then((res) => res.json())
       .then((data) => setProperties(data));
+      AOS.init();
   }, []);
 
   if (!properties || properties.length === 0) {
@@ -57,7 +60,7 @@ const BestHomeSectionV2 = ({ house }) => {
 
         <div className="mx-auto grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2">
           {properties.map((property, index) => (
-            <div key={index} className=" card bg-base-100 shadow-xl">
+            <div key={index} className="  card bg-base-100  " data-aos="fade-up">
               <figure className="p-3">
                 <img
                   src={property.imageUrl}
