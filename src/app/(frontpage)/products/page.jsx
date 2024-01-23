@@ -1,18 +1,22 @@
 "use client";
 import AddProduct from "@/components/Product/AddProduct";
+import ManageProduct from "@/components/Product/ManageProduct";
 import React from "react";
 
 const ProductPage = () => {
   return (
     <div className=" w-full">
-      <div className="  font-bold  ">
+      <div className="  font-bold ml-4  ">
         Product management <hr /> <br />
         <button
-          className="btn btn-1"
+          className="btn btn-1 "
           onClick={() => document.getElementById("my_modal_1").showModal()}
         >
           Add a Product
         </button>
+      </div>
+      <div className="">
+        <ManageProduct/>
       </div>
 
       {/* modal */}
