@@ -59,7 +59,7 @@ const ManageProduct = () => {
           </thead>
           <tbody>
             {properties.map((property, index) => (
-              <tr key={index} className="  " data-aos="fade-up">
+              <tr key={index} className="  " >
                 <td>{index + 1}</td>
                 <td>
                   <div className="flex items-center gap-3">
