@@ -21,7 +21,7 @@ const Sidebar = () => {
     { pageName: "Contact Us", path: "/contact", icon: contact },
   ];
   return (
-    <div className="w-56 hidden md:block fixed  bg-[#FFFFFF] shadow-2xl  rounded-tl-2xl min-h-screen">
+    <div className="w-48 hidden md:block fixed  bg-[#FFFFFF] shadow-2xl  rounded-tl-2xl min-h-screen">
       <div className="p-4 flex flex-col border h-[100vh] justify-between">
         <section>
           <h2 className="text-3xl font-semibold  hover:text-rose-600 text-rose-500">
