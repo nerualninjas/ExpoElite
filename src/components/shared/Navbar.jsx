@@ -1,13 +1,16 @@
+"use client";
+import { UserAuth } from "@/app/(auth)/context/AuthContext";
 import Image from "next/image";
 import profile from "../../../public/profile.png";
 
 const Navbar = () => {
+  const { user, logOut } = UserAuth();
+  console.log(user?.displayName);
   const btnActive = true;
   const nbtnActive = false;
   return (
-    <div className="py-4 px-5 z-50 bg-[#F9FAFE] flex justify-between items-center  lg:w-[calc(100vw-240px)] md:start-[14rem]  fixed h-20">
-      <h2 className="text-2xl font-bold text-rose-400">ExpoLite</h2>
-      <h2 className="font-extrabold hidden lg:text-4xl">
+    <div className="py-4 px-5 z-50 bg-[#F9FAFE] flex justify-between  lg:w-[calc(100vw-240px)] md:start-[14rem]  fixed h-20">
+      <h2 className="font-extrabold lg:text-4xl">
         Good Morning, <span className="text-rose-400">Welcome ExpoElite</span>
       </h2>
       <div className="bg-gray-100 flex gap-2 p-2 rounded-xl">
@@ -60,7 +63,7 @@ const Navbar = () => {
           >
             <div className="w-12 rounded-full">
               <Image
-                src={profile}
+                src={user?.photoURL}
                 width={50}
                 height={50}
                 alt="profile"
@@ -70,19 +73,32 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-56 lg:w-72"
           >
+            <Image
+              src={user?.photoURL}
+              width={100}
+              height={100}
+              alt="profile"
+              className="rounded-full mx-auto"
+            />
+
+            <h3 className="justify-between  text-xl px-2">
+              {user?.displayName}
+            </h3>
+
             <li>
-              <a className="justify-between">
-                Profile
-                <span className="badge">New</span>
-              </a>
+              <a className="justify-between">Profile</a>
             </li>
             <li>
               <a>Settings</a>
             </li>
             <li>
-              <a>Logout</a>
+              {user ? (
+                <button onClick={() => logOut()}>Logout</button>
+              ) : (
+                <button>Login</button>
+              )}
             </li>
           </ul>
         </div>

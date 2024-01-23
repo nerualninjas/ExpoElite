@@ -42,3 +42,54 @@ body {
 .btn-1:hover {
   background-color: hsl(342, 100%, 50%); /* Darker shade */
 }
+
+.resContainer {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+/* xs */
+@media (min-width: 475px) {
+  .resContainer {
+    max-width: 475px;
+  }
+}
+/* sm */
+@media (min-width: 640px) {
+  .resContainer {
+    max-width: 640px;
+  }
+}
+/* md */
+@media (min-width: 768px) {
+  .resContainer {
+    max-width: 768px;
+  }
+}
+/* lg */
+@media (min-width: 1024px) {
+  .resContainer {
+    max-width: 1024px;
+  }
+}
+/* xl */
+@media (min-width: 1280px) {
+  .resContainer {
+    max-width: 1280px;
+  }
+}
+/* 2xl */
+@media (min-width: 1536px) {
+  .resContainer {
+    max-width: 1536px;
+  }
+}
+/* 3xl */
+@media (min-width: 1920px) {
+  .resContainer {
+    max-width: 1920px;
+  }
+}
