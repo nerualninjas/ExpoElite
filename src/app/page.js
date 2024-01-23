@@ -9,7 +9,7 @@ import FAQ from "@/components/Homepages/FAQ";
 
 export default function Home() {
   return (
-    <div className=" ">
+    <div className="bg-base-300">
       <Banner />
       <BestHomeSectionV2 />
       {/* <BestHomeSection/> */}

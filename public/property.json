@@ -9,7 +9,8 @@
     "livingRoom": 1112,
     "location": "123 Main Street, Cityville",
     "type": "Single Family",
-    "googleMapAddress": "https://maps.google.com/?q=123 Main Street, Cityville"
+    "googleMapAddress": "https://maps.google.com/?q=123 Main Street, Cityville",
+    "ProductDescription": ""
   },
   {
     "id": 2,
@@ -42,7 +43,7 @@
     "price": 800000,
     "bedrooms": 5,
     "bathrooms": 4,
-      "livingRoom": 1200,
+    "livingRoom": 1200,
     "location": "789 Elm Street, Villageton",
     "type": "Townhouse",
     "googleMapAddress": "https://maps.google.com/?q=789 Elm Street, Villageton"
