@@ -16,11 +16,11 @@ const Banner = () => {
             </button>
           </div>
           <div>
-            <div className="flex items-center justify-center">
+            <div className="flex   items-center justify-center">
               <Image
                 width={400}
                 height={100}
-                className="w-full h-full"
+                className="w-full relative bottom-12 h-full"
                 src={
                   "https://i.postimg.cc/dQTr9xpk/banner2-removebg-preview.png"
                 }

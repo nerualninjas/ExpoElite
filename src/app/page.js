@@ -10,7 +10,7 @@ import Footer from "@/components/Homepages/Footer";
 
 export default function Home() {
   return (
-    <div className="bg-base-300">
+    <div className=" md:mr-72 p-2">
       <Banner />
       <BestHomeSectionV2 />
       {/* <BestHomeSection/> */}

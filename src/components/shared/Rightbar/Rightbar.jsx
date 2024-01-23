@@ -16,7 +16,7 @@ const Rightbar = () => {
   return (
     <>
       {pathName === "/" && (
-        <div className="w-64 hidden lg:block   ">
+        <div className=" hidden lg:block   ">
           <div className=" z-0 fixed -bottom-0 top-20 end-0  max-h-[70vh] flex-end ">
             <h3 className="font-bold text-xl py-2">Product Details</h3>
             <div className="bg-base-100 w-72 rounded-lg shadow-2xl">
