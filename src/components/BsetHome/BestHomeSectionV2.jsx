@@ -69,6 +69,7 @@ const BestHomeSectionV2 = ({ house }) => {
                 />
               </figure>
 
+<span> </span>
               <div className=" px-3   ">
                 <h2 className="card-title font-bold text-2xl text-[#2C2946] text-left py-2">
                   ${property?.price}
