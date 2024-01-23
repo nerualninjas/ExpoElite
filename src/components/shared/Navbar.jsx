@@ -2,16 +2,54 @@
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
 import Image from "next/image";
 import profile from "../../../public/profile.png";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
   const { user, logOut } = UserAuth();
-  console.log(user?.displayName);
+  const [currentTime,setCurrentTime]= useState(new Date().getHours())
+
+ 
+
+  // console.log(currentTime);
   const btnActive = true;
   const nbtnActive = false;
+  useEffect(()=>{
+    const updateCurrentTime = ()=>{
+      setCurrentTime(new Date().getHours())
+        }
+    const time = setInterval(updateCurrentTime,3600000)
+
+    return ()=>{
+      clearInterval(time)
+    }
+  },[])
+
+
+let greeting;
+
+if(currentTime > 20 ){
+  greeting ="Good Night";
+}else if(currentTime > 18){
+  greeting="Good Evening";
+}else if(currentTime > 15){
+  greeting="Good Afternoon"
+}else if(currentTime > 11){
+  greeting ="Good Noon"
+}
+else if(currentTime > 4){
+  greeting ="Good Morning"
+}
+else{
+  greeting ="Good Mid-Night"
+}
+
   return (
     <div className="py-4 px-5 z-50 bg-[#F9FAFE] flex justify-between  lg:w-[calc(100vw-240px)] md:start-[12rem]  fixed h-20">
       <h2 className="font-extrabold lg:text-4xl">
-        Good Morning, <span className="text-rose-400">Welcome ExpoElite</span>
+     {greeting}!,
+      
+      
+       <span className="text-rose-400">Welcome ExpoElite</span>
       </h2>
       <div className="bg-gray-100 flex gap-2 p-2 rounded-xl">
         <button
@@ -33,6 +71,7 @@ const Navbar = () => {
           Rent
         </button>
       </div>
+      
       <div className="flex items-center gap-2">
         <button className="btn btn-ghost btn-circle">
           <div className="indicator">
