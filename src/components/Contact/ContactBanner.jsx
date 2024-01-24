@@ -1,29 +1,26 @@
 import Image from 'next/image';
 import React from 'react';
-
+import { IoHome } from "react-icons/io5";
+import { RiContactsFill } from "react-icons/ri";
+// import homeIcon from "../../assets/icon/home-icon.png";
+// import contact from "../../assets/icon/contact-us-50.png";
 const ContactBanner = () => {
     return (
-        <div>
-            {/* <div className="hero min-h-96 w-full" style={{ backgroundImage: 'url(https://i.postimg.cc/kMH13pQc/ht1.jpg)' }}>
-                <div className="hero-overlay bg-opacity-10"></div>
-                <div className="hero-content text-center text-neutral-content">
-                    <div className="max-w-md">
-                        <h1 className="mb-5 text-white text-5xl font-bold">Contact Us</h1>
-                        <div className="text-sm text-center breadcrumbs">
-                            <ul>
-                                <li><a>ExpoElite</a></li>
-                                <li><a>Contact US</a></li>
 
-                            </ul>
-                        </div>
+            <div className='w-full ' >
+                <Image src="https://i.postimg.cc/kMH13pQc/ht1.jpg" width={2500} height={1000} alt="contact banner" className='w-full h-full object-cover relative opacity-50' />
+                <div className='absolute top-1/3 left-1/2 translate-x-[-50%] translate-y-[-50%] text-center'>
+                    <h1 className='text-rose-500  text-6xl font-bold'>Contact Us</h1>
+                    <div className='flex items-center justify-center gap-4'>
+                    <div className='flex items-center justify-center gap-4 text-slate-700 text-lg text-center'>
+                        <IoHome /> <h1>ExpoElite</h1>
+                    </div>
+                    <div className='flex items-center justify-center gap-4 text-slate-700 text-lg text-center'>
+                        <RiContactsFill /><a>Contact US</a>
+                    </div>
                     </div>
                 </div>
-            </div> */}
-            <div className='w-full ' >
-              <Image src="https://i.postimg.cc/kMH13pQc/ht1.jpg" width={2500} height={1000} alt="contact banner" className='w-full h-full object-cover relative' />
-              <h1 className='text-blue-900 absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] text-5xl font-bold'>Contact Us</h1>
             </div>
-        </div>
     );
 };
 
