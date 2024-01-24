@@ -4,9 +4,6 @@ import Banner from "@/components/Homepages/Banner";
 import Testimonials from "@/components/Testimonials/Testimonials";
 
 import FAQ from "@/components/Homepages/FAQ";
-import Footer from "@/components/Homepages/Footer";
-
-
 
 export default function Home() {
   return (
@@ -18,8 +15,6 @@ export default function Home() {
       <Testimonials />
 
       <FAQ />
-      <Footer/>
-
     </div>
   );
 }

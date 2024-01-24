@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import logo from "../../assets/logo/logo.png"
+import logo from "../../assets/logo/logo.png";
 import Link from "next/link";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import homeIcon from "../../assets/icon/home-icon.png";
@@ -25,13 +25,15 @@ const Sidebar = () => {
     <div className="w-48 hidden md:block fixed  bg-[#FFFFFF] shadow-2xl  rounded-tl-2xl min-h-screen">
       <div className="p-4 flex flex-col border h-[100vh] justify-between">
         <section>
-        <Image
+          <Image
             className="mx-auto block pt-4"
             src={logo}
             alt="ExpoElite"
-            width={80} height={60} />
-          
-          <ul className="pt-6 space-y-3">
+            width={80}
+            height={60}
+          />
+
+          <ul className="pt-6 pl-4 space-y-3">
             {mainMenu.slice(0, 2).map((menu) => (
               <li key={menu.pageName}>
                 <Link
@@ -42,7 +44,6 @@ const Sidebar = () => {
                   }`}
                   href={menu.path}
                 >
-                  
                   <Image
                     src={menu.icon}
                     width={18}
@@ -79,7 +80,7 @@ const Sidebar = () => {
         </section>
         {/* auth section  */}
         <section className="pb-20 border-t-2 pt-10">
-          <ul className="space-y-3">
+          <ul className="space-y-3 pl-4">
             {mainMenu.slice(2, 6).map((menu) => (
               <li key={menu.pageName}>
                 <Link

@@ -4,6 +4,7 @@ import Navbar from "@/components/shared/Navbar";
 import Sidebar from "@/components/shared/Sidebar";
 import Rightbar from "@/components/shared/Rightbar/Rightbar";
 import { AuthContextProvider } from "./(auth)/context/AuthContext";
+import Footer from "@/components/Homepages/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,15 +25,14 @@ export default function RootLayout({ children }) {
                 <div className=" w-full  min-h-screen shadow-md rounded-t-2xl ">
                   <Navbar />
                   <div className="flex justify-between ">
-
                     <div className="md:mx-60 mx-4 relative top-20 min-h-screen">
-                       
                       {children}
                     </div>
                     <Rightbar />
                   </div>
                 </div>
               </div>
+              <Footer />
             </div>
           </div>
         </AuthContextProvider>
