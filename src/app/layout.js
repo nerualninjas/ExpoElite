@@ -16,10 +16,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme="light">
-      <body className={inter.className}>
+      <body className="overflow-x-hidden scrollbar-thin scrollbar-rounded scrollbar-thumb-rose-500 scrollbar-track-gray-400">
         <AuthContextProvider>
           <div>
-            <div className="bg-[#F9FAFE]  rounded-t-2xl">
+            <div className="bg-[#F9FAFE]    rounded-t-2xl">
               <div className="flex flex-1">
                 <Sidebar />
                 <div className=" w-full  min-h-screen shadow-md rounded-t-2xl ">

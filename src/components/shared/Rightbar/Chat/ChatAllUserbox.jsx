@@ -1,4 +1,5 @@
-import Image from "next/image";
+
+import ChatBox from "./ChatBox";
 
 const ChatAllUserbox = () => {
   const users = [
@@ -47,19 +48,20 @@ const ChatAllUserbox = () => {
       </div>
       <ul>
         {users.map((user) => (
-          <li
-            key={user.id}
-            className="flex text-md hover:bg-gray-200  px-2 p-1 w-full rounded-2xl font-medium gap-1 items-center"
-          >
-            <Image
-              className="rounded-full "
-              width={40}
-              height={40}
-              alt={user.name}
-              src={user.profileImg}
-            />
-            {user.name}
-          </li>
+          <ChatBox key={user.id} user={user} />
+          //  <li
+          //    key={user.id}
+          //    className="flex text-md hover:bg-gray-200  px-2 p-1 w-full rounded-2xl font-medium gap-1 items-center"
+          //  >
+          //    <Image
+          //      className="rounded-full "
+          //      width={40}
+          //      height={40}
+          //      alt={user.name}
+          //      src={user.profileImg}
+          //    />
+          //    {user.name}
+          //  </li>
         ))}
       </ul>
     </div>
