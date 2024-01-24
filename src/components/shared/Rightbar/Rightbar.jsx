@@ -17,13 +17,13 @@ const Rightbar = () => {
     <>
       {pathName === "/" && (
         <div className=" hidden lg:block   ">
-          <div className=" z-0 fixed -bottom-0 top-20 end-0  max-h-[70vh] flex-end ">
+          <div className=" z-0 fixed -bottom-0 top-20 end-0  overflow-y-auto  ">
             <h3 className="font-bold text-xl py-2">Product Details</h3>
             <div className="bg-base-100 w-72  rounded-lg shadow-2xl">
               <div className="card w-full p-2 bg-base-100 shadow-xl">
                 <figure>
                   <img
-                    className=" rounded-lg max-h-48 w-full"
+                    className=" rounded-lg max-h-[20vh] w-full"
                     src="https://assets-global.website-files.com/6151887923ecfa4ac66a9e69/648ae1ccbe0209d4f34b5216_hero-after-decompressed.jpeg"
                     alt="Shoes"
                   />
