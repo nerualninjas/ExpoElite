@@ -11,7 +11,7 @@ const FQ = () => {
   };
 
   return (
-    <div className="my-10 mx-auto w-full md:w-4/5">
+    <div className="my-10 pb-10 mx-auto w-full md:w-4/5">
       <div>
         <h1 className="text-center text-2xl lg:text-3xl font-bold text-[#212121] mb-2">
           Frequently Asked Questions

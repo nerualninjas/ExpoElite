@@ -5,11 +5,9 @@ import Testimonials from "@/components/Testimonials/Testimonials";
 
 import FAQ from "@/components/Homepages/FAQ";
 
-
-
 export default function Home() {
   return (
-    <div className=" ">
+    <div className=" md:mr-72 p-2">
       <Banner />
       <BestHomeSectionV2 />
       {/* <BestHomeSection/> */}
@@ -17,7 +15,6 @@ export default function Home() {
       <Testimonials />
 
       <FAQ />
-
     </div>
   );
 }

@@ -1,14 +1,15 @@
 "use client";
-import { useEffect, useState } from "react";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faMapMarkerAlt,
-  faBed,
   faBath,
+  faBed,
   faCouch,
+  faMapMarkerAlt,
 } from "@fortawesome/free-solid-svg-icons";
-import { FaLocationArrow } from "react-icons/fa";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const BestHomeSectionV2 = ({ house }) => {
   const [properties, setProperties] = useState([]);
@@ -17,6 +18,7 @@ const BestHomeSectionV2 = ({ house }) => {
     fetch("property.json")
       .then((res) => res.json())
       .then((data) => setProperties(data));
+      AOS.init();
   }, []);
 
   if (!properties || properties.length === 0) {
@@ -57,15 +59,19 @@ const BestHomeSectionV2 = ({ house }) => {
 
         <div className="mx-auto grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2">
           {properties.map((property, index) => (
-            <div key={index} className=" card bg-base-100 shadow-xl">
+            <div key={index} className="  card bg-base-100  " data-aos="fade-up">
+              
               <figure className="p-3">
-                <img
+                <Image
+                width={300}
+                height={200}
                   src={property.imageUrl}
                   alt={property.title}
                   className="rounded-xl "
                 />
               </figure>
 
+<span> </span>
               <div className=" px-3   ">
                 <h2 className="card-title font-bold text-2xl text-[#2C2946] text-left py-2">
                   ${property?.price}
