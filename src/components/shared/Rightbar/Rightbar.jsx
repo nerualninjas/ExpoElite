@@ -17,7 +17,7 @@ const Rightbar = () => {
     <>
       {pathName === "/" && (
         <div className=" hidden lg:block   ">
-          <div className=" z-0 fixed -bottom-0 top-20 end-0  overflow-y-auto  ">
+          <div className=" z-0 fixed -bottom-0 top-20 end-0  overflow-x-hidden scrollbar-none hover:scrollbar-thin scrollbar-rounded scrollbar-thumb-rose-500 scrollbar-track-gray-400  ">
             <h3 className="font-bold text-xl py-2">Product Details</h3>
             <div className="bg-base-100 w-72  rounded-lg shadow-2xl">
               <div className="card w-full p-2 bg-base-100 shadow-xl">
