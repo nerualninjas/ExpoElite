@@ -24,10 +24,10 @@ const ContactBanner = () => {
             image: "https://i.postimg.cc/q7H2SmfQ/2.jpg"
         }
     ]
-    const imageWidth = 1200;
-    const imageHeight = 400;
+    const imageWidth = 1000;
+    const imageHeight = 350;
     return (
-        <Carousel className='w-full h-[100vh]' autoPlay={true} infiniteLoop={true}>
+        <Carousel className='w-full h-[120vh]' autoPlay={true} infiniteLoop={true}>
             {
                 conImg.map((item, index) => (
                     <div style={{ position: 'relative' }} key={index}>

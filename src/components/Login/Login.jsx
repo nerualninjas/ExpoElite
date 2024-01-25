@@ -10,11 +10,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 
-
-
-
-
-
 const Login = () => {
   const {googleSignIn}=UserAuth()
     // const navigate = useNavigate();
