@@ -13,7 +13,6 @@ export default function Home() {
       <BestHomeSectionV2 />
       {/* <BestHomeSection/> */}
       <MostPopular />
-
       <Testimonials />
 
       <FAQ />

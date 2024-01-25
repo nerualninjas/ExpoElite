@@ -29,9 +29,7 @@ const ManageProduct = () => {
     });
   };
 
-  const handleMakeApprove = (propertie) => {
-    console.log(propertie);
-  };
+ 
 
   return (
     <div className="bg-base-200 p-4 m-4 rounded-xl">

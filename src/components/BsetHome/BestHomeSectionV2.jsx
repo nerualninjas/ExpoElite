@@ -11,15 +11,42 @@ import "aos/dist/aos.css";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-const BestHomeSectionV2 = ({ house }) => {
+const BestHomeSectionV2 = () => {
   const [properties, setProperties] = useState([]);
+  const [searchParams, setSearchParams] = useState({
+    title: "",
+    location: "",
+    type: "",
+    range: 40,
+  });
 
   useEffect(() => {
     fetch("property.json")
       .then((res) => res.json())
       .then((data) => setProperties(data));
-      AOS.init();
+    AOS.init();
   }, []);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setSearchParams((prevParams) => ({
+      ...prevParams,
+      [name]: value,
+    }));
+  };
+
+  const handleRangeChange = (e) => {
+    setSearchParams((prevParams) => ({
+      ...prevParams,
+      range: e.target.value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Add your search logic here using searchParams
+    console.log(searchParams);
+  };
 
   if (!properties || properties.length === 0) {
     return <div>House not found!</div>;
@@ -34,44 +61,83 @@ const BestHomeSectionV2 = ({ house }) => {
           </span>
         </h3>
         <br />
-        <form className="flex gap-4">
-          <div className="">
+
+        <form
+          onSubmit={handleSubmit}
+          className="grid grid-cols-3 lg:grid-cols-5 gap-4 w-full"
+        >
+          <div className="w-2/12">
+            <p>Title </p>
+
+            <input
+              type="text"
+              name="title"
+              placeholder="Type here"
+              value={searchParams.title}
+              onChange={handleInputChange}
+              className="input input-bordered w-[150px]   "
+            />
+          </div>
+          <div className="w-2/12">
             <p>Location </p>
             <input
               type="text"
+              name="location"
               placeholder="Type here"
-              className="input input-bordered input-sm md:input-md w-full max-w-xs"
+              value={searchParams.location}
+              onChange={handleInputChange}
+              className="input input-bordered w-[150px]  "
             />
           </div>
-          <div className="">
+          <div className="w-2/12">
             <p>Type </p>
             <input
               type="text"
+              name="type"
               placeholder="Type here"
-              className="input input-bordered input-sm md:input-md w-full max-w-xs"
+              value={searchParams.type}
+              onChange={handleInputChange}
+              className="input input-bordered w-[150px]   "
             />
           </div>
-          <div className="pt-6">
-            <button className="btn md:btn-md btn-sm btn-1">Search</button>
+
+          <div className="w-3/12   ">
+            <p> Range </p>
+            <input
+              type="range"
+              min={0}
+              max="100"
+              value={searchParams.range}
+              onChange={handleRangeChange}
+              className="range range-error w-[200px] mt-3   "
+            />
+          </div>
+          <div className="pt-6 ml-14 ">
+            <button type="submit" className="btn btn-md btn-1">
+              Search
+            </button>
           </div>
         </form>
         <br />
 
         <div className="mx-auto grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2">
           {properties.map((property, index) => (
-            <div key={index} className="  card bg-base-100  " data-aos="fade-up">
-              
+            <div
+              key={index}
+              className="  card bg-base-100  "
+              data-aos="fade-up"
+            >
               <figure className="p-3">
                 <Image
-                width={300}
-                height={200}
+                  width={300}
+                  height={200}
                   src={property.imageUrl}
                   alt={property.title}
                   className="rounded-xl "
                 />
               </figure>
 
-<span> </span>
+              <span> </span>
               <div className=" px-3   ">
                 <h2 className="card-title font-bold text-2xl text-[#2C2946] text-left py-2">
                   ${property?.price}
