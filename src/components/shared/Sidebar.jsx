@@ -3,37 +3,46 @@ import Image from "next/image";
 import logo from "../../assets/logo/logo.png";
 import Link from "next/link";
 import { FaLongArrowAltRight } from "react-icons/fa";
-import homeIcon from "../../assets/icon/home-icon.png";
-import discover from "../../assets/icon/icons8-discover-50.png";
+
 import productList from "../../assets/icon/products.png";
 import power from "../../assets/icon/power-icon.png";
-import aboutUs from "../../assets/icon/about-50.png";
-import contact from "../../assets/icon/contact-us-50.png";
+
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
 import { usePathname } from "next/navigation";
+
+
+import {
+  faAddressBook,
+ faCircle,
+faHouseChimney,
+faCircleInfo
+} from "@fortawesome/free-solid-svg-icons";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 const Sidebar = () => {
   const { user, logOut } = UserAuth();
   const pathName = usePathname();
 
   const mainMenu = [
-    { pageName: "Homepage", path: "/", icon: homeIcon },
-    { pageName: "Discover", path: "/discover", icon: discover },
-    { pageName: "About Us", path: "/about", icon: aboutUs },
-    { pageName: "Contact Us", path: "/contact", icon: contact },
+    { pageName: "Homepage", path: "/", icon: faHouseChimney },
+    { pageName: "Discover", path: "/discover", icon: faCircle },
+    { pageName: "About Us", path: "/about", icon: faCircleInfo },
+    { pageName: "Contact Us", path: "/contact", icon: faAddressBook },
   ];
   return (
-    <div className="w-48 hidden md:block fixed  bg-[#FFFFFF] shadow-2xl  rounded-tl-2xl min-h-screen">
-      <div className="p-4 flex flex-col border h-[100vh] justify-between">
+    <div className="w-[15rem] hidden md:block fixed  bg-[#FFFFFF]  rounded-tl-2xl min-h-screen">
+      <div className="px-8 flex flex-col  h-[100vh] justify-between">
         <section>
           <Image
-            className="mx-auto block pt-4"
+            className="pl-5 block pt-4"
             src={logo}
             alt="ExpoElite"
             width={80}
-            height={60}
+            height={80}
           />
 
-          <ul className="pt-6 pl-4 space-y-3">
+          <ul className=" pl-4 pt-16 text-md font-thin space-y-6">
             {mainMenu.slice(0, 2).map((menu) => (
               <li key={menu.pageName}>
                 <Link
@@ -44,13 +53,8 @@ const Sidebar = () => {
                   }`}
                   href={menu.path}
                 >
-                  <Image
-                    src={menu.icon}
-                    width={18}
-                    height={18}
-                    alt={menu.pageName}
-                  />{" "}
-                  <h4> {menu.pageName}</h4>
+                <FontAwesomeIcon icon={menu.icon} />
+                  <h4 className=""> {menu.pageName}</h4>
                 </Link>
               </li>
             ))}
@@ -80,7 +84,7 @@ const Sidebar = () => {
         </section>
         {/* auth section  */}
         <section className="pb-20 border-t-2 pt-10">
-          <ul className="space-y-3 pl-4">
+          <ul className=" pl-4  text-md font-thin space-y-6">
             {mainMenu.slice(2, 6).map((menu) => (
               <li key={menu.pageName}>
                 <Link
@@ -91,13 +95,7 @@ const Sidebar = () => {
                   }`}
                   href={menu.path}
                 >
-                  {" "}
-                  <Image
-                    src={menu.icon}
-                    width={18}
-                    height={18}
-                    alt={menu.pageName}
-                  />{" "}
+                   <FontAwesomeIcon icon={menu.icon} />
                   <h4> {menu.pageName}</h4>
                 </Link>
               </li>
