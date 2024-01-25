@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import EditProduct from "./EditProdut";
 
 const ManageProduct = () => {
   const [properties, setProperties] = useState([]);
@@ -29,9 +30,7 @@ const ManageProduct = () => {
     });
   };
 
-  const handleMakeApprove = (propertie) => {
-    console.log(propertie);
-  };
+ 
 
   return (
     <div className="bg-base-200 p-4 m-4 rounded-xl">
@@ -86,7 +85,9 @@ const ManageProduct = () => {
                 <td>{property?.type}</td>
 
                 <td className="flex gap-2">
-                  <button className="btn btn-sm btn-warning">Edit</button>{" "}
+                  <button className="btn btn-sm btn-warning"
+                   onClick={() => document.getElementById("my_modal_2").showModal()}
+                  >Edit</button>{" "}
                   <button
                     className="btn btn-sm btn-error"
                     onClick={() => handleDeleteProduct(property)}
@@ -99,6 +100,13 @@ const ManageProduct = () => {
           </tbody>
         </table>
       </div>
+      <dialog id="my_modal_2" className="modal">
+        <div className="modal-box m-0 bg-base-300">
+          <div className="modal-action">
+            <EditProduct />
+          </div>
+        </div>
+      </dialog>
     </div>
   );
 };

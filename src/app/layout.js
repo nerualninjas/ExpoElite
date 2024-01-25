@@ -14,6 +14,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  
   return (
     <html lang="en" data-theme="light">
       <body className="overflow-x-hidden scrollbar-thin scrollbar-rounded scrollbar-thumb-rose-500 scrollbar-track-gray-400">
@@ -25,10 +26,10 @@ export default function RootLayout({ children }) {
                 <div className=" w-full  min-h-screen shadow-md rounded-t-2xl ">
                   <Navbar />
                   <div className="flex justify-between ">
-                    <div className="md:mx-60 mx-4 relative top-20 min-h-screen">
+                    <div className="md:ml-60 mx-4 relative top-20 min-h-screen">
                       {children}
                     </div>
-                    <Rightbar />
+                    {/* <Rightbar /> */}
                   </div>
                 </div>
               </div>

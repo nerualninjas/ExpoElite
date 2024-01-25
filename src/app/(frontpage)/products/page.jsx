@@ -27,6 +27,8 @@ const ProductPage = () => {
           </div>
         </div>
       </dialog>
+
+      
     </div>
   );
 };

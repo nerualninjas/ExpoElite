@@ -31,8 +31,8 @@ const MostPopular = ({ house }) => {
     
         <TabPanel>
             
-            <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-2">
-            {properties.map((property, index) => (
+            <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-4 gap-2">
+            {properties.slice(0,8).map((property, index) => (
            
 
 
