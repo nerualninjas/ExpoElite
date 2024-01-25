@@ -4,6 +4,7 @@ import Banner from "@/components/Homepages/Banner";
 import Testimonials from "@/components/Testimonials/Testimonials";
 
 import FAQ from "@/components/Homepages/FAQ";
+import MostPopular from "@/components/mostPopular/MostPopular";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <Banner />
       <BestHomeSectionV2 />
       {/* <BestHomeSection/> */}
+      <MostPopular />
 
       <Testimonials />
 
