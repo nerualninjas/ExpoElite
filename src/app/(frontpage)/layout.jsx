@@ -12,7 +12,7 @@ const layout = ({ children }) => {
                 <div className=" w-full  min-h-screen shadow-md rounded-t-2xl ">
                   <Navbar />
                   <div className="flex justify-between ">
-                    <div className="md:ml-60 mx-4 relative top-20 min-h-screen">
+                    <div className="md:ml-60 mx-4 md:mx-0 relative top-20 min-h-screen">
                     {children}
                     </div>
                     {/* <Rightbar /> */}
