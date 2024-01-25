@@ -1,4 +1,3 @@
-import BestHomeSectionV2 from "@/components/BsetHome/BestHomeSectionV2";
 import Banner from "@/components/Homepages/Banner";
 import Navbar from "@/components/shared/Navbar";
 import Sidebar from "@/components/shared/Sidebar";
@@ -8,6 +7,7 @@ import Testimonials from "@/components/Testimonials/Testimonials";
 
 import FAQ from "@/components/Homepages/FAQ";
 import MostPopular from "@/components/mostPopular/MostPopular";
+import BestHomeSection from "@/components/BsetHome/BestHomeSection";
 
 export default function Home() {
   return (
@@ -20,7 +20,7 @@ export default function Home() {
                   <div className="flex justify-between ">
                     <div className="md:ml-60 mx-4 relative top-20 min-h-screen">
       <Banner />
-      <BestHomeSectionV2 />
+      <BestHomeSection />
       {/* <BestHomeSection/> */}
       <MostPopular />
       <Testimonials />

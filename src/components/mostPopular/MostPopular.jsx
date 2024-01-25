@@ -19,7 +19,7 @@ const MostPopular = ({ house }) => {
         .then((data) => setProperties(data));
     }, []);
     return (
-        <div className="container">
+        <div className="container lg:py-16">
             <Tabs>
         <TabList>
           <Tab>Most Popular</Tab>
