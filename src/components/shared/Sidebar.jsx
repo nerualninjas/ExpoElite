@@ -35,7 +35,7 @@ const Sidebar = () => {
       <div className="px-8 flex flex-col  h-[100vh] justify-between">
         <section>
           <Image
-            className="pl-5 block pt-4"
+            className="mx-auto  block pt-4"
             src={logo}
             alt="ExpoElite"
             width={80}
