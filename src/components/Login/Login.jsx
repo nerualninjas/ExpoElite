@@ -9,11 +9,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 
-
-
-
-
-
 const Login = () => {
     // const { signIn, signInWithGoogle } = useContext(AuthContext);
     // const location = useLocation();
