@@ -1,10 +1,11 @@
-// "use client"
+"use client"
 
 // import { useContext } from "react";
-// import { Link, useLocation, useNavigate } from "react-router-dom";
+// import { useLocation, useNavigate } from "react-router-dom";
 // import { AuthContext } from "../../providers/AuthProvider";
 // import { useState } from "react";
 // import { FcGoogle } from "react-icons/fc";
+import { UserAuth } from "@/app/(auth)/context/AuthContext";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -15,8 +16,7 @@ import Link from "next/link";
 
 
 const Login = () => {
-    // const { signIn, signInWithGoogle } = useContext(AuthContext);
-    // const location = useLocation();
+  const {googleSignIn}=UserAuth()
     // const navigate = useNavigate();
     // console.log('location in the login page', location);
     // const [loginError, setLoginError] = useState('');
@@ -61,27 +61,27 @@ const Login = () => {
 
 
 
-    // const handleGoogleSignIn = () => {
-    //     signInWithGoogle()
-    //         .then(result => {
-    //             console.log(result.user)
-    //             setSuccess,
-    //             Swal.fire("Good job!", "User Logged in Successfully!", "success");
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then(result => {
+                console.log(result.user)
+                setSuccess,
+                Swal.fire("Good job!", "User Logged in Successfully!", "success");
 
 
-    //             // navigate after login 
-    //             navigate(location?.state ? location.state : '/');
-    //         })
-    //         .catch(error => {
-    //             console.error(error)
-    //         })
-    // }
+                // navigate after login 
+                navigate(location?.state ? location.state : '/');
+            })
+            .catch(error => {
+                console.error(error)
+            })
+    }
 
 
 
 
     return (
-        <div className=" bg-gradient-to-r from-pink-200 to-base-100  ">
+        <div className="bg-gradient-to-b p-0 m-0 from-pink-100 to-base-100 min-h-screen  ">
             <div className="flex flex-col md:flex-row items-center justify-center w-3/5 mx-auto  border-black py-10 rounded-lg ">
                 <div className="w-full lg:w-1/2 bg-[#FF385C] h-[80vh] flex justify-center items-center  rounded-l-lg">
                     <Image width={300} height={300} className="w-full py-3" src={"https://i.postimg.cc/TwpYwc0g/login1-removebg-preview.png"} alt="picture" />
@@ -103,14 +103,14 @@ const Login = () => {
                         </div>
                         <div className="form-control">
                             <h2 className="text-md font-semibold"> Or Log in with</h2>
-                            <button className="btn bg-[#FF385C] text-white py-6 mt-2 rounded-full border-none">
+                            <button onClick={handleGoogleSignIn} className="btn bg-[#FF385C] text-white py-6 mt-2 rounded-full border-none">
                                 {/* <FcGoogle></FcGoogle> */}
                                 Google
                             </button>
                         </div>
                         <p className="text-center mt-4 pb-5 text-black font-semibold text-sm">Do not have an Account?
-                            <Link href={""}
-                                className="text-[#FF385C] ml-2 font-semibold text-base mb-10" to='/register'>Register</Link></p>
+                            <Link href='/register'
+                                className="text-[#FF385C] ml-2 font-semibold text-base mb-10" >Register</Link></p>
                     </form>
                     {/* {
                 loginError && <p className="text-red-700">{loginError}</p>
