@@ -81,7 +81,7 @@ const Login = () => {
 
 
     return (
-        <div className=" bg-gradient-to-r from-pink-200 to-pink-100 min-h-screen ">
+        <div className=" bg-gradient-to-r from-pink-200 to-base-100  ">
             <div className="flex flex-col md:flex-row items-center justify-center w-3/5 mx-auto  border-black py-10 rounded-lg ">
                 <div className="w-full lg:w-1/2 bg-[#FF385C] h-[80vh] flex justify-center items-center  rounded-l-lg">
                     <Image width={300} height={300} className="w-full py-3" src={"https://i.postimg.cc/TwpYwc0g/login1-removebg-preview.png"} alt="picture" />

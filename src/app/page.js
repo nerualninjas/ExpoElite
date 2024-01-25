@@ -8,7 +8,7 @@ import MostPopular from "@/components/mostPopular/MostPopular";
 
 export default function Home() {
   return (
-    <div className=" md:mr-72 p-2">
+    <div className="  p-2">
       <Banner />
       <BestHomeSectionV2 />
       {/* <BestHomeSection/> */}
