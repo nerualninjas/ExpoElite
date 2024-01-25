@@ -45,15 +45,79 @@ const EditProduct = ({ productId }) => {
           )}
         </div>
 
-        {/* Product Quantity and Product Price */}
-        <div className="flex w-full gap-4 flex-col lg:flex-row">
-          {/* ... Similar structure as in AddProduct ... */}
-        </div>
+    {/* Product Quantity and Product Price */}
+<div className="flex w-full gap-4 flex-col lg:flex-row">
+  <div className="space-y-1 text-sm w-full lg:w-1/2">
+    <label className="block dark-text-gray-400">Product Quantity</label>
+    <input
+      {...register("ProductQuantity", {
+        required: "Product Quantity is required",
+      })}
+      type="number"
+      className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+    />
+    {errors.ProductQuantity && (
+      <p className="text-red-500">{errors.ProductQuantity.message}</p>
+    )}
+  </div>
+  <div className="space-y-1 text-sm w-full lg:w-1/2">
+    <label className="block dark-text-gray-400">Product Price</label>
+    <input
+      {...register("ProductPrice", {
+        required: "Product Price is required",
+      })}
+      type="number"
+      className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+    />
+    {errors.ProductPrice && (
+      <p className="text-red-500">{errors.ProductPrice.message}</p>
+    )}
+  </div>
+</div>
 
-        {/* Additional Fields for EditProduct */}
-        <div className="flex w-full gap-4 flex-col lg:flex-row">
-          {/* ... Additional fields for editing, you might need to fetch and set default values based on the productId */}
-        </div>
+{/* Additional Fields for EditProduct */}
+<div className="flex w-full gap-4 flex-col lg:flex-row">
+  <div className="space-y-1 text-sm w-full lg:w-1/2">
+    <label className="block dark-text-gray-400">bedrooms</label>
+    <input
+      {...register("bedrooms", {
+        required: "bedrooms no is required",
+      })}
+      type="number"
+      className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+    />
+    {errors.bedrooms && (
+      <p className="text-red-500">{errors.bedrooms.message}</p>
+    )}
+  </div>
+  <div className="space-y-1 text-sm w-full lg:w-1/2">
+    <label className="block dark-text-gray-400">bathrooms</label>
+    <input
+      {...register("bathrooms", {
+        required: "bathrooms is required",
+      })}
+      type="number"
+      className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+    />
+    {errors.bathrooms && (
+      <p className="text-red-500">{errors.bathrooms.message}</p>
+    )}
+  </div>
+  <div className="space-y-1 text-sm w-full lg:w-1/2">
+    <label className="block dark-text-gray-400">Living Room(sq)</label>
+    <input
+      {...register("livingRoom", {
+        required: "livingRoom is required",
+      })}
+      type="number"
+      className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+    />
+    {errors.livingRoom && (
+      <p className="text-red-500">{errors.livingRoom.message}</p>
+    )}
+  </div>
+</div>
+
 
         {/* Product Type/Tags */}
         <div className="space-y-1 text-sm">
