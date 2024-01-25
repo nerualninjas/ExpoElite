@@ -1,16 +1,16 @@
-import BestHomeSectionV2 from "@/components/BsetHome/BestHomeSectionV2";
 import Banner from "@/components/Homepages/Banner";
 
 import Testimonials from "@/components/Testimonials/Testimonials";
 
 import FAQ from "@/components/Homepages/FAQ";
 import MostPopular from "@/components/mostPopular/MostPopular";
+import BestHomeSection from "@/components/BsetHome/BestHomeSection";
 
 export default function Home() {
   return (
     <div className="  p-2">
       <Banner />
-      <BestHomeSectionV2 />
+      <BestHomeSection />
       {/* <BestHomeSection/> */}
       <MostPopular />
       <Testimonials />
