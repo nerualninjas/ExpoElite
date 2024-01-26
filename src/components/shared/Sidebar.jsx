@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import logo from "../../assets/logo/logo.png";
+
 import Link from "next/link";
 import { FaLongArrowAltRight } from "react-icons/fa";
 
