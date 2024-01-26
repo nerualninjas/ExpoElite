@@ -6,7 +6,7 @@ const OurMission = () => {
     return (
         <div className="  px-4 py-8 ">
               <div className="  w-24 border border-[#FF385D]  "></div>
-      <h2 className="text-4xl pb-16 pt-8 font-semibold  text-[##54595F]">
+      <h2 className="text-4xl pb-16 pt-8 font-semibold  text-[#54595F]">
       Our Mission
       </h2>
 
@@ -24,11 +24,11 @@ const OurMission = () => {
        {/* -------------------------------Our Mission text----------------------------------------- */}
            <div className="ml-0 lg:ml-5 w-11/12 lg:w-2/3  text-center lg:text-left pt-10">
                
-               <h1 className='text-2xl font-extrabold mb-2 text-[#FF385D]'>Our Mission is Pioneering the Future of <br /> Real Estate Transactions</h1>
-               <p className="text-md">
+               <h1 className='text-3xl font-extrabold mb-2 text-[#FF385D]'>Our Mission is Pioneering the Future of <br/>Real Estate Transactions</h1>
+               <p className="text-md mt-4">
                At ExpoElite, our mission is clear – to empower dreams by revolutionizing the property market.
                 We strive to create a platform that goes beyond transactions, turning each interaction into a step towards fulfilling aspirations.
-                 Whether you're envisioning your dream home, developing the next architectural marvel, or seeking the perfect rental space,
+                 Whether you&apos;re envisioning your dream home, developing the next architectural marvel, or seeking the perfect rental space,
                 ExpoElite is here to make your journey seamless and rewarding.
                </p>
               
