@@ -2,6 +2,7 @@
 import Lottie from "lottie-react";
 import LoginAni from "./Login.json"
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
+import Link from "next/link";
 const Login2 = () => {
 
     const {googleSignIn}=UserAuth()
@@ -56,7 +57,7 @@ const Login2 = () => {
                     </button>
                 </div>
                 <p className="text-xs text-center sm:px-6 text-rose-700">Don&apos;t have an account?
-                    <a rel="noopener noreferrer" href="#" className="underline ">Register</a>
+                    <Link rel="noopener noreferrer" href="/register" className="underline ">Register</Link>
                 </p>
             </div>
             
