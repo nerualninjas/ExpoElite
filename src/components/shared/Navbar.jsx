@@ -27,20 +27,18 @@ const Navbar = () => {
 
 let greeting;
 
-if(currentTime > 20 ){
-  greeting ="Good Night";
-}else if(currentTime > 18){
-  greeting="Good Evening";
-}else if(currentTime > 15){
-  greeting="Good Afternoon"
-}else if(currentTime > 11){
-  greeting ="Good Noon"
-}
-else if(currentTime > 4){
-  greeting ="Good Morning"
-}
-else{
-  greeting ="Good Mid-Night"
+if (currentTime > 20) {
+  greeting = "Good Night";
+} else if (currentTime > 18) {
+  greeting = "Good Evening";
+} else if (currentTime > 15) {
+  greeting = "Good Afternoon";
+} else if (currentTime > 11) {
+  greeting = "Good Noon";
+} else if (currentTime > 4) {
+  greeting = "Good Morning";
+} else {
+  greeting = "Good Midnight";
 }
 
   return (
