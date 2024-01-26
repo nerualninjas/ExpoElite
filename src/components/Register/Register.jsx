@@ -1,7 +1,7 @@
 "use client"
-// import { Link } from "react-router-dom";
-// import { useContext } from "react";
-// import { useState } from "react";
+
+
+import { useState } from "react";
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,54 +9,54 @@ import { FaGoogle, FaFacebook, FaInstagram } from "react-icons/fa";
 
 const Register = () => {
 
-    const {googleSignIn}=UserAuth()
-    // const { createUser } = useContext(AuthContext);
-    // const [registerError, setRegisterError] = useState('');
-    // const [success, setSuccess] = useState('');
+    const {googleSignIn,createUser}=UserAuth()
+   
+    const [registerError, setRegisterError] = useState('');
+    const [success, setSuccess] = useState('');
 
-    // const handleRegister = e => {
-    //     e.preventDefault();
-    //     console.log(e.currentTarget);
-    //     const form = new FormData(e.currentTarget);
-
-
-    //     const name = form.get('name');
-    //     const photo = form.get('photo');
-    //     const email = form.get('email');
-    //     const password = form.get('password');
-    //     console.log(name, photo, email, password);
+    const handleRegister = (e) => {
+        e.preventDefault();
+        console.log(e.currentTarget);
+        const form = new FormData(e.currentTarget);
 
 
-    //     // reset error and success
-    //     setRegisterError('');
-    //     setSuccess('');
+        const name = form.get('name');
+        const photo = form.get('photo');
+        const email = form.get('email');
+        const password = form.get('password');
+        console.log(name, photo, email, password);
 
 
-    //     if (password.length < 6) {
-    //         setRegisterError('Password should be at least 6 characters or longer');
-    //         return;
-    //     }
-    //     else if (!/^(?=.*[A-Z])(?=.*[!@#$%^&*()_+[\]{};':"\\|,.<>?]).{6,}$/.test(password)) {
-    //         setRegisterError,
-    //             Swal.fire("Oops!", "Your password should have length at least 6 character one upper case and one special characters!", "error");
-    //         return;
-    //     }
+        // reset error and success
+        setRegisterError('');
+        setSuccess('');
 
 
-    //     // create user
-    //     createUser(email, password)
-    //         .then(result => {
-    //             console.log(result.user);
-    //             setSuccess,
-    //                 Swal.fire("Good job!", "User Created Successfully!", "success");
+        if (password.length < 6) {
+            setRegisterError('Password should be at least 6 characters or longer');
+            return;
+        }
+        else if (!/^(?=.*[A-Z])(?=.*[!@#$%^&*()_+[\]{};':"\\|,.<>?]).{6,}$/.test(password)) {
+            setRegisterError,
+                Swal.fire("Oops!", "Your password should have length at least 6 character one upper case and one special characters!", "error");
+            return;
+        }
 
-    //         })
-    //         .catch(error => {
-    //             console.error(error);
-    //             setRegisterError(error.message);
-    //         })
 
-    // }
+        // create user
+        createUser(email, password)
+            .then(result => {
+                console.log(result.user);
+                setSuccess,
+                    Swal.fire("Good job!", "User Created Successfully!", "success");
+                    updateUser(name,photo)
+            })
+            .catch(error => {
+                console.error(error);
+                setRegisterError(error.message);
+            })
+
+    }
 
     return (
         <div className=" bg-gradient-to-b from-pink-100 to-base-100 min-h-screen ">
@@ -65,21 +65,22 @@ const Register = () => {
                 <div className="w-full lg:w-1/2 bg-[#FF385C] h-[90vh] flex justify-center items-center  rounded-l-lg">
                     <Image width={300} height={300} className="w-full py-3" src={"https://i.postimg.cc/TwpYwc0g/login1-removebg-preview.png"} alt="picture" />
                 </div>
-                <div className="w-full lg:w-1/2 my-0 md:mt-1 bg-base-100 rounded-r-lg py-3 h-[90vh] max-w-md p-8 space-y-2">
-                    {/* <h1 className="text-2xl font-bold text-center">Login</h1> */}
-                    <form novalidate="" action="" className="space-y-3">
-                        <div className="space-y-1 text-sm">
-                            <label for="username" className="block text-gray-600 font-semibold">User Name</label>
-                            <input type="text" name="username" id="username" placeholder="Username" className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-100 text-gray-100 focus:border-violet-400" />
+
+                <div className="w-full lg:w-1/2 my-0 md:mt-1 bg-base-100 rounded-r-lg py-3 h-[90vh] mx-auto ">
+                    <h2 className="text-3xl my-8 font-bold text-center  text-black">Sign Up</h2>
+                    <form onSubmit={handleRegister} className="w-9/12 md:w-4/5 lg:w-4/5   mx-auto h-full text-center  place-items-center">
+                        <div className="form-control">
+                            <input type="text" placeholder="Name" name="name" className="input py-6 input-bordered rounded-full mb-5" required />
                         </div>
-                        <div className="space-y-1 text-sm">
-                            <label for="useremail" className="block text-gray-600 font-semibold">User Email</label>
-                            <input type="text" name="username" id="useremail" placeholder="Useremail" className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-100 text-gray-100 focus:border-violet-400" />
+                        <div className="form-control">
+                            <input type="text" placeholder="Photo URL" name="photo" className="input py-6  input-bordered rounded-full mb-5" required />
                         </div>
-                        <div className="space-y-1 text-sm">
-                            <label for="userphoto" className="block text-gray-600 font-semibold">Photo URL</label>
-                            <input type="text" name="userphoto" id="userphoto" placeholder="Photo URL" className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-100 text-gray-100 focus:border-violet-400" />
-                        </div>
+                        <div className="form-control">
+                            <input type="email" placeholder="Email" name="email" className="input input-bordered py-6 mb-5 rounded-full" required />
+              </div>
+
+                 
+                       
                         <div className="space-y-1 text-sm">
                             <label for="password" className="block text-gray-600 font-semibold">Password</label>
                             <input type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-100 text-gray-100 focus:border-violet-400" />
@@ -87,7 +88,7 @@ const Register = () => {
                                 <a rel="noopener noreferrer" href="#">Forgot Password?</a>
                             </div>
                         </div>
-                        <button className="block w-full p-3 text-center rounded-sm text-white bg-[#FF385C]">Sign in</button>
+                        <button type="submit" className="btn bg-[#FF385C] text-white py-6 mb-2 rounded-full border-none">Sign Up</button>
                     </form>
                     <div className="flex items-center pt-4 space-x-1">
                         <div className="flex-1 h-px sm:w-16 "></div>
