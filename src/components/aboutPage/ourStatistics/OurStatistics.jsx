@@ -39,10 +39,10 @@ const OurStatistics = () => {
             <div className='pl-8 py-8 '>
          <div className=''>
          <div className="  w-24 border border-[#FF385D]  "></div>
-      <h2 className="text-4xl pt-8 font-semibold  text-[##54595F]">
+      <h2 className="text-4xl pt-8 font-semibold  text-[#54595F]">
       About Us
       </h2>
-      <p className="text-sm ">
+      <p className="text-sm mt-4">
             ExpoElite emerged from a shared vision of creating a space where every property transaction is an experience worth cherishing.
             </p>
          </div>
@@ -58,11 +58,11 @@ const OurStatistics = () => {
             {
                 // dynamically data load
                 countData.map((data) => (
-                    <div key={data.id} className=" flex flex-col  items-center text-center p-2 border-xl w-[200px]   text-[#FF385D]  hover:text-white  rounded mb-4">
+                    <div key={data.id} className=" flex flex-col  items-center text-center p-2 border-xl w-[200px]   text-rose-600  hover:text-red-400  rounded mb-4">
                
                   
                         
-               <div className="  flex items-center justify-center w-[40px] h-[40px] rounded-full   text-[#FF385D]  text-2xl">
+               <div className="  flex items-center justify-center w-[40px] h-[40px] rounded-full  text-rose-600 hover:text-red-400  text-2xl">
                 {data.icon}
                 </div>
                             <h1 className="text-2xl font-semibold">
