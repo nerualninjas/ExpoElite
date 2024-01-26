@@ -3,9 +3,9 @@ import Image from "next/image";
 const MeetOurTeam = () => {
     return (
         <div>
-            <div className=" py-10">
+            <div className=" px-4 py-8 mb-20">
             <div className="  w-24 border border-[#FF385D]  "></div>
-      <h2 className="text-4xl pb-16 pt-8 font-semibold  text-[##54595F]">
+      <h2 className="text-4xl pb-16 pt-8 font-semibold  text-[#54595F]">
       Meet Our Team
       </h2>
               
