@@ -73,7 +73,7 @@ setIsMenu(!isMenu)
         <section>
           <Image
             className="mx-auto  block pt-4"
-            src={logo}
+            src="https://i.ibb.co/0XXcHdt/logo.png"
             alt="ExpoElite"
             width={80}
             height={80}
