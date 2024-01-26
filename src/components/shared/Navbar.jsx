@@ -1,11 +1,11 @@
 "use client";
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
 import Image from "next/image";
-import profile from "../../../public/profile.png";
+
 import { useEffect, useState } from "react";
 
 import Link from "next/link";
-import logo from "../../assets/logo/logo.png";
+
 import productList from "../../assets/icon/products.png";
 import {
   faAddressBook,
