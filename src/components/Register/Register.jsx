@@ -61,7 +61,7 @@ const Register = () => {
     return (
         <div className=" bg-gradient-to-b from-pink-100 to-base-100 min-h-screen ">
             <div className="flex flex-col md:flex-row items-center justify-center w-3/5 mx-auto  border-black py-10 rounded-lg ">
-                <div className="md:w-full  lg:w-1/2 bg-[#FF385C] h-[80vh] flex justify-center items-center mx-auto rounded-l-lg">
+                <div className="md:w-full  lg:w-1/2 bg-[#FF385C] h-[90vh] flex justify-center items-center mx-auto rounded-l-lg">
                     <Image width={300} height={300} className="w-full py-3" src={"https://i.postimg.cc/TwpYwc0g/login1-removebg-preview.png"} alt="picture" />
                 </div>
                 <div className="w-full lg:w-1/2 my-0 md:mt-1 bg-base-100 rounded-r-lg py-3 h-[90vh] mx-auto ">
