@@ -1,16 +1,38 @@
 "use client";
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
 import Image from "next/image";
-import profile from "../../../public/profile.png";
+
 import { useEffect, useState } from "react";
 
+import Link from "next/link";
+
+import productList from "../../assets/icon/products.png";
+import {
+  faAddressBook,
+ faCircle,
+faHouseChimney,
+faCircleInfo
+} from "@fortawesome/free-solid-svg-icons";
+import { usePathname } from "next/navigation";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Navbar = () => {
   const { user, logOut } = UserAuth();
   const [currentTime,setCurrentTime]= useState(new Date().getHours())
-
+  const [isMenu,setIsMenu]=useState(false)
+  const pathName = usePathname();
  
+ const handleNavMenu=()=>{
+setIsMenu(!isMenu)
+ }
 
-  // console.log(currentTime);
+  const mainMenu = [
+    { pageName: "Homepage", path: "/", icon: faHouseChimney },
+    { pageName: "Discover", path: "/discover", icon: faCircle },
+    { pageName: "About Us", path: "/about", icon: faCircleInfo },
+    { pageName: "Contact Us", path: "/contact", icon: faAddressBook },
+  ];
+
+  
   const btnActive = true;
   const nbtnActive = false;
   useEffect(()=>{
@@ -42,14 +64,75 @@ if (currentTime > 20) {
 }
 
   return (
-    <div className="py-4 px-5 z-50 bg-[#F9FAFE] flex justify-between  lg:w-[calc(100vw-240px)] md:start-[12rem]  fixed h-20">
+
+    <>
+    
+{/* small device  */}
+
+{
+        isMenu && <>
+
+          <div className=" text-center   min-h-screen bg-base-200  absolute top-0 right-0 z-50 mx-auto  w-56">
+            <div className="flex-col item-center justify-center">
+            <Image
+            className="mx-auto  block pt-4"
+            src="https://i.ibb.co/0XXcHdt/logo.png"
+            alt="ExpoElite"
+            width={80}
+            height={80}
+          />
+              <div className="text-2xl my-10   ">
+                {isMenu && <button onClick={handleNavMenu} >X</button>}
+              </div>
+              <ul className="space-y-4 h-2/3 my-auto">
+                {mainMenu.map((item) => (
+                  <li key={item.pageName}>
+                    <Link
+                      className={`${pathName === item.path ? "bg-pink-200  py-2 px-4  rounded-full" : "hover:bg-pink-200  hover:text-white py-2 px-4 rounded-full"}`}
+                      href={item.path}
+                    >
+                      {item.pageName}
+                    </Link>
+                  </li>
+                ))}
+                  {/* if user login seller and admin  */}
+            {user && (
+              <li>
+                <Link
+                  className={`${
+                    pathName === "/products"
+                      ? "flex items-center gap-2  hover:text-rose-600 text-rose-500 "
+                      : "flex items-center gap-2  hover:text-rose-600 text-gray-800 "
+                  }`}
+                  href="/products"
+                >
+                  {" "}
+                  {/* <Image
+                    src={productList}
+                    width={18}
+                    height={18}
+                    alt="home"
+                  />{" "} */}
+                  <h4 className="text-center mx-auto">Products</h4>
+                </Link>
+              </li>
+            )}
+              </ul>
+            </div>
+          </div>
+        </>
+      }
+
+    <div className="py-4 px-2 z-30 bg-[#F9FAFE] flex items-center justify-between w-full  lg:w-[calc(100vw-240px)] md:start-[12rem]  fixed h-20">
+    <div className=""> <button onClick={handleNavMenu} className="text-2xl px-3
+   md:hidden">III</button></div>
+      
       <h2 className="font-extrabold lg:text-3xl text-gray-900">
      {greeting}!,
       
-      
        <span className="text-rose-500 ">Welcome ExpoElite</span>
       </h2>
-      <div className="bg-gray-100 flex gap-2 p-2 rounded-xl">
+      <div className="bg-gray-100 hidden md:flex gap-2 p-2 rounded-xl">
         <button
           className={
             btnActive
@@ -134,13 +217,15 @@ if (currentTime > 20) {
               {user ? (
                 <button onClick={() => logOut()}>Logout</button>
               ) : (
-                <button>Login</button>
+                <Link href="/login"><button>Login</button></Link>
               )}
             </li>
           </ul>
         </div>
       </div>
     </div>
+    </>
+    
   );
 };
 

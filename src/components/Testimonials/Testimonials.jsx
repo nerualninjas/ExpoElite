@@ -11,7 +11,6 @@ const Testimonials = () => {
     fetch("/testimonial.json")
       .then((res) => res.json())
       .then((data) => setPersons(data));
-
     AOS.init();
   }, []);
 

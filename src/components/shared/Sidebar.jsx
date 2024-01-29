@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import logo from "../../assets/logo/logo.png";
+
 import Link from "next/link";
 import { FaLongArrowAltRight } from "react-icons/fa";
 
@@ -19,10 +19,16 @@ faCircleInfo
 } from "@fortawesome/free-solid-svg-icons";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
 
 const Sidebar = () => {
   const { user, logOut } = UserAuth();
   const pathName = usePathname();
+  const [isMenu,setIsMenu]=useState(false)
+ 
+ const handleNavMenu=()=>{
+setIsMenu(!isMenu)
+ }
 
   const mainMenu = [
     { pageName: "Homepage", path: "/", icon: faHouseChimney },
@@ -31,12 +37,43 @@ const Sidebar = () => {
     { pageName: "Contact Us", path: "/contact", icon: faAddressBook },
   ];
   return (
-    <div className="w-[15rem] hidden md:block fixed  bg-[#FFFFFF]  rounded-tl-2xl min-h-screen">
+   <div>
+
+{/* small device  */}
+{/* <div className=""> <button onClick={handleNavMenu} className="text-2xl relative ml-10 top-0 pr-5 md:hidden">III</button></div> */}
+{
+        isMenu && <>
+
+          <div className=" text-center   min-h-screen bg-neutral  absolute top-0 right-0 z-50 mx-auto  w-56">
+            <div className="flex-col item-center justify-center">
+              <div className="text-2xl my-10   ">
+                {isMenu && <button onClick={handleNavMenu} >X</button>}
+              </div>
+              <ul className="space-y-4 h-2/3 my-auto">
+                {mainMenu.map((item) => (
+                  <li key={item.pageName}>
+                    <Link
+                      className={`${pathName === item.path ? "bg-base-200  py-2 px-4  rounded-full" : "hover:bg-[#0c7e5c]  hover:text-white py-2 px-4 rounded-full"}`}
+                      href={item.path}
+                    >
+                      {item.pageName}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </>
+      }
+
+{/* Large device  */}
+
+     <div className="w-[15rem] hidden md:block fixed  bg-[#FFFFFF]  rounded-tl-2xl min-h-screen">
       <div className="px-8 flex flex-col  h-[100vh] justify-between">
         <section>
           <Image
             className="mx-auto  block pt-4"
-            src={logo}
+            src="https://i.ibb.co/0XXcHdt/logo.png"
             alt="ExpoElite"
             width={80}
             height={80}
@@ -128,6 +165,9 @@ const Sidebar = () => {
         </section>
       </div>
     </div>
+
+
+   </div>
   );
 };
 
