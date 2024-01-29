@@ -1,7 +1,10 @@
 "use client";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
+import useAxiosSecure from "./../../hooks/useAxiosSecure";
 
 const AddProduct = () => {
+  const axiosSecure = useAxiosSecure();
   const {
     register,
     handleSubmit,
@@ -11,6 +14,26 @@ const AddProduct = () => {
   const onSubmit = async (data) => {
     console.log(data);
     // You can add your logic to handle form submission here
+    await axiosSecure.post("/addProperty", data).then((res) => {
+      console.log(res.data);
+      if (res?.data.insertedId === null) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Player Already Register!",
+          position: "top-right",
+          footer: `<a href="#">Please check </a>`,
+        });
+      } else {
+        Swal.fire({
+          title: "Property added Success!",
+          text: "Thanks You!",
+          icon: "success",
+          position: "top-right",
+          timer: 1500,
+        });
+      }
+    });
   };
 
   return (
@@ -21,19 +44,19 @@ const AddProduct = () => {
         <div className="space-y-1 text-sm">
           <label className="block dark-text-gray-400">Product Name</label>
           <input
-            {...register("ProductName", {
+            {...register("propertyName", {
               required: "Product Name is required",
             })}
             type="text"
             className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 dark-bg-gray-900 dark-text-gray-100 focus:dark-border-violet-400"
           />
-          {errors.ProductName && (
-            <p className="text-red-500">{errors.ProductName.message}</p>
+          {errors.propertyName && (
+            <p className="text-red-500">{errors.propertyName.message}</p>
           )}
         </div>
-
+        {/* need to done image Upload  */}
         {/* Image URL */}
-        <div className="space-y-1 text-sm">
+        {/* <div className="space-y-1 text-sm">
           <label className="block dark-text-gray-400">Image </label>
           <input
             {...register("image", { required: "Image is required" })}
@@ -43,38 +66,37 @@ const AddProduct = () => {
           {errors.image && (
             <p className="text-red-500">{errors.image.message}</p>
           )}
-        </div>
+        </div> */}
 
         {/* Product Quantity and Product Price */}
         <div className="flex w-full gap-4 flex-col lg:flex-row">
           <div className="space-y-1 text-sm w-full lg:w-1/2">
             <label className="block dark-text-gray-400">Product Quantity</label>
             <input
-              {...register("ProductQuantity", {
+              {...register("quantity", {
                 required: "Product Quantity is required",
               })}
               type="number"
               className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
             />
-            {errors.ProductQuantity && (
-              <p className="text-red-500">{errors.ProductQuantity.message}</p>
+            {errors.quantity && (
+              <p className="text-red-500">{errors.quantity.message}</p>
             )}
           </div>
           <div className="space-y-1 text-sm w-full lg:w-1/2">
             <label className="block dark-text-gray-400">Product Price</label>
             <input
-              {...register("ProductPrice", {
+              {...register("price", {
                 required: "Product Price is required",
               })}
               type="number"
               className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
             />
-            {errors.ProductPrice && (
-              <p className="text-red-500">{errors.ProductPrice.message}</p>
+            {errors.price && (
+              <p className="text-red-500">{errors.price.message}</p>
             )}
           </div>
         </div>
-
 
         <div className="flex w-full gap-4 flex-col lg:flex-row">
           <div className="space-y-1 text-sm w-full lg:w-1/2">
@@ -118,20 +140,11 @@ const AddProduct = () => {
           </div>
         </div>
 
-
-
-
-
-
-
-
-
-
         {/* Product Type/Tags */}
         <div className="space-y-1 text-sm">
           <label className="block dark-text-gray-400">Product Type/Tags</label>
           <select
-            {...register("ProductType", {
+            {...register("propertyType", {
               required: "Product Type is required",
             })}
             className="w-full px-4 py-3 rounded-md text-black"
@@ -141,8 +154,8 @@ const AddProduct = () => {
             <option value="Business">Type 1</option>
             <option value="Business">Type 1</option>
           </select>
-          {errors.ProductType && (
-            <p className="text-red-500">{errors.ProductType.message}</p>
+          {errors.propertyType && (
+            <p className="text-red-500">{errors.propertyType.message}</p>
           )}
         </div>
 
@@ -152,12 +165,14 @@ const AddProduct = () => {
             Product Description
           </label>
           <textarea
-            {...register("type", {
+            {...register("propertyDetails", {
               required: "Product Description is required",
             })}
             className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 dark-bg-gray-900 dark-text-gray-100 focus:dark-border-violet-400"
           />
-          {errors.type && <p className="text-red-500">{errors.type.message}</p>}
+          {errors.propertyDetails && (
+            <p className="text-red-500">{errors.propertyDetails.message}</p>
+          )}
         </div>
 
         {/* Submit Button */}

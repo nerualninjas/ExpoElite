@@ -121,7 +121,7 @@ const BestHomeSection = () => {
         <br />
 
         <div className="mx-auto grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2">
-          {properties.slice(0,6).map((property, index) => (
+          {properties.slice(0, 6).map((property, index) => (
             <div
               key={index}
               className="  card bg-base-100  "

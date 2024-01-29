@@ -1,18 +1,26 @@
 "use client";
- 
+
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import EditProduct from "./EditProdut";
+import usePropertyAllData from "./../../hooks/Propertys/usePropertyAllData";
+import useAxiosSecure from "./../../hooks/useAxiosSecure";
+import useAxiosPublic from "./../../hooks/useAxiosPublic";
 
 const ManageProduct = () => {
-  const [properties, setProperties] = useState([]);
+  const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
+  const { propertyData, isPending, refetch } = usePropertyAllData();
+  const [properties, setProperties] = useState(propertyData);
 
   useEffect(() => {
-    fetch("property.json")
-      .then((res) => res.json())
-      .then((data) => setProperties(data));
-  }, []);
+    // fetch("property.json")
+    //   .then((res) => res.json())
+    //   .then((data) => setProperties(data));
+    setProperties(propertyData);
+    refetch();
+  }, [propertyData]);
 
   const handleDeleteProduct = (propertie) => {
     Swal.fire({
@@ -23,14 +31,24 @@ const ManageProduct = () => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
         console.log(propertie._id);
+        await axiosPublic
+          .delete(`/deleteProperty/${propertie._id}`)
+          .then((res) => {
+            console.log(res?.data);
+            refetch();
+            Swal.fire({
+              title: "Deleted?",
+              text: "You product deleted Successfully!",
+              icon: "success",
+              timer: 1000,
+            });
+          });
       }
     });
   };
-
- 
 
   return (
     <div className="bg-base-200 p-4 m-4 rounded-xl">
@@ -57,8 +75,8 @@ const ManageProduct = () => {
             </tr>
           </thead>
           <tbody>
-            {properties.map((property, index) => (
-              <tr key={index} className="  " >
+            {properties?.map((property, index) => (
+              <tr key={index} className="  ">
                 <td>{index + 1}</td>
                 <td>
                   <div className="flex items-center gap-3">
@@ -84,10 +102,8 @@ const ManageProduct = () => {
                 <td>{property?.location}</td>
                 <td>{property?.type}</td>
 
-                <td className="flex gap-2">
-                  <button className="btn btn-sm btn-warning"
-                   onClick={() => document.getElementById("my_modal_2").showModal()}
-                  >Edit</button>{" "}
+                <td className="flex items-center gap-2">
+                  <EditProduct property={property} />
                   <button
                     className="btn btn-sm btn-error"
                     onClick={() => handleDeleteProduct(property)}
@@ -100,13 +116,6 @@ const ManageProduct = () => {
           </tbody>
         </table>
       </div>
-      <dialog id="my_modal_2" className="modal">
-        <div className="modal-box m-0 bg-base-300">
-          <div className="modal-action">
-            <EditProduct />
-          </div>
-        </div>
-      </dialog>
     </div>
   );
 };
