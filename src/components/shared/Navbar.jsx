@@ -23,11 +23,20 @@ const Navbar = () => {
   const [currentTime, setCurrentTime] = useState(new Date().getHours());
   const [isMenu, setIsMenu] = useState(false);
   const pathName = usePathname();
+  const [isDropMenuOpen, setIsDropMenu] = useState(false);
 
-  console.log(user?.photoURL);
+  // console.log(user?.photoURL);
 
   const handleNavMenu = () => {
     setIsMenu(!isMenu);
+  };
+
+  const handleMouseEnter = () => {
+    setIsDropMenu(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsDropMenu(false);
   };
 
   const mainMenu = [
@@ -193,7 +202,11 @@ const Navbar = () => {
               </span>
             </div>
           </button>
-          <div className="dropdown dropdown-end">
+          <div
+            className="dropdown dropdown-end "
+            onMouseEnter={handleMouseEnter}
+            // onMouseLeave={handleMouseLeave}
+          >
             <div
               tabIndex={0}
               role="button"
@@ -209,38 +222,48 @@ const Navbar = () => {
                 />
               </div>
             </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-56 lg:w-72"
-            >
-              <Image
-                src={user?.photoURL}
-                width={100}
-                height={100}
-                alt="profile"
-                className="rounded-full mx-auto"
-              />
+            {isDropMenuOpen && (
+              <div
+                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-56 lg:w-72"
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
+                <ul tabIndex={0} className="">
+                  <Image
+                    src={user?.photoURL}
+                    width={100}
+                    height={100}
+                    alt="profile"
+                    className="rounded-full mx-auto"
+                  />
 
-              <h3 className="justify-between  text-xl px-2">
-                {user?.displayName}
-              </h3>
+                  <h3 className="justify-between  text-xl px-2">
+                    {user?.displayName}
+                  </h3>
 
-              <li>
-                <a className="justify-between">Profile</a>
-              </li>
-              <li>
-                <a>Settings</a>
-              </li>
-              <li>
-                {user ? (
-                  <button onClick={() => logOut()}>Logout</button>
-                ) : (
-                  <Link href="/login">
-                    <button>Login</button>
-                  </Link>
-                )}
-              </li>
-            </ul>
+                  <li>
+                    <a className="justify-between border-b-1 border-rose-500 hover:text-rose-500 p-2 bg-base-100 w-full">Profile</a>
+                  </li>
+                  <li>
+                    <a className="p-2 bg-base-100 border-b-1 border-rose-500 hover:text-rose-500  w-full">Settings</a>
+                  </li>
+                  <li>
+                    {user ? (
+                      <button
+                        className=" p-2 bg-base-100 border-b-1 border-rose-500 hover:text-rose-500  w-full"
+                        onClick={() => logOut()}
+                      >
+                        Sign Out
+                      </button>
+                    ) : (
+                      <Link href="/login">
+                        <button>Login</button>
+                      </Link>
+                    )}
+                  </li>
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       </div>
