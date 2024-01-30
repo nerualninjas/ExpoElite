@@ -50,12 +50,12 @@ const Register2 = () => {
 
     // create user
     createUser(email, password)
-      .then((result) => {
+      .then( async(result) => {
         // console.log(result.user);
 
         updateUser(name, photo);
         // navigate after login
-        axiosPublic.post("/createUser", userData).then((res) => {
+       await axiosPublic.post("/createUser", userData).then((res) => {
           console.log(res.data);
           Swal.fire("Good job!", "User Created Successfully!", "success");
         });
