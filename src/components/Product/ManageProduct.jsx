@@ -85,7 +85,7 @@ const ManageProduct = () => {
                         <Image
                           height={100}
                           width={150}
-                          src={property?.imageUrl}
+                          src={property?.image}
                           alt="Contest Image"
                         />
                       </div>
