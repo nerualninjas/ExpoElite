@@ -27,7 +27,7 @@ const Login2 = () => {
         Swal.fire("Good job!", "User Logged in Successfully!", "success");
 
         // navigate after login
-        router.push("/dashboard");
+        router.push("/");
       })
       .catch((error) => {
         console.error(error);
@@ -36,17 +36,7 @@ const Login2 = () => {
   };
 
   const handleGoogleLogin = () => {
-    googleSignIn()
-      .then((result) => {
-        console.log(result.user);
-        Swal.fire("Good job!", "User Logged in Successfully!", "success");
-
-        // navigate after login
-        router.push("/dashboard");
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    googleSignIn();
   };
 
   return (

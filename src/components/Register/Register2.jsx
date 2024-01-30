@@ -50,12 +50,12 @@ const Register2 = () => {
 
     // create user
     createUser(email, password)
-      .then( async(result) => {
+      .then(async (result) => {
         // console.log(result.user);
 
         updateUser(name, photo);
         // navigate after login
-       await axiosPublic.post("/createUser", userData).then((res) => {
+        await axiosPublic.post("/createUser", userData).then((res) => {
           console.log(res.data);
           Swal.fire("Good job!", "User Created Successfully!", "success");
         });
@@ -67,17 +67,18 @@ const Register2 = () => {
   };
 
   const handleGoogleLogin = () => {
-    googleSignIn()
-      .then((result) => {
-        console.log(result.user);
-        Swal.fire("Good job!", "User Logged in Successfully!", "success");
+    googleSignIn();
+    // Swal.fire("Good job!", "User Logged in Successfully!", "success");
 
-        // navigate after login
-        router.push("/");
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    // navigate after login
+    // router.push("/");
+    // .then((result) => {
+    //   console.log(result.user);
+
+    // })
+    // .catch((error) => {
+    //   console.error(error);
+    // });
   };
 
   return (
