@@ -9,10 +9,12 @@ import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
 import Link from "next/link";
+import useAxiosPublic from "./../../hooks/useAxiosPublic";
 
 const Register2 = () => {
   const router = useRouter();
   const { createUser, googleSignIn, updateUser } = UserAuth();
+  const axiosPublic = useAxiosPublic();
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -25,7 +27,12 @@ const Register2 = () => {
       "https://www.shareicon.net/data/512x512/2016/09/15/829459_man_512x512.png";
     const email = form.get("email");
     const password = form.get("password");
-    console.log(name, photo, email, password);
+    const userData = {
+      userName: name,
+      userEmail: email,
+      userPhoto: photo,
+      userRole: "user",
+    };
 
     if (password.length < 6) {
       Swal.fire("Password should be at least 6 characters or longer");
@@ -44,10 +51,14 @@ const Register2 = () => {
     // create user
     createUser(email, password)
       .then((result) => {
-        console.log(result.user);
-        Swal.fire("Good job!", "User Created Successfully!", "success");
+        // console.log(result.user);
+
         updateUser(name, photo);
         // navigate after login
+        axiosPublic.post("/createUser", userData).then((res) => {
+          console.log(res.data);
+          Swal.fire("Good job!", "User Created Successfully!", "success");
+        });
         router.push("/");
       })
       .catch((error) => {
