@@ -38,7 +38,7 @@ export const AuthContextProvider = ({ children }) => {
         };
         await axiosPublic.post("/createUser", userData).then((res) => {
           console.log(res.data);
-          Swal.fire("Good job!", "User Created Successfully!", "success");
+          Swal.fire("Good job!", `${res.data.message}`, "success");
           router.push("/");
         });
       }
