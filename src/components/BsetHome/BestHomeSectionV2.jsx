@@ -15,7 +15,6 @@ import usePropertyAllData from "./../../hooks/Propertys/usePropertyAllData";
 import useAxiosPublic from "./../../hooks/useAxiosPublic";
 import useAxiosSecure from "./../../hooks/useAxiosSecure";
 
-
 const BestHomeSection = () => {
   const [properties, setProperties] = useState([]);
   const [searchParams, setSearchParams] = useState({
@@ -32,19 +31,14 @@ const BestHomeSection = () => {
   //   AOS.init();
   // }, []);
 
-
   const axiosSecure = useAxiosSecure();
   const axiosPublic = useAxiosPublic();
   const { propertyData, isPending, refetch } = usePropertyAllData();
- 
 
   useEffect(() => {
     setProperties(propertyData);
     refetch();
   }, [propertyData]);
-
-
-
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -72,7 +66,7 @@ const BestHomeSection = () => {
   }
 
   return (
-    <div className="w-full ">
+    <div className="w-full   ">
       <div className=" container mx-auto ">
         <h3 className=" ">
           <span className="heading  text-left w-100 text-xl font-bold text-gray-900">
@@ -141,7 +135,6 @@ const BestHomeSection = () => {
 
         <div className="mx-auto grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2">
           {properties.slice(0, 9).map((property, index) => (
-          
             <div
               key={index}
               className="  card bg-base-100  "
@@ -211,11 +204,9 @@ const BestHomeSection = () => {
                     </div>
                   </div>
                   <div className="w-1/4">
-  
                     <Link href={`/products/${property.id}`}>
                       <a className="btn btn-1 btn-sm">View</a>{" "}
                     </Link>
-  
                   </div>
                 </div>
               </div>
