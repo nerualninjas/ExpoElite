@@ -59,17 +59,17 @@ const AddProduct = () => {
         </div>
         {/* need to done image Upload  */}
         {/* Image URL */}
-        {/* <div className="space-y-1 text-sm">
+        <div className="space-y-1 text-sm">
           <label className="block dark-text-gray-400">Image </label>
           <input
             {...register("image", { required: "Image is required" })}
-            type="file"
+            type="text"
             className="w-full bg-white text-black px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
           />
           {errors.image && (
             <p className="text-red-500">{errors.image.message}</p>
           )}
-        </div> */}
+        </div>
 
         {/* Product Quantity and Product Price */}
         <div className="flex w-full gap-4 flex-col lg:flex-row">
@@ -161,7 +161,19 @@ const AddProduct = () => {
             <p className="text-red-500">{errors.propertyType.message}</p>
           )}
         </div>
-
+        <div className="space-y-1 text-sm">
+          <label className="block dark-text-gray-400">Product location</label>
+          <input
+            {...register("location", {
+              required: "Product location is required",
+            })}
+            type="text"
+            className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 dark-bg-gray-900 dark-text-gray-100 focus:dark-border-violet-400"
+          />
+          {errors.location && (
+            <p className="text-red-500">{errors.location.message}</p>
+          )}
+        </div>
         {/* Product Description */}
         <div className="space-y-1 text-sm">
           <label className="block dark-text-gray-400">

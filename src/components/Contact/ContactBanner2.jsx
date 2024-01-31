@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Lottie from "lottie-react";
 import ConUs from "./ConUs.json";
 import { FaPhoneAlt } from "react-icons/fa";
@@ -6,6 +6,7 @@ import { MdOutlineMail } from "react-icons/md";
 import { IoLocationSharp } from "react-icons/io5";
 
 const ContactBanner2 = () => {
+
     return (
         <div className="bg-gradient-to-r from-pink-200 to-pink-50 md:h-96 rounded-lg flex flex-col md:flex-row justify-between">
             <div className="w-full md:w-1/2 flex flex-col items-center md:items-start justify-center pt-10 px-6 md:px-10 ">
@@ -30,6 +31,6 @@ const ContactBanner2 = () => {
             </div>
         </div>
     );
-};
+
 
 export default ContactBanner2;

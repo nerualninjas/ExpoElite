@@ -14,12 +14,12 @@ const layout = ({ children }) => {
               <div className="flex justify-between ">
                 <div className="md:ml-60 mx-4 md:mx-0 relative top-20 min-h-screen">
                   {children}
+                  <Footer />
                 </div>
                 {/* <Rightbar /> */}
               </div>
             </div>
           </div>
-          <Footer />
         </div>
       </div>
     </div>

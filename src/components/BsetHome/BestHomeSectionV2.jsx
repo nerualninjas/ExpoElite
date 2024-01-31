@@ -10,6 +10,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const BestHomeSectionV2 = () => {
   const [properties, setProperties] = useState([]);
@@ -191,7 +192,9 @@ const BestHomeSectionV2 = () => {
                     </div>
                   </div>
                   <div className="w-1/4">
-                    <button className="btn btn-1  btn-sm">view</button>
+                    
+                  <Link href={`/[propertyId]/page`} as={`/${property.id}`}>
+              <a className="btn btn-1 btn-sm">View</a> </Link>
                   </div>
                 </div>
               </div>

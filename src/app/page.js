@@ -26,12 +26,12 @@ export default function Home() {
                 <Testimonials />
 
                 <FAQ />
+                <Footer />
               </div>
               {/* <Rightbar /> */}
             </div>
           </div>
         </div>
-        <Footer />
       </div>
     </div>
   );
