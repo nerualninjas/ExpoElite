@@ -5,6 +5,7 @@ import useAxiosPublic from "./../useAxiosPublic";
 const usePropertyData = (propertyId) => {
   const { loading } = UserAuth();
   const axiosPublic = useAxiosPublic();
+  console.log(propertyId);
 
   const {
     data: propertySingleData,
