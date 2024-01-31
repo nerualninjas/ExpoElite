@@ -48,7 +48,7 @@ const Navbar = () => {
 
   const btnActive = true;
   const nbtnActive = false;
- 
+
   useEffect(() => {
     const updateCurrentTime = () => {
       setCurrentTime(new Date().getHours());
@@ -89,7 +89,7 @@ const Navbar = () => {
 
       {isMenu && (
         <>
-          <div className=" text-center   min-h-screen bg-base-200  absolute top-0 right-0 z-50 mx-auto  w-56">
+          <div className=" text-center   min-h-screen bg-base-200  absolute top-0 right-0 z-30 mx-auto  w-56">
             <div className="flex-col item-center justify-center">
               <Image
                 className="mx-auto  block pt-4"
@@ -144,13 +144,13 @@ const Navbar = () => {
         </>
       )}
 
-      <div className="py-4 px-2 z-30 bg-[#F9FAFE] flex items-center justify-between w-full  lg:w-[calc(100vw-240px)] md:start-[12rem]  fixed h-20">
-        <div className="">
+      <div className="py-4 lg:px-4 z-30 bg-[#FFFFFF] flex items-center justify-between w-full  2xl:w-[calc(100vw-230px)] md:start-[14rem]  fixed h-20">
+        <div className="   md:hidden">
           {" "}
           <button
             onClick={handleNavMenu}
             className="text-2xl px-3
-   md:hidden"
+  "
           >
             III
           </button>
@@ -168,7 +168,7 @@ const Navbar = () => {
                 : " px-3 py-1 text-sm rounded-md bg-rose-50"
             }
           >
-            Buy 
+            Buy
           </button>
           <button
             className={
@@ -203,69 +203,79 @@ const Navbar = () => {
               </span>
             </div>
           </button>
-          <div
-            className="dropdown dropdown-end "
-            onMouseEnter={handleMouseEnter}
-            // onMouseLeave={handleMouseLeave}
-          >
+          {user ? (
             <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-circle avatar"
+              className="dropdown z-[40] dropdown-end pl-5"
+              onMouseEnter={handleMouseEnter}
+              // onMouseLeave={handleMouseLeave}
             >
-              <div className="w-12 rounded-full">
-                <Image
-                  src={user?.photoURL}
-                  width={50}
-                  height={50}
-                  alt="profile"
-                  className="rounded-full"
-                />
-              </div>
-            </div>
-            {isDropMenuOpen && (
               <div
-                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-56 lg:w-72"
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
               >
-                <ul tabIndex={0} className="">
+                <div className="w-12 rounded-full">
                   <Image
                     src={user?.photoURL}
-                    width={100}
-                    height={100}
+                    width={50}
+                    height={50}
                     alt="profile"
-                    className="rounded-full mx-auto"
+                    className="rounded-full"
                   />
-
-                  <h3 className="justify-between  text-xl px-2">
-                    {user?.displayName}
-                  </h3>
-
-                  <li>
-                    <a className="justify-between border-b-1 border-rose-500 hover:text-rose-500 p-2 bg-base-100 w-full">Profile</a>
-                  </li>
-                  <li>
-                    <a className="p-2 bg-base-100 border-b-1 border-rose-500 hover:text-rose-500  w-full">Settings</a>
-                  </li>
-                  <li>
-                    {user ? (
-                      <button
-                        className=" p-2 bg-base-100 border-b-1 border-rose-500 hover:text-rose-500  w-full"
-                        onClick={() => logOut()}
-                      >
-                        Sign Out
-                      </button>
-                    ) : (
-                      <Link href="/login">
-                        <button>Login</button>
-                      </Link>
-                    )}
-                  </li>
-                </ul>
+                </div>
               </div>
-            )}
-          </div>
+              {isDropMenuOpen && (
+                <div
+                  className="menu menu-sm dropdown-content mt-3 z-[28] p-2 shadow bg-base-200 rounded-box w-56 lg:w-72"
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <ul tabIndex={0} className="">
+                    <Image
+                      src={user?.photoURL}
+                      width={100}
+                      height={100}
+                      alt="profile"
+                      className="rounded-full mx-auto"
+                    />
+
+                    <h3 className="justify-between  text-xl px-2">
+                      {user?.displayName}
+                    </h3>
+
+                    <li>
+                      <a className="justify-between border-b-1 border-rose-500 hover:text-rose-500 p-2 bg-base-100 w-full">
+                        Profile
+                      </a>
+                    </li>
+                    <li>
+                      <a className="p-2 bg-base-100 border-b-1 border-rose-500 hover:text-rose-500  w-full">
+                        Settings
+                      </a>
+                    </li>
+                    <li>
+                      {user ? (
+                        <button
+                          className=" p-2 bg-base-100 border-b-1 border-rose-500 hover:text-rose-500  w-full"
+                          onClick={() => logOut()}
+                        >
+                          Sign Out
+                        </button>
+                      ) : (
+                        <Link href="/login">
+                          <button>Login</button>
+                        </Link>
+                      )}
+                    </li>
+                  </ul>
+                </div>
+              )}
+            </div>
+          ) : (
+            <Link href="/login">
+              <button className="pl-4 btn bg-rose-400 hover:bg-rose-600 text-white">Login</button>
+            </Link>
+          )}
         </div>
       </div>
     </>

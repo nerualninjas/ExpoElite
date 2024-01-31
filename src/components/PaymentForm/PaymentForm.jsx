@@ -1,11 +1,11 @@
 // components/PaymentForm.js
-import { useClient } from 'next/data-client';
+// import { useClient } from 'next/data-client';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
 const PaymentForm = ({ onSuccess }) => {
   const stripe = useStripe();
   const elements = useElements();
-  const isClient = useClient();
+  // const isClient = useClient();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -30,9 +30,9 @@ const PaymentForm = ({ onSuccess }) => {
   };
 
   // Check if the component is running on the client before rendering
-  if (!isClient) {
-    return null;
-  }
+  // if (!isClient) {
+  //   return null;
+  // }
 
   return (
     <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-8">
