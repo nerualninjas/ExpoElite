@@ -9,9 +9,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
+import usePropertyAllData from "./../../hooks/Propertys/usePropertyAllData";
+import useAxiosPublic from "./../../hooks/useAxiosPublic";
+import useAxiosSecure from "./../../hooks/useAxiosSecure";
 
-const BestHomeSectionV2 = () => {
+const BestHomeSection = () => {
   const [properties, setProperties] = useState([]);
   const [searchParams, setSearchParams] = useState({
     title: "",
@@ -20,12 +24,21 @@ const BestHomeSectionV2 = () => {
     range: 40,
   });
 
+  // useEffect(() => {
+  //   fetch("property.json")
+  //     .then((res) => res.json())
+  //     .then((data) => setProperties(data));
+  //   AOS.init();
+  // }, []);
+
+  const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
+  const { propertyData, isPending, refetch } = usePropertyAllData();
+
   useEffect(() => {
-    fetch("property.json")
-      .then((res) => res.json())
-      .then((data) => setProperties(data));
-    AOS.init();
-  }, []);
+    setProperties(propertyData);
+    refetch();
+  }, [propertyData]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -53,7 +66,7 @@ const BestHomeSectionV2 = () => {
   }
 
   return (
-    <div className="w-full ">
+    <div className="w-full   ">
       <div className=" container mx-auto ">
         <h3 className=" ">
           <span className="heading  text-left w-100 text-xl font-bold text-gray-900">
@@ -121,18 +134,18 @@ const BestHomeSectionV2 = () => {
         <br />
 
         <div className="mx-auto grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2">
-          {properties.map((property, index) => (
+          {properties.slice(0, 9).map((property, index) => (
             <div
               key={index}
               className="  card bg-base-100  "
               data-aos="fade-up"
             >
-              <figure className="p-3">
+              <figure className="p-1">
                 <Image
                   width={300}
                   height={200}
-                  src={property.imageUrl}
-                  alt={property.title}
+                  src={property.image}
+                  alt={property.propertyName}
                   className="rounded-xl "
                 />
               </figure>
@@ -191,7 +204,12 @@ const BestHomeSectionV2 = () => {
                     </div>
                   </div>
                   <div className="w-1/4">
-                    <button className="btn btn-1  btn-sm">view</button>
+                  <Link
+                      href="/products/[id]"
+                      as={`/products/${property._id}`}
+                    >
+                      <a className="btn btn-1 btn-sm">View</a>{" "}
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -203,4 +221,4 @@ const BestHomeSectionV2 = () => {
   );
 };
 
-export default BestHomeSectionV2;
+export default BestHomeSection;

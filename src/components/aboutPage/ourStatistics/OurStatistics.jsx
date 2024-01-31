@@ -32,9 +32,9 @@ const OurStatistics = () => {
     ]
     return (
   <div>
-    <div className="w-full  my-10 rounded-lg bg-gradient-to-r from-pink-200 to-pink-100  mx-auto">
+    <div className="w-full h-[50vh] my-10 rounded-lg bg-gradient-to-r from-pink-200 to-pink-100  mx-auto">
         <div className="w-full flex flex-col lg:flex-row items-center justify-between ">
-          <div className=" w-full lg:w-2/5 ">
+          <div className=" w-full lg:w-1/3 ">
            
             <div className='pl-8 py-8 '>
          <div className=''>
@@ -75,16 +75,14 @@ const OurStatistics = () => {
         </div>
         </ScrollTrigger>
        </div>
-            {/* <button className="rounded-full bg-[#FF385D] text-white md:text-3xl">
-              <MdArrowOutward />
-            </button> */}
+         
           </div>
           
-            <div className=" w-full lg:w-3/5 ">
+            <div className=" w-full lg:w-1/3  ">
               <Image
                 width={611}
                 height={408}
-                className=" w-full h-full"
+                className=" w-full h-[50vh]"
                 src={
                   "https://i.ibb.co/mqHfZNz/building-removebg-preview.png"
                 }

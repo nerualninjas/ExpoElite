@@ -11,15 +11,12 @@ const layout = ({ children }) => {
             <Sidebar />
             <div className=" w-full  min-h-screen shadow-md rounded-t-2xl ">
               <Navbar />
-              <div className="flex justify-between ">
-                <div className="md:ml-60 mx-4 md:mx-0 relative top-20 min-h-screen">
-                  {children}
-                </div>
-                {/* <Rightbar /> */}
+              <div className="md:ml-60 mx-4 md:mx-1 relative top-20 ">
+                <div className="min-h-[calc(100vh-196px)]">{children}</div>
+                <Footer />
               </div>
             </div>
           </div>
-          <Footer />
         </div>
       </div>
     </div>

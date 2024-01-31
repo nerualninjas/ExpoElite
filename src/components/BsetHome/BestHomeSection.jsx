@@ -9,9 +9,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
+import usePropertyAllData from "./../../hooks/Propertys/usePropertyAllData";
+import useAxiosPublic from "./../../hooks/useAxiosPublic";
+import useAxiosSecure from "./../../hooks/useAxiosSecure";
 
 const BestHomeSection = () => {
+  const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
+  const { propertyData, isPending, refetch } = usePropertyAllData();
   const [properties, setProperties] = useState([]);
   const [searchParams, setSearchParams] = useState({
     title: "",
@@ -20,12 +27,17 @@ const BestHomeSection = () => {
     range: 40,
   });
 
+  // useEffect(() => {
+  //   fetch("property.json")
+  //     .then((res) => res.json())
+  //     .then((data) => setProperties(data));
+  //   AOS.init();
+  // }, []);
+
   useEffect(() => {
-    fetch("property.json")
-      .then((res) => res.json())
-      .then((data) => setProperties(data));
-    AOS.init();
-  }, []);
+    setProperties(propertyData);
+    refetch();
+  }, [propertyData]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -127,12 +139,12 @@ const BestHomeSection = () => {
               className="  card bg-base-100  "
               data-aos="fade-up"
             >
-              <figure className="p-3">
+              <figure className="p-1">
                 <Image
                   width={300}
                   height={200}
-                  src={property.imageUrl}
-                  alt={property.title}
+                  src={property.image}
+                  alt={property.propertyName}
                   className="rounded-xl "
                 />
               </figure>
@@ -191,7 +203,13 @@ const BestHomeSection = () => {
                     </div>
                   </div>
                   <div className="w-1/4">
-                    <button className="btn btn-1  btn-sm">view</button>
+                    <Link
+                      href="/products/[id]"
+                      as={`/products/${property._id}`}
+                    >
+                      {" "}
+                      <button className="btn btn-1  btn-sm">view</button>
+                    </Link>
                   </div>
                 </div>
               </div>
