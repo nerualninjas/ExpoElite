@@ -146,7 +146,7 @@ const PropertyDetail = ({ propertyId }) => {
               </button>
             </div>
           </div>
-          <div className=" text-justify mt-10 mb-20"> <p>{propertyDetails}</p> 
+          <div className=" text-justify mt-10 mb-40 md:mb-20"> <p>{propertyDetails}</p> 
             {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo
             expedita, asperiores cumque officia non recusandae iure dignissimos
             nemo totam sapiente blanditiis atque necessitatibus enim quos
