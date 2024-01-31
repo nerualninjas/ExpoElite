@@ -48,7 +48,12 @@ const Navbar = () => {
 
   const btnActive = true;
   const nbtnActive = false;
- 
+
+  useEffect(() => {
+    const updateCurrentTime = () => {
+      setCurrentTime(new Date().getHours());
+    };
+    const time = setInterval(updateCurrentTime, 3600000);
 
     return () => {
       clearInterval(time);
