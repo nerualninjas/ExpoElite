@@ -6,7 +6,6 @@ import {
   faMapMarkerAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import AOS from "aos";
 import "aos/dist/aos.css";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,36 +14,23 @@ import usePropertyAllData from "./../../hooks/Propertys/usePropertyAllData";
 import useAxiosPublic from "./../../hooks/useAxiosPublic";
 import useAxiosSecure from "./../../hooks/useAxiosSecure";
 
-
 const BestHomeSection = () => {
   const [properties, setProperties] = useState([]);
   const [searchParams, setSearchParams] = useState({
-    title: "",
+ 
     location: "",
-    type: "",
-    range: 40,
+
   });
 
-  // useEffect(() => {
-  //   fetch("property.json")
-  //     .then((res) => res.json())
-  //     .then((data) => setProperties(data));
-  //   AOS.init();
-  // }, []);
-
-
+ 
   const axiosSecure = useAxiosSecure();
   const axiosPublic = useAxiosPublic();
   const { propertyData, isPending, refetch } = usePropertyAllData();
- 
 
   useEffect(() => {
     setProperties(propertyData);
     refetch();
   }, [propertyData]);
-
-
-
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -63,85 +49,56 @@ const BestHomeSection = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your search logic here using searchParams
-    console.log(searchParams);
+    const locationValue = e.target.elements.location.value;
+    console.log({ location: locationValue });
   };
+  
 
   if (!properties || properties.length === 0) {
     return <div>House not found!</div>;
   }
 
   return (
-    <div className="w-full ">
-      <div className=" container mx-auto ">
-        <h3 className=" ">
-          <span className="heading  text-left w-100 text-xl font-bold text-gray-900">
-            Find your Best Home
-          </span>
+    <div className="w-full py-12">
+      <div className=" container mx-auto">
+        <h3 className="text-center w-100 text-xl font-bold text-gray-900 p-4 ">
+          Find your Best Home
         </h3>
+        <hr className="w-1/4 mx-auto border-rose-400 border-2" />
         <br />
 
-        <form
-          onSubmit={handleSubmit}
-          className="grid grid-cols-3 lg:grid-cols-5 gap-4 w-full"
-        >
-          <div className="w-2/12">
-            <p>Title </p>
-
-            <input
-              type="text"
-              name="title"
-              placeholder="Type here"
-              value={searchParams.title}
-              onChange={handleInputChange}
-              className="input input-bordered w-[150px]   "
-            />
-          </div>
-          <div className="w-2/12">
-            <p>Location </p>
-            <input
-              type="text"
-              name="location"
-              placeholder="Type here"
-              value={searchParams.location}
-              onChange={handleInputChange}
-              className="input input-bordered w-[150px]  "
-            />
-          </div>
-          <div className="w-2/12">
-            <p>Type </p>
-            <input
-              type="text"
-              name="type"
-              placeholder="Type here"
-              value={searchParams.type}
-              onChange={handleInputChange}
-              className="input input-bordered w-[150px]   "
-            />
-          </div>
-
-          <div className="w-3/12   ">
-            <p> Range </p>
-            <input
-              type="range"
-              min={0}
-              max="100"
-              value={searchParams.range}
-              onChange={handleRangeChange}
-              className="range range-error w-[200px] mt-3   "
-            />
-          </div>
-          <div className="pt-6 ml-14 ">
-            <button type="submit" className="btn btn-md btn-1">
-              Search
-            </button>
+        <form onSubmit={handleSubmit} className="flex w-full  p-4">
+          <div className="form-control w-full">
+            <div className="input-group mx-auto  gap-2 flex flex-row">
+              <input
+                type="text"
+                name="location"
+                placeholder="Find by Location"
+                className="input input-bordered   "
+              />
+              <button type="submit" className="btn btn-square">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 mt-2 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
         </form>
-        <br />
 
-        <div className="mx-auto grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2">
+        <br />
+        <div className="mx-auto mt-2 grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2">
           {properties.slice(0, 6).map((property, index) => (
-          
             <div
               key={index}
               className="  card bg-base-100  "
@@ -211,8 +168,10 @@ const BestHomeSection = () => {
                     </div>
                   </div>
                   <div className="w-1/4">
-                  <Link href={`/${property.id}`} > <button className="btn btn-1  btn-sm">view</button></Link>
-                   
+                    <Link href={`/${property.id}`}>
+                      {" "}
+                      <button className="btn btn-1  btn-sm">view</button>
+                    </Link>
                   </div>
                 </div>
               </div>

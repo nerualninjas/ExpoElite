@@ -24,14 +24,7 @@ const BestHomeSection = () => {
     type: "",
     range: 40,
   });
-
-  // useEffect(() => {
-  //   fetch("property.json")
-  //     .then((res) => res.json())
-  //     .then((data) => setProperties(data));
-  //   AOS.init();
-  // }, []);
-
+ 
 
   const axiosSecure = useAxiosSecure();
   const axiosPublic = useAxiosPublic();

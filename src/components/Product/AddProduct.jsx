@@ -17,10 +17,9 @@ const AddProduct = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    // console.log(data);
-    // You can add your logic to handle form submission here
+  
     await axiosSecure.post("/addProperty", data).then((res) => {
-      // console.log(res.data);
+ 
       if (res?.data.insertedId === null) {
         Swal.fire({
           icon: "error",
