@@ -4,7 +4,7 @@ import Image from "next/image";
 const Banner = () => {
   return (
     <div>
-      <div className="w-full  my-10 rounded-lg bg-gradient-to-r from-pink-200 to-pink-100  mx-auto">
+      <div className="w-full  mb-10  rounded-lg bg-gradient-to-r from-pink-200 to-pink-100  mx-auto">
         <div className="flex items-center justify-between">
           <div className="pl-10 ">
             <h2 className="font-semibold text-md md:text-3xl">10% Discount</h2>
@@ -20,7 +20,7 @@ const Banner = () => {
               <Image
                 width={400}
                 height={100}
-                className="w-full relative bottom-12 h-full"
+                className="w-full relative z-50  bottom-12 h-full"
                 src={
                   "https://i.postimg.cc/dQTr9xpk/banner2-removebg-preview.png"
                 }

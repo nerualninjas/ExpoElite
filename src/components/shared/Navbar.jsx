@@ -89,7 +89,7 @@ const Navbar = () => {
 
       {isMenu && (
         <>
-          <div className=" text-center   min-h-screen bg-base-200  absolute top-0 right-0 z-50 mx-auto  w-56">
+          <div className=" text-center   min-h-screen bg-base-200  absolute top-0 right-0 z-30 mx-auto  w-56">
             <div className="flex-col item-center justify-center">
               <Image
                 className="mx-auto  block pt-4"
