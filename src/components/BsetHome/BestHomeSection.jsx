@@ -15,8 +15,10 @@ import usePropertyAllData from "./../../hooks/Propertys/usePropertyAllData";
 import useAxiosPublic from "./../../hooks/useAxiosPublic";
 import useAxiosSecure from "./../../hooks/useAxiosSecure";
 
-
 const BestHomeSection = () => {
+  const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
+  const { propertyData, isPending, refetch } = usePropertyAllData();
   const [properties, setProperties] = useState([]);
   const [searchParams, setSearchParams] = useState({
     title: "",
@@ -32,19 +34,10 @@ const BestHomeSection = () => {
   //   AOS.init();
   // }, []);
 
-
-  const axiosSecure = useAxiosSecure();
-  const axiosPublic = useAxiosPublic();
-  const { propertyData, isPending, refetch } = usePropertyAllData();
- 
-
   useEffect(() => {
     setProperties(propertyData);
     refetch();
   }, [propertyData]);
-
-
-
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -141,7 +134,6 @@ const BestHomeSection = () => {
 
         <div className="mx-auto grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2">
           {properties.slice(0, 6).map((property, index) => (
-          
             <div
               key={index}
               className="  card bg-base-100  "
@@ -211,8 +203,13 @@ const BestHomeSection = () => {
                     </div>
                   </div>
                   <div className="w-1/4">
-                  <Link href={`/${property.id}`} > <button className="btn btn-1  btn-sm">view</button></Link>
-                   
+                    <Link
+                      href="/products/[id]"
+                      as={`/products/${property._id}`}
+                    >
+                      {" "}
+                      <button className="btn btn-1  btn-sm">view</button>
+                    </Link>
                   </div>
                 </div>
               </div>
