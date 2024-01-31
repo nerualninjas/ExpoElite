@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const BestHomeSection = () => {
@@ -191,7 +192,8 @@ const BestHomeSection = () => {
                     </div>
                   </div>
                   <div className="w-1/4">
-                    <button className="btn btn-1  btn-sm">view</button>
+                  <Link href={`/${property.id}`} > <button className="btn btn-1  btn-sm">view</button></Link>
+                   
                   </div>
                 </div>
               </div>
