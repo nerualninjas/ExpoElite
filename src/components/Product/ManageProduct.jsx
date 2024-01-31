@@ -1,12 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import EditProduct from "./EditProdut";
 import usePropertyAllData from "./../../hooks/Propertys/usePropertyAllData";
-import useAxiosSecure from "./../../hooks/useAxiosSecure";
 import useAxiosPublic from "./../../hooks/useAxiosPublic";
+import useAxiosSecure from "./../../hooks/useAxiosSecure";
+import EditProduct from "./EditProdut";
+import Image from "next/image";
 
 const ManageProduct = () => {
   const axiosSecure = useAxiosSecure();
@@ -15,9 +15,6 @@ const ManageProduct = () => {
   const [properties, setProperties] = useState(propertyData);
 
   useEffect(() => {
-    // fetch("property.json")
-    //   .then((res) => res.json())
-    //   .then((data) => setProperties(data));
     setProperties(propertyData);
     refetch();
   }, [propertyData]);
@@ -63,6 +60,7 @@ const ManageProduct = () => {
           <thead className=" text-sm">
             <tr>
               <td>No</td>
+              <td>Image</td>
               <td>Name</td>
               <th>price</th>
               <th>bedrooms</th>
@@ -79,6 +77,7 @@ const ManageProduct = () => {
               <tr key={index} className="  ">
                 <td>{index + 1}</td>
                 <td>
+ 
                   <div className="flex items-center gap-3">
                     <div className="avatar">
                       <div className="mask mask-squircle w-12 h-12">
@@ -89,9 +88,14 @@ const ManageProduct = () => {
                           alt="Contest Image"
                         />
                       </div>
+ 
                     </div>
+                  </div>
+                </td>
+                <td>
+                  <div className="flex items-center gap-3">
                     <div>
-                      <div className="font-bold">{property?.title}</div>
+                      <div className="font-bold">{property?.propertyName}</div>
                     </div>
                   </div>
                 </td>
