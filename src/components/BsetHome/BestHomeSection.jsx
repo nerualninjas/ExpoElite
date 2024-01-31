@@ -10,6 +10,10 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import usePropertyAllData from "./../../hooks/Propertys/usePropertyAllData";
+import useAxiosPublic from "./../../hooks/useAxiosPublic";
+import useAxiosSecure from "./../../hooks/useAxiosSecure";
+
 
 const BestHomeSection = () => {
   const [properties, setProperties] = useState([]);
@@ -20,12 +24,26 @@ const BestHomeSection = () => {
     range: 40,
   });
 
+  // useEffect(() => {
+  //   fetch("property.json")
+  //     .then((res) => res.json())
+  //     .then((data) => setProperties(data));
+  //   AOS.init();
+  // }, []);
+
+
+  const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
+  const { propertyData, isPending, refetch } = usePropertyAllData();
+ 
+
   useEffect(() => {
-    fetch("property.json")
-      .then((res) => res.json())
-      .then((data) => setProperties(data));
-    AOS.init();
-  }, []);
+    setProperties(propertyData);
+    refetch();
+  }, [propertyData]);
+
+
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -122,17 +140,18 @@ const BestHomeSection = () => {
 
         <div className="mx-auto grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2">
           {properties.slice(0, 6).map((property, index) => (
+          
             <div
               key={index}
               className="  card bg-base-100  "
               data-aos="fade-up"
             >
-              <figure className="p-3">
+              <figure className="p-1">
                 <Image
                   width={300}
                   height={200}
-                  src={property.imageUrl}
-                  alt={property.title}
+                  src={property.image}
+                  alt={property.propertyName}
                   className="rounded-xl "
                 />
               </figure>
