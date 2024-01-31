@@ -32,5 +32,5 @@ const ContactBanner2 = () => {
         </div>
     );
 
-
+}
 export default ContactBanner2;
