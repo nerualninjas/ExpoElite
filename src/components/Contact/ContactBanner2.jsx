@@ -9,7 +9,7 @@ const ContactBanner2 = () => {
     return (
         <div className="bg-gradient-to-r from-pink-200 to-pink-50 md:h-96 rounded-lg flex flex-col md:flex-row justify-between">
             <div className="w-full md:w-1/2 flex flex-col items-center md:items-start justify-center pt-10 px-6 md:px-10 ">
-                <h2 className="font-semibold text-rose-600 text-4xl ">
+                <h2 className="font-extrabold text-rose-600 text-4xl ">
                     Contact Us
                 </h2>
                 <div className="w-28 md:w-52 border border-[#FF385D] my-2"></div>
