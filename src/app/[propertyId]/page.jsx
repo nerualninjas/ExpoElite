@@ -6,20 +6,20 @@ import usePropertyData  from '@/hooks/Propertys/usePropertyData';
 const PropertyDetails = ({ propertyId }) => {
   const { propertySingleData, isPending, refetch } = usePropertyData(propertyId);
 
-  // if (isPending) {
-  //   return <div>Loading...</div>;
-  // }
+  if (isPending) {
+    return <div>Loading...</div>;
+  }
 
-  // if (!propertySingleData) {
-  //   return <div>Property not found.</div>;
-  // }
+  if (!propertySingleData) {
+    return <div>Property not found.</div>;
+  }
 
   // const { title, price /* other properties */ } = propertyData;
-  const { title, price } = propertySingleData || {};
+  const { propertyName, price } = propertySingleData || {};
 
   return (
     <div>
-      <h1>{title}</h1>
+      <h1>{propertyName}</h1>
       <p>Price: ${price}</p> 
       {/* Display other details of the property*/}
    <PropertyDetail />
