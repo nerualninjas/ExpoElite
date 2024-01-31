@@ -15,6 +15,7 @@ import useAxiosPublic from "./../../hooks/useAxiosPublic";
 import useAxiosSecure from "./../../hooks/useAxiosSecure";
 
 const BestHomeSection = () => {
+ 
   const [properties, setProperties] = useState([]);
   const [searchParams, setSearchParams] = useState({
  
@@ -22,10 +23,18 @@ const BestHomeSection = () => {
 
   });
 
- 
+  // useEffect(() => {
+  //   fetch("property.json")
+  //     .then((res) => res.json())
+  //     .then((data) => setProperties(data));
+  //   AOS.init();
+  // }, []);
+
+
   const axiosSecure = useAxiosSecure();
   const axiosPublic = useAxiosPublic();
   const { propertyData, isPending, refetch } = usePropertyAllData();
+ 
 
   useEffect(() => {
     setProperties(propertyData);
@@ -168,10 +177,8 @@ const BestHomeSection = () => {
                     </div>
                   </div>
                   <div className="w-1/4">
-                    <Link href={`/${property.id}`}>
-                      {" "}
-                      <button className="btn btn-1  btn-sm">view</button>
-                    </Link>
+                  <Link href={`/${property.id}`} > <button className="btn btn-1  btn-sm">view</button></Link>
+                   
                   </div>
                 </div>
               </div>
