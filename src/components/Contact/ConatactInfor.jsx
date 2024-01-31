@@ -3,7 +3,7 @@ import { FaLocationArrow } from "react-icons/fa6";
 
 const ContactInfo = () => {
     return (
-        <div >
+        <div className="mt-14">
             {/* <div className=' mx-auto'>
                 <div className="grid grid-cols-1 my-10  md:grid-cols-3">
                     <div>
