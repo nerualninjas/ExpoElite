@@ -48,7 +48,7 @@ const Navbar = () => {
 
   const btnActive = true;
   const nbtnActive = false;
-
+ 
   useEffect(() => {
     const updateCurrentTime = () => {
       setCurrentTime(new Date().getHours());
@@ -144,10 +144,14 @@ const Navbar = () => {
         </>
       )}
 
-      <div className="py-4 px-2 z-30 bg-[#FFFFFF] flex items-center justify-between w-full  lg:w-[calc(100vw-240px)] md:start-[14rem]  fixed h-20">
-        <div className="md:hidden">
+      <div className="py-4 px-2 z-30 bg-[#F9FAFE] flex items-center justify-between w-full  lg:w-[calc(100vw-240px)] md:start-[12rem]  fixed h-20">
+        <div className="">
           {" "}
-          <button onClick={handleNavMenu} className="text-2xl px-3">
+          <button
+            onClick={handleNavMenu}
+            className="text-2xl px-3
+   md:hidden"
+          >
             III
           </button>
         </div>
@@ -164,7 +168,7 @@ const Navbar = () => {
                 : " px-3 py-1 text-sm rounded-md bg-rose-50"
             }
           >
-            Buy
+            Buy 
           </button>
           <button
             className={
@@ -225,7 +229,7 @@ const Navbar = () => {
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
-                <ul>
+                <ul tabIndex={0} className="">
                   <Image
                     src={user?.photoURL}
                     width={100}
@@ -239,14 +243,10 @@ const Navbar = () => {
                   </h3>
 
                   <li>
-                    <a className="justify-between border-b-1 border-rose-500 hover:text-rose-500 p-2 bg-base-100 w-full">
-                      Profile
-                    </a>
+                    <a className="justify-between border-b-1 border-rose-500 hover:text-rose-500 p-2 bg-base-100 w-full">Profile</a>
                   </li>
                   <li>
-                    <a className="p-2 bg-base-100 border-b-1 border-rose-500 hover:text-rose-500  w-full">
-                      Settings
-                    </a>
+                    <a className="p-2 bg-base-100 border-b-1 border-rose-500 hover:text-rose-500  w-full">Settings</a>
                   </li>
                   <li>
                     {user ? (

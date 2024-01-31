@@ -3,10 +3,13 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAxiosSecure from "./../../hooks/useAxiosSecure";
 import usePropertyAllData from "@/hooks/Propertys/usePropertyAllData";
+import { UserAuth } from "@/app/(auth)/context/AuthContext";
+import Image from "next/image";
 
 const AddProduct = () => {
+  const { user, loading } = UserAuth();
   const axiosSecure = useAxiosSecure();
-  const {refetch}=usePropertyAllData()
+  const { refetch } = usePropertyAllData();
   const {
     register,
     handleSubmit,
@@ -34,7 +37,7 @@ const AddProduct = () => {
           position: "top-right",
           timer: 1500,
         });
-        refetch()
+        refetch();
       }
     });
   };
@@ -42,6 +45,21 @@ const AddProduct = () => {
   return (
     <div className="w-full  p-8  rounded-xl  ">
       <h3 className="font-bold text-lg">Add a Product</h3>
+
+    
+      <div className="space-y-1 text-sm hidden">
+          <label className="block dark-text-gray-400">Creator owner Email : </label>
+          <input
+            {...register("email", {
+              required: "Product Name is required",
+            })}
+            type="text"
+            disabled 
+            className=" text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 dark-bg-gray-900 dark-text-gray-100 focus:dark-border-violet-400"
+            value={user?.email}
+          />
+        </div>
+
       <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
         {/* Product Name */}
         <div className="space-y-1 text-sm">
@@ -57,6 +75,7 @@ const AddProduct = () => {
             <p className="text-red-500">{errors.propertyName.message}</p>
           )}
         </div>
+     
         {/* need to done image Upload  */}
         {/* Image URL */}
         <div className="space-y-1 text-sm">
