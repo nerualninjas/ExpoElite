@@ -3,6 +3,7 @@ import React from "react";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+import { RiseLoader } from "react-spinners";
 // import Rating from 'react-rating';
 // Rating
 
@@ -19,8 +20,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaRegHeart } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import usePropertyData from "@/hooks/Propertys/usePropertyData";
+import PropertyDetailsSmallPart from "./PropertyDetailsSmallPart";
 
-const PropertyDetail = ({propertyId}) => {
+const PropertyDetail = ({ propertyId }) => {
   const router = useRouter();
   //   const { id } = router.query;
   console.log(router.query);
@@ -30,7 +32,11 @@ const PropertyDetail = ({propertyId}) => {
   );
 
   if (isPending) {
-    return <div>Loading...</div>;
+    return (
+      <div className="h-screen w-screen flex justify-center items-center  ">
+        <RiseLoader color="rgba(237, 95, 180, 0.83)" size={35} speedMultiplier={1} className="text-center" />
+      </div>
+    )
   }
 
   if (!propertySingleData) {
@@ -38,7 +44,7 @@ const PropertyDetail = ({propertyId}) => {
   }
 
   // const { title, price /* other properties */ } = propertyData;
-  const { propertyName, price } = propertySingleData || {};
+  const { propertyName, propertyType, price, image, bathrooms, bedrooms, livingRoom, propertyDetails } = propertySingleData || {};
 
   return (
     <div className="w-full min-h-screen  flex  flex-col  justify-center items-center">
@@ -88,7 +94,7 @@ const PropertyDetail = ({propertyId}) => {
           </div>
 
           <br />
-          <div className="property-type text-xl font-semibold  text-gray-500">
+          <div className="property-type text-xl font-semibold  text-rose-500">
             Single
           </div>
           <div className="property-title text-3xl font-bold mb-2 text-rose-500">
@@ -105,7 +111,7 @@ const PropertyDetail = ({propertyId}) => {
               {" "}
               <FontAwesomeIcon
                 icon={faMapMarkerAlt}
-                className="text-gray-500 mr-1"
+                className="text-rose-500 mr-1"
               />
               Main Street, Cityville
             </div>
@@ -114,34 +120,34 @@ const PropertyDetail = ({propertyId}) => {
           <div>
             <h2 className="text-2xl font-bold mb-3">Property Details</h2>
             <div className="grid grid-cols-3 gap-20">
-              <button className="rounded-full px-5 py-2 border-2 text-gray-600">
+              <button className="rounded-full px-5 py-2 border-2 text-rose-600">
                 {" "}
                 <FontAwesomeIcon
                   icon={faBed}
-                  className="text-gray-500 mr-1 text-xl"
+                  className="text-rose-500 mr-1 text-xl"
                 />{" "}
-                <span className="font-bold"> 3 </span>
+                <span className="font-bold"> {bedrooms} </span>
               </button>
-              <button className="rounded-full px-5 py-2 border-2 text-gray-600">
+              <button className="rounded-full px-5 py-2 border-2 text-rose-600">
                 {" "}
                 <FontAwesomeIcon
                   icon={faBath}
-                  className="text-gray-500 mr-1 text-xl"
+                  className="text-rose-500 mr-1 text-xl"
                 />{" "}
-                <span className="font-bold"> 3 </span>
+                <span className="font-bold"> {bathrooms} </span>
               </button>
-              <button className="rounded-full px-5 py-2 border-2 text-gray-600">
+              <button className="rounded-full px-5 py-2 border-2 text-rose-600">
                 {" "}
                 <FontAwesomeIcon
                   icon={faCouch}
-                  className="text-gray-500 mr-1 text-xl"
+                  className="text-rose-500 mr-1 text-xl"
                 />{" "}
-                <span className="font-bold"> 3 </span>
+                <span className="font-bold"> {livingRoom} </span>
               </button>
             </div>
           </div>
-          <div className=" text-justify">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo
+          <div className=" text-justify mt-10 mb-20"> <p>{propertyDetails}</p> 
+            {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo
             expedita, asperiores cumque officia non recusandae iure dignissimos
             nemo totam sapiente blanditiis atque necessitatibus enim quos
             consequuntur sed reprehenderit? Laudantium veritatis nesciunt odio
@@ -153,10 +159,14 @@ const PropertyDetail = ({propertyId}) => {
             laboriosam? Aliquid reiciendis quibusdam ipsum neque velit nulla
             inventore eligendi odio sunt reprehenderit. Culpa in consectetur
             alias eius laudantium voluptates. Labore odio temporibus hic illum
-            non? Architecto.
+            non? Architecto. */}
           </div>
         </div>
       </div>
+      <div className="w-10/12 ">
+        <PropertyDetailsSmallPart propertyId={propertyId} />
+      </div>
+
     </div>
   );
 };
