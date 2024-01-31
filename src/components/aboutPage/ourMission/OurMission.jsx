@@ -10,11 +10,11 @@ const OurMission = () => {
       Our Mission
       </h2>
 
-      <div className='w-full mx-auto mb-10 flex flex-col items-center justify-center'>
+      <div className='w-full mx-auto mb-10 flex flex-col items-center justify-between '>
        
 
-       <div className="mx-auto w-full  box2  flex flex-col lg:flex-row  items-center justify-center lg:justify-between mb-2 ">
-       <div className='w-11/12 lg:w-1/3  flex  items-center  justify-center   lg:justify-end'> 
+       <div className="mx-auto w-full  box2  flex flex-col lg:flex-row  items-center  lg:justify-between mb-2 ">
+       <div className='w-11/12 lg:w-1/3  flex  items-center  justify-center   lg:justify-center'> 
 
            {/* -------------------------------Our Mission image----------------------------------------- */}
            <div className='w-[300px] h-[300px] rounded-tl-full rounded-tr-full bg-[#FF385D] bg-opacity-15'>
