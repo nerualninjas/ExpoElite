@@ -204,7 +204,10 @@ const BestHomeSection = () => {
                     </div>
                   </div>
                   <div className="w-1/4">
-                    <Link href={`/products/${property.id}`}>
+                  <Link
+                      href="/products/[id]"
+                      as={`/products/${property._id}`}
+                    >
                       <a className="btn btn-1 btn-sm">View</a>{" "}
                     </Link>
                   </div>
