@@ -77,9 +77,18 @@ const ManageProduct = () => {
               <tr key={index} className="  ">
                 <td>{index + 1}</td>
                 <td>
-                  <div className="avatar">
-                    <div className="mask mask-squircle w-12 h-12">
-                      <Image height={100} width={150} src={property?.image} />
+ 
+                  <div className="flex items-center gap-3">
+                    <div className="avatar">
+                      <div className="mask mask-squircle w-12 h-12">
+                        <Image
+                          height={100}
+                          width={150}
+                          src={property?.image}
+                          alt="Contest Image"
+                        />
+                      </div>
+ 
                     </div>
                   </div>
                 </td>
