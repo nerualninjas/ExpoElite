@@ -21,7 +21,6 @@ import useSearchProperty from "@/hooks/Propertys/useSearchProperty";
 const BestHomeSection = () => {
   const axiosSecure = useAxiosSecure();
   const axiosPublic = useAxiosPublic();
-  const { propertyData, isPending, refetch: allProductRefetch } = usePropertyAllData();
   
 
   const [properties, setProperties] = useState([]);
@@ -38,11 +37,12 @@ const BestHomeSection = () => {
   //     .then((data) => setProperties(data));
   //   AOS.init();
   // }, []);
+  console.log(searchedProperty);
 
   useEffect(() => {
-    setProperties(propertyData);
-    allProductRefetch();
-  }, [propertyData]);
+    setProperties(searchedProperty);
+    refetch();
+  }, [searchedProperty]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -62,6 +62,7 @@ const BestHomeSection = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     refetch();
+    console.log(searchedProperty)
     setProperties(searchedProperty)
   };
 
