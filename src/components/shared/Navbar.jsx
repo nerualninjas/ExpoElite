@@ -215,13 +215,13 @@ const Navbar = () => {
                 className="btn btn-ghost btn-circle avatar"
               >
                 <div className="w-12 rounded-full">
-                  <Image
+                  {/* <Image
                     src={user?.photoURL}
                     width={50}
                     height={50}
                     alt="profile"
                     className="rounded-full"
-                  />
+                  /> */}
                 </div>
               </div>
               {isDropMenuOpen && (
@@ -231,13 +231,13 @@ const Navbar = () => {
                   onMouseLeave={handleMouseLeave}
                 >
                   <ul tabIndex={0} className="">
-                    <Image
+                    {/* <Image
                       src={user?.photoURL}
                       width={100}
                       height={100}
                       alt="profile"
                       className="rounded-full mx-auto"
-                    />
+                    /> */}
 
                     <h3 className="justify-between  text-xl px-2">
                       {user?.displayName}
