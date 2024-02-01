@@ -31,7 +31,7 @@ const ThemeSwitcher = () => {
       <Switch
       defaultSelected
       size="lg"
-      color="success"
+      color="danger"
       onClick={handleTheme}
       startContent={<SunIcon /> }
       endContent={<MoonIcon />}
