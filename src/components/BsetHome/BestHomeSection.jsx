@@ -14,11 +14,16 @@ import { useEffect, useState } from "react";
 import usePropertyAllData from "./../../hooks/Propertys/usePropertyAllData";
 import useAxiosPublic from "./../../hooks/useAxiosPublic";
 import useAxiosSecure from "./../../hooks/useAxiosSecure";
+import useSearchProperty from "@/hooks/Propertys/useSearchProperty";
+
+
 
 const BestHomeSection = () => {
   const axiosSecure = useAxiosSecure();
   const axiosPublic = useAxiosPublic();
-  const { propertyData, isPending, refetch } = usePropertyAllData();
+  const { propertyData, isPending, refetch: allProductRefetch } = usePropertyAllData();
+  
+
   const [properties, setProperties] = useState([]);
   const [searchParams, setSearchParams] = useState({
     title: "",
@@ -26,7 +31,7 @@ const BestHomeSection = () => {
     type: "",
     range: 40,
   });
-
+  const {searchedProperty, searchedProductLoading, refetch, seachedProductIsPending} = useSearchProperty({location: searchParams?.location})
   // useEffect(() => {
   //   fetch("property.json")
   //     .then((res) => res.json())
@@ -36,7 +41,7 @@ const BestHomeSection = () => {
 
   useEffect(() => {
     setProperties(propertyData);
-    refetch();
+    allProductRefetch();
   }, [propertyData]);
 
   const handleInputChange = (e) => {
@@ -54,10 +59,10 @@ const BestHomeSection = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your search logic here using searchParams
-    console.log(searchParams);
+    refetch();
+    setProperties(searchedProperty)
   };
 
   if (!properties || properties.length === 0) {
