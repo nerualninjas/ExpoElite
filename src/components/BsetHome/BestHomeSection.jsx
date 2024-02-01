@@ -58,7 +58,8 @@ const BestHomeSection = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
      // Add your search logic here using searchParams
-     const res = await axiosPublic.get(`/searchAndSort?location=${location}`)
+     const res = await axiosPublic.get(`/searchAndSort?location=${searchParams.location}`)
+     console.log(res.data);
      setProperties(res.data);
   };
 
