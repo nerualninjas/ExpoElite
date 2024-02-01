@@ -14,23 +14,20 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  
+
   return (
     <html lang="en" data-theme="light">
       <body className="overflow-x-hidden scrollbar-thin scrollbar-rounded scrollbar-thumb-rose-500 scrollbar-track-gray-400">
-     <TanstackProvider>
-     <AuthContextProvider>
-          
-    <Providers>
+        <TanstackProvider>
+          <AuthContextProvider>
 
-          {children}
-    </Providers>
+            {children}
 
-</AuthContextProvider>
+          </AuthContextProvider>
 
-     </TanstackProvider>
-     
-      
+        </TanstackProvider>
+
+
       </body>
     </html>
   );
