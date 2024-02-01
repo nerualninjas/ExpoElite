@@ -2,7 +2,7 @@
 import Image from "next/image";
 
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
-
+import ThemeSwitcher from '@/app/ThemeSwitcher';
 import { useEffect, useState } from "react";
 
 import Link from "next/link";
@@ -182,6 +182,7 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-2">
+          <ThemeSwitcher/>
           <button className="btn btn-ghost btn-circle">
             <div className="indicator">
               <svg
