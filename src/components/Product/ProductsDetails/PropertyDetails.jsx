@@ -21,6 +21,7 @@ import { FaRegHeart } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import usePropertyData from "@/hooks/Propertys/usePropertyData";
 import PropertyDetailsSmallPart from "./PropertyDetailsSmallPart";
+import Image from "next/image";
 
 const PropertyDetail = ({ propertyId }) => {
   const router = useRouter();
@@ -47,16 +48,16 @@ const PropertyDetail = ({ propertyId }) => {
   const { propertyName, propertyType, price, image, bathrooms, bedrooms, livingRoom, propertyDetails } = propertySingleData || {};
 
   return (
-    <div className="w-full min-h-screen  flex  flex-col  justify-center items-center">
-      <h1>{propertyName}</h1>
-      <p>Price: ${price}</p>
+    <div className="w-full min-h-screen mt-5 flex  flex-col  justify-center items-center">
+     
       <div className="w-11/12 min-h-screen  flex justify-center items-center bg-gradient-to-r from-rose-200 via-base-100 to-rose-200 blur-[90px] absolute"></div>
-      <div className="w-11/12  flex flex-col lg:flex-row justify-center items-center  rounded-xl bg-opacity-50 z-10 bg-white">
+      <div className="w-11/12  flex flex-col lg:flex-row justify-center items-center  rounded-xl bg-opacity-50 z-10 bg-white pb-10">
         {/* image section */}
         <div className="w-full lg:w-1/2  text-center flex justify-center items-center py-10">
           <Carousel className="text-center " autoPlay>
             <div className="">
-              <img src="https://i.ibb.co/sFtzWDj/apartment-architecture-carpet-chair-276583.jpg" />
+              {/* <img src={image} /> */}
+              <img className="w-full h-full"  src={image} alt="property" />
             </div>
             <div>
               <img src="https://i.ibb.co/jZJhPPq/apartment-bed-bedroom-book-shelves-439227.jpg" />
@@ -71,6 +72,24 @@ const PropertyDetail = ({ propertyId }) => {
               <img src="https://i.ibb.co/dPsnkq1/apartment-bed-bedroom-comfort-545034.jpg" />
             </div>
           </Carousel>
+
+          {/* <Carousel className="text-center " autoPlay>
+            <div className="">
+              <Image width={400} height={400} className="w-full h-full"  src={image} />
+            </div>
+            <div>
+              <Image width={400} height={400} className="w-full h-full" src="https://i.ibb.co/jZJhPPq/apartment-bed-bedroom-book-shelves-439227.jpg" />
+            </div>
+            <div>
+              <Image width={400} height={400} className="w-full h-full" src="https://i.ibb.co/dPsnkq1/apartment-bed-bedroom-comfort-545034.jpg" />
+            </div>
+            <div>
+              <Image width={400} height={400} className="w-full h-full" src="https://i.ibb.co/dPsnkq1/apartment-bed-bedroom-comfort-545034.jpg" />
+            </div>
+            <div>
+              <Image width={400} height={400} className="w-full h-full" src="https://i.ibb.co/dPsnkq1/apartment-bed-bedroom-comfort-545034.jpg" />
+            </div>
+          </Carousel> */}
         </div>
 
         {/* property details */}
@@ -94,12 +113,18 @@ const PropertyDetail = ({ propertyId }) => {
           </div>
 
           <br />
-          <div className="property-type text-xl font-semibold  text-rose-500">
-            Single
+          <div className="property-type text-xl font-semibold  text-gray-500">
+           {propertyType}
           </div>
+          {/* -----------property title and buy now button ------------*/}
+          <div className="flex justify-between"> 
           <div className="property-title text-3xl font-bold mb-2 text-rose-500">
-            Modern Luxury Home
+          {propertyName}
           </div>
+          <div> <button className="  rounded-lg px-5 py-2 border-2 border-rose-600  text-xl font-semibold text-rose-600 hover:text-white hover:bg-rose-600">Buy Now</button></div>
+
+          </div>
+         
 
           <div>
             <Rating style={{ maxWidth: 120 }} value={4} readOnly />
@@ -163,7 +188,7 @@ const PropertyDetail = ({ propertyId }) => {
           </div>
         </div>
       </div>
-      <div className="w-10/12 ">
+      <div className="w-10/12 z-20">
         <PropertyDetailsSmallPart propertyId={propertyId} />
       </div>
 
