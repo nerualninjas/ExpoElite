@@ -1,18 +1,18 @@
 "use client";
-import useCloudinaryUpload from "@/hooks/media/useCloudinaryUpload";
+// import useCloudinaryUpload from "@/hooks/media/useCloudinaryUpload";
 import React from "react";
 
 const Footer = () => {
 
-  const { image, loading, imageUrl, error, uploadImage } = useCloudinaryUpload();
-  console.log(imageUrl);
+  // const { image, loading, imageUrl, error, uploadImage } = useCloudinaryUpload();
+  // console.log(imageUrl);
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      uploadImage(file);
-    }
-  };
+  // const handleImageChange = (e) => {
+  //   const file = e.target.files[0];
+  //   if (file) {
+  //     uploadImage(file);
+  //   }
+  // };
 
   return (
     <footer className="px-4 py-8 dark:bg-gray-800 dark:text-gray-400">
@@ -60,10 +60,10 @@ const Footer = () => {
         </ul>
       </div>
       <div>
-      <input type="file" onChange={handleImageChange} />
+      {/* <input type="file" onChange={handleImageChange} />
       {loading && <p>Uploading image...</p>}
       {imageUrl && <img src={imageUrl} alt="Uploaded" />}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>} */}
     </div>
     </footer>
   );
