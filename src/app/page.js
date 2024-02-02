@@ -1,7 +1,7 @@
 import Banner from "@/components/Homepages/Banner";
 import Navbar from "@/components/shared/Navbar";
 import Sidebar from "@/components/shared/Sidebar";
-import Rightbar from "@/components/shared/Rightbar/Rightbar";
+
 import Footer from "@/components/Homepages/Footer";
 import Testimonials from "@/components/Testimonials/Testimonials";
 
@@ -30,7 +30,7 @@ export default function Home() {
                 <Footer />
                 <ChatWindow />
               </div>
-              {/* <Rightbar /> */}
+           
             </div>
           </div>
         </div>
