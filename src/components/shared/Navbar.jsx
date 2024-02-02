@@ -88,7 +88,7 @@ const Navbar = () => {
   return (
     <>
       {/* small device  */}
-{imageLoading && <Loading/> }
+{/* {imageLoading && <Loading/> } */}
       {isMenu && (
         <>
           <div className=" text-center   min-h-screen bg-base-200  absolute top-0 right-0 z-30 mx-auto  w-56">
