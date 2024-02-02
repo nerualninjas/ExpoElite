@@ -1,3 +1,4 @@
+import Providers from "./providers";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -13,20 +14,23 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-
+  
   return (
     <html lang="en" data-theme="light">
       <body className="overflow-x-hidden scrollbar-thin scrollbar-rounded scrollbar-thumb-rose-500 scrollbar-track-gray-400">
-        <TanstackProvider>
-          <AuthContextProvider>
+     <TanstackProvider>
+     <AuthContextProvider>
+          
+    <Providers>
 
-            {children}
+          {children}
+    </Providers>
 
-          </AuthContextProvider>
+</AuthContextProvider>
 
-        </TanstackProvider>
-
-
+     </TanstackProvider>
+     
+      
       </body>
     </html>
   );

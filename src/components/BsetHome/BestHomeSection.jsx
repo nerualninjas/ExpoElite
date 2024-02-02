@@ -16,12 +16,10 @@ import useAxiosPublic from "./../../hooks/useAxiosPublic";
 import useAxiosSecure from "./../../hooks/useAxiosSecure";
 import useSearchProperty from "@/hooks/Propertys/useSearchProperty";
 
-
-
 const BestHomeSection = () => {
   const axiosSecure = useAxiosSecure();
   const axiosPublic = useAxiosPublic();
-  
+  const { propertyData, isPending, refetch } = usePropertyAllData();
 
   const [properties, setProperties] = useState([]);
   const [searchParams, setSearchParams] = useState({
@@ -30,19 +28,17 @@ const BestHomeSection = () => {
     type: "",
     range: 40,
   });
-  const {searchedProperty, searchedProductLoading, refetch, seachedProductIsPending} = useSearchProperty({location: searchParams?.location})
   // useEffect(() => {
   //   fetch("property.json")
   //     .then((res) => res.json())
   //     .then((data) => setProperties(data));
   //   AOS.init();
   // }, []);
-  console.log(searchedProperty);
 
   useEffect(() => {
-    setProperties(searchedProperty);
+    setProperties(propertyData);
     refetch();
-  }, [searchedProperty]);
+  }, [propertyData]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -61,9 +57,10 @@ const BestHomeSection = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    refetch();
-    console.log(searchedProperty)
-    setProperties(searchedProperty)
+     // Add your search logic here using searchParams
+     const res = await axiosPublic.get(`/searchAndSort?location=${searchParams.location}`)
+     console.log(res.data);
+     setProperties(res.data);
   };
 
   if (!properties || properties.length === 0) {
@@ -209,12 +206,12 @@ const BestHomeSection = () => {
                     </div>
                   </div>
                   <div className="w-1/4">
+                    
                     <Link
                       href="/products/[id]"
                       as={`/products/${property._id}`}
                     >
-                      {" "}
-                      <button className="btn btn-1  btn-sm">view</button>
+                      <a className="btn btn-1 btn-sm">View</a>{" "}
                     </Link>
                   </div>
                 </div>

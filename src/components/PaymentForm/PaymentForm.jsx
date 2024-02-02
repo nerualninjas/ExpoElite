@@ -30,9 +30,7 @@ const PaymentForm = ({ onSuccess }) => {
   };
 
   // Check if the component is running on the client before rendering
-  // if (!isClient) {
-  //   return null;
-  // }
+ 
 
   return (
     <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-8">

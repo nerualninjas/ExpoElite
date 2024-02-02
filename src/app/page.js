@@ -8,6 +8,7 @@ import Testimonials from "@/components/Testimonials/Testimonials";
 import FAQ from "@/components/Homepages/FAQ";
 import MostPopular from "@/components/mostPopular/MostPopular";
 import BestHomeSection from "@/components/BsetHome/BestHomeSection";
+import ChatWindow from "@/components/ChatWindow/ChatWindow";
 
 export default function Home() {
   return (
@@ -27,6 +28,7 @@ export default function Home() {
 
                 <FAQ />
                 <Footer />
+                <ChatWindow />
               </div>
               {/* <Rightbar /> */}
             </div>

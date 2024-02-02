@@ -10,9 +10,7 @@ const AboutBanner = () => {
             <p className="text-sm ">
             ExpoElite emerged from a shared vision of creating a space where every property transaction is an experience worth cherishing.
             </p>
-            {/* <button className="rounded-full bg-[#FF385D] text-white md:text-3xl">
-              <MdArrowOutward />
-            </button> */}
+            
           </div>
          
           

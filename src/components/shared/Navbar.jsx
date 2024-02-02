@@ -2,7 +2,7 @@
 import Image from "next/image";
 
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
-
+import ThemeSwitcher from '@/app/ThemeSwitcher';
 import { useEffect, useState } from "react";
 
 import Link from "next/link";
@@ -24,8 +24,12 @@ const Navbar = () => {
   const [isMenu, setIsMenu] = useState(false);
   const pathName = usePathname();
   const [isDropMenuOpen, setIsDropMenu] = useState(false);
+  const [imageLoading,setImageLoading]=useState(true)
 
   // console.log(user?.photoURL);
+  const handleImageLoad =()=>{
+    setImageLoading(false)
+  }
 
   const handleNavMenu = () => {
     setIsMenu(!isMenu);
@@ -76,17 +80,15 @@ const Navbar = () => {
     greeting = "Good Mid-Night";
   }
 
-  if (loading) {
-    return (
-      <>
-        <Loading />
-      </>
-    );
-  }
+  // if (!loading) {
+  //   return (
+  //    setImageLoading(false)
+  //   );
+  // }
   return (
     <>
       {/* small device  */}
-
+{imageLoading && <Loading/> }
       {isMenu && (
         <>
           <div className=" text-center   min-h-screen bg-base-200  absolute top-0 right-0 z-30 mx-auto  w-56">
@@ -182,6 +184,7 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-2">
+          <ThemeSwitcher/>
           <button className="btn btn-ghost btn-circle">
             <div className="indicator">
               <svg
@@ -216,6 +219,7 @@ const Navbar = () => {
               >
                 <div className="w-12 rounded-full">
                   <Image
+                  onLoad={handleImageLoad}
                     src={user?.photoURL}
                     width={50}
                     height={50}
