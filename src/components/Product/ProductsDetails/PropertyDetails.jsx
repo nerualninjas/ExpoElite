@@ -4,6 +4,7 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import { RiseLoader } from "react-spinners";
+import {Image} from "@nextui-org/react";
 // import Rating from 'react-rating';
 // Rating
 
@@ -21,7 +22,7 @@ import { FaRegHeart } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import usePropertyData from "@/hooks/Propertys/usePropertyData";
 import PropertyDetailsSmallPart from "./PropertyDetailsSmallPart";
-import Image from "next/image";
+
 
 const PropertyDetail = ({ propertyId }) => {
   const router = useRouter();
@@ -56,17 +57,21 @@ const PropertyDetail = ({ propertyId }) => {
         <div className="w-full lg:w-1/2  text-center flex justify-center items-center py-10">
           <Carousel className="text-center " autoPlay>
             <div className="">
-              {/* <img src={image} /> */}
-              <img className="w-full h-full"  src={image} alt="property" />
+              <img src={image} className="w-full h-full" />
+             
             </div>
             <div>
               <img src="https://i.ibb.co/jZJhPPq/apartment-bed-bedroom-book-shelves-439227.jpg" />
+             
             </div>
             <div>
               <img src="https://i.ibb.co/dPsnkq1/apartment-bed-bedroom-comfort-545034.jpg" />
+              
+                 
             </div>
             <div>
               <img src="https://i.ibb.co/dPsnkq1/apartment-bed-bedroom-comfort-545034.jpg" />
+             
             </div>
             <div>
               <img src="https://i.ibb.co/dPsnkq1/apartment-bed-bedroom-comfort-545034.jpg" />
