@@ -37,7 +37,7 @@ const Discover = () => {
   useEffect(() => {
     setProperties(propertyData);
     refetch();
-  }, [propertyData]);
+  }, [propertyData, refetch]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

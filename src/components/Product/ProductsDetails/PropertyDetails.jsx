@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect ,useState} from "react";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
@@ -23,15 +23,28 @@ import { useRouter } from "next/navigation";
 import usePropertyData from "@/hooks/Propertys/usePropertyData";
 import PropertyDetailsSmallPart from "./PropertyDetailsSmallPart";
 
-
+import Image from "next/image";
+import { UserAuth } from "@/app/(auth)/context/AuthContext";
+import useAxiosSecure from "@/hooks/useAxiosSecure";
 const PropertyDetail = ({ propertyId }) => {
+  const {user}=UserAuth()
+  const axiosSecure = useAxiosSecure()
   const router = useRouter();
   //   const { id } = router.query;
-  console.log(router.query);
+  // console.log(router.query);
 
   const { propertySingleData, isPending, refetch } = usePropertyData(
     propertyId
   );
+  const [userLiked,setUserLiked]=useState(false)
+
+  useEffect(()=>{
+    if(propertySingleData && propertySingleData.likeBy){
+      setUserLiked(propertySingleData.likeBy.includes(user?.email))
+    }
+  },[propertySingleData,user])
+
+console.log(userLiked)
 
   if (isPending) {
     return (
@@ -45,8 +58,30 @@ const PropertyDetail = ({ propertyId }) => {
     return <div>Property not found.</div>;
   }
 
+
   // const { title, price /* other properties */ } = propertyData;
-  const { propertyName, propertyType, price, image, bathrooms, bedrooms, livingRoom, propertyDetails } = propertySingleData || {};
+  const { _id,propertyName, propertyType, price, image, bathrooms, bedrooms, livingRoom, propertyDetails } = propertySingleData || {};
+
+
+  //Like Count Functional
+
+
+
+
+  const handleLike=async()=>{
+  const userEmail = user?.email;
+  
+  await axiosSecure.put(`/addOrRemoveLike?id=${_id}&userEmail=${userEmail}`)
+  refetch()
+
+  console.log(userEmail,_id);
+
+  }
+
+
+
+
+
 
   return (
     <div className="w-full min-h-screen mt-5 flex  flex-col  justify-center items-center">
@@ -112,8 +147,8 @@ const PropertyDetail = ({ propertyId }) => {
               </button>
             </div>
             <div className="flex text-2xl items-center">
-              <FaRegHeart className="text-2xl" />{" "}
-              <span className="ml-2"> 32</span>
+             <button onClick={handleLike}><FaRegHeart className={userLiked ?"text-2xl  inset-0  text-rose-600":"text-2xl"} />{" "}</button>
+              <span className="ml-2">{propertySingleData?.likeBy.length}</span>
             </div>
           </div>
 
