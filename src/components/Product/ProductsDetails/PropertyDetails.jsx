@@ -4,6 +4,7 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import { RiseLoader } from "react-spinners";
+import {Image} from "@nextui-org/react";
 // import Rating from 'react-rating';
 // Rating
 
@@ -24,10 +25,13 @@ import { FaRegHeart } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import usePropertyData from "@/hooks/Propertys/usePropertyData";
 import PropertyDetailsSmallPart from "./PropertyDetailsSmallPart";
-import Image from "next/image";
+
+
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
  
+import Comment from "@/components/productDetails/comment/Comment";
+
 const PropertyDetail = ({ propertyId }) => {
   const {user}=UserAuth()
   const axiosSecure = useAxiosSecure()
@@ -62,12 +66,10 @@ console.log(userLiked)
 
 
   // const { title, price /* other properties */ } = propertyData;
-  const { _id,propertyName, propertyType, price, image, bathrooms, bedrooms, livingRoom, propertyDetails } = propertySingleData || {};
+  const { _id,propertyName, propertyType, price, image, bathrooms, bedrooms, livingRoom, propertyDetails, quantity } = propertySingleData || {};
 
 
   //Like Count Functional
-
-
 
 
   const handleLike=async()=>{
@@ -81,30 +83,33 @@ console.log(userLiked)
   }
 
 
-
-
-
-
   return (
-    <div className="w-full min-h-screen mt-5 flex  flex-col  justify-center items-center">
+    <div className="w-full min-h-screen mt-5 flex  flex-col  justify-center items-center ">
      
       <div className="w-11/12 min-h-screen  flex justify-center items-center bg-gradient-to-r from-rose-200 via-base-100 to-rose-200 blur-[90px] absolute"></div>
-      <div className="w-11/12  flex flex-col lg:flex-row justify-center items-center  rounded-xl bg-opacity-50 z-10 bg-white pb-10">
+     <div className="w-11/12  flex flex-col  justify-center items-center rounded-xl bg-opacity-50 z-10 bg-white pb-32 shadow-xl">
+     {/* property details information and image container  */}
+     
+     <div className="w-11/12  flex flex-col lg:flex-row justify-center items-center rounded-xl ">
         {/* image section */}
-        <div className="w-full lg:w-1/2  text-center flex justify-center items-center py-10">
+        <div className="w-11/12 lg:w-1/2  text-center flex justify-center items-center py-2">
           <Carousel className="text-center " autoPlay>
             <div className="">
-              {/* <img src={image} /> */}
-              <img className="w-full h-full"  src={image} alt="property" />
+              <img src={image} className="w-full h-full" />
+             
             </div>
             <div>
               <img src="https://i.ibb.co/jZJhPPq/apartment-bed-bedroom-book-shelves-439227.jpg" />
+             
             </div>
             <div>
               <img src="https://i.ibb.co/dPsnkq1/apartment-bed-bedroom-comfort-545034.jpg" />
+              
+                 
             </div>
             <div>
               <img src="https://i.ibb.co/dPsnkq1/apartment-bed-bedroom-comfort-545034.jpg" />
+             
             </div>
             <div>
               <img src="https://i.ibb.co/dPsnkq1/apartment-bed-bedroom-comfort-545034.jpg" />
@@ -159,11 +164,15 @@ console.log(userLiked)
           <div className="property-title text-3xl font-bold mb-2 text-rose-500">
           {propertyName}
           </div>
+ 
           <div> 
             <a href="/payment">
              <button className="  rounded-lg px-5 py-2 border-2 border-rose-600  text-xl font-semibold text-rose-600 hover:text-white hover:bg-rose-600">Buy Now</button>
             </a>
            </div>
+ 
+        
+ 
 
           </div>
          
@@ -184,10 +193,20 @@ console.log(userLiked)
             </div>
           </div>
           <br />
+          <div className="flex "> 
+          <div className=" rounded-sm px-5 py-2 border-2 text-black text-xl mr-2 ">
+         Price: ${price}
+          </div>
+          <div className="rounded-sm px-5 py-2 border-2 text-black text-xl  ">
+         Quantity: {quantity}
+          </div>
+
+          </div>
+          <br />
           <div>
             <h2 className="text-2xl font-bold mb-3">Property Details</h2>
             <div className="grid grid-cols-3 gap-20">
-              <button className="rounded-full px-5 py-2 border-2 text-rose-600">
+              <button className="rounded-full px-5 py-1 border-2 text-rose-600">
                 {" "}
                 <FontAwesomeIcon
                   icon={faBed}
@@ -195,7 +214,7 @@ console.log(userLiked)
                 />{" "}
                 <span className="font-bold"> {bedrooms} </span>
               </button>
-              <button className="rounded-full px-5 py-2 border-2 text-rose-600">
+              <button className="rounded-full px-5 py-1 border-2 text-rose-600">
                 {" "}
                 <FontAwesomeIcon
                   icon={faBath}
@@ -203,7 +222,7 @@ console.log(userLiked)
                 />{" "}
                 <span className="font-bold"> {bathrooms} </span>
               </button>
-              <button className="rounded-full px-5 py-2 border-2 text-rose-600">
+              <button className="rounded-full px-5 py-1 border-2 text-rose-600">
                 {" "}
                 <FontAwesomeIcon
                   icon={faCouch}
@@ -214,23 +233,18 @@ console.log(userLiked)
             </div>
           </div>
           <div className=" text-justify mt-10 mb-40 md:mb-20"> <p>{propertyDetails}</p> 
-            {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo
-            expedita, asperiores cumque officia non recusandae iure dignissimos
-            nemo totam sapiente blanditiis atque necessitatibus enim quos
-            consequuntur sed reprehenderit? Laudantium veritatis nesciunt odio
-            distinctio sit iusto accusamus ipsam, reiciendis animi? Sunt,
-            aperiam voluptates. Quam, quia minima magnam quisquam dolore
-            accusantium ipsum assumenda. Eius voluptatum omnis, itaque
-            temporibus porro, asperiores sapiente distinctio dolores est enim
-            nihil optio earum natus obcaecati rerum unde debitis atque facere
-            laboriosam? Aliquid reiciendis quibusdam ipsum neque velit nulla
-            inventore eligendi odio sunt reprehenderit. Culpa in consectetur
-            alias eius laudantium voluptates. Labore odio temporibus hic illum
-            non? Architecto. */}
+            
           </div>
         </div>
       </div>
-      <div className="w-10/12 z-20">
+             {/* comment Section*/}
+      <div className="w-11/12">
+        <Comment className="w-11/12 mb-12" propertyId={propertyId} />
+       </div>
+     </div>
+     
+        
+      <div className="w-10/12 z-20 ">
         <PropertyDetailsSmallPart propertyId={propertyId} />
       </div>
 
