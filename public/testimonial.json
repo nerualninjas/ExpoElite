@@ -3,24 +3,24 @@
         "id": 1,
         "name": "Bella",
         "image": "https://res.cloudinary.com/dpacbqysy/image/upload/v1705936878/jpuxdh66ngigewixctmr.jpg",
-        "description": "Best services are provided by the ExpoElite.Hope for best to all. "
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, voluptas!"
     },
     {
         "id": 2,
         "name": "David",
         "image": "https://res.cloudinary.com/dpacbqysy/image/upload/v1705990727/eihdrmj0cwxwmezwkday.jpg",
-        "description": "Best services are provided by the ExpoElite.Hope for best to all. "
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, voluptas!"
     },
     {
         "id": 3,
         "name": "Jessica",
         "image": "https://res.cloudinary.com/dpacbqysy/image/upload/v1705990742/kll7ilcpis8qbd7il96v.jpg",
-        "description": "Best services are provided by the ExpoElite.Hope for best to all. "
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, voluptas!"
     },
     {
         "id": 4,
         "name": "Jonh",
         "image": "https://res.cloudinary.com/dpacbqysy/image/upload/v1705936738/samples/man-portrait.jpg",
-        "description": "Best services are provided by the ExpoElite.Hope for best to all. "
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, voluptas!"
     }
 ]

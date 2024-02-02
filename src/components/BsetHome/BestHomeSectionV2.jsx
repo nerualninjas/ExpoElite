@@ -6,15 +6,16 @@ import {
   faMapMarkerAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import AOS from "aos";
 import "aos/dist/aos.css";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import usePropertyAllData from "../../hooks/Propertys/usePropertyAllData";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
+import usePropertyAllData from "./../../hooks/Propertys/usePropertyAllData";
+import useAxiosPublic from "./../../hooks/useAxiosPublic";
+import useAxiosSecure from "./../../hooks/useAxiosSecure";
 
-const Discover = () => {
+const BestHomeSection = () => {
   const [properties, setProperties] = useState([]);
   const [searchParams, setSearchParams] = useState({
     title: "",
@@ -37,7 +38,7 @@ const Discover = () => {
   useEffect(() => {
     setProperties(propertyData);
     refetch();
-  }, [propertyData, refetch]);
+  }, [propertyData]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -220,4 +221,4 @@ const Discover = () => {
   );
 };
 
-export default Discover;
+export default BestHomeSection;

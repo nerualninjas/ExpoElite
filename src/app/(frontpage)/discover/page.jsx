@@ -1,10 +1,11 @@
-import Discover from '@/components/Discover/Discover';
+import BestHomeSectionV2 from '@/components/BsetHome/BestHomeSectionV2';
+import React from 'react';
 
 const DiscoverPage = () => {
     return (
         <div>
            
-            <Discover/>
+            <BestHomeSectionV2/>
         </div>
     );
 };
