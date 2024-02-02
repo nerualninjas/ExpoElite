@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import Title from "../shared/Title";
 // import AOS from "aos";
 // import "aos/dist/aos.css";
 const Testimonials = () => {
@@ -16,12 +17,13 @@ const Testimonials = () => {
 
   return (
     <div className="text-center   my-5 py-5 text-blue-950 font-semibold ">
-      <h1 className="text-4xl mt-10 font-bold text-sky-950">
+      <Title title="Testimonials" heading= "See what our clients have to say about their experience."/>
+      {/* <h1 className="text-4xl mt-10 font-bold text-sky-950">
         Our Testimonials
       </h1>
       <p className="my-6 text-rose-600 ">
         See what our clients have to say about their experience.
-      </p>
+      </p> */}
 
       {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 pt-5 gap-4 place-items-center " data-aos="fade-up"
         delay="1200"> */}
