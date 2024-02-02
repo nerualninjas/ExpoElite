@@ -4,7 +4,7 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import { RiseLoader } from "react-spinners";
-import {Image} from "@nextui-org/react";
+
 // import Rating from 'react-rating';
 // Rating
 
