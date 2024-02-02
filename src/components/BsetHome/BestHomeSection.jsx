@@ -14,21 +14,20 @@ import usePropertyAllData from "./../../hooks/Propertys/usePropertyAllData";
 import useAxiosPublic from "./../../hooks/useAxiosPublic";
 import useAxiosSecure from "./../../hooks/useAxiosSecure";
 
+
 const BestHomeSection = () => {
  
-  const [properties, setProperties] = useState([]);
+  const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
+  const { propertyData, isPending, refetch } = usePropertyAllData();
+  const [properties, setProperties] = useState(propertyData);
+
   const [searchParams, setSearchParams] = useState({
  
     location: "",
 
   });
 
-
-
-  const axiosSecure = useAxiosSecure();
-  const axiosPublic = useAxiosPublic();
-  const { propertyData, isPending, refetch } = usePropertyAllData();
- 
 
   useEffect(() => {
     setProperties(propertyData);
@@ -57,16 +56,14 @@ const BestHomeSection = () => {
   };
   
 
-  if (!properties || properties.length === 0) {
-    return <div>House not found!</div>;
-  }
-
+ 
   return (
     <div className="w-full py-12">
       <div className=" container mx-auto">
         <h3 className="text-center w-100 text-xl font-bold text-gray-900 p-4 ">
           Find your Best Home
         </h3>
+        <h4>Total Product: {properties?.length}</h4>
         <hr className="w-1/4 mx-auto border-rose-400 border-2" />
         <br />
 
@@ -101,17 +98,19 @@ const BestHomeSection = () => {
 
         <br />
         <div className="mx-auto mt-2 grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2">
-          {properties.slice(0, 6).map((property, index) => (
+          
+        {properties?.map((property, index) => (
             <div
               key={index}
               className="  card bg-base-100  "
               data-aos="fade-up"
             >
+              hello
               <figure className="p-1">
                 <Image
                   width={300}
                   height={200}
-                  src={property.image}
+                  src={property?.image}
                   alt={property.propertyName}
                   className="rounded-xl "
                 />
