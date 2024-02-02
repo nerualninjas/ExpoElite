@@ -138,7 +138,7 @@ const BestHomeSection = () => {
             <div
               key={index}
               className="  card bg-base-100  "
-              data-aos="fade-up"
+       
             >
               <figure className="p-1">
                 <Image
