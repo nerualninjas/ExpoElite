@@ -21,7 +21,7 @@ export default function Home() {
             <div>
               <div className="md:ml-60 mx-4 md:mx-0 relative top-20 min-h-screen">
                 <Banner />
-                {/* <BestHomeSection /> */}
+                <BestHomeSection />
                 {/* <BestHomeSection/> */}
                 <MostPopular />
                 <Testimonials />

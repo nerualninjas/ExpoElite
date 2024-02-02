@@ -24,8 +24,12 @@ const Navbar = () => {
   const [isMenu, setIsMenu] = useState(false);
   const pathName = usePathname();
   const [isDropMenuOpen, setIsDropMenu] = useState(false);
+  const [imageLoading,setImageLoading]=useState(true)
 
   // console.log(user?.photoURL);
+  const handleImageLoad =()=>{
+    setImageLoading(false)
+  }
 
   const handleNavMenu = () => {
     setIsMenu(!isMenu);
@@ -76,17 +80,15 @@ const Navbar = () => {
     greeting = "Good Mid-Night";
   }
 
-  if (loading) {
-    return (
-      <>
-        <Loading />
-      </>
-    );
-  }
+  // if (!loading) {
+  //   return (
+  //    setImageLoading(false)
+  //   );
+  // }
   return (
     <>
       {/* small device  */}
-
+{imageLoading && <Loading/> }
       {isMenu && (
         <>
           <div className=" text-center   min-h-screen bg-base-200  absolute top-0 right-0 z-30 mx-auto  w-56">
@@ -216,13 +218,14 @@ const Navbar = () => {
                 className="btn btn-ghost btn-circle avatar"
               >
                 <div className="w-12 rounded-full">
-                  {/* <Image
+                  <Image
+                  onLoad={handleImageLoad}
                     src={user?.photoURL}
                     width={50}
                     height={50}
                     alt="profile"
                     className="rounded-full"
-                  /> */}
+                  />
                 </div>
               </div>
               {isDropMenuOpen && (
@@ -232,13 +235,13 @@ const Navbar = () => {
                   onMouseLeave={handleMouseLeave}
                 >
                   <ul tabIndex={0} className="">
-                    {/* <Image
+                    <Image
                       src={user?.photoURL}
                       width={100}
                       height={100}
                       alt="profile"
                       className="rounded-full mx-auto"
-                    /> */}
+                    />
 
                     <h3 className="justify-between  text-xl px-2">
                       {user?.displayName}
