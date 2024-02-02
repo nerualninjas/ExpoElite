@@ -8,6 +8,9 @@ import {Image} from "@nextui-org/react";
 // import Rating from 'react-rating';
 // Rating
 
+ 
+
+
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 //fontawesome icon
@@ -26,7 +29,9 @@ import PropertyDetailsSmallPart from "./PropertyDetailsSmallPart";
 
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
+ 
 import Comment from "@/components/productDetails/comment/Comment";
+
 const PropertyDetail = ({ propertyId }) => {
   const {user}=UserAuth()
   const axiosSecure = useAxiosSecure()
@@ -159,7 +164,15 @@ console.log(userLiked)
           <div className="property-title text-3xl font-bold mb-2 text-rose-500">
           {propertyName}
           </div>
-          <div> <button className="  rounded-lg px-3 py-2 border-2 border-rose-600  text-lg font-semibold text-rose-600 hover:text-white hover:bg-rose-600">Buy Now</button></div>
+ 
+          <div> 
+            <a href="/payment">
+             <button className="  rounded-lg px-5 py-2 border-2 border-rose-600  text-xl font-semibold text-rose-600 hover:text-white hover:bg-rose-600">Buy Now</button>
+            </a>
+           </div>
+ 
+        
+ 
 
           </div>
          

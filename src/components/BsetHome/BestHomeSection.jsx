@@ -169,7 +169,7 @@ const BestHomeSection = () => {
                     </div>
                   </div>
                   <div className="w-1/4">
-                  <Link href={`/${property.id}`} > <button className="btn btn-1  btn-sm">view</button></Link>
+                  <Link href={`products/${property._id}`} > <button className="btn btn-1  btn-sm">view</button></Link>
                    
                   </div>
                 </div>
