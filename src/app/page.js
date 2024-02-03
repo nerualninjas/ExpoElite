@@ -30,7 +30,7 @@ export default function Home() {
                 <Footer />
                 <ChatWindow />
               </div>
-           
+
             </div>
           </div>
         </div>

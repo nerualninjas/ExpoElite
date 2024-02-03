@@ -1,8 +1,8 @@
-"use client"
+"use client";
 import React, { useState } from 'react';
 import Image from 'next/image';
 
-const ChatBox = () => {
+const ChatBox2 = () => {
     const [message, setMessage] = useState('');
     const [chat, setChat] = useState([
         { sender: 'You', message: 'Hello!', timestamp: new Date() },
@@ -66,5 +66,4 @@ const ChatBox = () => {
         </div>
     );
 };
-
-export default ChatBox;
+export default ChatBox2;
