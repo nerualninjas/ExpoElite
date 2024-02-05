@@ -9,8 +9,9 @@ body {
 }
 
 [data-theme="dark"] body {
-  background-color: #000;
-  color: #fff;
+
+  background: linear-gradient(135deg, #010101, #233849);;
+  color: rgb(236, 239, 241);
 }
 
 
