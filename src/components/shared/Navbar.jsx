@@ -146,7 +146,7 @@ const Navbar = () => {
         </>
       )}
 
-      <div className="py-4 lg:px-4 z-30 bg-[#FFFFFF] flex items-center justify-between w-full  2xl:w-[calc(100vw-230px)] md:start-[14rem]  fixed h-20">
+      <div className="py-4 lg:px-4 z-30 bg-[#FFFFFF] flex items-center justify-between w-full lg:w-[calc(100vw-230px)]  2xl:w-[calc(100vw-230px)] md:start-[14rem]  fixed h-20">
         <div className="   md:hidden">
           {" "}
           <button
