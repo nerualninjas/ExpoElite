@@ -10,6 +10,7 @@ body {
 
 [data-theme="dark"] body {
 
+  background: #010101;
   background: linear-gradient(135deg, #010101, #233849);;
   color: rgb(236, 239, 241);
 }
