@@ -10,11 +10,14 @@ import { useRouter } from "next/navigation";
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
 import Link from "next/link";
 import useAxiosPublic from "./../../hooks/useAxiosPublic";
+import useNotification from "@/hooks/notifications/useNotification";
+
 
 const Register2 = () => {
   const router = useRouter();
   const { createUser, googleSignIn, updateUser } = UserAuth();
   const axiosPublic = useAxiosPublic();
+  const { notificationPost } = useNotification()
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -59,6 +62,15 @@ const Register2 = () => {
           console.log(res.data);
           Swal.fire("Good job!", "User Created Successfully!", "success");
         });
+        const data = {
+          userEmail: email,
+          notificationData: [{
+            notificationText: "user registration success",
+            createdTime: new Date(),
+            notificationStatus: "unread"
+          }]
+        }
+        notificationPost(data)
         router.push("/");
       })
       .catch((error) => {

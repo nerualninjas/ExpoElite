@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
 import ThemeSwitcher from '@/app/ThemeSwitcher';
+import Notification from "@/components/Notification/Notification"
 import { useEffect, useState } from "react";
 
 import Link from "next/link";
@@ -18,6 +19,8 @@ import {
 import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Loading from "@/app/loading";
+import { FaBell } from "react-icons/fa";
+
 
 const Navbar = () => {
   const { user, loading, logOut } = UserAuth();
@@ -25,10 +28,11 @@ const Navbar = () => {
   const [isMenu, setIsMenu] = useState(false);
   const pathName = usePathname();
   const [isDropMenuOpen, setIsDropMenu] = useState(false);
-  const [imageLoading,setImageLoading]=useState(true)
+  const [imageLoading, setImageLoading] = useState(true);
+  const [isShowNotification,setIsShowNotification]=useState(false)
 
   // console.log(user?.photoURL);
-  const handleImageLoad =()=>{
+  const handleImageLoad = () => {
     setImageLoading(false)
   }
 
@@ -90,7 +94,7 @@ const Navbar = () => {
   return (
     <>
       {/* small device  */}
-{/* {imageLoading && <Loading/> } */}
+      {/* {imageLoading && <Loading/> } */}
       {isMenu && (
         <>
           <div className=" text-center   min-h-screen bg-base-200  absolute top-0 right-0 z-30 mx-auto  w-56">
@@ -109,11 +113,10 @@ const Navbar = () => {
                 {mainMenu.map((item) => (
                   <li key={item.pageName}>
                     <Link
-                      className={`${
-                        pathName === item.path
+                      className={`${pathName === item.path
                           ? "bg-pink-200  py-2 px-4  rounded-full"
                           : "hover:bg-pink-200  hover:text-white py-2 px-4 rounded-full"
-                      }`}
+                        }`}
                       href={item.path}
                     >
                       {item.pageName}
@@ -124,11 +127,10 @@ const Navbar = () => {
                 {user && (
                   <li>
                     <Link
-                      className={`${
-                        pathName === "/products"
+                      className={`${pathName === "/products"
                           ? "flex items-center gap-2  hover:text-rose-600 text-rose-500 "
                           : "flex items-center gap-2  hover:text-rose-600 text-gray-800 "
-                      }`}
+                        }`}
                       href="/products"
                     >
                       {" "}
@@ -186,33 +188,43 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-2">
-          <ThemeSwitcher/>
-          <button className="btn btn-ghost btn-circle">
-            <div className="indicator">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-                />
-              </svg>
-              <span className="badge badge-xs badge-primary indicator-item">
-                {2}
-              </span>
+          <ThemeSwitcher />
+
+          {/* notification section  */}
+          <section>
+            <button onMouseEnter={()=>setIsShowNotification(!isShowNotification)} onClick={()=>setIsShowNotification(!isShowNotification)} className="btn btn-ghost btn-circle">
+              <div className="indicator text-2xl text-rose-600">
+                {/* <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+                  />
+                </svg> */}
+                <FaBell/>
+                <span className="badge badge-xs badge-primary indicator-item">
+                  {2}
+                </span>
+              </div>
+            </button>
+            <div>
+{isShowNotification && <div className="absolute top-16 right-20">  <Notification open={setIsShowNotification}/> </div>}
             </div>
-          </button>
+          </section>
+
+
           {user ? (
             <div
               className="dropdown z-[40] dropdown-end pl-5"
               onMouseEnter={handleMouseEnter}
-              // onMouseLeave={handleMouseLeave}
+            // onMouseLeave={handleMouseLeave}
             >
               <div
                 tabIndex={0}
@@ -221,7 +233,7 @@ const Navbar = () => {
               >
                 <div className="w-12 rounded-full">
                   <Image
-                  onLoad={handleImageLoad}
+                    onLoad={handleImageLoad}
                     src={user?.photoURL}
                     width={50}
                     height={50}
