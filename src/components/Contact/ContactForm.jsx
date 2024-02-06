@@ -1,13 +1,15 @@
 'use client'
 import Lottie from "lottie-react";
 import Ex from "./Email.json";
+import Title2 from "../shared/Title/Title2";
 
 const ContactForm = () => {
     return (
         <div className="my-20 ">
             <div className="text-center">
-                <h3 className="text-4xl font-extrabold text-rose-600">Get in Touch</h3>
-                <p>Send us your thoughts!</p>
+                <Title2 title="Get In Touch" heading="Send us your thoughts!" />
+                {/* <h3 className="text-4xl font-extrabold text-rose-600">Get in Touch</h3>
+                <p>Send us your thoughts!</p> */}
             </div>
             <div className="flex items-center justify-between gap-4">
                 <div className="w-1/2">
