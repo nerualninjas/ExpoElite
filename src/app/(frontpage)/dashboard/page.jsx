@@ -1,6 +1,6 @@
 
 
-import PropertyVsSold from '@/components/Dashboard/Seller/PropertyVsSold';
+import PropertyVsSold from '@/components/Dashboard/Admin/PropertyVsSold';
 import React from 'react';
 
 const DashBoard = () => {
