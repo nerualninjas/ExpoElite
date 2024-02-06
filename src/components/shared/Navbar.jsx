@@ -13,6 +13,7 @@ import {
   faCircle,
   faHouseChimney,
   faCircleInfo,
+  faChartLine
 } from "@fortawesome/free-solid-svg-icons";
 import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -48,6 +49,7 @@ const Navbar = () => {
     { pageName: "Discover", path: "/discover", icon: faCircle },
     { pageName: "About Us", path: "/about", icon: faCircleInfo },
     { pageName: "Contact Us", path: "/contact", icon: faAddressBook },
+
   ];
 
   const btnActive = true;
