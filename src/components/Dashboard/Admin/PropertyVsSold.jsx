@@ -56,7 +56,7 @@ const PropertyVsSold = () => {
   return (
 
 
-    <div className='w-full'>
+    <div className='w-full h-full bg-gray-100 shadow-md rounded-lg p-5'>
       {/* <ResponsiveContainer width="100%" height="100%"> */}
       <AreaChart
         width={700}

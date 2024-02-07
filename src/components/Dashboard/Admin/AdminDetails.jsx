@@ -4,13 +4,13 @@ import React from 'react';
 const AdminDetails = () => {
     return (
         <div>
-            <div className="max-w-xs p-6 h-[210px]  rounded-md shadow-md flex flex-col justify-center items-center bg-gradient-to-r before:from-[#F989B0] via-[#e49797] to-[#ffffff] dark:bg-gray-900 dark:text-gray-50 border-[#F43F5E] border-2">
-                <Image width={60} height={60} src="https://source.unsplash.com/random/300x300/?1" alt="admin" className="w-[70px] h-[70px] object-center  rounded-full  dark:bg-gray-500" />
+            <div className="max-w-xs p-6 h-[230px]  rounded-md shadow-md flex flex-col justify-center items-center bg-gray-100 dark:bg-gray-900 dark:text-gray-50 border-gray-200 ">
+                <Image width={60} height={60} src="https://source.unsplash.com/random/300x300/?1" alt="admin" className="w-[70px] h-[70px] object-center  rounded-full border-rose-500 border-3 dark:bg-gray-500" />
                 <div className="mt-6 mb-2 text-center">
 
-                    <h2 className="text-xl font-semibold tracki">Tahsin Tarannum Chowdhury</h2>
-                    <h2 className="text-xl font-semibold text-gray-700">tahsin@gmail.com</h2>
-                    <h2 className="text-xl font-semibold text-gray-600">Admin</h2>
+                    <h2 className="text-lg font-semibold text-rose-500">Tahsin Tarannum Chowdhury</h2>
+                    <h2 className="text-md font-semibold text-gray-700">tahsin@gmail.com</h2>
+                    <h2 className="text-sm font-semibold text-rose-500">Admin</h2>
                 </div>
                 <div className="dark:text-gray-100">
 

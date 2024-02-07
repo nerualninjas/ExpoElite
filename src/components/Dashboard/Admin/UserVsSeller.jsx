@@ -49,7 +49,7 @@ const data = [
 
 const UserVsSeller = () => {
   return (
-    <div className='w-full h-full'>
+    <div className='w-full h-full bg-gray-100 shadow-md rounded-lg p-5'>
       {/* <ResponsiveContainer width="100%" height="100%"> */}
       <BarChart
         width={700}
@@ -68,7 +68,7 @@ const UserVsSeller = () => {
         <Tooltip />
         <Legend />
         <Bar dataKey="pv" fill="#FFC0CB" activeBar={<Rectangle fill="pink" stroke="red" />} />
-        <Bar dataKey="uv" fill="#F9B6D0" activeBar={<Rectangle fill="gold" stroke="red" />} />
+        <Bar dataKey="uv" fill="#FF385D" activeBar={<Rectangle fill="black" stroke="red" />} />
       </BarChart>
       {/* </ResponsiveContainer> */}
     </div>
