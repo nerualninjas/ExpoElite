@@ -13,13 +13,13 @@ const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 const TotalProperty2 = () => {
     return (
         <div>
-            <PieChart width={800} height={400}>
+            <PieChart width={230} height={400} >
                 <Pie
                     data={data}
-                    cx={120}
-                    cy={200}
-                    innerRadius={60}
-                    outerRadius={80}
+                    cx={100}
+                    cy={220}
+                    innerRadius={70}
+                    outerRadius={90}
                     fill="#8884d8"
                     paddingAngle={5}
                     dataKey="value"
