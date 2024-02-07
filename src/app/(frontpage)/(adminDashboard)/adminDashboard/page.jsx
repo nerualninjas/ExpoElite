@@ -1,13 +1,18 @@
 
 
+// import AdminDetails from '@/components/Dashboard/Admin/AdminDetails';
+// import PropertyVsSold from '@/components/Dashboard/Admin/PropertyVsSold';
+
+// import TotalProperty2 from '@/components/Dashboard/Admin/TotalProperty2';
+// import UserVsSeller from '@/components/Dashboard/Admin/UserVsSeller';
+// import AllUserTable from '@/components/Dashboard/Admin/UsersTable/AllUserTable';
 import AdminDetails from '@/components/Dashboard/Admin/AdminDetails';
 import PropertyVsSold from '@/components/Dashboard/Admin/PropertyVsSold';
-
 import TotalProperty2 from '@/components/Dashboard/Admin/TotalProperty2';
 import UserVsSeller from '@/components/Dashboard/Admin/UserVsSeller';
 import React from 'react';
 
-const DashBoard = () => {
+const AdminDashBoard = () => {
     return (
         <div className="w-full min-h-screen mt-5 flex  flex-col  justify-center items-center ">
         <div className="w-11/12 min-h-screen  flex justify-center items-center bg-gradient-to-r from-rose-200 via-base-100 to-rose-100 blur-[90px] absolute"></div>
@@ -38,9 +43,9 @@ const DashBoard = () => {
 
        </div>
           
-         
+          
         </div>
     );
 };
 
-export default DashBoard;
+export default AdminDashBoard;
