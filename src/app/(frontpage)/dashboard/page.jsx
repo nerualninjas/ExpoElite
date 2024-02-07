@@ -12,7 +12,7 @@ import React from 'react';
 const DashBoard = () => {
   return (
     <div className="w-full min-h-screen mt-5 flex  flex-col  justify-center items-center ">
-      <div className="w-11/12 min-h-screen  flex justify-center items-center bg-gradient-to-r from-rose-200 via-base-100 to-rose-100 blur-[90px] absolute"></div>
+      <div className="w-11/12 min-h-screen  flex justify-center items-center bg-gradient-to-b from-rose-200 via-base-100 to-rose-100 blur-[90px] absolute"></div>
       <div className="w-full  flex flex-col  justify-center items-center rounded-xl bg-opacity-10 z-10 bg-base-200 pb-32 ">
 
         <div className='w-full h-full flex flex-col '>
