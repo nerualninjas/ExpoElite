@@ -9,7 +9,7 @@ const useSearchProperty = ({location}) => {
         queryKey: ["seachedProduct"],
         queryFn: async () => {
             const res = await axiosPublic.get(`/searchAndSort?location=${location}`)
-            console.log(res.data);
+            // console.log(res.data);
             return res.data;
         }
     })

@@ -11,7 +11,7 @@ const NotificationBar = ({ open }) => {
     ]
 
     return (
-        <div className="bg-base-200 pl-5  w-[20vw] py-2 rounded-lg">
+        <div className="bg-base-200 pl-5 w-full md:w-[20vw] py-2 rounded-lg">
             <div className="flex items-center pr-3 justify-between">
                 <h2 className="text-xl">Notifications</h2>
                <Link href="/notification"> <button className="btn btn-sm btn-circle rounded-full text-center   "><HiOutlineDotsHorizontal /></button></Link>
