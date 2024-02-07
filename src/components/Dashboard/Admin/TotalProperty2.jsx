@@ -3,16 +3,15 @@ import React from 'react';
 import { PieChart, Pie, Cell, Label } from 'recharts';
 
 const data = [
-    { name: 'Group A', value: 400 },
+    { name: 'Group A', value: 600 },
     { name: 'Group B', value: 300 },
-    { name: 'Group C', value: 300 },
-    { name: 'Group D', value: 200 },
+
 ];
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+const COLORS = ['#FF385D', '#FBD5EB'];
 
 const TotalProperty2 = () => {
     return (
-        <div>
+        <div className='bg-[#DDE1EC]'>
             <PieChart width={230} height={400} >
                 <Pie
                     data={data}
@@ -27,7 +26,7 @@ const TotalProperty2 = () => {
                     {data.map((entry, index) => (
                         <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                     ))}
-                    <Label value="Total Property" position="center"/>
+                    <Label value="Total Property" position="center" className='text-black' />
                 </Pie>
             </PieChart>
         </div>
