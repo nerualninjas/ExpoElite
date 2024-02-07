@@ -20,7 +20,7 @@ const DashBoard = () => {
             <div className='flex w-2/6  justify-center items-center'>
               <AdminDetails />
             </div>
-            <div className='flex w-4/6  justify-center items-center'>
+            <div className='flex w-4/6 gap-2  justify-center items-center'>
               <TotalProperty2 />
               <TotalSeller />
               <TotalUser />

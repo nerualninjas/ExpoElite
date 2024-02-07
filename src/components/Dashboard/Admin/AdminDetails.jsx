@@ -4,7 +4,7 @@ import React from 'react';
 const AdminDetails = () => {
     return (
         <div>
-            <div className="max-w-xs p-6 h-[210px]  rounded-md shadow-md flex flex-col justify-center items-center bg-gradient-to-r from-[#F989B0] via-[#e49797] to-[#ffffff] dark:bg-gray-900 dark:text-gray-50 border-[#F43F5E] border-2">
+            <div className="max-w-xs p-6 h-[210px]  rounded-md shadow-md flex flex-col justify-center items-center bg-gradient-to-r before:from-[#F989B0] via-[#e49797] to-[#ffffff] dark:bg-gray-900 dark:text-gray-50 border-[#F43F5E] border-2">
                 <Image width={60} height={60} src="https://source.unsplash.com/random/300x300/?1" alt="admin" className="w-[70px] h-[70px] object-center  rounded-full  dark:bg-gray-500" />
                 <div className="mt-6 mb-2 text-center">
 

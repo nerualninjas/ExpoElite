@@ -12,7 +12,7 @@ const COLORS = ['#FF385D', '#FBD5EB'];
 
 const TotalUser = () => {
     return (
-        <div className="p-6 rounded-md shadow-md flex flex-col justify-center items-center bg-gradient-to-r from-[#F989B0] via-[#e49797] to-[#ffffff] dark:bg-gray-900 dark:text-gray-50 border-[#F43F5E] border-2">
+        <div className="p-6 rounded-md shadow-md flex flex-col justify-center items-center bg-gradient-to-r before:from-[#F989B0] via-[#e49797] to-[#ffffff] dark:bg-gray-900 dark:text-gray-50 border-[#F43F5E] border-2">
             <PieChart width={200} height={160} >
                 <Pie
                     data={data}
