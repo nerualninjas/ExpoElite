@@ -85,7 +85,7 @@ const PropertyDetail = ({ propertyId }) => {
       userEmail: sellerEmail,
       notificationData: [{
 
-        notificationText:`${user?.displayName} Like you property`,
+        notificationText:`${user?.displayName} ${!userLiked ? "Like":"Dislike"} you property`,
         notifyUserPhoto: `${user?.photoURL}`,
         notificationPath: `/products/${_id}`,
         createdTime: new Date(),
