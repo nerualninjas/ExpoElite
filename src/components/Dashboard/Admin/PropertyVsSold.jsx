@@ -57,10 +57,10 @@ const PropertyVsSold = () => {
        
 
 <div className='w-full'>
-<ResponsiveContainer width={800} height={500}>
+{/* <ResponsiveContainer width="100%" height="100%"> */}
         <AreaChart
-          width={500}
-          height={400}
+         width={700} 
+         height={500}
           data={data}
           margin={{
             top: 10,
@@ -77,7 +77,7 @@ const PropertyVsSold = () => {
           <Area type="monotone" dataKey="totalSoldProperty" stackId="1" stroke="#E11D48" fill="#F989B0"  />
           
         </AreaChart>
-      </ResponsiveContainer>
+      {/* </ResponsiveContainer> */}
         </div>
     );
 };
