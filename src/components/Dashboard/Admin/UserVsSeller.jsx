@@ -48,31 +48,31 @@ const data = [
 ];
 
 const UserVsSeller = () => {
-    return (
-        <div className='w-full h-full'>
-              {/* <ResponsiveContainer width="100%" height="100%"> */}
-        <BarChart
-           width={700} 
-           height={500}
-          data={data}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="pv" fill="#FFC0CB" activeBar={<Rectangle fill="pink" stroke="red" />} />
-          <Bar dataKey="uv" fill="#F9B6D0" activeBar={<Rectangle fill="gold" stroke="red" />} />
-        </BarChart>
+  return (
+    <div className='w-full h-full'>
+      {/* <ResponsiveContainer width="100%" height="100%"> */}
+      <BarChart
+        width={700}
+        height={500}
+        data={data}
+        margin={{
+          top: 5,
+          right: 30,
+          left: 20,
+          bottom: 5,
+        }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Bar dataKey="pv" fill="#FFC0CB" activeBar={<Rectangle fill="pink" stroke="red" />} />
+        <Bar dataKey="uv" fill="#F9B6D0" activeBar={<Rectangle fill="gold" stroke="red" />} />
+      </BarChart>
       {/* </ResponsiveContainer> */}
-        </div>
-    );
+    </div>
+  );
 };
 
 export default UserVsSeller;
