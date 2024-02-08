@@ -14,7 +14,8 @@ import {
   faCircle,
   faHouseChimney,
   faCircleInfo,
-  faChartLine
+  faChartLine,
+  faPeopleGroup
 } from "@fortawesome/free-solid-svg-icons";
 import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -30,18 +31,18 @@ const Navbar = () => {
   const pathName = usePathname();
   const [isDropMenuOpen, setIsDropMenu] = useState(false);
   const [imageLoading, setImageLoading] = useState(true);
-  const [isShowNotification,setIsShowNotification]=useState(false)
-const {unreadNotification,isLoading,refetch}=useUnreadNotificationCount()
+  const [isShowNotification, setIsShowNotification] = useState(false)
+  const { unreadNotification, isLoading, refetch } = useUnreadNotificationCount()
   // const [notificationLength,setLength]=useState(0)
- 
+
   // if(isLoading){
   //   return <><Loading/> </>
   // }
-  useEffect(()=>{
+  useEffect(() => {
     refetch()
-  },[unreadNotification,refetch])
+  }, [unreadNotification, refetch])
 
- const handleImageLoad = () => {
+  const handleImageLoad = () => {
     setImageLoading(false)
   }
 
@@ -123,8 +124,8 @@ const {unreadNotification,isLoading,refetch}=useUnreadNotificationCount()
                   <li key={item.pageName}>
                     <Link
                       className={`${pathName === item.path
-                          ? "bg-pink-200  py-2 px-4  rounded-full"
-                          : "hover:bg-pink-200  hover:text-white py-2 px-4 rounded-full"
+                        ? "bg-pink-200  py-2 px-4  rounded-full"
+                        : "hover:bg-pink-200  hover:text-white py-2 px-4 rounded-full"
                         }`}
                       href={item.path}
                     >
@@ -134,24 +135,50 @@ const {unreadNotification,isLoading,refetch}=useUnreadNotificationCount()
                 ))}
                 {/* if user login seller and admin  */}
                 {user && (
-                  <li>
-                    <Link
-                      className={`${pathName === "/products"
+                  <ul>
+                    <li>
+                      <Link
+                        className={`${pathName === "/products"
                           ? "flex items-center gap-2  hover:text-rose-600 text-rose-500 "
                           : "flex items-center gap-2  hover:text-rose-600 text-gray-800 "
+                          }`}
+                        href="/products"
+                      >
+                        {" "}
+                        <Image
+                          src={productList}
+                          width={18}
+                          height={18}
+                          alt="home"
+                        />{" "}
+                        <h4>Products</h4>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link className={`${pathName === "/dashboard"
+                        ? "flex items-center gap-2  hover:text-rose-600 text-rose-500 "
+                        : "flex items-center gap-2  hover:text-rose-600 text-gray-800 "
                         }`}
-                      href="/products"
+                        href="/dashboard"
+                      >
+                         <FontAwesomeIcon icon={faChartLine} />
+                        <h4>Dashboard</h4>
+                      </Link>
+
+                    </li>
+                    <li>
+                    <Link className={`${pathName === "/allUsers"
+                      ? "flex items-center gap-2  hover:text-rose-600 text-rose-500 "
+                      : "flex items-center gap-2  hover:text-rose-600 text-gray-800 "
+                      }`}
+                      href="/allUsers"
                     >
-                      {" "}
-                      {/* <Image
-                    src={productList}
-                    width={18}
-                    height={18}
-                    alt="home"
-                  />{" "} */}
-                      <h4 className="text-center mx-auto">Products</h4>
+                      <FontAwesomeIcon icon={faPeopleGroup} />
+                      <h4>AllUsers</h4>
                     </Link>
                   </li>
+                  </ul>
+
                 )}
               </ul>
             </div>
@@ -201,7 +228,7 @@ const {unreadNotification,isLoading,refetch}=useUnreadNotificationCount()
 
           {/* notification section  */}
           <section>
-            <button onMouseEnter={()=>setIsShowNotification(!isShowNotification)} onClick={()=>setIsShowNotification(!isShowNotification)} className="btn btn-ghost btn-circle">
+            <button onMouseEnter={() => setIsShowNotification(!isShowNotification)} onClick={() => setIsShowNotification(!isShowNotification)} className="btn btn-ghost btn-circle">
               <div className="indicator text-2xl text-rose-600">
                 {/* <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -217,14 +244,14 @@ const {unreadNotification,isLoading,refetch}=useUnreadNotificationCount()
                     d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
                   />
                 </svg> */}
-                <FaBell/>
+                <FaBell />
                 <span className="badge badge-xs badge-primary indicator-item">
                   {unreadNotification}
                 </span>
               </div>
             </button>
             <div>
-{isShowNotification && <div className="absolute top-16 right-20">  <NotificationBar open={setIsShowNotification}/> </div>}
+              {isShowNotification && <div className="absolute top-16 right-20">  <NotificationBar open={setIsShowNotification} /> </div>}
             </div>
           </section>
 
