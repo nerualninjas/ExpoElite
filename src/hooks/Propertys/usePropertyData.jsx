@@ -19,7 +19,7 @@ const usePropertyData = (propertyId) => {
     queryFn: async () => {
       const res = await axiosPublic.get(`/getProperty/${propertyId}`);
 
-      console.log(res?.data);
+      // console.log(res?.data);
       return res?.data;
     },
   });

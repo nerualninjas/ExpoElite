@@ -22,8 +22,9 @@ export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const axiosPublic = useAxiosPublic();
 
+  const axiosPublic = useAxiosPublic();
+console.log(loading)
   // google sign in
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
@@ -37,7 +38,7 @@ export const AuthContextProvider = ({ children }) => {
           userRole: "user",
         };
         await axiosPublic.post("/createUser", userData).then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           Swal.fire("Good job!", `${res.data.message}`, "success");
           router.push("/");
         });
@@ -67,20 +68,27 @@ export const AuthContextProvider = ({ children }) => {
   };
 
   const logOut = () => {
+    setLoading(true);
     signOut(auth);
   };
 
   useEffect(() => {
     const unsubcribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+      setLoading(true)
+      
       console.log(currentUser);
+      setUser(currentUser);
+      if(currentUser){
+
+        setLoading(false)
+      }
     });
     return () => unsubcribe();
   }, [user]);
 
   return (
     <AuthContext.Provider
-      value={{ user, googleSignIn, createUser, updateUser, signIn, logOut }}
+      value={{ user,loading, googleSignIn, createUser, updateUser, signIn, logOut }}
     >
       {children}
     </AuthContext.Provider>

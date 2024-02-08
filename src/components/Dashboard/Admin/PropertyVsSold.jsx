@@ -57,9 +57,9 @@ const PropertyVsSold = () => {
 
 
     <div className='w-full h-full bg-gray-100 shadow-md rounded-lg p-5'>
-      {/* <ResponsiveContainer width="100%" height="100%"> */}
-      <AreaChart
-        width={700}
+      {/* <ResponsiveContainer > */}
+      <AreaChart 
+         width={500}
         height={500}
         data={data}
         margin={{
@@ -68,6 +68,7 @@ const PropertyVsSold = () => {
           left: 0,
           bottom: 0,
         }}
+        className='max-w-[550px]'
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
