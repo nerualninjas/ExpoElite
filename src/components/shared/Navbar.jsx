@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
 import ThemeSwitcher from '@/app/ThemeSwitcher';
-import Notification from "@/components/Notification/Notification"
+import NotificationBar from "@/components/Notification/NotificationBar"
 import { useEffect, useState } from "react";
 
 import Link from "next/link";
@@ -215,7 +215,7 @@ const Navbar = () => {
               </div>
             </button>
             <div>
-{isShowNotification && <div className="absolute top-16 right-20">  <Notification open={setIsShowNotification}/> </div>}
+{isShowNotification && <div className="absolute top-16 right-20">  <NotificationBar open={setIsShowNotification}/> </div>}
             </div>
           </section>
 

@@ -1,26 +1,28 @@
+
+"use client";
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "./../useAxiosPublic";
 
-const usePropertyAllData = () => {
+const useAllUserData = () => {
   const { loading } = UserAuth();
   const axiosPublic = useAxiosPublic();
 
   const {
-    data: propertyData,
+    data: AllUserData,
     isPending,
     refetch,
   } = useQuery({
-    queryKey: ["propertyData"],
+    queryKey: ["AllUserData"],
     enabled: !loading,
     queryFn: async () => {
-      const res = await axiosPublic.get("/getAllProperty");
-      // console.log(res?.data);
+      const res = await axiosPublic.get("/getUsers");
+      console.log(res?.data);
       return res?.data;
     },
   });
 
-  return { propertyData, isPending, refetch };
+  return { AllUserData, isPending, refetch };
 };
 
-export default usePropertyAllData;
+export default useAllUserData;

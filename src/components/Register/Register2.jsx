@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
 import Link from "next/link";
 import useAxiosPublic from "./../../hooks/useAxiosPublic";
-import useNotification from "@/hooks/notifications/useNotification";
+import useNotification from "@/hooks/notifications/useNotificationCreate";
 
 
 const Register2 = () => {
@@ -62,6 +62,8 @@ const Register2 = () => {
           console.log(res.data);
           Swal.fire("Good job!", "User Created Successfully!", "success");
         });
+
+        // notifiacation add  start
         const data = {
           userEmail: email,
           notificationData: [{
@@ -71,6 +73,9 @@ const Register2 = () => {
           }]
         }
         notificationPost(data)
+
+        //notification end
+        
         router.push("/");
       })
       .catch((error) => {
