@@ -69,7 +69,7 @@ const PropertyDetail = ({ propertyId }) => {
   // const { title, price /* other properties */ } = propertyData;
   const { _id,propertyName, propertyType, price, image, bathrooms, bedrooms, livingRoom, propertyDetails, quantity } = propertySingleData || {};
 
-  const sellerEmail= "ashiqtestN@gmail.com"; //TODO need change with seller email for notificaitn
+  const sellerEmail= "ashiq.buet73@gmail.com"; //TODO need change with seller email for notificaitn
 
   //Like Count Functional
 
@@ -85,11 +85,10 @@ const PropertyDetail = ({ propertyId }) => {
       userEmail: sellerEmail,
       notificationData: [{
 
-        notificationText:`${user?.displayName} ${!userLiked ? "Like":"Dislike"} you property`,
+        notificationText:`${user?.displayName} ${!userLiked ? "Like":"Dislike"} your property`,
         notifyUserPhoto: `${user?.photoURL}`,
         notificationPath: `/products/${_id}`,
-        createdTime: new Date(),
-        notificationStatus: "unread"
+                notificationStatus: "unread"
       }]
     }
     // post api for notication 

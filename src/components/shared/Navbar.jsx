@@ -20,6 +20,7 @@ import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Loading from "@/app/loading";
 import { FaBell } from "react-icons/fa";
+import useUnreadNotificationCount from "@/hooks/notifications/useUnreadNotificationCount";
 
 
 const Navbar = () => {
@@ -30,9 +31,17 @@ const Navbar = () => {
   const [isDropMenuOpen, setIsDropMenu] = useState(false);
   const [imageLoading, setImageLoading] = useState(true);
   const [isShowNotification,setIsShowNotification]=useState(false)
+const {unreadNotification,isLoading,refetch}=useUnreadNotificationCount()
+  // const [notificationLength,setLength]=useState(0)
+ 
+  // if(isLoading){
+  //   return <><Loading/> </>
+  // }
+  useEffect(()=>{
+    refetch()
+  },[unreadNotification,refetch])
 
-  // console.log(user?.photoURL);
-  const handleImageLoad = () => {
+ const handleImageLoad = () => {
     setImageLoading(false)
   }
 
@@ -210,7 +219,7 @@ const Navbar = () => {
                 </svg> */}
                 <FaBell/>
                 <span className="badge badge-xs badge-primary indicator-item">
-                  {2}
+                  {unreadNotification}
                 </span>
               </div>
             </button>

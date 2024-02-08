@@ -1,14 +1,25 @@
+"use client"
+import useNotificationGet from "@/hooks/notifications/useNotificationGet";
+import useAxiosSecure from "@/hooks/useAxiosSecure";
 import Link from "next/link";
+import Image from "next/image";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
+import { formatTimeDifference } from '@/utils/timeUtils'
+import { UserAuth } from "@/app/(auth)/context/AuthContext";
 
 const NotificationBar = ({ open }) => {
+const {userNotification,notificationRefetch,notificationPending}=useNotificationGet()
+const axiosSecure = useAxiosSecure();
+ const {user}=UserAuth();
+const notificationData= userNotification?.notificationData;
+const notificalentgh = notificationData?.length;
 
-    const notificationData = [
-        { notificationText: "User Created", notificationPath: '/', createdTime: "10.44" },
-        { notificationText: "Product added", notificationPath: '/', createdTime: "10.44" },
-        { notificationText: "New Message", notificationPath: '/', createdTime: "10.44" },
-        { notificationText: "Ok", notificationPath: '/', createdTime: "10.44" }
-    ]
+
+const handleReadUpdate= async(id)=>{
+    console.log("Read",id);
+
+    await axiosSecure.patch(`/readNotification?email=${user?.email}&id=${id}`)
+}
 
     return (
         <div className="bg-base-200 pl-5 w-full md:w-[20vw] py-2 rounded-lg">
@@ -17,12 +28,32 @@ const NotificationBar = ({ open }) => {
                <Link href="/notification"> <button className="btn btn-sm btn-circle rounded-full text-center   "><HiOutlineDotsHorizontal /></button></Link>
             </div>
             <ul className="bg-base-200  space-y-2 py-2 rounded-lg" onMouseLeave={() => open(false)}>
-                {notificationData?.map((data) => <li key={data.notificationText} className="hover:bg-gray-500 pl-2 p-1 rounded-lg" >
-                    <Link href={data.notificationPath}>{data.notificationText} <br />
-                        <span className="text-[10px] text-rose-500">{data.createdTime} hours ago</span>
+                {notificationData?.slice(0,5).map((data) => <li  key={data._id} className={data.notificationStatus==="unread" ? "bg-base-300 hover:bg-gray-500  p-2 rounded-lg ":"hover:bg-gray-500 p-2 rounded-lg"} >
+                    <Link onClick={()=>handleReadUpdate(data._id)} href={data.notificationPath}>
+                        
+                   
+                 <div className="flex gap-2 ">
+                 <Image
+                      src={data?.notifyUserPhoto}
+                      width={20}
+                      height={20}
+                      alt="profile"
+                      className="rounded-full"
+                    />
+                    
+                   <p className="text-[14px]"> {data.notificationText} </p>
+                 </div>
+                
+                    <div className="flex gap-2 items-center justify-between">
+                        <span className="text-[10px] text-rose-500">{formatTimeDifference(data.createdTime)}</span>
+                {data?.notificationStatus === "unread" &&  <span className="text-[10px] text-rose-500">unread</span>}
+                    </div>
 
                     </Link>
                 </li>)}
+  <Link href="/notification">
+  <button className="p-1 btn btn-outline btn-sm text-center">See More</button>
+  </Link>
             </ul>
         </div>
         
