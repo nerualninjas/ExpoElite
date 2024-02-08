@@ -17,6 +17,7 @@ const ChatBox = () => {
             ]);
             setMessage('');
         }
+        console.log(message)
     };
 
     return (

@@ -30,7 +30,11 @@ import { UserAuth } from "@/app/(auth)/context/AuthContext";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
 import Comment from "@/components/productDetails/comment/Comment";
 import useNotification from "@/hooks/notifications/useNotificationCreate";
+
 import Link from "next/link";
+
+import ChatWindow2 from "../ChatWindow2/ChatWindow2";
+
 const PropertyDetail = ({ propertyId }) => {
   const {user}=UserAuth()
   const { notificationPost } = useNotification()
@@ -176,6 +180,11 @@ const PropertyDetail = ({ propertyId }) => {
           <div className="property-type text-xl font-semibold  text-gray-500">
            {propertyType}
           </div>
+
+          {/* ----------------------chatBot----------------------------------- */}
+          <ChatWindow2 propertyId={propertySingleData._id} propertyCreator={propertySingleData.propertyCreator}></ChatWindow2>
+
+
           {/* -----------property title and buy now button ------------*/}
           <div className="flex justify-between"> 
           <div className="property-title text-3xl font-bold mb-2 text-rose-500">
