@@ -17,7 +17,7 @@ const AddProduct = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    // console.log(data);
+    console.log('data');
     // You can add your logic to handle form submission here
     await axiosSecure.post("/addProperty", data).then((res) => {
       // console.log(res.data);
@@ -41,6 +41,10 @@ const AddProduct = () => {
       }
     });
   };
+
+  const test = () =>{
+    console.log('test data')
+  }
 
   return (
     <div className="w-full  p-8  rounded-xl  ">
@@ -212,6 +216,7 @@ const AddProduct = () => {
         {/* Submit Button */}
         <div className="flex gap-2 items-end justify-end">
           <button
+          onClick={()=>test()}
             type="submit"
             className="block p-3 text-center rounded-xl dark-text-gray-900 dark-bg-violet-400 btn   btn-1"
           >
