@@ -29,11 +29,12 @@ import PropertyDetailsSmallPart from "./PropertyDetailsSmallPart";
 
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
- 
 import Comment from "@/components/productDetails/comment/Comment";
+import useNotification from "@/hooks/notifications/useNotificationCreate";
 
 const PropertyDetail = ({ propertyId }) => {
   const {user}=UserAuth()
+  const { notificationPost } = useNotification()
   const axiosSecure = useAxiosSecure()
   const router = useRouter();
   //   const { id } = router.query;
@@ -50,7 +51,7 @@ const PropertyDetail = ({ propertyId }) => {
     }
   },[propertySingleData,user])
 
-console.log(userLiked)
+// console.log(userLiked)
 
   if (isPending) {
     return (
@@ -68,6 +69,7 @@ console.log(userLiked)
   // const { title, price /* other properties */ } = propertyData;
   const { _id,propertyName, propertyType, price, image, bathrooms, bedrooms, livingRoom, propertyDetails, quantity } = propertySingleData || {};
 
+  const sellerEmail= "ashiqtestN@gmail.com"; //TODO need change with seller email for notificaitn
 
   //Like Count Functional
 
@@ -77,6 +79,23 @@ console.log(userLiked)
   
   await axiosSecure.put(`/addOrRemoveLike?id=${_id}&userEmail=${userEmail}`)
   refetch()
+
+    // notifiacation add for like start
+    const data = {
+      userEmail: sellerEmail,
+      notificationData: [{
+
+        notificationText:`${user?.displayName} Like you property`,
+        notifyUserPhoto: `${user?.photoURL}`,
+        notificationPath: `/products/${_id}`,
+        createdTime: new Date(),
+        notificationStatus: "unread"
+      }]
+    }
+    // post api for notication 
+    notificationPost(data)
+
+    //notification end
 
   console.log(userEmail,_id);
 

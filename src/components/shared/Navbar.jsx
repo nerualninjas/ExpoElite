@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
 import ThemeSwitcher from '@/app/ThemeSwitcher';
-import NotificationBar from "@/components/Notification/Notification"
+import NotificationBar from "@/components/Notification/NotificationBar"
 import { useEffect, useState } from "react";
 
 import Link from "next/link";

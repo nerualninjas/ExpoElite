@@ -15,7 +15,7 @@ const usePropertyAllData = () => {
     enabled: !loading,
     queryFn: async () => {
       const res = await axiosPublic.get("/getAllProperty");
-      console.log(res?.data);
+      // console.log(res?.data);
       return res?.data;
     },
   });
