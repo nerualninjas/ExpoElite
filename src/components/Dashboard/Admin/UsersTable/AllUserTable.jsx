@@ -1,8 +1,5 @@
 "use client"
 import React, { useEffect } from 'react';
-// import { useQuery } from '@tanstack/react-query';
-import useAxiosPublic from '@/hooks/useAxiosPublic';
-import { useQuery } from '@tanstack/react-query';
 import useAllUserData from '@/hooks/users/useAllUserData';
 import Image from 'next/image';
 // import { UserAuth } from '@/app/(auth)/context/AuthContext';
@@ -48,7 +45,9 @@ const AllUserTable = () => {
         <th>#</th>
         <th> Name</th>
         <th> Email</th>
+        <th> Image</th>
         <th>Role</th>
+        <th>Action</th>
         <th>Action</th>
        
 
@@ -62,10 +61,19 @@ const AllUserTable = () => {
         <tr key={user._id}>
             <th> {index+1} </th>
             <td> {user.userName}</td>
-            <td> <Image width={100} height={100} src="" alt="" /></td>
             <td> {user.userEmail}</td>
+            <td> <Image width={100}
+    height={100}
+    src={`/images/${user.userPhoto}`}
+    alt="image"
+  /></td>
+  {/* {`/${user.userPhoto}`} */}
+  {/* {`/images/${user.userPhoto}`} */}
+           
             <td> {user.userRole}</td>
-            <td  className='btn text-white bg-[#FECDD3]'>Details</td>
+            <td> <button  className='btn text-white bg-[#3a9648]'>Approve <br />Seller Request</button></td>
+            <td> <button  className=' btn text-white bg-[#d43a4c]'>Decline <br /> Request</button></td>
+         
           
         </tr>
         )
