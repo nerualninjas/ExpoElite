@@ -4,7 +4,7 @@ import { BsFillChatRightDotsFill } from "react-icons/bs";
 
 import ChatBox2 from './ChatBox2';
 
-const ChatWindow2 = () => {
+const ChatWindow2 = ({propertyId, propertyCreator}) => {
     const [showModal, setShowModal] = useState(false);
 
     const handleToggleModal = () => {
@@ -21,7 +21,7 @@ const ChatWindow2 = () => {
                     <BsFillChatRightDotsFill />
                 </button>
             </div>
-            {showModal && <ChatBox2 onClose={handleToggleModal} visible={showModal} zIndex={45} />}
+            {showModal && <ChatBox2 propertyCreator={propertyCreator} propertyId={propertyId} onClose={handleToggleModal} visible={showModal} zIndex={45} />}
         </div>
     );
 };

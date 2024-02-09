@@ -1,8 +1,11 @@
 "use client"
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { UserAuth } from "@/app/(auth)/context/AuthContext";
+
 
 const ChatBox = () => {
+    const { user } = UserAuth();
     const [message, setMessage] = useState('');
     const [chat, setChat] = useState([
         { sender: 'You', message: 'Hello!', timestamp: new Date() },
@@ -17,7 +20,9 @@ const ChatBox = () => {
             ]);
             setMessage('');
         }
+        console.log(message)
     };
+
 
     return (
         <div className="fixed bottom-20 right-4 z-45">
@@ -26,11 +31,11 @@ const ChatBox = () => {
                     <Image
                         width={200}
                         height={150}
-                        src="https://i.postimg.cc/15pSTk1V/sabila.jpg"
+                        src={user?.photoURL}
                         alt="Profile"
                         className="w-8 h-8 rounded-full mr-2"
                     />
-                    <span>Husneara</span>
+                    <span>{user?.displayName}</span>
                 </div>
                 <div className="flex-1 p-4 overflow-y-auto bg-base-100">
                     {chat.map((msg, index) => (

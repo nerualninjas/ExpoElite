@@ -17,7 +17,7 @@ const AddProduct = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    // console.log(data);
+    console.log('data');
     // You can add your logic to handle form submission here
     await axiosSecure.post("/addProperty", data).then((res) => {
       // console.log(res.data);
@@ -42,12 +42,16 @@ const AddProduct = () => {
     });
   };
 
+  // const test = () =>{
+  //   console.log('test data')
+  // }
+
   return (
     <div className="w-full  p-8  rounded-xl  ">
       <h3 className="font-bold text-lg">Add a Product</h3>
 
     
-      <div className="space-y-1 text-sm hidden">
+      {/* <div className="space-y-1 text-sm hidden">
           <label className="block dark-text-gray-400">Creator owner Email : </label>
           <input
             {...register("email", {
@@ -58,7 +62,7 @@ const AddProduct = () => {
             className=" text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 dark-bg-gray-900 dark-text-gray-100 focus:dark-border-violet-400"
             value={user?.email}
           />
-        </div>
+        </div> */}
 
       <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
         {/* Product Name */}
@@ -212,6 +216,7 @@ const AddProduct = () => {
         {/* Submit Button */}
         <div className="flex gap-2 items-end justify-end">
           <button
+          // onClick={()=>test()}
             type="submit"
             className="block p-3 text-center rounded-xl dark-text-gray-900 dark-bg-violet-400 btn   btn-1"
           >
