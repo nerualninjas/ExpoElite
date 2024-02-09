@@ -8,7 +8,7 @@ import {Image} from "@nextui-org/react";
 // import Rating from 'react-rating';
 // Rating
 
- 
+
 
 
 import { Rating } from "@smastrom/react-rating";
@@ -225,7 +225,7 @@ const PropertyDetail = ({ propertyId }) => {
          Price: ${price}
           </div>
           <div className="  ">
-          <Link href="/payment">
+          <Link href={`../payment/${_id}`}>
              <button className="  rounded px-5 py-2 border-2 border-rose-600  text-xl font-semibold text-rose-600 hover:text-white hover:bg-rose-600">Buy Now</button>
             </Link>
 
