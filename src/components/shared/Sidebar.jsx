@@ -127,6 +127,7 @@ const Sidebar = () => {
               )}
               {/* Render products link for regular users */}
               {user && !isAdmin && (
+
                 <li>
                   <Link
                     className={`${pathName === '/products'
@@ -139,6 +140,25 @@ const Sidebar = () => {
                     <h4>Products</h4>
                   </Link>
                 </li>
+                
+                
+              )}
+               {user && !isAdmin && (
+
+                <li>
+                  <Link
+                    className={`${pathName === '/paymentList'
+                    ? "flex items-center gap-2  hover:text-rose-600 text-rose-500 "
+                    : "flex items-center gap-2  hover:text-rose-600 text-gray-800 "
+                  }`}
+                    href="/paymentList"
+                  >
+                    <Image src={productList} width={18} height={18} alt="home" />
+                    <h4>My order</h4>
+                  </Link>
+                </li>
+                
+                
               )}
             </ul>
           </section>
