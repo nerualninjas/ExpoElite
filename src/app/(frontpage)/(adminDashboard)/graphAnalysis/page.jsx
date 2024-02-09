@@ -21,7 +21,7 @@ const GraphAnalysis = () => {
       </div>
       <div className="w-full flex flex-col justify-center items-center rounded-xl bg-opacity-10 z-10 bg-base-200 pb-20">
         <div className='w-full h-full flex flex-col bg-rose-100 py-20 rounded-lg'>
-          <div className='flex flex-wrap justify-center items-center '>
+          <div className='flex flex-wrap justify-center items-center'>
             <div className='flex  w-full lg:w-2/6  justify-center items-center'>
               <AdminDetails />
             </div>
