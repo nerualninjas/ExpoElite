@@ -105,16 +105,16 @@ const PropertyDetail = ({ propertyId }) => {
   return (
     <div className="w-full min-h-screen mt-5 flex  flex-col  justify-center items-center ">
      
-      <div className="w-11/12 min-h-screen  flex justify-center items-center bg-gradient-to-r from-rose-200 via-base-100 to-rose-200 blur-[90px] absolute"></div>
-     <div className="w-11/12  flex flex-col  justify-center items-center rounded-xl bg-opacity-50 z-10 bg-white pb-32 shadow-xl">
+      <div className="w-full lg:w-11/12 min-h-screen black flex justify-center items-center bg-gradient-to-r from-rose-200 via-base-100 to-rose-200 blur-[90px] absolute"></div>
+     <div className="w-full lg:w-11/12  flex flex-col  justify-center items-center rounded-xl bg-opacity-50 z-10 bg-base-100 dark:bg-gray-500 pb-32 shadow-xl">
      {/* property details information and image container  */}
      
-     <div className="w-11/12  flex flex-col lg:flex-row justify-center items-center rounded-xl ">
+     <div className="w-full lg:w-11/12  flex flex-col lg:flex-row justify-center items-center rounded-xl ">
         {/* image section */}
         <div className="w-11/12 lg:w-1/2  text-center flex justify-center items-center py-2">
           <Carousel className="text-center " autoPlay>
             <div className="">
-              <img src={image} className="w-full h-full" />
+              <img src={image} className="w-full h-full"/>
              
             </div>
             <div>
@@ -184,14 +184,14 @@ const PropertyDetail = ({ propertyId }) => {
 
 
           {/* -----------property title and buy now button ------------*/}
-          <div className="flex justify-between"> 
-          <div className="property-title text-3xl font-bold mb-2 text-rose-500">
+          <div className="flex flex-col lg:flex-row justify-start lg:justify-between "> 
+          <div className="property-title text-2xl font-bold mb-2 text-rose-500">
           {propertyName}
           </div>
  
           <div> 
             <a href="/payment">
-             <button className="  rounded-lg px-5 py-2 border-2 border-rose-600  text-xl font-semibold text-rose-600 hover:text-white hover:bg-rose-600">Buy Now</button>
+             <button className="  rounded-lg px-3 py-2 border-2 border-rose-600  text-md font-semibold text-rose-600 hover:text-black hover:bg-rose-600">Buy Now</button>
             </a>
            </div>
  
@@ -206,7 +206,7 @@ const PropertyDetail = ({ propertyId }) => {
           </div>
           <br />
           <div>
-            <h2 className="text-2xl font-bold mb-3">Location</h2>
+            <h2 className="text-xl font-bold mb-3">Location</h2>
             <div>
               {" "}
               <FontAwesomeIcon
@@ -218,10 +218,10 @@ const PropertyDetail = ({ propertyId }) => {
           </div>
           <br />
           <div className="flex "> 
-          <div className=" rounded-sm px-5 py-2 border-2 text-black text-xl mr-2 ">
+          <div className=" rounded-sm px-5 py-2 border-2 text-black text-lg mr-2 ">
          Price: ${price}
           </div>
-          <div className="rounded-sm px-5 py-2 border-2 text-black text-xl  ">
+          <div className="rounded-sm px-5 py-2 border-2 text-black text-lg  ">
          Quantity: {quantity}
           </div>
 
@@ -229,12 +229,12 @@ const PropertyDetail = ({ propertyId }) => {
           <br />
           <div>
             <h2 className="text-2xl font-bold mb-3">Property Details</h2>
-            <div className="grid grid-cols-3 gap-20">
+            <div className="grid grid-cols-3 gap-8">
               <button className="rounded-full px-5 py-1 border-2 text-rose-600">
                 {" "}
                 <FontAwesomeIcon
                   icon={faBed}
-                  className="text-rose-500 mr-1 text-xl"
+                  className="text-rose-500 mr-1 text-md"
                 />{" "}
                 <span className="font-bold"> {bedrooms} </span>
               </button>
@@ -242,7 +242,7 @@ const PropertyDetail = ({ propertyId }) => {
                 {" "}
                 <FontAwesomeIcon
                   icon={faBath}
-                  className="text-rose-500 mr-1 text-xl"
+                  className="text-rose-500 mr-1 text-md"
                 />{" "}
                 <span className="font-bold"> {bathrooms} </span>
               </button>
@@ -250,7 +250,7 @@ const PropertyDetail = ({ propertyId }) => {
                 {" "}
                 <FontAwesomeIcon
                   icon={faCouch}
-                  className="text-rose-500 mr-1 text-xl"
+                  className="text-rose-500 mr-1 text-md"
                 />{" "}
                 <span className="font-bold"> {livingRoom} </span>
               </button>

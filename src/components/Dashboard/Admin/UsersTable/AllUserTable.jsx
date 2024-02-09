@@ -64,13 +64,13 @@ const AllUserTable = () => {
             <td> {user.userEmail}</td>
             <td> <Image width={100}
     height={100}
-    src={`/images/${user.userPhoto}`}
+    src={`/images/${user?.userPhoto}`}
     alt="image"
   /></td>
   {/* {`/${user.userPhoto}`} */}
-  {/* {`/images/${user.userPhoto}`} */}
+  {/* {`/images/${user?.userPhoto}`} */}
            
-            <td> {user.userRole}</td>
+            <td> {user?.userRole}</td>
             <td> <button  className='btn text-white bg-[#3a9648]'>Approve <br />Seller Request</button></td>
             <td> <button  className=' btn text-white bg-[#d43a4c]'>Decline <br /> Request</button></td>
          
