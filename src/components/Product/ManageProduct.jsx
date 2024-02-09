@@ -55,9 +55,9 @@ const ManageProduct = () => {
 
       <h4>Total Product: {properties?.length}</h4>
 
-      <div className="overflow-x-auto">
+      <div className=" w-full overflow-x-auto">
         <table className="table">
-          <thead className=" text-sm">
+          <thead className=" text-sm p-0 m-0 ">
             <tr>
               <td>No</td>
               <td>Image</td>
@@ -67,8 +67,7 @@ const ManageProduct = () => {
               <th>bathrooms</th>
               <th>livingRoom</th>
               <th>location</th>
-              <th>type</th>
-
+              
               <th>Action</th>
             </tr>
           </thead>

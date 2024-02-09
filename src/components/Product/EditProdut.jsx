@@ -1,25 +1,42 @@
 "use client";
-import { useForm } from "react-hook-form";
+
 import useAxiosSecure from "./../../hooks/useAxiosSecure";
+import usePropertyAllData from "./../../hooks/Propertys/usePropertyAllData";
+import Swal from "sweetalert2";
+import { useForm } from "react-hook-form";
 
 const EditProduct = ({ property }) => {
   const axiosSecure = useAxiosSecure();
-  // console.log(property);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { refetch } = usePropertyAllData();
+  const { register, handleSubmit, formState: { errors }, reset } = useForm();
+
+  const closeModal = () => {
+    reset();  // Reset form fields
+    document.getElementById("my_modal_2").close();
+  };
 
   const onSubmit = async (data) => {
     console.log(property._id);
-    // You can add your logic to handle form submission here
-    await axiosSecure
-      .patch(`/updateProperty/${property._id}`, data)
-      .then((res) => {
-        console.log(res.data);
+    try {
+      await axiosSecure.patch(`/updateProperty/${property._id}`, data);
+      console.log("Product updated successfully");
+
+      Swal.fire({
+        title: "Property Update Success!",
+        text: "Thanks You!",
+        icon: "success",
+        position: "top-right",
+        timer: 1500,
       });
+
+      refetch();
+      closeModal(); // Close modal on successful update
+    } catch (error) {
+      console.error("Error updating product:", error);
+      // Handle error, show error message to the user
+    }
   };
+
 
   return (
     <div className="w-full p-8 rounded-xl">
