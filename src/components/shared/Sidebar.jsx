@@ -18,7 +18,8 @@ import {
   faChartLine,
   faCircleInfo,
   faPeopleGroup,
-  faLandmark
+  faLandmark,
+  faUsers
 } from "@fortawesome/free-solid-svg-icons";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -46,6 +47,7 @@ const Sidebar = () => {
   const adminDashboard = [
     {pageName: "Dashboard" , path: "/dashboard", icon: faChartLine},
     {pageName: "AllUsers" , path: "/allUsers", icon: faPeopleGroup},
+    {pageName: "AllSellers" , path: "/allSellers", icon: faUsers},
     {pageName: "AllProducts" , path: "/allProducts", icon: faLandmark},
   ];
   return (
