@@ -61,6 +61,7 @@ const Navbar = () => {
   const mainMenu = [
     { pageName: "Homepage", path: "/", icon: faHouseChimney },
     { pageName: "Discover", path: "/discover", icon: faCircle },
+    { pageName: "My order", path: "/paymentList", icon: faCircle },
     { pageName: "About Us", path: "/about", icon: faCircleInfo },
     { pageName: "Contact Us", path: "/contact", icon: faAddressBook },
 
@@ -153,7 +154,26 @@ const Navbar = () => {
                         />{" "}
                         <h4>Products</h4>
                       </Link>
+                    </li> 
+                     <li>
+                      <Link
+                        className={`${pathName === item.path
+                          ? "flex items-center gap-2  hover:text-rose-600 text-rose-500 "
+                          : "flex items-center gap-2  hover:text-rose-600 text-gray-800 "
+                          }`}
+                          href={item.path}
+                      >
+                        {" "}
+                        <Image
+                          src={productList}
+                          width={18}
+                          height={18}
+                          alt="home"
+                        />{" "}
+                        <h4>Buy List</h4>
+                      </Link>
                     </li>
+
                     <li>
                       <Link className={`${pathName === "/dashboard"
                         ? "flex items-center gap-2  hover:text-rose-600 text-rose-500 "
