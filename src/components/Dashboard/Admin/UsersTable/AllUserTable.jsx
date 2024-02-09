@@ -5,7 +5,28 @@ import Image from 'next/image';
 // import { UserAuth } from '@/app/(auth)/context/AuthContext';
 
 
-const AllUserTable = () => {
+
+const AllUserTable = ({ sellerRequestSent }) => {
+
+    // const axiosPublic = useAxiosPublic();
+    // // const { loading } = UserAuth();
+    // const { data: users, isLoading, error } = useQuery({
+    //   queryKey: ['users'],
+    //   queryFn: async () => {
+    //     const res = await axiosPublic.get("/getUsers");
+    //     return res?.data;
+    //   }
+    // });
+
+    // if (isLoading) {
+    //   return <div>Loading...</div>;
+    // }
+    
+    // if (error) {
+    //   return <div>Error: {error.message}</div>;
+    // }
+
+
   
     const { AllUserData, isPending, refetch } = useAllUserData();
    

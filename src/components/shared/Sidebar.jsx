@@ -49,7 +49,7 @@ const Sidebar = () => {
     {pageName: "AllUsers" , path: "/allUsers", icon: faPeopleGroup},
     {pageName: "AllSellers" , path: "/allSellers", icon: faUsers},
     {pageName: "AllProducts" , path: "/allProducts", icon: faLandmark},
-  ]
+  ];
   return (
     <div>
 
