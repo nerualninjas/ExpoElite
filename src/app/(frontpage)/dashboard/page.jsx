@@ -7,6 +7,7 @@ import TotalProperty2 from '@/components/Dashboard/Admin/TotalProperty2';
 import TotalSeller from '@/components/Dashboard/Admin/TotalSeller';
 import TotalUser from '@/components/Dashboard/Admin/TotalUser';
 import UserVsSeller from '@/components/Dashboard/Admin/UserVsSeller';
+import AllProductTable from '@/components/Dashboard/ProductTable/AllProductTable';
 import React from 'react';
 
 const DashBoard = () => {
@@ -30,8 +31,10 @@ const DashBoard = () => {
             <div className='w-1/2 flex justify-center items-end'> <PropertyVsSold /></div>
             <div className='w-1/2 flex justify-center items-end'> <UserVsSeller /></div>
           </div>
+          <div>
+          </div>
         </div>
-
+        <AllProductTable />
       </div>
 
 
