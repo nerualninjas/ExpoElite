@@ -6,36 +6,19 @@ import Image from 'next/image';
 
 
 const AllUserTable = () => {
-
-    // const axiosPublic = useAxiosPublic();
-    // // const { loading } = UserAuth();
-    // const { data: users, isLoading, error } = useQuery({
-    //   queryKey: ['users'],
-    //   queryFn: async () => {
-    //     const res = await axiosPublic.get("/getUsers");
-    //     return res?.data;
-    //   }
-    // });
-
-    // if (isLoading) {
-    //   return <div>Loading...</div>;
-    // }
-    
-    // if (error) {
-    //   return <div>Error: {error.message}</div>;
-    // }
-
   
     const { AllUserData, isPending, refetch } = useAllUserData();
    
+   
     console.log(AllUserData)
-    const users= AllUserData;
+    // const users= AllUserData;
+    const users= AllUserData?.filter(item=> item.userRole==='user');
     useEffect(() => {
       console.log(users); // Log users to the console
     }, [users]);
     return (
         <div>
-          <h2> All user table</h2>
+         
             
              <div className="overflow-x-auto">
   <table className="table mx-5 w-full mt-5 mb-10 pb-6">
@@ -65,13 +48,8 @@ const AllUserTable = () => {
             <td> 
               <Image width={100}
     height={100}
-<<<<<<< HEAD
-    src={`/images/${user?.userPhoto}`}
-=======
     src={user?.userPhoto}
->>>>>>> 5e421aaec7ccd68d01bad9f5029e6b90e25c7b59
-    alt="image"
-  /></td>
+    alt="image" className='rounded-full w-[70px] h-[70px]'/></td>
   {/* {`/${user.userPhoto}`} */}
   {/* {`/images/${user?.userPhoto}`} */}
            
