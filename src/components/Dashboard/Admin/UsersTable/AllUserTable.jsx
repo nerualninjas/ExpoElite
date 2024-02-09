@@ -62,9 +62,14 @@ const AllUserTable = () => {
             <th> {index+1} </th>
             <td> {user.userName}</td>
             <td> {user.userEmail}</td>
-            <td> <Image width={100}
+            <td> 
+              <Image width={100}
     height={100}
+<<<<<<< HEAD
     src={`/images/${user?.userPhoto}`}
+=======
+    src={user?.userPhoto}
+>>>>>>> 5e421aaec7ccd68d01bad9f5029e6b90e25c7b59
     alt="image"
   /></td>
   {/* {`/${user.userPhoto}`} */}
