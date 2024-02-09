@@ -26,11 +26,14 @@ import { useRouter } from "next/navigation";
 import usePropertyData from "@/hooks/Propertys/usePropertyData";
 import PropertyDetailsSmallPart from "./PropertyDetailsSmallPart";
 
-
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
 import Comment from "@/components/productDetails/comment/Comment";
 import useNotification from "@/hooks/notifications/useNotificationCreate";
+
+import Link from "next/link";
+
+import ChatWindow2 from "../ChatWindow2/ChatWindow2";
 
 const PropertyDetail = ({ propertyId }) => {
   const {user}=UserAuth()
@@ -177,17 +180,22 @@ const PropertyDetail = ({ propertyId }) => {
           <div className="property-type text-xl font-semibold  text-gray-500">
            {propertyType}
           </div>
+
+          {/* ----------------------chatBot----------------------------------- */}
+          <ChatWindow2 propertyId={propertySingleData._id} propertyCreator={propertySingleData.propertyCreator}></ChatWindow2>
+
+
           {/* -----------property title and buy now button ------------*/}
           <div className="flex justify-between"> 
           <div className="property-title text-3xl font-bold mb-2 text-rose-500">
           {propertyName}
           </div>
  
-          <div> 
+          {/* <div> 
             <a href="/payment">
              <button className="  rounded-lg px-5 py-2 border-2 border-rose-600  text-xl font-semibold text-rose-600 hover:text-white hover:bg-rose-600">Buy Now</button>
             </a>
-           </div>
+           </div> */}
  
         
  
@@ -212,11 +220,13 @@ const PropertyDetail = ({ propertyId }) => {
           </div>
           <br />
           <div className="flex "> 
-          <div className=" rounded-sm px-5 py-2 border-2 text-black text-xl mr-2 ">
+          <div className=" rounded px-5 py-2 border-2 text-black text-xl mr-2 ">
          Price: ${price}
           </div>
-          <div className="rounded-sm px-5 py-2 border-2 text-black text-xl  ">
-         Quantity: {quantity}
+          <div className="  ">
+          <Link href="/payment">
+             <button className="  rounded px-5 py-2 border-2 border-rose-600  text-xl font-semibold text-rose-600 hover:text-white hover:bg-rose-600">Buy Now</button>
+            </Link>
           </div>
 
           </div>
