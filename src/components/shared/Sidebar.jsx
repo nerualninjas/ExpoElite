@@ -17,16 +17,20 @@ import {
   faHouseChimney,
   faChartLine,
   faCircleInfo,
-  faPeopleGroup
+  faPeopleGroup,
+  faLandmark
 } from "@fortawesome/free-solid-svg-icons";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
+import useAdmin from "@/hooks/users/useAdmin";
 
 const Sidebar = () => {
   const { user, logOut } = UserAuth();
   const pathName = usePathname();
-  const [isMenu, setIsMenu] = useState(false)
+  const [isMenu, setIsMenu] = useState(false);
+  const { isAdmin, isPending , refetch } = useAdmin()
+  console.log(isAdmin)
 
   const handleNavMenu = () => {
     setIsMenu(!isMenu)
@@ -38,6 +42,12 @@ const Sidebar = () => {
     { pageName: "About Us", path: "/about", icon: faCircleInfo },
     { pageName: "Contact Us", path: "/contact", icon: faAddressBook },
   ];
+
+  const adminDashboard = [
+    {pageName: "Dashboard" , path: "/dashboard", icon: faChartLine},
+    {pageName: "AllUsers" , path: "/allUsers", icon: faPeopleGroup},
+    {pageName: "AllProducts" , path: "/allProducts", icon: faLandmark},
+  ]
   return (
     <div>
 
@@ -48,7 +58,7 @@ const Sidebar = () => {
 
           <div className=" text-center   min-h-screen bg-neutral  absolute top-0 right-0 z-50 mx-auto  w-56">
             <div className="flex-col item-center justify-center">
-              <div className="text-2xl my-10   ">
+              <div className="text-2xl my-10">
                 {isMenu && <button onClick={handleNavMenu} >X</button>}
               </div>
               <ul className="space-y-4 h-2/3 my-auto">
@@ -97,50 +107,36 @@ const Sidebar = () => {
                 </li>
               ))}
               {/* if user login seller and admin  */}
-              {user && (
-                <ul className="text-md font-thin space-y-6">
-                  <li>
+              {user && isAdmin && (
+                adminDashboard.map((adminDash) => (
+                  <li key={adminDash.pageName}>
                     <Link
-                      className={`${pathName === "/products"
-                        ? "flex items-center gap-2  hover:text-rose-600 text-rose-500 "
-                        : "flex items-center gap-2  hover:text-rose-600 text-gray-800 "
-                        }`}
-                      href="/products"
-                    >
-                      {" "}
-                      <Image
-                        src={productList}
-                        width={18}
-                        height={18}
-                        alt="home"
-                      />{" "}
-                      <h4>Products</h4>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className={`${pathName === "/dashboard"
+                     className={`${pathName === adminDash.path
                       ? "flex items-center gap-2  hover:text-rose-600 text-rose-500 "
                       : "flex items-center gap-2  hover:text-rose-600 text-gray-800 "
-                      }`}
-                      href="/dashboard"
+                       }`}
+                      href={adminDash.path}
                     >
-                      <FontAwesomeIcon icon={faChartLine} />
-                      <h4>Dashboard</h4>
+                      <FontAwesomeIcon icon={adminDash.icon} />
+                      <h4>{adminDash.pageName}</h4>
                     </Link>
                   </li>
-                  <li>
-                    <Link className={`${pathName === "/allUsers"
-                      ? "flex items-center gap-2  hover:text-rose-600 text-rose-500 "
-                      : "flex items-center gap-2  hover:text-rose-600 text-gray-800 "
-                      }`}
-                      href="/allUsers"
-                    >
-                      <FontAwesomeIcon icon={faPeopleGroup} />
-                      <h4>AllUsers</h4>
-                    </Link>
-                  </li>
-                </ul>
-
+                ))
+              )}
+              {/* Render products link for regular users */}
+              {user && !isAdmin && (
+                <li>
+                  <Link
+                    className={`${pathName === '/products'
+                    ? "flex items-center gap-2  hover:text-rose-600 text-rose-500 "
+                    : "flex items-center gap-2  hover:text-rose-600 text-gray-800 "
+                  }`}
+                    href="/products"
+                  >
+                    <Image src={productList} width={18} height={18} alt="home" />
+                    <h4>Products</h4>
+                  </Link>
+                </li>
               )}
             </ul>
           </section>
