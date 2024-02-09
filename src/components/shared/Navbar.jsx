@@ -36,7 +36,7 @@ const Navbar = () => {
   const [isShowNotification, setIsShowNotification] = useState(false)
   const { unreadNotification, isLoading, refetch } = useUnreadNotificationCount();
   const { isAdmin } = useAdmin()
-  console.log(isAdmin)
+  // console.log(isAdmin)
   // const [notificationLength,setLength]=useState(0)
 
   // if(isLoading){
@@ -72,8 +72,8 @@ const Navbar = () => {
 
   const adminDashboard = [
     {pageName: "Dashboard" , path: "/dashboard", icon: faChartLine},
-    {pageName: "AllUsers" , path: "/allUsers", icon: faPeopleGroup},
-    {pageName: "AllProducts" , path: "/allProducts", icon: faLandmark},
+    {pageName: "Manage Users" , path: "/allUsers", icon: faPeopleGroup},
+    {pageName: "Manage Property" , path: "/allProducts", icon: faLandmark},
   ];
 
   const btnActive = true;
