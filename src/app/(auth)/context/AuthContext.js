@@ -24,7 +24,7 @@ export const AuthContextProvider = ({ children }) => {
   const router = useRouter();
 
   const axiosPublic = useAxiosPublic();
-console.log(loading)
+  console.log(loading)
   // google sign in
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
@@ -75,10 +75,10 @@ console.log(loading)
   useEffect(() => {
     const unsubcribe = onAuthStateChanged(auth, (currentUser) => {
       setLoading(true)
-      
+
       console.log(currentUser);
       setUser(currentUser);
-      if(currentUser){
+      if (currentUser) {
 
         setLoading(false)
       }
@@ -88,7 +88,7 @@ console.log(loading)
 
   return (
     <AuthContext.Provider
-      value={{ user,loading, googleSignIn, createUser, updateUser, signIn, logOut }}
+      value={{ user, loading, googleSignIn, createUser, updateUser, signIn, logOut }}
     >
       {children}
     </AuthContext.Provider>
