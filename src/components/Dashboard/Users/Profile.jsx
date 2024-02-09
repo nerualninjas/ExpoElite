@@ -23,6 +23,7 @@ const Profile = () => {
         } catch (error) {
             console.error("Error updating user role:", error);
         }
+
     };
 
     return (
