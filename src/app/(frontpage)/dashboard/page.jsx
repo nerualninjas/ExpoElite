@@ -7,7 +7,7 @@ import TotalProperty2 from '@/components/Dashboard/Admin/TotalProperty2';
 import TotalSeller from '@/components/Dashboard/Admin/TotalSeller';
 import TotalUser from '@/components/Dashboard/Admin/TotalUser';
 import UserVsSeller from '@/components/Dashboard/Admin/UserVsSeller';
-import AllProductTable from '@/components/Dashboard/ProductTable/AllProductTable';
+
 import React from 'react';
 
 const DashBoard = () => {
@@ -34,7 +34,7 @@ const DashBoard = () => {
           <div>
           </div>
         </div>
-        <AllProductTable />
+       
       </div>
 
 

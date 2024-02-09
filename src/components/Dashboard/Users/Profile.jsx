@@ -17,7 +17,7 @@ const Profile = () => {
     const handleSellerRequest = async (id) => {
         const data = { userRole: "Seller", roleStatus: "Pending" };
         await axiosSecure
-        .patch(`/updateRole/:${id}`, )
+        .patch(`/updateRole/${id}`, )
         .then((res) => {
           console.log(res.data);
         });
