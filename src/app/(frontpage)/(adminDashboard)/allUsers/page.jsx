@@ -1,12 +1,13 @@
-
+"use client"
 import AllUserTable from '@/components/Dashboard/Admin/UsersTable/AllUserTable';
 
-import React from 'react';
+import React, { useState } from 'react';
 
 const AllUsersData = () => {
+    const [sellerRequestSent, setSellerRequestSent] = useState();
     return (
         <div>
-            <AllUserTable />
+            <AllUserTable sellerRequestSent={sellerRequestSent}/>
         </div>
     );
 };
