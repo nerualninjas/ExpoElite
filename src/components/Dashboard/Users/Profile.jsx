@@ -1,27 +1,29 @@
-"use client";
-import React from 'react';
+"use client"
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
-import { useState } from 'react';
 import axios from 'axios';
 import useAxiosSecure from '@/hooks/useAxiosSecure';
 import useAUser from '@/hooks/users/useAUser';
+import useAdmin from '@/hooks/users/useAdmin';
 
 const Profile = () => {
     const { user } = UserAuth();
     const [sellerRequestSent, setSellerRequestSent] = useState(false);
     const axiosSecure = useAxiosSecure();
-    const {userInfoData} = useAUser();
-    console.log(userInfoData)
-    const handleSellerRequest = async (id) => {
+    const { isAdmin } = useAdmin();
+    const { userInfoData } = useAUser();
+
+    const handleSellerRequest = async () => {
         const data = { userRole: "Seller", roleStatus: "Pending" };
-        await axiosSecure
-        .patch(`/updateRole/${id}`, )
-        .then((res) => {
-          console.log(res.data);
-        });
-        setSellerRequestSent(true);
+        try {
+            await axiosSecure.patch(`/updateRole/${userInfoData?._id}`, data);
+            setSellerRequestSent(true);
+        } catch (error) {
+            console.error("Error updating user role:", error);
+        }
+
     };
 
     return (
@@ -31,14 +33,20 @@ const Profile = () => {
                     <Image src={user?.photoURL} width={200} height={200} alt='profile' />
                 </div>
                 <div className='flex flex-col gap-2 items-start mt-10 text-2xl text-rose-700 font-semibold'>
-                    <p>Name: <span className='font-normal text-black '>{user?.displayName}</span></p>
+                    <p>Name: <span className='font-normal text-black'>{user?.displayName}</span></p>
                     <h1>Email: <span className='font-normal text-black'>{user?.email}</span> </h1>
-                    {/* <Link href={"/profile/edit"} className='border-2 border-rose-500 rounded-lg p-2 text-xl hover:bg-rose-500 hover:text-white'>Edit Profile</Link> */}
-                    {/* Show the request seller button only if the request has not been sent */}
-                    {!sellerRequestSent ? (
-                        <button onClick={() => handleSellerRequest(userInfoData._id)}  className='btn text-white bg-[#3a9648]'>Request to Become Seller</button>
-                    ) : (
-                        <button className='btn text-white bg-[#d43a4c]'>Request Sent</button>
+                    {/* Render admin button if user is admin */}
+                    {isAdmin && (
+                        <Link href="/allUsers" className='border-2 rounded-xl text-lg p-2 text-white bg-[#3a9648] hover:bg-white hover:text-[#3a9648] '>Check All users</Link>
+                        // <button className='btn text-white bg-[#3a9648]'>Admin</button>
+                    )}
+                    {/* Render request seller button if request has not been sent */}
+                    {!sellerRequestSent && !isAdmin && (
+                        <button onClick={handleSellerRequest} className='border-2 rounded-xl text-lg p-2 text-white bg-[#3a9648] hover:bg-white hover:text-[#3a9648]'>Request to Become Seller</button>
+                    )}
+                    {/* Render "Request Sent" button if request has been sent */}
+                    {sellerRequestSent && (
+                        <button className='border-2 rounded-xl text-lg p-2 text-white bg-rose-500 hover:bg-white hover:text-rose-500'>Request Sent</button>
                     )}
                 </div>
             </div>
