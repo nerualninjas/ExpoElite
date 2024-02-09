@@ -45,8 +45,8 @@ const Sidebar = () => {
 
   const adminDashboard = [
     {pageName: "Dashboard" , path: "/dashboard", icon: faChartLine},
-    {pageName: "AllUsers" , path: "/allUsers", icon: faPeopleGroup},
-    {pageName: "AllProducts" , path: "/allProducts", icon: faLandmark},
+    {pageName: "Manage Users" , path: "/allUsers", icon: faPeopleGroup},
+    {pageName: "Manage Property" , path: "/allProducts", icon: faLandmark},
   ];
   return (
     <div>
