@@ -47,7 +47,7 @@ const Sidebar = () => {
     {pageName: "Dashboard" , path: "/dashboard", icon: faChartLine},
     {pageName: "AllUsers" , path: "/allUsers", icon: faPeopleGroup},
     {pageName: "AllProducts" , path: "/allProducts", icon: faLandmark},
-  ]
+  ];
   return (
     <div>
 

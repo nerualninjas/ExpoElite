@@ -15,14 +15,16 @@ import {
   faHouseChimney,
   faCircleInfo,
   faChartLine,
-  faPeopleGroup
+  faPeopleGroup,
+  faLandmark
+
 } from "@fortawesome/free-solid-svg-icons";
 import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Loading from "@/app/loading";
 import { FaBell } from "react-icons/fa";
 import useUnreadNotificationCount from "@/hooks/notifications/useUnreadNotificationCount";
-
+import useAdmin from "@/hooks/users/useAdmin";
 
 const Navbar = () => {
   const { user, loading, logOut } = UserAuth();
@@ -32,7 +34,9 @@ const Navbar = () => {
   const [isDropMenuOpen, setIsDropMenu] = useState(false);
   const [imageLoading, setImageLoading] = useState(true);
   const [isShowNotification, setIsShowNotification] = useState(false)
-  const { unreadNotification, isLoading, refetch } = useUnreadNotificationCount()
+  const { unreadNotification, isLoading, refetch } = useUnreadNotificationCount();
+  const { isAdmin } = useAdmin()
+  console.log(isAdmin)
   // const [notificationLength,setLength]=useState(0)
 
   // if(isLoading){
@@ -64,6 +68,12 @@ const Navbar = () => {
     { pageName: "About Us", path: "/about", icon: faCircleInfo },
     { pageName: "Contact Us", path: "/contact", icon: faAddressBook },
 
+  ];
+
+  const adminDashboard = [
+    {pageName: "Dashboard" , path: "/dashboard", icon: faChartLine},
+    {pageName: "AllUsers" , path: "/allUsers", icon: faPeopleGroup},
+    {pageName: "AllProducts" , path: "/allProducts", icon: faLandmark},
   ];
 
   const btnActive = true;
@@ -119,13 +129,13 @@ const Navbar = () => {
               <div className="text-2xl my-10   ">
                 {isMenu && <button onClick={handleNavMenu}>X</button>}
               </div>
-              <ul className="space-y-4 h-2/3 my-auto">
+              <ul className="space-y-4 h-2/3 ">
                 {mainMenu.map((item) => (
                   <li key={item.pageName}>
                     <Link
                       className={`${pathName === item.path
                         ? "bg-pink-200  py-2 px-4  rounded-full"
-                        : "hover:bg-pink-200  hover:text-white py-2 px-4 rounded-full"
+                        : "hover:bg-pink-200   hover:text-rose-600 py-2 px-4 rounded-full"
                         }`}
                       href={item.path}
                     >
@@ -134,51 +144,36 @@ const Navbar = () => {
                   </li>
                 ))}
                 {/* if user login seller and admin  */}
-                {user && (
-                  <ul>
-                    <li>
+                {user && isAdmin && (
+                  adminDashboard.map((adminDash) => (
+                    <li key={adminDash.pageName}>
                       <Link
-                        className={`${pathName === "/products"
-                          ? "flex items-center gap-2  hover:text-rose-600 text-rose-500 "
-                          : "flex items-center gap-2  hover:text-rose-600 text-gray-800 "
+                        className={`${pathName === adminDash.path
+                          ? "bg-pink-200  py-2 px-4  rounded-full"
+                          : "hover:bg-pink-200   hover:text-rose-600 py-2 px-4 rounded-full"
                           }`}
-                        href="/products"
+                        href={adminDash.path}
                       >
-                        {" "}
-                        <Image
-                          src={productList}
-                          width={18}
-                          height={18}
-                          alt="home"
-                        />{" "}
-                        <h4>Products</h4>
+                     
+                        <h4>{adminDash.pageName}</h4>
                       </Link>
                     </li>
-                    <li>
-                      <Link className={`${pathName === "/dashboard"
-                        ? "flex items-center gap-2  hover:text-rose-600 text-rose-500 "
-                        : "flex items-center gap-2  hover:text-rose-600 text-gray-800 "
+                  ))
+                )}
+                {/* Render products link for regular users */}
+                {user && !isAdmin && (
+                  <li>
+                    <Link
+                      className={`${pathName === '/products'
+                      ? "bg-pink-200  py-2 px-4  rounded-full"
+                      : "hover:bg-pink-200  hover:text-rose-600 py-2 px-4 rounded-full"
                         }`}
-                        href="/dashboard"
-                      >
-                         <FontAwesomeIcon icon={faChartLine} />
-                        <h4>Dashboard</h4>
-                      </Link>
-
-                    </li>
-                    <li>
-                    <Link className={`${pathName === "/allUsers"
-                      ? "flex items-center gap-2  hover:text-rose-600 text-rose-500 "
-                      : "flex items-center gap-2  hover:text-rose-600 text-gray-800 "
-                      }`}
-                      href="/allUsers"
+                      href="/products"
                     >
-                      <FontAwesomeIcon icon={faPeopleGroup} />
-                      <h4>AllUsers</h4>
+                     
+                      <h4>Products</h4>
                     </Link>
                   </li>
-                  </ul>
-
                 )}
               </ul>
             </div>
@@ -298,9 +293,9 @@ const Navbar = () => {
                     </h3>
 
                     <li>
-                      <a className="justify-between border-b-1 border-rose-500 hover:text-rose-500 p-2 bg-base-100 w-full">
+                      <Link href="/profile" className="justify-between border-b-1 border-rose-500 hover:text-rose-500 p-2 bg-base-100 w-full">
                         Profile
-                      </a>
+                      </Link>
                     </li>
                     <li>
                       <a className="p-2 bg-base-100 border-b-1 border-rose-500 hover:text-rose-500  w-full">
