@@ -68,7 +68,7 @@ const AddProduct = () => {
             <p className="text-red-500">{errors.propertyCreator.message}</p>
           )}
         </div>
-  {/* value={user?.email} */}
+  
         <div className="space-y-1 text-sm">
           <label className="block dark-text-gray-400">Product Name</label>
           <input
@@ -178,10 +178,9 @@ const AddProduct = () => {
             })}
             className="w-full px-4 py-3 rounded-md text-black"
           >
-            <option value="Business">Type 1</option>
-            <option value="Business">Type 1</option>
-            <option value="Business">Type 1</option>
-            <option value="Business">Type 1</option>
+            <option value="sell">Sell type proparty</option>
+            <option value="rant">Rant type proparty</option>
+            
           </select>
           {errors.propertyType && (
             <p className="text-red-500">{errors.propertyType.message}</p>
