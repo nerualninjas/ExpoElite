@@ -1,4 +1,4 @@
-
+"use client"
 import { UserAuth } from '@/app/(auth)/context/AuthContext';
 import Image from 'next/image';
 import React from 'react';
