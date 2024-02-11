@@ -1,224 +1,223 @@
 "use client";
+import React, { useEffect, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBath,
   faBed,
   faCouch,
   faMapMarkerAlt,
+  faSearch,
 } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import AOS from "aos";
 import "aos/dist/aos.css";
-import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useState } from "react";
 import usePropertyAllData from "./../../hooks/Propertys/usePropertyAllData";
 import useAxiosPublic from "./../../hooks/useAxiosPublic";
 import useAxiosSecure from "./../../hooks/useAxiosSecure";
 
-const BestHomeSection = () => {
-  const [properties, setProperties] = useState([]);
-  const [searchParams, setSearchParams] = useState({
-    title: "",
-    location: "",
-    type: "",
-    range: 40,
-  });
-
-  // useEffect(() => {
-  //   fetch("property.json")
-  //     .then((res) => res.json())
-  //     .then((data) => setProperties(data));
-  //   AOS.init();
-  // }, []);
-
+const BestHomeSectionV2 = () => {
   const axiosSecure = useAxiosSecure();
   const axiosPublic = useAxiosPublic();
   const { propertyData, isPending, refetch } = usePropertyAllData();
+  const [properties, setProperties] = useState(propertyData);
+  const [searchParams, setSearchParams] = useState({ location: "" });
+  const [loading, setLoading] = useState(false);
+  const [noProductFound, setNoProductFound] = useState(false);
 
   useEffect(() => {
     setProperties(propertyData);
     refetch();
-  }, [propertyData]);
+  }, [propertyData, refetch]);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setSearchParams((prevParams) => ({
-      ...prevParams,
-      [name]: value,
-    }));
-  };
-
-  const handleRangeChange = (e) => {
-    setSearchParams((prevParams) => ({
-      ...prevParams,
-      range: e.target.value,
-    }));
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your search logic here using searchParams
-    console.log(searchParams);
+
+    try {
+      setLoading(true);
+      setNoProductFound(false);
+
+      const locationValue = e.target.elements.location.value;
+      const response = await axiosPublic.get(
+        `searchbyloc?location=${locationValue}`
+      );
+
+      if (response.data.length === 0) {
+        setNoProductFound(true);
+      } else {
+        setProperties(response.data);
+      }
+
+      setSearchParams({ location: "" }); // Clear the input field
+    } catch (error) {
+      console.error("Error in submitting form:", error);
+      // Display an error message to the user
+    } finally {
+      setLoading(false);
+    }
   };
-
-  if (!properties || properties.length === 0) {
-    return <div>House not found!</div>;
-  }
-
   return (
-    <div className="w-full   ">
-      <div className=" container mx-auto ">
-        <h3 className=" ">
-          <span className="heading  text-left w-100 text-xl font-bold text-gray-900">
+    <>
+      <div className="w-full py-12">
+        <div className="container mx-auto">
+          <h3 className="text-center w-100 text-xl font-bold text-gray-900 p-4 ">
             Find your Best Home
-          </span>
-        </h3>
-        <br />
+          </h3>
+          <hr className="w-1/4 mx-auto border-rose-400 border-2" />
+          <br />
 
-        <form
-          onSubmit={handleSubmit}
-          className="grid grid-cols-3 lg:grid-cols-5 gap-4 w-full"
-        >
-          <div className="w-2/12">
-            <p>Title </p>
-
-            <input
-              type="text"
-              name="title"
-              placeholder="Type here"
-              value={searchParams.title}
-              onChange={handleInputChange}
-              className="input input-bordered w-[150px]   "
-            />
-          </div>
-          <div className="w-2/12">
-            <p>Location </p>
-            <input
-              type="text"
-              name="location"
-              placeholder="Type here"
-              value={searchParams.location}
-              onChange={handleInputChange}
-              className="input input-bordered w-[150px]  "
-            />
-          </div>
-          <div className="w-2/12">
-            <p>Type </p>
-            <input
-              type="text"
-              name="type"
-              placeholder="Type here"
-              value={searchParams.type}
-              onChange={handleInputChange}
-              className="input input-bordered w-[150px]   "
-            />
-          </div>
-
-          <div className="w-3/12   ">
-            <p> Range </p>
-            <input
-              type="range"
-              min={0}
-              max="100"
-              value={searchParams.range}
-              onChange={handleRangeChange}
-              className="range range-error w-[200px] mt-3   "
-            />
-          </div>
-          <div className="pt-6 ml-14 ">
-            <button type="submit" className="btn btn-md btn-1">
-              Search
-            </button>
-          </div>
-        </form>
-        <br />
-
-        <div className="mx-auto grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2">
-          {properties.slice(0, 9).map((property, index) => (
-            <div
-              key={index}
-              className="  card bg-base-100  "
-       
-            >
-              <figure className="p-1">
-                <Image
-                  width={300}
-                  height={200}
-                  src={property.image}
-                  alt={property.propertyName}
-                  className="rounded-xl "
+          <form onSubmit={handleSubmit} className="flex w-full  p-4">
+            <div className="form-control w-full">
+              <div className="input-group mx-auto  gap-2 flex flex-col lg:flex-row ">
+                <input
+                  type="text"
+                  name="location"
+                  placeholder="Find by Location"
+                  className="input input-bordered"
                 />
-              </figure>
 
-              <span> </span>
-              <div className=" px-3   ">
-                <h2 className="card-title font-bold text-2xl text-[#2C2946] text-left py-2">
-                  ${property?.price}
-                </h2>
+                <input
+                  type="text"
+                  name="propertyType"
+                  placeholder="Find by type"
+                  className="input input-bordered"
+                />
+                <fieldset className="space-y-1 sm:w-60 dark:text-gray-100">
+                  <div aria-hidden="true" className="flex justify-between px-1">
+                    Find by price
+                  </div>
+                  <input
+                    type="range"
+                    className="w-full dark:accent-violet-400"
+                    min="1"
+                    max="5000"
+                  />
+                </fieldset>
 
-                <div className="flex text-xs  w-full    content-stretch justify-between pb-2">
-                  <div>
-                    <div className="flex items-center gap-1">
-                      <FontAwesomeIcon
-                        icon={faBed}
-                        className="text-gray-500 mr-1"
-                      />
-                      <span className="font-bold"> {property.bedrooms} </span>
-                    </div>
-                    <br />
-                    Bedrooms
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-1">
-                      <FontAwesomeIcon
-                        icon={faBath}
-                        className="text-gray-500 mr-1"
-                      />
-                      <span className="font-bold"> {property.bathrooms} </span>
-                    </div>
-                    <br />
-                    Bathrooms
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-1">
-                      <FontAwesomeIcon
-                        icon={faCouch}
-                        className="text-gray-500 mr-1"
-                      />
-                      <span className="font-bold"> {property.livingRoom} </span>
-                    </div>
-                    <br />
-                    LivingRoom
-                  </div>
-                </div>
-
-                <hr className="py-2" />
-                <div className="card-actions py-2 flex justify-between w-full">
-                  <div className="text-xs w-2/4">
-                    <div className="flex items-center gap-1">
-                      <FontAwesomeIcon
-                        icon={faMapMarkerAlt}
-                        className="text-gray-500 mr-1"
-                      />
-                      {property.location}
-                    </div>
-                  </div>
-                  <div className="w-1/4">
-                  <Link
-                      href="/products/[id]"
-                      as={`/products/${property._id}`}
-                    >
-                      <a className="btn btn-1 btn-sm">View</a>{" "}
-                    </Link>
-                  </div>
-                </div>
+                <button type="submit" className="btn btn-square">
+                  {loading ? (
+                    <FontAwesomeIcon
+                      icon={faSearch}
+                      className="animate-spin h-6 w-6"
+                    />
+                  ) : (
+                    <FontAwesomeIcon
+                      icon={faSearch}
+                      className="h-6 mt-2 w-6 text-current"
+                    />
+                  )}
+                </button>
               </div>
             </div>
-          ))}
+          </form>
+
+          <br />
+          {noProductFound ? (
+            <div className="">
+              <p className="text-center text-red-500">No products found.</p>
+              <p className="text-center text-green-500 py-8">
+                but don't worry we have discover page
+              </p>
+              <Link href="/discover" to="/discover">
+                <button className="btn btn-1 btn-sm block mx-auto">
+                  discover the best property
+                </button>
+              </Link>
+            </div>
+          ) : (
+            <div className="mx-auto mt-2 grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2">
+              {properties?.map((property, index) => (
+                <div key={index} className="card bg-base-100 m-2 ">
+                  <figure className=" ">
+                    <Image
+                      width={400}
+                      height={200}
+                      src={property.image}
+                      alt={property.propertyName}
+                      className="object-cover w-full mb-4 h-30 sm:h-60 dark:bg-gray-500"
+                    />
+                  </figure>
+
+                  <div className=" px-3   ">
+                    <h2 className="flex justify-between card-title font-bold text-2xl text-[#2C2946] text-left py-2">
+                      ${property?.price}
+                   
+                    <div className="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
+                      {property?.propertyType}
+                    </div> </h2>
+                    <div className="flex text-xs  w-full    content-stretch justify-between pb-2">
+                      <div>
+                        <div className="flex items-center gap-1">
+                          <FontAwesomeIcon
+                            icon={faBed}
+                            className="text-gray-500 mr-1"
+                          />
+                          <span className="font-bold">
+                            {" "}
+                            {property.bedrooms}{" "}
+                          </span>
+                        </div>
+                        <br />
+                        Bedrooms
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-1">
+                          <FontAwesomeIcon
+                            icon={faBath}
+                            className="text-gray-500 mr-1"
+                          />
+                          <span className="font-bold">
+                            {" "}
+                            {property.bathrooms}{" "}
+                          </span>
+                        </div>
+                        <br />
+                        Bathrooms
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-1">
+                          <FontAwesomeIcon
+                            icon={faCouch}
+                            className="text-gray-500 mr-1"
+                          />
+                          <span className="font-bold">
+                            {" "}
+                            {property.livingRoom}{" "}
+                          </span>
+                        </div>
+                        <br />
+                        LivingRoom
+                      </div>
+                    </div>
+
+                    <hr className="py-2" />
+                    <div className="card-actions py-2 flex justify-between w-full">
+                      <div className="text-xs w-2/4">
+                        <div className="flex items-center gap-1">
+                          <FontAwesomeIcon
+                            icon={faMapMarkerAlt}
+                            className="text-gray-500 mr-1"
+                          />
+                          {property.location}
+                        </div>
+                      </div>
+                      <div className="w-1/4 flex justify-end ">
+                        <Link
+                          href="/products/[id]"
+                          as={`/products/${property._id}`}
+                        >
+                          <span className="   btn btn-1 btn-sm">View</span>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
-export default BestHomeSection;
+export default BestHomeSectionV2;

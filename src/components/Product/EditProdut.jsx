@@ -1,24 +1,47 @@
 "use client";
-import { useForm } from "react-hook-form";
+
 import useAxiosSecure from "./../../hooks/useAxiosSecure";
+import usePropertyAllData from "./../../hooks/Propertys/usePropertyAllData";
+import Swal from "sweetalert2";
+import { useForm } from "react-hook-form";
+import productsCollection from "@/models/products";
+ 
 
 const EditProduct = ({ property }) => {
   const axiosSecure = useAxiosSecure();
-  // console.log(property);
+  const { refetch } = usePropertyAllData();
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
+
+  const closeModal = () => {
+    reset(); // Reset form fields
+    document.getElementById("my_modal_2").close();
+  };
 
   const onSubmit = async (data) => {
     console.log(property._id);
-    // You can add your logic to handle form submission here
-    await axiosSecure
-      .patch(`/updateProperty/${property._id}`, data)
-      .then((res) => {
-        console.log(res.data);
+    try {
+      await axiosSecure.patch(`/updateProperty/${property._id}`, data);
+      console.log("Product updated successfully");
+
+      Swal.fire({
+        title: "Property Update Success!",
+        text: "Thanks You!",
+        icon: "success",
+        position: "top-right",
+        timer: 1500,
       });
+
+      refetch();
+      closeModal(); // Close modal on successful update
+    } catch (error) {
+      console.error("Error updating product:", error);
+      // Handle error, show error message to the user
+    }
   };
 
   return (
@@ -38,6 +61,7 @@ const EditProduct = ({ property }) => {
               <div className="space-y-1 text-sm">
                 <label className="block dark-text-gray-400">Product Name</label>
                 <input
+                  defaultValue={property?.propertyName}
                   {...register("propertyName", {
                     required: "Product Name is required",
                   })}
@@ -49,18 +73,30 @@ const EditProduct = ({ property }) => {
                 )}
               </div>
 
-              {/* Image URL */}
-              {/* <div className="space-y-1 text-sm">
-                <label className="block dark-text-gray-400">Image </label>
+              <div className="space-y-1 text-sm">
+                <label className="block dark-text-gray-400">Image url </label>
                 <input
+                defaultValue={property?.image}
                   {...register("image", { required: "Image is required" })}
-                  type="file"
+                  type="text"
                   className="w-full bg-white text-black px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
                 />
                 {errors.image && (
                   <p className="text-red-500">{errors.image.message}</p>
                 )}
-              </div> */}
+              </div> 
+               <div className="space-y-1 text-sm">
+                <label className="block dark-text-gray-400">Location </label>
+                <input
+                  {...register("location", { required: "location  is must required" })}
+                  type="text"
+                  defaultValue={property?.location}
+                  className="w-full bg-white text-black px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+                />
+                {errors.location && (
+                  <p className="text-red-500">{errors.location.message}</p>
+                )}
+              </div>
 
               {/* Product Quantity and Product Price */}
               <div className="flex w-full gap-4 flex-col lg:flex-row">
@@ -72,6 +108,7 @@ const EditProduct = ({ property }) => {
                     {...register("quantity", {
                       required: "Product Quantity is required",
                     })}
+                    defaultValue={property?.quantity}
                     type="number"
                     className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
                   />
@@ -84,6 +121,7 @@ const EditProduct = ({ property }) => {
                     Product Price
                   </label>
                   <input
+                    defaultValue={property?.price}
                     {...register("price", {
                       required: "Product Price is required",
                     })}
@@ -101,6 +139,7 @@ const EditProduct = ({ property }) => {
                 <div className="space-y-1 text-sm w-full lg:w-1/2">
                   <label className="block dark-text-gray-400">bedrooms</label>
                   <input
+                    defaultValue={property?.bedrooms}
                     {...register("bedrooms", {
                       required: "bedrooms no is required",
                     })}
@@ -114,6 +153,7 @@ const EditProduct = ({ property }) => {
                 <div className="space-y-1 text-sm w-full lg:w-1/2">
                   <label className="block dark-text-gray-400">bathrooms</label>
                   <input
+                    defaultValue={property?.bathrooms}
                     {...register("bathrooms", {
                       required: "bathrooms is required",
                     })}
@@ -129,6 +169,7 @@ const EditProduct = ({ property }) => {
                     Living Room(sq)
                   </label>
                   <input
+                    defaultValue={property?.livingRoom}
                     {...register("livingRoom", {
                       required: "livingRoom is required",
                     })}
@@ -147,6 +188,7 @@ const EditProduct = ({ property }) => {
                   Product Type/Tags
                 </label>
                 <select
+                  defaultValue={property?.propertyType}
                   {...register("propertyType", {
                     required: "Product Type is required",
                   })}
@@ -168,6 +210,7 @@ const EditProduct = ({ property }) => {
                   Product Description
                 </label>
                 <textarea
+                  defaultValue={property?.propertyDetails}
                   {...register("propertyDetails", {
                     required: "Product Description is required",
                   })}
