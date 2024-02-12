@@ -4,6 +4,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
 import usePropertyData from "@/hooks/Propertys/usePropertyData";
+import Swal from "sweetalert2";
 
 const CheckoutForm = ({ propertyId }) => {
   const { user } = UserAuth();
@@ -39,7 +40,7 @@ const CheckoutForm = ({ propertyId }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    setLoading(true);
     if (!stripe || !elements) {
       return;
     }
@@ -89,12 +90,23 @@ const CheckoutForm = ({ propertyId }) => {
               date: new Date(),
               propertyName: propertyName,
               propertyId: _id,
-              transactionId:paymentIntent.id,
-              status:"pending"
-            }
-            const res = await axiosSecure.post("/addPayment",payment);
-            console.log("payment save",res);
-
+              transactionId: paymentIntent.id,
+              status: "pending",
+            };
+            const res = await axiosSecure
+              .post("/addPayment", payment)
+              .then(() => {
+                setLoading(false);
+                Swal.fire({
+                  title: "payment save!",
+                  text: "You clicked the button!",
+                  icon: "success",
+                })
+              })
+              .catch(()=>{
+                setLoading(false);
+              })
+            
           }
         }
       }
@@ -102,7 +114,6 @@ const CheckoutForm = ({ propertyId }) => {
       console.error("Unexpected error:", err);
       setError("An unexpected error occurred. Please try again later.");
     } finally {
-      setLoading(false);
     }
   };
 
