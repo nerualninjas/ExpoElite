@@ -1,10 +1,9 @@
 "use client";
+import { UserAuth } from "@/app/(auth)/context/AuthContext";
+import usePropertyAllData from "@/hooks/Propertys/usePropertyAllData";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAxiosSecure from "./../../hooks/useAxiosSecure";
-import usePropertyAllData from "@/hooks/Propertys/usePropertyAllData";
-import { UserAuth } from "@/app/(auth)/context/AuthContext";
-import Image from "next/image";
 
 const AddProduct = () => {
   const { user, loading } = UserAuth();
@@ -14,10 +13,15 @@ const AddProduct = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
+  const closeModal = () => {
+    reset(); // Reset form fields
+    document.getElementById("my_modal_1").close();
+  };
   const onSubmit = async (data) => {
-    console.log('data');
+    console.log("data");
     // You can add your logic to handle form submission here
     await axiosSecure.post("/addProperty", data).then((res) => {
       // console.log(res.data);
@@ -32,40 +36,39 @@ const AddProduct = () => {
       } else {
         Swal.fire({
           title: "Property added Success!",
-          text: "Thanks You!",
+          text: "congratulations !",
           icon: "success",
           position: "top-right",
           timer: 1500,
         });
         refetch();
+        closeModal();
       }
     });
   };
 
-  // const test = () =>{
-  //   console.log('test data')
-  // }
+ 
 
   return (
     <div className="w-full  p-8  rounded-xl  ">
       <h3 className="font-bold text-lg">Add a Product</h3>
 
-    
-      {/* <div className="space-y-1 text-sm hidden">
-          <label className="block dark-text-gray-400">Creator owner Email : </label>
+      <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+      <div className="space-y-1 text-sm hidden">
+          <label className="block dark-text-gray-400">Property Creator Name</label>
           <input
-            {...register("email", {
+            {...register("propertyCreator", {
               required: "Product Name is required",
             })}
+            value={user?.email} 
             type="text"
-            disabled 
-            className=" text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 dark-bg-gray-900 dark-text-gray-100 focus:dark-border-violet-400"
-            value={user?.email}
+            className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 dark-bg-gray-900 dark-text-gray-100 focus:dark-border-violet-400"
           />
-        </div> */}
-
-      <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
-        {/* Product Name */}
+          {errors.propertyCreator && (
+            <p className="text-red-500">{errors.propertyCreator.message}</p>
+          )}
+        </div>
+  
         <div className="space-y-1 text-sm">
           <label className="block dark-text-gray-400">Product Name</label>
           <input
@@ -79,7 +82,7 @@ const AddProduct = () => {
             <p className="text-red-500">{errors.propertyName.message}</p>
           )}
         </div>
-     
+
         {/* need to done image Upload  */}
         {/* Image URL */}
         <div className="space-y-1 text-sm">
@@ -175,10 +178,9 @@ const AddProduct = () => {
             })}
             className="w-full px-4 py-3 rounded-md text-black"
           >
-            <option value="Business">Type 1</option>
-            <option value="Business">Type 1</option>
-            <option value="Business">Type 1</option>
-            <option value="Business">Type 1</option>
+            <option value="sell">Sell type proparty</option>
+            <option value="rant">Rant type proparty</option>
+            
           </select>
           {errors.propertyType && (
             <p className="text-red-500">{errors.propertyType.message}</p>
@@ -216,7 +218,7 @@ const AddProduct = () => {
         {/* Submit Button */}
         <div className="flex gap-2 items-end justify-end">
           <button
-          // onClick={()=>test()}
+            // onClick={()=>test()}
             type="submit"
             className="block p-3 text-center rounded-xl dark-text-gray-900 dark-bg-violet-400 btn   btn-1"
           >

@@ -18,7 +18,7 @@ const ShowPayment = () => {
       .then((data) => setPayments(data))
       .catch((error) => {
         console.error("Error fetching payment data:", error);
-        // Handle the error (e.g., display an error message to the user)
+         
       });
   }, []);
 
