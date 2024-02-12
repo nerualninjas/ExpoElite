@@ -37,10 +37,12 @@ const EditProduct = ({ property }) => {
       });
 
       refetch();
+
       closeModal(); 
     } catch (error) {
       console.error("Error updating product:", error);
       
+
     }
   };
 
