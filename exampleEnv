@@ -6,13 +6,13 @@ NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID= 3637542514
 NEXT_PUBLIC_FIREBASE_APP_ID= 1:3637542514:web:ecf2ea198c842845950ceb
 
 
-# DATABASE
-DATABASE_LOCAL=mongodb+srv://nerualninjas:r778tmwFIgMvVyky@cluster0.ygxr7ks.mongodb.net/expoelite?retryWrites=true&w=majority
-# DATABASE_LOCAL=mongodb+srv://expoelite:A2XuRuHvUoygcVaO@cluster0.tdvw5wt.mongodb.net/expoelite?retryWrites=true&w=majority
-DB_NAME=ExpoElite
-a
-# CREDENTIALS
-DATABASE_NAME=expoelite
-DATABASE_PASSWORD=A2XuRuHvUoygcVaO
+# # DATABASE
+# DATABASE_LOCAL=mongodb+srv://nerualninjas:r778tmwFIgMvVyky@cluster0.ygxr7ks.mongodb.net/expoelite?retryWrites=true&w=majority
+# # DATABASE_LOCAL=mongodb+srv://expoelite:A2XuRuHvUoygcVaO@cluster0.tdvw5wt.mongodb.net/expoelite?retryWrites=true&w=majority
+# DB_NAME=ExpoElite
+# a
+# # CREDENTIALS
+# DATABASE_NAME=expoelite
+# DATABASE_PASSWORD=A2XuRuHvUoygcVaO
 
 

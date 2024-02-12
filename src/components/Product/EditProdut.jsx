@@ -37,10 +37,12 @@ const EditProduct = ({ property }) => {
       });
 
       refetch();
-      closeModal(); // Close modal on successful update
+
+      closeModal(); 
     } catch (error) {
       console.error("Error updating product:", error);
-      // Handle error, show error message to the user
+      
+
     }
   };
 
