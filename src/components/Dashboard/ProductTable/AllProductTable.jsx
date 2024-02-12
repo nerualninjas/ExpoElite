@@ -49,7 +49,10 @@ const AllProductTable = () => {
                                 </td>
                                 <td>{property.propertyName}</td>
                                 {/* <td>{property.SellerName}</td> */}
-                                <td>selena12@gmail.com</td>
+                                <td className="px-3 py-2">
+                                    <span>Selena hamid</span>
+                                    <p className="dark:text-gray-400">selena12@gmail.com</p>
+                                </td>
                                 <td>
                                     <Link href={`/products/${property._id}`}>
                                         <button className="btn text-white bg-rose-500">View</button>
