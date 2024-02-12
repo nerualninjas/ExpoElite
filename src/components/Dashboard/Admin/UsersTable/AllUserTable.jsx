@@ -5,7 +5,10 @@ import Image from 'next/image';
 // import { UserAuth } from '@/app/(auth)/context/AuthContext';
 
 
-const AllUserTable = () => {
+
+const AllUserTable = ({ sellerRequestSent }) => {
+
+
   
     const { AllUserData, isPending, refetch } = useAllUserData();
    
