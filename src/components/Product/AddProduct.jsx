@@ -4,6 +4,7 @@ import usePropertyAllData from "@/hooks/Propertys/usePropertyAllData";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAxiosSecure from "./../../hooks/useAxiosSecure";
+import { useState } from "react";
 
 const AddProduct = () => {
   const { user, loading } = UserAuth();
@@ -16,22 +17,31 @@ const AddProduct = () => {
     reset,
   } = useForm();
 
+  const [selectedType, setSelectedType] = useState("sell");
+
+  const handleTypeChange = (event) => {
+    setSelectedType(event.target.value);
+  };
+
   const closeModal = () => {
-    reset(); // Reset form fields
+    reset();
     document.getElementById("my_modal_1").close();
   };
+
   const onSubmit = async (data) => {
-    console.log("data");
-    // You can add your logic to handle form submission here
+    console.log(data);
+
+    // Example validation: Check if propertyType is selected
+
+
     await axiosSecure.post("/addProperty", data).then((res) => {
-      // console.log(res.data);
+      console.log(res.data);
       if (res?.data.insertedId === null) {
         Swal.fire({
           icon: "error",
           title: "Oops...",
           text: "Player Already Register!",
           position: "top-right",
-          footer: `<a href="#">Please check </a>`,
         });
       } else {
         Swal.fire({
@@ -46,8 +56,6 @@ const AddProduct = () => {
       }
     });
   };
-
- 
 
   return (
     <div className="w-full  p-8  rounded-xl  ">
@@ -83,8 +91,7 @@ const AddProduct = () => {
           )}
         </div>
 
-        {/* need to done image Upload  */}
-        {/* Image URL */}
+   
         <div className="space-y-1 text-sm">
           <label className="block dark-text-gray-400">Image </label>
           <input
@@ -112,19 +119,7 @@ const AddProduct = () => {
               <p className="text-red-500">{errors.quantity.message}</p>
             )}
           </div>
-          <div className="space-y-1 text-sm w-full lg:w-1/2">
-            <label className="block dark-text-gray-400">Product Price</label>
-            <input
-              {...register("price", {
-                required: "Product Price is required",
-              })}
-              type="number"
-              className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
-            />
-            {errors.price && (
-              <p className="text-red-500">{errors.price.message}</p>
-            )}
-          </div>
+         
         </div>
 
         <div className="flex w-full gap-4 flex-col lg:flex-row">
@@ -169,23 +164,128 @@ const AddProduct = () => {
           </div>
         </div>
 
-        {/* Product Type/Tags */}
         <div className="space-y-1 text-sm">
           <label className="block dark-text-gray-400">Product Type/Tags</label>
-          <select
-            {...register("propertyType", {
-              required: "Product Type is required",
-            })}
-            className="w-full px-4 py-3 rounded-md text-black"
-          >
-            <option value="sell">Sell type proparty</option>
-            <option value="rant">Rant type proparty</option>
-            
-          </select>
+          <div className="flex items-center space-x-4">
+            <label className="inline-flex items-center">
+              <input
+                type="radio"
+                value="sell"
+                {...register("propertyType", {
+                  required: "Product Type is required",
+                })}
+                checked={selectedType === "sell"}
+                onChange={handleTypeChange}
+                className="form-radio h-5 w-5 text-black"
+              />
+              <span className="ml-2">Sell type property</span>
+            </label>
+
+            <label className="inline-flex items-center">
+              <input
+                type="radio"
+                value="rant"
+                {...register("propertyType", {
+                  required: "Product Type is required",
+                })}
+                checked={selectedType === "rant"}
+                onChange={handleTypeChange}
+                className="form-radio h-5 w-5 text-black"
+              />
+              <span className="ml-2">Rant type property</span>
+            </label>
+          </div>
           {errors.propertyType && (
             <p className="text-red-500">{errors.propertyType.message}</p>
           )}
         </div>
+
+        {/* Additional Fields based on Product Type */}
+        {selectedType === "sell" && (
+          <>
+            {/* Price Input */}
+            <div className="space-y-1 text-sm">
+              <label className="block dark-text-gray-400">Price</label>
+              <input
+                {...register("price", {
+                  required: "Price is required",
+                })}
+                type="number"
+                className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+              />
+              {errors.price && (
+                <p className="text-red-500">{errors.price.message}</p>
+              )}
+            </div>
+
+            {/* Discount Input */}
+            <div className="space-y-1 text-sm">
+              <label className="block dark-text-gray-400">Discount (%)</label>
+              <input
+                {...register("discount", {
+                  required: "Discount is required",
+                })}
+                type="number"
+                className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+              />
+              {errors.discount && (
+                <p className="text-red-500">{errors.discount.message}</p>
+              )}
+            </div>
+          </>
+        )}
+
+        {selectedType === "rant" && (
+          <>
+            {/* 1 Month Package Input */}
+            <div className="space-y-1 text-sm">
+              <label className="block dark-text-gray-400">1 Month Package</label>
+              <input
+                {...register("1MonthPackage", {
+                  required: "1 Month Package is required",
+                })}
+                type="number"
+                className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+              />
+              {errors["1MonthPackage"] && (
+                <p className="text-red-500">{errors["1MonthPackage"].message}</p>
+              )}
+            </div>
+
+            {/* 6 Month Package Input */}
+            <div className="space-y-1 text-sm">
+              <label className="block dark-text-gray-400">6 Month Package</label>
+              <input
+                {...register("6MonthPackage", {
+                  required: "6 Month Package is required",
+                })}
+                type="number"
+                className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+              />
+              {errors["6MonthPackage"] && (
+                <p className="text-red-500">{errors["6MonthPackage"].message}</p>
+              )}
+            </div>
+
+            {/* 1 Year Package Input */}
+            <div className="space-y-1 text-sm">
+              <label className="block dark-text-gray-400">1 Year Package</label>
+              <input
+                {...register("1YearPackage", {
+                  required: "1 Year Package is required",
+                })}
+                type="number"
+                className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+              />
+              {errors["1YearPackage"] && (
+                <p className="text-red-500">{errors["1YearPackage"].message}</p>
+              )}
+            </div>
+          </>
+        )}
+
+
+
         <div className="space-y-1 text-sm">
           <label className="block dark-text-gray-400">Product location</label>
           <input
@@ -218,7 +318,7 @@ const AddProduct = () => {
         {/* Submit Button */}
         <div className="flex gap-2 items-end justify-end">
           <button
-            // onClick={()=>test()}
+           
             type="submit"
             className="block p-3 text-center rounded-xl dark-text-gray-900 dark-bg-violet-400 btn   btn-1"
           >
