@@ -8,12 +8,12 @@ const UserGraph = () => {
     return (
         <div>
             <div className='flex flex-col md:flex-row justify-center items-center gap-5'>
-                <UserProfile className='w-full md:w-1/2' />
-                <TotalPropertyVsTotalSell className='w-full md:w-1/2' />
+                <UserProfile className='w-full md:w-1/2 ' />
+                <LikeComment className='w-full md:w-1/2' />
             </div>
             <div className='flex flex-col md:flex-row justify-center items-center gap-5'>
-                <LikeComment />
-                <SelledPropertyLocation />
+                <TotalPropertyVsTotalSell className='w-full md:w-1/2' />
+                <SelledPropertyLocation className='w-full md:w-1/2' />
             </div>
         </div>
     );
