@@ -52,7 +52,6 @@ const Sidebar = () => {
     {pageName: "Manage Users" , path: "/allUsers", icon: faPeopleGroup},
     {pageName: "Manage Property" , path: "/allProducts", icon: faLandmark},
     {pageName: "AllSellers" , path: "/allSellers", icon: faUsers},
-
   ];
   const userDashboard = [
    
