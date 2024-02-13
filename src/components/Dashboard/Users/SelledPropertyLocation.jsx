@@ -48,7 +48,7 @@ const SelledPropertyLocation = () => {
                 <PolarGrid />
                 <PolarAngleAxis dataKey="subject" />
                 <PolarRadiusAxis angle={30} domain={[0, 150]} />
-                <Radar name="Selled" dataKey="A" stroke="#E11D48" fill="#F989B0" fillOpacity={0.6} />
+                <Radar className='pt-5' name="Selled" dataKey="A" stroke="#E11D48" fill="#F989B0" fillOpacity={0.6} />
                 <Radar name="Location" dataKey="B" stroke="#F43F5E" fill="#FECDD3" fillOpacity={0.6} />
                 <Legend />
             </RadarChart>
