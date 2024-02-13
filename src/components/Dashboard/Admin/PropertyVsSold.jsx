@@ -74,7 +74,7 @@ const PropertyVsSold = () => {
         <XAxis dataKey="name" />
         <YAxis />
         <Tooltip />
-        <Area type="monotone" dataKey="totalProperty" stackId="1" stroke="#F43F5E" fill="#FECDD3" />
+        <Area type="monotone" dataKey="totalProperty" stackId="1" stroke="#F43F5E" fill="#FECDD3"  />
         <Area type="monotone" dataKey="totalSoldProperty" stackId="1" stroke="#E11D48" fill="#F989B0" />
 
       </AreaChart>
