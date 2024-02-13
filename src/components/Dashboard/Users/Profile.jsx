@@ -16,7 +16,7 @@ const Profile = () => {
     const { userInfoData } = useAUser();
 
     const handleSellerRequest = async () => {
-        const data = { userRole: "Seller", roleStatus: "Pending" };
+        const data = {roleStatus: "Pending" };
         try {
             await axiosSecure.patch(`/updateRole/${userInfoData?._id}`, data);
             setSellerRequestSent(true);
