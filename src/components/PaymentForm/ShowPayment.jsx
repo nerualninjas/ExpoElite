@@ -7,20 +7,30 @@ import useAxiosPublic from "./../../hooks/useAxiosPublic";
 import useAxiosSecure from "./../../hooks/useAxiosSecure";
 
 import Image from "next/image";
+import { useQuery } from "@tanstack/react-query";
 
 const ShowPayment = () => {
   const [payments, setPayments] = useState([]);
-  const { user } = UserAuth();
+  
 
-  useEffect(() => {
-    fetch(`http://localhost:5000/showPayment?email=${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => setPayments(data))
-      .catch((error) => {
-        console.error("Error fetching payment data:", error);
-         
-      });
-  }, []);
+
+  const { loading,user } = UserAuth();
+  const axiosPublic = useAxiosPublic();
+
+  const {
+    data: MyPurchases,
+    isPending,
+    refetch,
+  } = useQuery({
+    queryKey: ["MyPurchases"],
+    enabled: !loading, // Don't fetch data during SSR
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/showPayment?email=${user?.email}`);
+      console.log(res?.data);
+      return res?.data;
+    },
+  });
+
 
   return (
     <div className="bg-base-200 p-4 m-4 rounded-xl">
@@ -44,7 +54,7 @@ const ShowPayment = () => {
             </tr>
           </thead>
           <tbody>
-            {payments?.map((property, index) => (
+            {MyPurchases?.map((property, index) => (
               <tr key={index} className="">
                 <td>{index + 1}</td>
                
