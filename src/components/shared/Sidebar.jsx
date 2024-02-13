@@ -57,7 +57,7 @@ const Sidebar = () => {
    
     {pageName: "All Property" , path: "/products", icon: faCity },
     {pageName: "Dashboard" , path: "/graphAnalysisUsers", icon: faChartLine},
-    {pageName: "My Orders" , path: "/myOrders", icon: faCartShopping},
+    {pageName: "My Orders" , path: "/paymentList", icon: faCartShopping},
    
   ]
   return (
