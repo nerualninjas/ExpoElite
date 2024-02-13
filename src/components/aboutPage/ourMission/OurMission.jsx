@@ -14,12 +14,15 @@ const OurMission = () => {
        
 
        <div className="mx-auto w-full  box2  flex flex-col lg:flex-row  items-center  lg:justify-between mb-2 ">
-       <div className='w-11/12 lg:w-1/3  flex  items-center  justify-center   lg:justify-center'> 
+       <div className='w-11/12 lg:w-1/3  flex  items-center  justify-center  lg:justify-center'> 
 
            {/* -------------------------------Our Mission image----------------------------------------- */}
-           <div className='w-[300px] h-[300px] rounded-tl-full rounded-tr-full bg-[#FF385D] bg-opacity-15'>
-       <Image width={500} height={1200} className='  relative -bottom-12  ' src="https://i.ibb.co/ZT81DKb/building1.png" alt="house" />
-       </div></div>
+           <div className='w-[350px] h-[340px] rounded-tl-full rounded-tr-full bg-[#FF385D] bg-opacity-15  flex justify-end items-end'>
+       <Image  width={611}
+              height={408}
+              className=" w-full " src="https://i.ibb.co/0Cg5wkx/building-removebg.png" alt="house" />
+       </div>
+       </div>
 
        {/* -------------------------------Our Mission text----------------------------------------- */}
            <div className="ml-0 lg:ml-5 w-11/12 lg:w-2/3  text-center lg:text-left pt-10">
