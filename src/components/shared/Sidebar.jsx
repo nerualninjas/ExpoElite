@@ -19,7 +19,10 @@ import {
   faCircleInfo,
   faPeopleGroup,
   faLandmark,
-  faUsers
+  faUsers,
+  faCartShopping,
+  faCity,
+  faMagnifyingGlassPlus,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -39,7 +42,7 @@ const Sidebar = () => {
 
   const mainMenu = [
     { pageName: "Homepage", path: "/", icon: faHouseChimney },
-    { pageName: "Discover", path: "/discover", icon: faCircle },
+    { pageName: "Discover", path: "/discover", icon: faMagnifyingGlassPlus },
     { pageName: "About Us", path: "/about", icon: faCircleInfo },
     { pageName: "Contact Us", path: "/contact", icon: faAddressBook },
   ];
@@ -50,6 +53,13 @@ const Sidebar = () => {
     {pageName: "Manage Property" , path: "/allProducts", icon: faLandmark},
     {pageName: "AllSellers" , path: "/allSellers", icon: faUsers},
   ];
+  const userDashboard = [
+   
+    {pageName: "All Property" , path: "/products", icon: faCity },
+    {pageName: "Dashboard" , path: "/graphAnalysisUsers", icon: faChartLine},
+    {pageName: "My Orders" , path: "/myOrders", icon: faCartShopping},
+   
+  ]
   return (
     <div>
 
@@ -93,7 +103,7 @@ const Sidebar = () => {
               height={80}
             />
 
-            <ul className=" pl-4 pt-16 text-md font-thin space-y-6">
+            <ul className=" pl-4 py-8  text-md font-thin space-y-6">
               {mainMenu.slice(0, 2).map((menu) => (
                 <li key={menu.pageName}>
                   <Link
@@ -127,39 +137,23 @@ const Sidebar = () => {
               )}
               {/* Render products link for regular users */}
               {user && !isAdmin && (
-
-                <li>
-                  <Link
-                    className={`${pathName === '/products'
-                    ? "flex items-center gap-2  hover:text-rose-600 text-rose-500 "
-                    : "flex items-center gap-2  hover:text-rose-600 text-gray-800 "
-                  }`}
-                    href="/products"
-                  >
-                    <Image src={productList} width={18} height={18} alt="home" />
-                    <h4>Products</h4>
-                  </Link>
-                </li>
-                
-                
-              )}
-               {user && !isAdmin && (
-
-                <li>
-                  <Link
-                    className={`${pathName === '/paymentList'
-                    ? "flex items-center gap-2  hover:text-rose-600 text-rose-500 "
-                    : "flex items-center gap-2  hover:text-rose-600 text-gray-800 "
-                  }`}
-                    href="/paymentList"
-                  >
-                    <Image src={productList} width={18} height={18} alt="home" />
-                    <h4>My order</h4>
-                  </Link>
-                </li>
-                
+                userDashboard.map((userDash) => (
+                  <li key={userDash.pageName}>
+                    <Link 
+                    className={`${pathName === userDash.path
+                      ? "flex items-center gap-2  hover:text-rose-600 text-rose-500 "
+                      : "flex items-center gap-2  hover:text-rose-600 text-gray-800 "
+                       }`}
+                      href={userDash.path}
+                    >
+                      <FontAwesomeIcon icon={userDash.icon} />
+                      <h4>{userDash.pageName}</h4>
+                    </Link>
+                  </li>
+                ))
                 
               )}
+   
             </ul>
           </section>
           {/* auth section  */}
@@ -180,7 +174,7 @@ const Sidebar = () => {
                 </li>
               ))}
 
-              <li>Help and Support</li>
+              {/* <li>Help and Support</li> */}
               <li>
                 {user ? (
                   <button

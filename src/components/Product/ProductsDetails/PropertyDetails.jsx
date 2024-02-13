@@ -172,7 +172,7 @@ const PropertyDetail = ({ propertyId }) => {
             </div>
             <div className="flex text-2xl items-center">
              <button onClick={handleLike}><FaRegHeart className={userLiked ?"text-2xl  inset-0  text-rose-600":"text-2xl"} />{" "}</button>
-              <span className="ml-2">{propertySingleData?.likeBy.length}</span>
+              <span className="ml-2">{propertySingleData?.likeBy?.length}</span>
             </div>
           </div>
 
