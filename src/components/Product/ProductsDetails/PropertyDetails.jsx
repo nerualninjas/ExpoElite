@@ -262,14 +262,14 @@ const PropertyDetail = ({ propertyId }) => {
               </button>
             </div>
           </div>
-          <div className=" text-justify mt-10 mb-40 md:mb-20"> <p>{propertyDetails}</p> 
+          <div className=" text-justify mt-10 mb-20"> <p>{propertyDetails}</p> 
             
           </div>
         </div>
       </div>
              {/* comment Section*/}
-      <div className="w-11/12">
-        <Comment className="w-11/12 mb-12" propertyId={propertyId} />
+      <div className="w-10/12">
+        <Comment className="w-10/12 mb-12" propertyId={propertyId} />
        </div>
      </div>
      

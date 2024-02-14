@@ -43,9 +43,9 @@ const Comment = ({ propertyId }) => {
 
     
     return (
-        <div>
+        <div className='mb-10'>
              <div>
-        <h1 className="text-xl mt-10 font-extrabold text-black ">Comment Section</h1>
+        <h1 className="text-xl my-4 font-extrabold text-black ">Comment Section</h1>
         {/* <hr className="border border-rose-600  w-2/3 md:w-1/4   my-4"/> */}
         {/* <div className="w-2/3 md:1/4 border border-[#FF385D] my-2 mx-auto"></div> */}
        
