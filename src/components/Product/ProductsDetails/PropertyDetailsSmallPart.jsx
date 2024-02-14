@@ -5,6 +5,7 @@ import usePropertyData from "@/hooks/Propertys/usePropertyData";
 import { faBed, faBath, faCouch, } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from 'next/image';
+import Link from 'next/link';
 const PropertyDetailsSmallPart = ({ propertyId }) => {
 
     const router = useRouter();
@@ -54,7 +55,8 @@ const PropertyDetailsSmallPart = ({ propertyId }) => {
                 </div>
 
                 <h1 className=' text-xl font-bold text-rose-600 md:text-2xl  '>${price}</h1>
-                <button className='bg-rose-600 text-white px-4 py-2 rounded text-extrabold'>Comapare</button>
+                {/* will take to rentdetails page */}
+                <Link href={'/rent'} className='bg-rose-600 hover:bg-rose-100 text-white hover:text-rose-700 px-4 py-2 rounded text-extrabold'>Wanna Rent?</Link>
 
             </div>
         </div>

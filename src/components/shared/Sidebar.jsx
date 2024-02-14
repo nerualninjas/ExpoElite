@@ -23,6 +23,7 @@ import {
   faCartShopping,
   faCity,
   faMagnifyingGlassPlus,
+  faSellsy,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -33,7 +34,7 @@ const Sidebar = () => {
   const { user, logOut } = UserAuth();
   const pathName = usePathname();
   const [isMenu, setIsMenu] = useState(false);
-  const { isAdmin, isPending , refetch } = useAdmin()
+  const { isAdmin, isPending, refetch } = useAdmin()
   console.log(isAdmin)
 
   const handleNavMenu = () => {
@@ -49,17 +50,18 @@ const Sidebar = () => {
   ];
 
   const adminDashboard = [
-    {pageName: "Dashboard" , path: "/dashboard", icon: faChartLine},
-    {pageName: "Manage Users" , path: "/allUsers", icon: faPeopleGroup},
-    {pageName: "Manage Property" , path: "/allProducts", icon: faLandmark},
-    {pageName: "AllSellers" , path: "/allSellers", icon: faUsers},
+    { pageName: "Dashboard", path: "/dashboard", icon: faChartLine },
+    { pageName: "Manage Users", path: "/allUsers", icon: faPeopleGroup },
+    { pageName: "Manage Property", path: "/allProducts", icon: faLandmark },
+    { pageName: "Property Sell Report", path: "/allPropertySellReport", icon: faSellsy },
+    { pageName: "AllSellers", path: "/allSellers", icon: faUsers },
   ];
   const userDashboard = [
-   
-    {pageName: "All Property" , path: "/products", icon: faCity },
-    {pageName: "Dashboard" , path: "/graphAnalysisUsers", icon: faChartLine},
-    {pageName: "My Orders" , path: "/paymentList", icon: faCartShopping},
-   
+
+    { pageName: "All Property", path: "/products", icon: faCity },
+    { pageName: "Dashboard", path: "/graphAnalysisUsers", icon: faChartLine },
+    { pageName: "My Orders", path: "/paymentList", icon: faCartShopping },
+
   ]
   const sellerDashboard = [
     { pageName: "Dashboard", path: "/GraphAndAnalysisSeller", icon:faChartLine },
@@ -128,10 +130,10 @@ const Sidebar = () => {
                 adminDashboard.map((adminDash) => (
                   <li key={adminDash.pageName}>
                     <Link
-                     className={`${pathName === adminDash.path
-                      ? "flex items-center gap-2  hover:text-rose-600 text-rose-500 "
-                      : "flex items-center gap-2  hover:text-rose-600 text-gray-800 "
-                       }`}
+                      className={`${pathName === adminDash.path
+                        ? "flex items-center gap-2  hover:text-rose-600 text-rose-500 "
+                        : "flex items-center gap-2  hover:text-rose-600 text-gray-800 "
+                        }`}
                       href={adminDash.path}
                     >
                       <FontAwesomeIcon icon={adminDash.icon} />
@@ -144,11 +146,11 @@ const Sidebar = () => {
               {user && !isAdmin && (
                 userDashboard.map((userDash) => (
                   <li key={userDash.pageName}>
-                    <Link 
-                    className={`${pathName === userDash.path
-                      ? "flex items-center gap-2  hover:text-rose-600 text-rose-500 "
-                      : "flex items-center gap-2  hover:text-rose-600 text-gray-800 "
-                       }`}
+                    <Link
+                      className={`${pathName === userDash.path
+                        ? "flex items-center gap-2  hover:text-rose-600 text-rose-500 "
+                        : "flex items-center gap-2  hover:text-rose-600 text-gray-800 "
+                        }`}
                       href={userDash.path}
                     >
                       <FontAwesomeIcon icon={userDash.icon} />
@@ -156,10 +158,8 @@ const Sidebar = () => {
                     </Link>
                   </li>
                 ))
-                
+
               )}
-                  
-   
             </ul>
           </section>
           {/* auth section  */}

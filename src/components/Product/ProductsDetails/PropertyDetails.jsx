@@ -272,8 +272,8 @@ import ChatWindow2 from "../ChatWindow2/ChatWindow2";
         </div>
       </div>
              {/* comment Section*/}
-      <div className="w-11/12">
-        <Comment className="w-11/12 mb-12" propertyId={propertyId} />
+      <div className="w-10/12">
+        <Comment className="w-10/12 mb-12" propertyId={propertyId} />
        </div>
      </div>
      
