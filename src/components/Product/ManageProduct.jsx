@@ -117,7 +117,7 @@ const ManageProduct = () => {
                 </td>
 
                 <td className="flex items-center gap-2">
-                  <EditProduct property={property} />
+                  <EditProduct propertyData={property} />
                   <button
                     className="btn btn-sm btn-error"
                     onClick={() => handleDeleteProduct(property)}
