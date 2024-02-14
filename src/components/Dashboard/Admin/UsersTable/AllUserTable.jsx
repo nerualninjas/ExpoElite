@@ -35,14 +35,14 @@ const BuyerTable = () => {
           <table className="table mx-5 w-full mt-5 mb-10 pb-6">
             {/* head */}
             <thead>
-              <tr>
+              <tr className='text-center'>
                 <th>#</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Image</th>
                 <th>Role</th>
                 <th>Action</th>
-                <th>Action</th>
+               
               </tr>
             </thead>
             <tbody>
@@ -70,15 +70,7 @@ const BuyerTable = () => {
                       Approve <br /> Request
                     </button>
                   </td>
-                  <td>  
-                    {/* <button
-                      className="btn text-white bg-[#d43a4c]"
-                      onClick={() => handleReject(user._id)}
-                      disabled={user.roleStatus !== 'pending'}
-                    >
-                      Decline <br /> Request
-                    </button> */}
-                  </td>
+                
                 </tr>
               ))}
             </tbody>
