@@ -67,6 +67,7 @@ const Navbar = () => {
     { pageName: "Discover", path: "/discover", icon: faCircle },
     { pageName: "About Us", path: "/about", icon: faCircleInfo },
     { pageName: "Contact Us", path: "/contact", icon: faAddressBook },
+    { pageName: " Seller Dashboard", path: "/GraphAndAnalysisSeller", icon: faAddressBook },
 
   ];
 

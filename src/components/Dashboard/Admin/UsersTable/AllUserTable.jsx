@@ -70,15 +70,7 @@ const BuyerTable = () => {
                       Approve <br /> Request
                     </button>
                   </td>
-                  <td>  
-                    {/* <button
-                      className="btn text-white bg-[#d43a4c]"
-                      onClick={() => handleReject(user._id)}
-                      disabled={user.roleStatus !== 'pending'}
-                    >
-                      Decline <br /> Request
-                    </button> */}
-                  </td>
+                
                 </tr>
               ))}
             </tbody>
