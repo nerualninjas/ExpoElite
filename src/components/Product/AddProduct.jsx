@@ -55,10 +55,10 @@ const AddProduct = () => {
 
     const myData = {
       ...formData,
+      propertyType: selectedType === "sell" ? "sell" : "rent",
       likeBy: [" "],
       dislikeBy: [" "],
       commentLogs: [
-         
         {
           commentBy: " ",
           comment: " ",
