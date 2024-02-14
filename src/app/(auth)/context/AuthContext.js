@@ -83,10 +83,14 @@ export const AuthContextProvider = ({ children }) => {
         axiosPublic.post('/jwt',userInfo)
         .then(res=>{
           if(res.data?.token){
-            if(typeof window !== 'undefined'){
-
-              localStorage.setItem('token',res.data?.token);
-            }
+            try {
+              if(typeof window !== 'undefined') {
+                  localStorage.setItem('token', res.data?.token);
+              }
+          } catch (error) {
+              console.error('Error while setting token in localStorage:', error);
+          }
+          
             setLoading(false)
           }
         })
