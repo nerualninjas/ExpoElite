@@ -7,12 +7,13 @@ import TotalProperty2 from '@/components/Dashboard/Admin/TotalProperty2';
 import TotalSeller from '@/components/Dashboard/Admin/TotalSeller';
 import TotalUser from '@/components/Dashboard/Admin/TotalUser';
 import UserVsSeller from '@/components/Dashboard/Admin/UserVsSeller';
-
+import PrivateRoutes from '@/libs/PrivateRoute'
 import React from 'react';
 
 const DashBoard = () => {
   return (
-    <div className="w-full min-h-screen mt-5 flex flex-col justify-center items-center ">
+    <PrivateRoutes>
+<div className="w-full min-h-screen mt-5 flex flex-col justify-center items-center ">
       <div className="w-11/12 min-h-screen rounded-lg flex justify-center items-center bg-gradient-to-r from-rose-200 via-base-100 to-rose-200 blur-[90px] absolute">
       </div>
       <div className="w-full flex flex-col justify-center items-center rounded-xl bg-opacity-10 z-10 bg-base-200 pb-20">
@@ -39,6 +40,7 @@ const DashBoard = () => {
 
 
     </div>
+    </PrivateRoutes>
   );
 };
 

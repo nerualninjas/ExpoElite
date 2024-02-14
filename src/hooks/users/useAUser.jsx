@@ -1,6 +1,7 @@
 
 "use client";
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
+import { getLocalStorgeToken } from "@/utils/getToken";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../useAxiosSecure";
 
@@ -13,7 +14,7 @@ const useAUser = () => {
         queryKey: ["userInfoData"],
         enabled: !loading,
         queryFn: async () => {
-            const res = await axiosSecure.get(`/getUser/${user?.email}`);
+            const res = await axiosSecure.get(`/getUser/${user?.email}`,getLocalStorgeToken);
             console.log(res?.data);
             return res?.data;
         }

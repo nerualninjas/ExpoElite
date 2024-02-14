@@ -74,6 +74,7 @@ const Navbar = () => {
     {pageName: "Dashboard" , path: "/dashboard", icon: faChartLine},
     {pageName: "Manage Users" , path: "/allUsers", icon: faPeopleGroup},
     {pageName: "Manage Property" , path: "/allProducts", icon: faLandmark},
+
   ];
 
   const btnActive = true;

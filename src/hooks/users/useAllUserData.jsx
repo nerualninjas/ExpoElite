@@ -3,6 +3,7 @@
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "./../useAxiosPublic";
+import { getLocalStorgeToken } from '@/utils/getToken';
 
 const useAllUserData = () => {
   const { loading } = UserAuth();
@@ -16,7 +17,7 @@ const useAllUserData = () => {
     queryKey: ["AllUserData"],
     enabled: !loading,
     queryFn: async () => {
-      const res = await axiosPublic.get("/getUsers");
+      const res = await axiosPublic.get("/getUsers",getLocalStorgeToken);
       console.log(res?.data);
       return res?.data;
     },

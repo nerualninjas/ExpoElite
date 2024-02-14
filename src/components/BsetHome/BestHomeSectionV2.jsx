@@ -115,7 +115,7 @@ const BestHomeSectionV2 = () => {
             <div className="">
               <p className="text-center text-red-500">No products found.</p>
               <p className="text-center text-green-500 py-8">
-                but don't worry we have discover page
+                but don&apos;t worry we have discover page
               </p>
               <Link href="/discover" to="/discover">
                 <button className="btn btn-1 btn-sm block mx-auto">

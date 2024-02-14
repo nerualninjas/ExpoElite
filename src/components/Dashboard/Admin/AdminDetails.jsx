@@ -7,6 +7,7 @@ import React from 'react';
 const AdminDetails = () => {
     const { user } = UserAuth();
     const { isAdmin } = useAdmin();
+    
     return (
         <div>
             {
