@@ -52,13 +52,12 @@ const Sidebar = () => {
     {pageName: "Manage Users" , path: "/allUsers", icon: faPeopleGroup},
     {pageName: "Manage Property" , path: "/allProducts", icon: faLandmark},
     {pageName: "AllSellers" , path: "/allSellers", icon: faUsers},
-
   ];
   const userDashboard = [
    
     {pageName: "All Property" , path: "/products", icon: faCity },
     {pageName: "Dashboard" , path: "/graphAnalysisUsers", icon: faChartLine},
-    {pageName: "My Orders" , path: "/myOrders", icon: faCartShopping},
+    {pageName: "My Orders" , path: "/paymentList", icon: faCartShopping},
    
   ]
   return (
