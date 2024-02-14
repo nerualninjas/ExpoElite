@@ -1,5 +1,5 @@
 export const getLocalStorgeToken = {
-    headers: {
-      authorization: `Bearer ${localStorage.getItem('token')}`
+  headers: {
+    authorization: `Bearer ${typeof window !== 'undefined' ? localStorage.getItem('token') : ''}`
   }
-  }
+};
