@@ -35,17 +35,15 @@ import Link from "next/link";
 
 import ChatWindow2 from "../ChatWindow2/ChatWindow2";
 
-const PropertyDetail = ({ propertyId }) => {
+
+  const PropertyDetail = ({ propertyId }) => {
   const {user}=UserAuth()
   const { notificationPost } = useNotification()
   const axiosSecure = useAxiosSecure()
   const router = useRouter();
-  //   const { id } = router.query;
-  // console.log(router.query);
 
-  const { propertySingleData, isPending, refetch } = usePropertyData(
-    propertyId
-  );
+  
+  const { propertySingleData, isPending, refetch } = usePropertyData(propertyId);
   const [userLiked,setUserLiked]=useState(false)
 
   useEffect(()=>{
@@ -68,9 +66,9 @@ const PropertyDetail = ({ propertyId }) => {
     return <div>Property not found.</div>;
   }
 
-
   // const { title, price /* other properties */ } = propertyData;
-  const { _id,propertyName, propertyType, price, image, bathrooms, bedrooms, livingRoom, propertyDetails, quantity } = propertySingleData || {};
+  const { _id,propertyName, propertyType, price, image, bathrooms, bedrooms, livingRoom, propertyDetails, propertyCreator
+  } = propertySingleData || {};
 
   const sellerEmail= "ashiq.buet73@gmail.com"; //TODO need change with seller email for notificaitn
 
@@ -87,7 +85,6 @@ const PropertyDetail = ({ propertyId }) => {
     const data = {
       userEmail: sellerEmail,
       notificationData: [{
-
         notificationText:`${user?.displayName} ${!userLiked ? "Like":"Dislike"} your property`,
         notifyUserPhoto: `${user?.photoURL}`,
         notificationPath: `/products/${_id}`,
@@ -109,12 +106,19 @@ const PropertyDetail = ({ propertyId }) => {
      
       <div className="w-full lg:w-11/12 min-h-screen black flex justify-center items-center bg-gradient-to-r from-rose-200 via-base-100 to-rose-200 blur-[90px] absolute"></div>
      <div className="w-full lg:w-11/12  flex flex-col  justify-center items-center rounded-xl bg-opacity-50 z-10 bg-base-100 dark:bg-gray-500 pb-32 shadow-xl">
-     {/* property details information and image container  */}
+  
+  
+     {/* -------------property details full card------------------- */}
      
-     <div className="w-full lg:w-11/12  flex flex-col lg:flex-row justify-center items-center rounded-xl ">
-        {/* image section */}
-        <div className="w-11/12 lg:w-1/2  text-center flex justify-center items-center py-2">
-          <Carousel className="text-center " autoPlay>
+     <div className="w-full lg:w-11/12 border-red-500 flex flex-col lg:flex-row justify-center items-center rounded-xl ">
+        {/*------------------- image carousel and seller info container section------------------------- */}
+        <div className="w-11/12 lg:w-1/2 text-center flex flex-col justify-center items-center ">
+          
+          
+
+   {/*------------------- image carousel section------------------------- */}
+             <div className="w-full  text-center flex justify-center items-center py-2">
+             <Carousel className="text-center " autoPlay>
             <div className="">
               <img src={image} className="w-full h-full"/>
              
@@ -136,7 +140,7 @@ const PropertyDetail = ({ propertyId }) => {
               <img src="https://i.ibb.co/dPsnkq1/apartment-bed-bedroom-comfort-545034.jpg" />
             </div>
           </Carousel>
-
+             </div>
           {/* <Carousel className="text-center " autoPlay>
             <div className="">
               <Image width={400} height={400} className="w-full h-full"  src={image} />
@@ -154,11 +158,16 @@ const PropertyDetail = ({ propertyId }) => {
               <Image width={400} height={400} className="w-full h-full" src="https://i.ibb.co/dPsnkq1/apartment-bed-bedroom-comfort-545034.jpg" />
             </div>
           </Carousel> */}
+
+           {/*------------------- seller info section------------------------- */}
+         <div className=" text-justify mt-2 mb-2 ">
+          <p>{propertyDetails}</p> 
+         </div>
         </div>
 
         {/* property details */}
 
-        <div className="w-full lg:w-1/2  ml-2 card-body">
+        <div className="w-full lg:w-1/2 ml-1 card-body">
           <div className="flex justify-between items-center">
             <div>
               {" "}
@@ -177,7 +186,7 @@ const PropertyDetail = ({ propertyId }) => {
           </div>
 
           <br />
-          <div className="property-type text-xl font-semibold  text-gray-500">
+          <div className="property-type text-lg font-semibold  text-gray-500">
            {propertyType}
           </div>
 
@@ -187,28 +196,18 @@ const PropertyDetail = ({ propertyId }) => {
 
           {/* -----------property title and buy now button ------------*/}
           <div className="flex flex-col lg:flex-row justify-start lg:justify-between "> 
-          <div className="property-title text-2xl font-bold mb-2 text-rose-500">
+          <div className="property-title text-xl font-bold mb-2 text-rose-500">
           {propertyName}
           </div>
  
-          {/* <div> 
-            <a href="/payment">
-             <button className="  rounded-lg px-3 py-2 border-2 border-rose-600  text-md font-semibold text-rose-600 hover:text-black hover:bg-rose-600">Buy Now</button>
-            </a>
-           </div> */}
- 
-        
- 
-
           </div>
          
-
           <div>
             <Rating style={{ maxWidth: 120 }} value={4} readOnly />
           </div>
           <br />
-          <div>
-            <h2 className="text-xl font-bold mb-3">Location</h2>
+          <div >
+            <h2 className="text-xl font-bold mb-2">Location</h2>
             <div>
               {" "}
               <FontAwesomeIcon
@@ -219,9 +218,9 @@ const PropertyDetail = ({ propertyId }) => {
             </div>
           </div>
           <br />
-          <div className="flex "> 
+          <div className="flex py-2"> 
 
-          <div className=" rounded px-5 py-2 border-2 text-black text-xl mr-2 ">
+          <div className=" rounded px-5 py-2 border-2 text-black text-lg mr-2 ">
          Price: ${price}
           </div>
           <div className="  ">
@@ -232,9 +231,10 @@ const PropertyDetail = ({ propertyId }) => {
           </div>
 
           </div>
-          <br />
-          <div>
-            <h2 className="text-2xl font-bold mb-3">Property Details</h2>
+         
+          
+          <div className="py-2"> 
+            <h2 className="text-lg font-bold mb-3">Property Details</h2>
             <div className="grid grid-cols-3 gap-8">
               <button className="rounded-full px-5 py-1 border-2 text-rose-600">
                 {" "}
@@ -262,8 +262,12 @@ const PropertyDetail = ({ propertyId }) => {
               </button>
             </div>
           </div>
-          <div className=" text-justify mt-10 mb-40 md:mb-20"> <p>{propertyDetails}</p> 
-            
+          
+
+          <div className="py-3">
+          <h3 className=" text-black font-bold text-lg mr-2 my-2 ">  Property Creator</h3>
+
+        <p className=" text-md mr-2"> {propertyCreator}</p>
           </div>
         </div>
       </div>

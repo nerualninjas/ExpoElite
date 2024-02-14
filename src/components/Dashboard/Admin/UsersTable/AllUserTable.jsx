@@ -35,14 +35,14 @@ const BuyerTable = () => {
           <table className="table mx-5 w-full mt-5 mb-10 pb-6">
             {/* head */}
             <thead>
-              <tr>
+              <tr className='text-center'>
                 <th>#</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Image</th>
                 <th>Role</th>
                 <th>Action</th>
-                <th>Action</th>
+               
               </tr>
             </thead>
             <tbody>
