@@ -95,7 +95,13 @@ export const AuthContextProvider = ({ children }) => {
           }
         })
               }else{ 
-                localStorage.removeItem('token');
+                try {
+                  if(typeof window !== 'undefined') {
+                         localStorage.removeItem('token');
+                  }
+              } catch (error) {
+                  console.error('Error while setting token in localStorage:', error);
+              }
                 setLoading(false);
               }
     });
