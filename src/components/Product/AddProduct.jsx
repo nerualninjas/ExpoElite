@@ -25,13 +25,18 @@ const AddProduct = () => {
 
   const initialFormData = {
     propertyCreator: email,
-    // image: "",
-    // propertyName: "",
-    // bedrooms: "",
-    // bathrooms: "",
-    // livingRoom: "",
-    // location: "",
 
+    propertyName: "",
+    image: "",
+    bedrooms: "",
+    bathrooms: "",
+    livingRoom: "",
+    price: "",
+    location: "",
+    month1: "",
+    month6: "",
+    month12: "",
+    description: "",
   };
 
   const [formData, setFormData] = useState(initialFormData);
@@ -50,17 +55,15 @@ const AddProduct = () => {
 
     const myData = {
       ...formData,
-      likeBy: ["user1@example.com"],
-      dislikeBy: ["user2@example.com"],
+      likeBy: [" "],
+      dislikeBy: [" "],
       commentLogs: [
+         
         {
-          commentBy: "user2@example.com",
-        },
-        {
-          commentBy: "user4@example.com",
-          comment: "I love the architectural style of the estate.",
-          commentDate: "2024-02-11",
-          commentTime: "10:30:35",
+          commentBy: " ",
+          comment: " ",
+          commentDate: " ",
+          commentTime: " ",
         },
       ],
     };
@@ -170,7 +173,6 @@ const AddProduct = () => {
           <div className="flex items-center space-x-4">
             <label className="inline-flex items-center">
               <input
-                required
                 type="radio"
                 value="sell"
                 name="sell"
@@ -279,6 +281,7 @@ const AddProduct = () => {
           </label>
           <textarea
             required
+            name="description"
             value={formData.description}
             onChange={handleChange}
             className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 dark-bg-gray-900 dark-text-gray-100 focus:dark-border-violet-400"
