@@ -104,10 +104,10 @@ const ManageProduct = () => {
 
                 <td
                   className={
-                    property?.propertyType === "rant" ? " text-green-500 " : " "
+                    property?.propertyType === "rent" ? " text-green-500 " : " "
                   }
                 >
-                  {property?.propertyType === "rant" ? (
+                  {property?.propertyType === "rent" ? (
                     property?.propertyType
                   ) : (
                     <span className="text-red-500">
