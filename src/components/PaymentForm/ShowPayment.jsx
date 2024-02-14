@@ -68,7 +68,7 @@ const ShowPayment = () => {
                 <td>{property?.price}</td>
                 <td>{property?.date}</td>
                 <td>{property?.transactionId}</td>
-                <td>{property?.status}</td>
+               
                  
               </tr>
             ))}

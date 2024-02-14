@@ -67,7 +67,7 @@ const Navbar = () => {
     { pageName: "Discover", path: "/discover", icon: faCircle },
     { pageName: "About Us", path: "/about", icon: faCircleInfo },
     { pageName: "Contact Us", path: "/contact", icon: faAddressBook },
-    { pageName: " Seller Dashboard", path: "/GraphAndAnalysisSeller", icon: faAddressBook },
+    
 
   ];
 
@@ -75,6 +75,11 @@ const Navbar = () => {
     {pageName: "Dashboard" , path: "/dashboard", icon: faChartLine},
     {pageName: "Manage Users" , path: "/allUsers", icon: faPeopleGroup},
     {pageName: "Manage Property" , path: "/allProducts", icon: faLandmark},
+
+  ];
+
+  const sellerDashboard = [
+    { pageName: "Dashboard", path: "/GraphAndAnalysisSeller", icon:faChartLine },
 
   ];
 
