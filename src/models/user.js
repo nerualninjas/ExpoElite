@@ -15,7 +15,7 @@
 //     },
 //     userRole: {
 //       type: String,
-//       enum: ['Admin', 'User', 'Manager'], 
+//       enum: ['Admin', 'User', 'Manager'],
 //       required: true,
 //     }
 //   });
