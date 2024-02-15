@@ -6,10 +6,12 @@ import {
   faMapMarkerAlt,
   faBed,
   faBath,
-  faCouch
+  faCouch,
+  faArrowRight
 } from "@fortawesome/free-solid-svg-icons";
 import { FaLocationArrow } from "react-icons/fa";
 import Image from "next/image";
+import Link from 'next/link';
 
 const PopularProperty = () => {
     const { propertyData, isPending, refetch } = usePropertyAllData();
@@ -56,9 +58,18 @@ const PopularProperty = () => {
              <h2 className="card-title font-bold text-lg text-[#2C2946] text-left pb-1">
                    {property?.title}
                  </h2>
-               <h2 className="card-title font-bold text-sm  text-left pb-2 text-[#ff385d]">
+                 <div className='flex justify-between'>
+                  <div><h2 className="card-title font-bold text-sm  text-left pb-2 text-[#ff385d]">
                    ${property?.price}
-                 </h2>
+                 </h2></div>
+                 <div> <Link
+                          href="/products/[id]"
+                          as={`/products/${property._id}`}
+                        >
+                          <span className=" rounded-full text-[#FF004D] px-2 "><FontAwesomeIcon icon={faArrowRight}/></span>
+                        </Link></div>
+                 </div>
+               
                <div className="">
                <div className="flex text-xs  w-full    content-stretch justify-between pb-2">
                   <div className="w-1/3">

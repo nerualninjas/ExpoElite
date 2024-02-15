@@ -171,13 +171,15 @@ import ChatWindow2 from "../ChatWindow2/ChatWindow2";
           <div className="flex justify-between items-center">
             <div>
               {" "}
-              <button className="flex items-center">
+              <Link href="/" >
+                          <button className="flex items-center">
                 {" "}
                 <span>
                   <IoMdArrowRoundBack />
                 </span>
                 Back{" "}
               </button>
+                        </Link> 
             </div>
             <div className="flex text-2xl items-center">
              <button onClick={handleLike}><FaRegHeart className={userLiked ?"text-2xl  inset-0  text-rose-600":"text-2xl"} />{" "}</button>
