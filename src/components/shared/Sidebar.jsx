@@ -29,12 +29,14 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import useAdmin from "@/hooks/users/useAdmin";
+// import useSeller from "@/hooks/users/useSeller";
 
 const Sidebar = () => {
   const { user, logOut } = UserAuth();
   const pathName = usePathname();
   const [isMenu, setIsMenu] = useState(false);
   const { isAdmin, isPending, refetch } = useAdmin()
+  // const { isSeller} = useSeller()
   console.log(isAdmin)
 
   const handleNavMenu = () => {
@@ -46,6 +48,7 @@ const Sidebar = () => {
     { pageName: "Discover", path: "/discover", icon: faMagnifyingGlassPlus },
     { pageName: "About Us", path: "/about", icon: faCircleInfo },
     { pageName: "Contact Us", path: "/contact", icon: faAddressBook },
+    { pageName: "Seller Dashboard", path: "/GraphAndAnalysisSeller", icon:faChartLine },
    
   ];
 
