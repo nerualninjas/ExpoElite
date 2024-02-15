@@ -91,14 +91,14 @@ const PropertySellReport = () => {
                                     <span>{soldProperty.name}</span>
                                     <p className="dark:text-gray-400">{soldProperty.email}</p>
                                 </td>
-                                {/* <td>
+                                <td>
                                     <Link href={`/soldProperty/${soldProperty._id}`}>
                                         <button className="btn text-white bg-rose-500">View</button>
                                     </Link>
-                                </td> */}
-                                <td>
-                                    <button className="btn text-white bg-rose-500">View</button>
                                 </td>
+                                {/* <td>
+                                    <button className="btn text-white bg-rose-500">View</button>
+                                </td> */}
                                 <td>
                                     <button
                                         // onClick={() => handleDeleteSoldProperty(soldProperty)}
