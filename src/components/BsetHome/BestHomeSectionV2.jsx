@@ -136,7 +136,7 @@ const BestHomeSectionV2 = () => {
                       className="object-cover w-full mb-4 h-30 sm:h-60 dark:bg-gray-500"
                     />
                   </figure>
-
+                  <h1 className="top-10 px-3">type</h1>
                   <div className=" px-3   ">
                     <h2 className="flex justify-between card-title font-bold text-2xl text-[#2C2946] text-left py-2">
                       ${property?.price}
