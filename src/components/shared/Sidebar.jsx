@@ -48,6 +48,7 @@ const Sidebar = () => {
     { pageName: "Discover", path: "/discover", icon: faMagnifyingGlassPlus },
     { pageName: "About Us", path: "/about", icon: faCircleInfo },
     { pageName: "Contact Us", path: "/contact", icon: faAddressBook },
+   
   ];
 
   const adminDashboard = [
@@ -64,6 +65,10 @@ const Sidebar = () => {
     { pageName: "My Orders", path: "/paymentList", icon: faCartShopping },
 
   ]
+  const sellerDashboard = [
+    { pageName: "Dashboard", path: "/GraphAndAnalysisSeller", icon:faChartLine },
+
+  ];
   return (
     <div>
 
@@ -157,7 +162,6 @@ const Sidebar = () => {
                 ))
 
               )}
-
             </ul>
           </section>
           {/* auth section  */}
