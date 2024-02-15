@@ -23,13 +23,15 @@ import {
   faCartShopping,
   faCity,
   faMagnifyingGlassPlus,
-  faSellsy,
 } from "@fortawesome/free-solid-svg-icons";
-
+// import {
+//   faSellsy,
+// } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import useAdmin from "@/hooks/users/useAdmin";
 // import useSeller from "@/hooks/users/useSeller";
+
 
 const Sidebar = () => {
   const { user, logOut } = UserAuth();
@@ -56,7 +58,7 @@ const Sidebar = () => {
     { pageName: "Dashboard", path: "/dashboard", icon: faChartLine },
     { pageName: "Manage Users", path: "/allUsers", icon: faPeopleGroup },
     { pageName: "Manage Property", path: "/allProducts", icon: faLandmark },
-    { pageName: "Property Sell Report", path: "/allPropertySellReport", icon: faSellsy },
+    { pageName: "Property Sell Report", path: "/allPropertySellReport", icon: faLandmark },
     { pageName: "AllSellers", path: "/allSellers", icon: faUsers },
   ];
   const userDashboard = [
