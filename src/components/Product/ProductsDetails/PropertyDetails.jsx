@@ -70,7 +70,7 @@ import ChatWindow2 from "../ChatWindow2/ChatWindow2";
   const { _id,propertyName, propertyType, price, image, bathrooms, bedrooms, livingRoom, propertyDetails, propertyCreator
   } = propertySingleData || {};
 
-  const sellerEmail= "ashiq.buet73@gmail.com"; //TODO need change with seller email for notificaitn
+  // const sellerEmail= "ashiq.buet73@gmail.com"; //TODO need change with seller email for notificaitn
 
   //Like Count Functional
 
@@ -83,7 +83,7 @@ import ChatWindow2 from "../ChatWindow2/ChatWindow2";
 
     // notifiacation add for like start
     const data = {
-      userEmail: sellerEmail,
+      userEmail: propertyCreator,
       notificationData: [{
         notificationText:`${user?.displayName} ${!userLiked ? "Like":"Dislike"} your property`,
         notifyUserPhoto: `${user?.photoURL}`,
@@ -96,7 +96,7 @@ import ChatWindow2 from "../ChatWindow2/ChatWindow2";
 
     //notification end
 
-  console.log(userEmail,_id);
+  // console.log(userEmail,_id);
 
   }
 

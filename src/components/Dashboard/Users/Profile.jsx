@@ -7,6 +7,8 @@ import axios from 'axios';
 import useAxiosSecure from '@/hooks/useAxiosSecure';
 import useAUser from '@/hooks/users/useAUser';
 import useAdmin from '@/hooks/users/useAdmin';
+import PremiumSellerCard from '../Seller/PremiumSeller/PremiumSellerCard';
+import FreeSellerCard from '../Seller/PremiumSeller/FreeSellerCard';
 
 const Profile = () => {
     const { user } = UserAuth();
@@ -50,6 +52,11 @@ const Profile = () => {
                     )}
                 </div>
             </div>
+                 {/* seller card   */}
+                 <div className="md:flex gap-4 justify-center">
+                 <FreeSellerCard/>
+                 <PremiumSellerCard/>
+                 </div>
         </div>
     );
 };
