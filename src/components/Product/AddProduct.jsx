@@ -58,6 +58,7 @@ const AddProduct = () => {
       propertyType: selectedType === "sell" ? "sell" : "rent",
       likeBy: [" "],
       dislikeBy: [" "],
+      publishStatus: "unpublish",
       commentLogs: [
         {
           commentBy: " ",
