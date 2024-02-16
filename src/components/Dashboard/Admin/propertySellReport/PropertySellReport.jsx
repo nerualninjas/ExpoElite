@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import useGetSoldProperty from '@/hooks/soldProperty/useGetSoldProperty';
 import useAxiosSecure from '@/hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 
 const PropertySellReport = () => {
@@ -93,7 +94,7 @@ const PropertySellReport = () => {
                                 </td>
                                 <td>
                                     <Link href={`/soldProperty/${soldProperty._id}`}>
-                                        <button className="btn text-white bg-rose-500">View</button>
+                                        <button className="btn text-white bg-rose-500 hover:bg-rose-300 hover:text-black transition duration-700 ease-in-out">View</button>
                                     </Link>
                                 </td>
                                 {/* <td>
@@ -101,9 +102,8 @@ const PropertySellReport = () => {
                                 </td> */}
                                 <td>
                                     <button
-                                        // onClick={() => handleDeleteSoldProperty(soldProperty)}
-                                        className="btn text-white bg-[#eb4343]"
-                                    >Delete</button>
+                                        className="btn text-white bg-[#6090e9] hover:bg-[#4053a8] transition duration-700 ease-in-out"
+                                    >Print Invoice</button>
                                 </td>
                             </tr>
                         ))}
