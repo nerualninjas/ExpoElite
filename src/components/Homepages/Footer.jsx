@@ -21,7 +21,7 @@ const Footer = () => {
       <div className="container flex flex-wrap items-center justify-center mx-auto space-y-4 sm:justify-between sm:space-y-0">
         <div className="flex flex-row pr-3 space-x-4 sm:space-x-8">
           <div className="flex ml-4 items-center justify-center flex-shrink-0 w-12 h-12 rounded-full dark:bg-violet-400">
-            <h2 className="text-3xl text-white">ExpoElite</h2>
+            <h2 className="text-3xl font-extrabold text-white">ExpoElite</h2>
           </div>
           {/* <ul className="flex flex-wrap items-center space-x-4 sm:space-x-8">
             <li >
@@ -38,18 +38,18 @@ const Footer = () => {
         </div>
         <ul className="flex flex-wrap pl-3 space-x-4 sm:space-x-8">
           <li>
-            <a rel="noopener noreferrer" href="#">
+            <a rel="noopener noreferrer" href="https://www.instagram.com/" target="_blank">
               <RiInstagramFill className="text-3xl text-white" />
             </a>
           </li>
           <li>
-            <a rel="noopener noreferrer" href="#">
+            <a rel="noopener noreferrer" href="https://www.facebook.com/" target="_blank">
               <FaFacebook className="text-3xl text-white" />
             </a>
           </li>
           <li>
-            <a rel="noopener noreferrer" href="#">
-              <FaTwitter className="text-3xl text-blue-500" />
+            <a rel="noopener noreferrer" href="https://twitter.com/" target="_blank">
+              <FaTwitter className="text-3xl text-white" />
             </a>
           </li>
         </ul>
