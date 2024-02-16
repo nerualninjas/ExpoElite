@@ -6,11 +6,14 @@ import Link from "next/link";
 import { FaGoogle, FaTwitter, FaFacebook } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const Login2 = () => {
   const router = useRouter();
   const { signIn, googleSignIn } = UserAuth();
+  const [demologin,setLogin]=useState()
 
+  
   const handleLogin = (e) => {
     e.preventDefault();
     console.log(e.currentTarget);
@@ -62,6 +65,7 @@ const Login2 = () => {
               <input
                 type="email"
                 name="email"
+                defaultValue={demologin?.user}
                 id="email"
                 placeholder="User Email"
                 className="w-full px-4 py-3 rounded-md bg-rose-50"
@@ -75,6 +79,7 @@ const Login2 = () => {
                 type="password"
                 name="password"
                 id="password"
+                defaultValue={demologin?.pass}
                 placeholder="Password"
                 className="w-full px-4 py-3 rounded-md bg-rose-50"
               />
@@ -126,6 +131,13 @@ const Login2 = () => {
               Register
             </Link>
           </p>
+
+          <div className="mx-auto text-center pt-10">
+            <h3 className="py-2 text-rose-400 text-xl font-bold"> Login as </h3>
+            <button onClick={()=>setLogin({user:"admin@expoelite.com",pass: "123456@Aa"})} className="btn bg-rose-400 text-white btn-sm">Admin</button>
+            <button onClick={()=>setLogin({user:"seller@expoelite.com",pass: "123456@Aa"})} className="btn mx-5 bg-rose-400 text-white btn-sm">Seller</button>
+            <button onClick={()=>setLogin({user:"user@expoelite.com",pass: "123456@Aa"})} className="btn bg-rose-400 text-white btn-sm">User</button>
+          </div>
         </div>
       </div>
     </div>

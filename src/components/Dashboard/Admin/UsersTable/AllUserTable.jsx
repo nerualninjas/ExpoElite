@@ -17,7 +17,7 @@ const BuyerTable = () => {
       try {
         // Update the user's role status to 'approved' and role to 'seller'
         await axiosSecure.patch(`/approveRole/${userId}`, {
-          roleStatus: 'approved',
+          roleStatus: 'Approved',
           userRole: 'Seller'
         });
   
@@ -65,7 +65,7 @@ const BuyerTable = () => {
                     <button
                       className="btn text-white bg-[#3a9648]"
                       onClick={() => handleApprove(user._id)}
-                      disabled={!(user.roleStatus === 'pending' && user.userRole === 'user')}
+                      disabled={!(user.roleStatus === 'Pending' && user.userRole === 'user')}
                     >
                       Approve <br /> Request
                     </button>
