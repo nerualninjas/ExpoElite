@@ -7,7 +7,7 @@ const LikeComment = () => {
         {
             icon: faHeart,
             name: "Like",
-            count: 29,
+            count: 13,
         },
         {
             icon: faComments,
