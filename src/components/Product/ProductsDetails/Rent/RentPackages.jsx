@@ -8,7 +8,7 @@ const RentPackages = ({ propertyId }) => {
     );
     const { _id, propertyName, propertyType, propertyCategory, price, image, bathrooms, bedrooms, livingRoom, month1, month6, month12 } = propertySingleData || {};
     return (
-        <div className='flex flex-col md:flex-row justify-center items-center gap-10 -z-10'>
+        <div className='flex flex-col md:flex-row justify-center items-center gap-10 -translate-y-32'>
             <div className="max-w-xs rounded-md shadow-md bg-rose-200">
 
                 <div className="flex flex-col justify-between p-6 space-y-8">
