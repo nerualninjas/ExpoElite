@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import usePropertyAllData from '@/hooks/Propertys/usePropertyAllData';
 import useAxiosSecure from '@/hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 const AllProductTable = () => {
 
@@ -18,46 +19,34 @@ const AllProductTable = () => {
 
 
 
-    // const handlePropertyStatus = (Property) => {
-    //     Swal.fire({
-    //         title: "Are you sure?",
-    //         text: "You won't be able to revert this!",
-    //         icon: "warning",
-    //         showCancelButton: true,
-    //         confirmButtonColor: "#3085d6",
-    //         cancelButtonColor: "#d33",
-    //         confirmButtonText: "Yes, delete it!",
-    //     }).then(async (result) => {
-    //         if (result.isConfirmed) {
-    //             console.log(Property._id);
-    //             await useAxiosSecure
-    //                 .delete(`/deleteProperty/${Property._id}`)
-    //                 .then((res) => {
-    //                     console.log(res?.data);
-    //                     refetch();
-    //                     Swal.fire({
-    //                         title: "Deleted?",
-    //                         text: "You product deleted Successfully!",
-    //                         icon: "success",
-    //                         timer: 1000,
-    //                     });
-    //                 });
-    //         }
-    //     });
-    // };
-
-
-
     const handlePropertyStatusPublish = async (id) => {
         console.log(id);
         const res = await axiosSecure.patch(`/updatePropertyStatusPublish/${id}`);
-
+        console.log(res.data);
+        if (res.data) {
+            refetch();
+            Swal.fire({
+                title: "ok!",
+                text: "has Published successfully!",
+                icon: "success"
+            });
+        }
     }
 
 
     const handlePropertyStatusUnpublish = async (id) => {
         console.log(id);
         const res = await axiosSecure.patch(`/updatePropertyStatusUnpublish/${id}`);
+        console.log(res.data);
+        if (res.data) {
+            refetch();
+            Swal.fire({
+                title: "ok!",
+                text: "has unpublished successfully!",
+                icon: "success"
+            });
+        }
+
 
     }
 
@@ -111,18 +100,19 @@ const AllProductTable = () => {
                                 </td>
                                 <td>
                                     {
-                                        property.publishStatus === 'unpublish' ?
+                                        property.publishStatus === 'publish' ?
 
-                                            <button
-                                                onClick={() => handlePropertyStatusPublish(property._id)}
-                                                className="btn text-white bg-[#53e068]">
-                                                Publish
-                                            </button>
-                                            :
+
                                             <button
                                                 onClick={() => handlePropertyStatusUnpublish(property._id)}
                                                 className="btn text-white bg-[#eb4343]">
                                                 Unpublish
+                                            </button>
+                                            :
+                                            <button
+                                                onClick={() => handlePropertyStatusPublish(property._id)}
+                                                className="btn text-white bg-[#53e068]">
+                                                Publish
                                             </button>
                                     }
                                 </td>
