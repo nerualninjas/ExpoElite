@@ -3,16 +3,67 @@ import React, { useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import usePropertyAllData from '@/hooks/Propertys/usePropertyAllData';
+import useAxiosSecure from '@/hooks/useAxiosSecure';
 
 const AllProductTable = () => {
 
     const { propertyData, isPending, refetch } = usePropertyAllData();
     console.log('hello', propertyData);
     const properties = propertyData;
+    const axiosSecure = useAxiosSecure();
 
     useEffect(() => {
         console.log(properties); // Log properties to the console
     }, [properties]); // Make sure to add properties to the dependency array
+
+
+
+    // const handlePropertyStatus = (Property) => {
+    //     Swal.fire({
+    //         title: "Are you sure?",
+    //         text: "You won't be able to revert this!",
+    //         icon: "warning",
+    //         showCancelButton: true,
+    //         confirmButtonColor: "#3085d6",
+    //         cancelButtonColor: "#d33",
+    //         confirmButtonText: "Yes, delete it!",
+    //     }).then(async (result) => {
+    //         if (result.isConfirmed) {
+    //             console.log(Property._id);
+    //             await useAxiosSecure
+    //                 .delete(`/deleteProperty/${Property._id}`)
+    //                 .then((res) => {
+    //                     console.log(res?.data);
+    //                     refetch();
+    //                     Swal.fire({
+    //                         title: "Deleted?",
+    //                         text: "You product deleted Successfully!",
+    //                         icon: "success",
+    //                         timer: 1000,
+    //                     });
+    //                 });
+    //         }
+    //     });
+    // };
+
+
+
+    const handlePropertyStatusPublish = async (id) => {
+        console.log(id);
+        const res = await axiosSecure.patch(`/updatePropertyStatusPublish/${id}`);
+
+    }
+
+
+    const handlePropertyStatusUnpublish = async (id) => {
+        console.log(id);
+        const res = await axiosSecure.patch(`/updatePropertyStatusUnpublish/${id}`);
+
+    }
+
+
+
+
 
     return (
         <div className='bg-rose-50 rounded-lg'>
@@ -31,7 +82,7 @@ const AllProductTable = () => {
                             <th>Seller Info</th>
                             <th>Details</th>
                             <th>Action</th>
-                            <th>Action</th>
+                            {/* <th>Action</th> */}
                         </tr>
                     </thead>
                     <tbody>
@@ -59,11 +110,29 @@ const AllProductTable = () => {
                                     </Link>
                                 </td>
                                 <td>
-                                    <button className="btn text-white bg-[#53e068]">Publish</button>
+                                    {
+                                        property.publishStatus === 'unpublish' ?
+
+                                            <button
+                                                onClick={() => handlePropertyStatusPublish(property._id)}
+                                                className="btn text-white bg-[#53e068]">
+                                                Publish
+                                            </button>
+                                            :
+                                            <button
+                                                onClick={() => handlePropertyStatusUnpublish(property._id)}
+                                                className="btn text-white bg-[#eb4343]">
+                                                Unpublish
+                                            </button>
+                                    }
                                 </td>
-                                <td>
-                                    <button className="btn text-white bg-[#eb4343]">Reject</button>
-                                </td>
+                                {/* <td>
+                                    <button
+                                        onClick={() => handleTogglePropertyStatus(property._id, property.publishStatus)}
+                                        className={`btn text-white ${property.publishStatus === 'unpublish' ? 'bg-[#53e068]' : 'bg-[#eb4343]'}`}>
+                                        {property.publishStatus === 'unpublish' ? 'Publish' : 'Unpublish'}
+                                    </button>
+                                </td> */}
                             </tr>
                         ))}
                     </tbody>

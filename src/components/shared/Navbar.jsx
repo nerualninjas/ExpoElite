@@ -25,6 +25,7 @@ import Loading from "@/app/loading";
 import { FaBell } from "react-icons/fa";
 import useUnreadNotificationCount from "@/hooks/notifications/useUnreadNotificationCount";
 import useAdmin from "@/hooks/users/useAdmin";
+import useSeller from "@/hooks/users/useSeller";
 
 const Navbar = () => {
   const { user, loading, logOut } = UserAuth();
@@ -36,6 +37,7 @@ const Navbar = () => {
   const [isShowNotification, setIsShowNotification] = useState(false)
   const { unreadNotification, isLoading, refetch } = useUnreadNotificationCount();
   const { isAdmin } = useAdmin()
+  const { isSeller } = useSeller()
   // console.log(isAdmin)
   // const [notificationLength,setLength]=useState(0)
 
@@ -65,8 +67,10 @@ const Navbar = () => {
   const mainMenu = [
     { pageName: "Homepage", path: "/", icon: faHouseChimney },
     { pageName: "Discover", path: "/discover", icon: faCircle },
+    
     { pageName: "About Us", path: "/about", icon: faCircleInfo },
     { pageName: "Contact Us", path: "/contact", icon: faAddressBook },
+    
 
   ];
 
@@ -74,6 +78,11 @@ const Navbar = () => {
     {pageName: "Dashboard" , path: "/dashboard", icon: faChartLine},
     {pageName: "Manage Users" , path: "/allUsers", icon: faPeopleGroup},
     {pageName: "Manage Property" , path: "/allProducts", icon: faLandmark},
+
+  ];
+
+  const sellerDashboard = [
+    { pageName: "Dashboard", path: "/GraphAndAnalysisSeller", icon:faChartLine },
 
   ];
 
@@ -175,6 +184,24 @@ const Navbar = () => {
                       <h4>Products</h4>
                     </Link>
                   </li>
+                  
+                )}
+
+{user && isSeller && (
+                  sellerDashboard.map((sellerDash) => (
+                    <li key={sellerDash.pageName}>
+                      <Link
+                        className={`${pathName === sellerDash.path
+                          ? "bg-pink-200  py-2 px-4  rounded-full"
+                          : "hover:bg-pink-200   hover:text-rose-600 py-2 px-4 rounded-full"
+                          }`}
+                        href={sellerDash.path}
+                      >
+                     
+                        <h4>{sellerDash.pageName}</h4>
+                      </Link>
+                    </li>
+                  ))
                 )}
               </ul>
             </div>
