@@ -1,29 +1,36 @@
-"use client"
+"use client";
 
-const { useEffect } = require("react");
+import { useEffect } from "react";
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
 import Loading from "@/app/loading";
 import { useRouter } from "next/navigation";
 
-const PrivateRoutes = ({children})=>{
-const router = useRouter()
+const PrivateRoutes = ({ children }) => {
+  const router = useRouter();
+  const { user, loading } = UserAuth();
 
-const {user,loading}=UserAuth();
+ 
 
-if(loading){
-    return <Loading/>
-}
+  useEffect(() => {
+    const redirectToLogin = async () => {
+      try {
+        if (!loading && !user) {
+          await router.replace("/login");
+        }
+      } catch (error) {
+        console.error("Error redirecting to login:", error);
+        // Handle the error as per your application's requirements
+      }
+    };
 
-useEffect(()=>{
-    if(!loading && !user){
-        router.replace('/login');
-    }
-},[loading,user]);
+    redirectToLogin();
+  }, [loading, user, router]);
 
+  if (loading) {
+    return <Loading />;
+  }
 
-
-return loading ? null: children;
+  return loading ? null : children;
 };
-
 
 export default PrivateRoutes;
