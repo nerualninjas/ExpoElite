@@ -10,9 +10,11 @@ import MySoldProperty from '@/components/Dashboard/Seller/graphAnalysisSeller/My
 import MyListedProperty from '@/components/Dashboard/Seller/graphAnalysisSeller/MyListedProperty';
 import SellerDetail from '@/components/Dashboard/Seller/graphAnalysisSeller/SellerDetail';
 import GotPayment from '@/components/Dashboard/Seller/graphAnalysisSeller/GotPayment';
+import PrivateRoutes from '@/libs/PrivateRoute';
 
 const GraphAndAnalysisSeller = () => {
     return (
+      <PrivateRoutes>
         <div className="w-full min-h-screen mt-5 flex flex-col justify-center items-center ">
         {/* <div className="w-full lg:w-11/12 min-h-screen rounded-lg flex justify-center items-center bg-gradient-to-r from-rose-200 via-base-100 to-rose-200 blur-[90px] absolute"> */}
         {/* </div> */}
@@ -52,6 +54,7 @@ const GraphAndAnalysisSeller = () => {
   
   
       </div>
+       </PrivateRoutes>
     );
 };
 

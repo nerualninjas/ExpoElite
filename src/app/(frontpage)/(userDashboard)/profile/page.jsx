@@ -1,9 +1,12 @@
 import Profile from '@/components/Dashboard/Users/Profile';
 import React from 'react';
+import PrivateRoutes from '@/libs/PrivateRoute';
 
 const UserProfile = () => {
     return (
-        <Profile></Profile>
+        <PrivateRoutes>
+            <Profile></Profile>
+        </PrivateRoutes>
     );
 };
 

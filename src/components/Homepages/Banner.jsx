@@ -22,8 +22,11 @@ const Banner = () => {
                 height={100}
                 className="w-full relative z-10  bottom-12 h-full"
                 src={
-                  "https://i.postimg.cc/dQTr9xpk/banner2-removebg-preview.png"
+                  "https://i.ibb.co/qyM13FV/house-bg.png"
                 }
+                // src={
+                //   "https://i.postimg.cc/dQTr9xpk/banner2-removebg-preview.png"
+                // }
                 alt="picture"
               />
             </div>

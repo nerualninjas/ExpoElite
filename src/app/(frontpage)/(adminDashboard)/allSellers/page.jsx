@@ -4,7 +4,7 @@ import AllSellerTable from '@/components/Dashboard/Admin/sellerTable/AllSellerTa
 import useAllSellerData from '@/hooks/users/useAllSellerData';
 import useAllUserData from '@/hooks/users/useAllUserData';
 import React from 'react';
-
+import PrivateRoutes from '@/libs/PrivateRoute';
 
 const AllUsersDataTable = () => {
    
@@ -13,11 +13,13 @@ const AllUsersDataTable = () => {
     console.log(AllSellerData);
     // const users= AllSellerData;
     return (
+        <PrivateRoutes>
         <div>
         
          {/* <AllUserTable /> */}
          <AllSellerTable />
         </div>
+        </PrivateRoutes>
     );
 };
 

@@ -13,9 +13,10 @@ import TotalSeller from '@/components/Dashboard/Admin/TotalSeller';
 import TotalUser from '@/components/Dashboard/Admin/TotalUser';
 import UserVsSeller from '@/components/Dashboard/Admin/UserVsSeller';
 import React from 'react';
-
+import PrivateRoutes from '@/libs/PrivateRoute';
 const GraphAnalysis = () => {
     return (
+      <PrivateRoutes>
       <div className="w-full min-h-screen mt-5 flex flex-col justify-center items-center ">
       <div className="w-full lg:w-11/12 min-h-screen rounded-lg flex justify-center items-center bg-gradient-to-r from-rose-200 via-base-100 to-rose-200 blur-[90px] absolute">
       </div>
@@ -41,7 +42,7 @@ const GraphAnalysis = () => {
 
 
     </div>
-
+    </PrivateRoutes>
   );
 };
 
