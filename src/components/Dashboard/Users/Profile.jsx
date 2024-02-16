@@ -17,10 +17,11 @@ const Profile = () => {
     const { isAdmin } = useAdmin();
     const { userInfoData } = useAUser();
 
-    const handleSellerRequest = async () => {
+    const handleSellerRequest = async (id) => {
+        console.log(id)
         const data = {roleStatus: "Pending" };
         try {
-            await axiosSecure.patch(`/updateRole/${userInfoData?._id}`, data);
+            await axiosSecure.patch(`/updateRole/${id}`, data);
             setSellerRequestSent(true);
         } catch (error) {
             console.error("Error updating user role:", error);
@@ -44,7 +45,7 @@ const Profile = () => {
                     )}
                     {/* Render request seller button if request has not been sent */}
                     {!sellerRequestSent && !isAdmin && (
-                        <button onClick={handleSellerRequest} className='border-2 rounded-xl text-lg p-2 text-white bg-[#3a9648] hover:bg-white hover:text-[#3a9648]'>Request to Become Seller</button>
+                        <button onClick={()=>handleSellerRequest(userInfoData?._id)} className='border-2 rounded-xl text-lg p-2 text-white bg-[#3a9648] hover:bg-white hover:text-[#3a9648]'>Request to Become Seller</button>
                     )}
                     {/* Render "Request Sent" button if request has been sent */}
                     {sellerRequestSent && (
