@@ -1,10 +1,8 @@
 "use client";
 import React, { useEffect } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import useGetSoldProperty from '@/hooks/soldProperty/useGetSoldProperty';
-import useAxiosSecure from '@/hooks/useAxiosSecure';
-import Swal from 'sweetalert2';
+
 
 
 const PropertySellReport = () => {
@@ -12,44 +10,12 @@ const PropertySellReport = () => {
     const { soldPropertyData, isPending, refetch } = useGetSoldProperty();
     console.log('hello', soldPropertyData);
     const soldProperties = soldPropertyData;
-    // const [soldPropertyy, setSoldPropertyy] = useState(soldPropertyData);
 
     useEffect(() => {
         console.log(soldProperties); // Log properties to the console
         // setSoldProperties(soldProperties); // Log properties to the console
     }, [soldProperties]); // Make sure to add properties to the dependency array
 
-
-
-
-
-    // const handleDeleteSoldProperty = (soldProperty) => {
-    //     Swal.fire({
-    //         title: "Are you sure?",
-    //         text: "You won't be able to revert this!",
-    //         icon: "warning",
-    //         showCancelButton: true,
-    //         confirmButtonColor: "#3085d6",
-    //         cancelButtonColor: "#d33",
-    //         confirmButtonText: "Yes, delete it!",
-    //     }).then(async (result) => {
-    //         if (result.isConfirmed) {
-    //             console.log(soldProperty._id);
-    //             await useAxiosSecure
-    //                 .delete(`/deleteProperty/${soldProperty._id}`)
-    //                 .then((res) => {
-    //                     console.log(res?.data);
-    //                     refetch();
-    //                     Swal.fire({
-    //                         title: "Deleted?",
-    //                         text: "You product deleted Successfully!",
-    //                         icon: "success",
-    //                         timer: 1000,
-    //                     });
-    //                 });
-    //         }
-    //     });
-    // };
 
 
 
