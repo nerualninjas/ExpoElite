@@ -6,12 +6,18 @@ const PropertyDetails = ({ params }) => {
   return (
     <div>
       {/* Display other details of the property*/}
-      {/* <PropertyDetail propertyId={params?.id} /> */}
+      <PropertyDetail propertyId={params?.id} />
 
       {/* for different sell nd rent */}
 
-      { propertyType === "Sell" ? <PropertyDetail propertyId={params?.id} /> 
-      : <RentPropertyDetails propertyId={params?.id} /> }
+      {/* { propertyType === "Sell" ? (
+        <> 
+        <PropertyDetail propertyId={params?.id} />
+        </>
+      )
+      : (
+        <RentPropertyDetails propertyId={params?.id} />
+      )} */}
     </div>
   );
 };
