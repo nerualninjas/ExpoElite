@@ -9,7 +9,7 @@ import FAQ from "@/components/Homepages/FAQ";
 import MostPopular from "@/components/mostPopular/MostPopular";
 import BestHomeSection from "@/components/BsetHome/BestHomeSection";
 import ChatWindow from "@/components/ChatWindow/ChatWindow";
-
+import PremiumSeller from "@/components/Dashboard/Seller/PremiumSeller/PremiumSeller"
 export default function Home() {
   return (
     <div>
@@ -27,6 +27,7 @@ export default function Home() {
                 <Testimonials />
 
                 <FAQ />
+                {/* <PremiumSeller/> */}
                 <Footer />
                 <ChatWindow />
               </div>

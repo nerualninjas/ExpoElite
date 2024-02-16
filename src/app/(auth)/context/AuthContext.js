@@ -36,6 +36,7 @@ export const AuthContextProvider = ({ children }) => {
           userEmail: res?.user.email,
           userPhoto: res?.user.photoURL,
           userRole: "user",
+          roleStatus:"",
         };
         await axiosPublic.post("/createUser", userData).then((res) => {
           // console.log(res.data);

@@ -59,7 +59,7 @@ const Register2 = () => {
         updateUser(name, photo);
         // navigate after login
         await axiosPublic.post("/createUser", userData).then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           Swal.fire("Good job!", "User Created Successfully!", "success");
         });
 
@@ -69,6 +69,7 @@ const Register2 = () => {
           notificationData: [{
             notificationText: "user registration success",
             createdTime: new Date(),
+            notifyUserPhoto: photo,
             notificationStatus: "unread"
           }]
         }
