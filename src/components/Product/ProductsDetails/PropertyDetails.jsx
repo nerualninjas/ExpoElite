@@ -68,7 +68,7 @@ const PropertyDetail = ({ propertyId }) => {
   }
 
   // const { title, price /* other properties */ } = propertyData;
-  const { _id, propertyName, propertyType, propertyCategory, price, image, bathrooms, bedrooms, livingRoom, propertyDetails, propertyCreator
+  const { _id, propertyName, propertyType, propertyCategory, price, image, bathrooms, bedrooms, livingRoom, propertyDetails, propertyCreator,month1,month6,month12
   } = propertySingleData || {};
 
   const sellerEmail = "ashiq.buet73@gmail.com"; //TODO need change with seller email for notificaitn
