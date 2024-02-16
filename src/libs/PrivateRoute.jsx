@@ -1,6 +1,6 @@
 "use client"
 
-const { useEffect } = require("react");
+import { useEffect } from "react";
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
 import Loading from "@/app/loading";
 import { useRouter } from "next/navigation";
