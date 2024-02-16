@@ -9,9 +9,7 @@ const PrivateRoutes = ({ children }) => {
   const router = useRouter();
   const { user, loading } = UserAuth();
 
-  if (loading) {
-    return <Loading />;
-  }
+ 
 
   useEffect(() => {
     const redirectToLogin = async () => {
@@ -27,6 +25,10 @@ const PrivateRoutes = ({ children }) => {
 
     redirectToLogin();
   }, [loading, user, router]);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return loading ? null : children;
 };
