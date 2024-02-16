@@ -10,7 +10,7 @@ const PropertyDetailsSmallPart = ({ propertyId }) => {
 
     const router = useRouter();
     //   const { id } = router.query;
-    console.log(router.query);
+    // console.log(router.query);
 
     const { propertySingleData, isPending, refetch } = usePropertyData(
         propertyId
@@ -18,7 +18,7 @@ const PropertyDetailsSmallPart = ({ propertyId }) => {
 
 
     // const { title, price /* other properties */ } = propertyData;
-    const { propertyName, propertyType, price, image, bathrooms, bedrooms, livingRoom } = propertySingleData || {};
+    const { propertyName, propertyType,propertyCategory, price, image, bathrooms, bedrooms, livingRoom } = propertySingleData || {};
     return (
         <div className='w-full bg-rose-200 -translate-y-56 md:-translate-y-32  rounded py-10 md:py-10 px-4 md:px-20 my-10 '>
             <div className='flex flex-col md:flex-row justify-between items-center gap-4'>
@@ -27,7 +27,7 @@ const PropertyDetailsSmallPart = ({ propertyId }) => {
              
    
                 <div className='text-center md:text-start'>
-                    <h1 className='text-lg md:text-xl'>{propertyType}</h1>
+                    <h1 className='text-lg md:text-xl'>{propertyCategory}</h1>
                     <h1 className='text-sm md:text-lg '>{propertyName}</h1>
                 </div>
                 <div className='flex md:flex-col items-center justify-between  gap-4'>
@@ -56,7 +56,7 @@ const PropertyDetailsSmallPart = ({ propertyId }) => {
 
                 <h1 className=' text-xl font-bold text-rose-600 md:text-2xl  '>${price}</h1>
                 {/* will take to rentdetails page */}
-                <Link href={'/rent'} className='bg-rose-600 hover:bg-rose-100 text-white hover:text-rose-700 px-4 py-2 rounded text-extrabold'>Wanna Rent?</Link>
+                {/* <Link href={'/rent'} className='bg-rose-600 hover:bg-rose-100 text-white hover:text-rose-700 px-4 py-2 rounded text-extrabold'>Wanna Rent?</Link> */}
 
             </div>
         </div>

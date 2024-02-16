@@ -127,7 +127,7 @@ const BestHomeSectionV2 = () => {
             <div className="mx-auto mt-2 grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2">
               {properties?.map((property, index) => (
                 <div key={index} className="card bg-base-100 m-2 ">
-                  <figure className=" ">
+                  <div>
                     <Image
                       width={400}
                       height={200}
@@ -135,15 +135,27 @@ const BestHomeSectionV2 = () => {
                       alt={property.propertyName}
                       className="object-cover w-full mb-4 h-30 sm:h-60 dark:bg-gray-500"
                     />
-                  </figure>
-                  <h1 className="top-10 px-3">type</h1>
+
+                    <h1 className="top-2 right-0 px-3 py-2 bg-slate-100 absolute">{property?.propertyType}</h1>
+                  </div>
+
                   <div className=" px-3   ">
                     <h2 className="flex justify-between card-title font-bold text-2xl text-[#2C2946] text-left py-2">
-                      ${property?.price}
-                   
-                    <div className="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
-                      {property?.propertyType}
-                    </div> </h2>
+                      {property?.propertyType === "Sell" ? (
+                        <>
+                          ${property?.price}
+                        </>
+                      ) : (
+                        <>
+                          ${property?.month12}
+                        </>
+                      )}
+                      <div className="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
+                        {property?.propertyCategory}
+                      </div>
+                    </h2>
+
+
                     <div className="flex text-xs  w-full    content-stretch justify-between pb-2">
                       <div>
                         <div className="flex items-center gap-1">
