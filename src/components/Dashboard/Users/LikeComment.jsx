@@ -7,12 +7,12 @@ const LikeComment = () => {
         {
             icon: faHeart,
             name: "Like",
-            count: 100,
+            count: 29,
         },
         {
             icon: faComments,
             name: "Comments",
-            count: 50,
+            count: 9,
         },
         {
             icon: faShop,
@@ -24,7 +24,7 @@ const LikeComment = () => {
         <div className='flex flex-col md:flex-row justify-center items-center gap-5 mx-auto '>
             {
                 data.map((item, index) => (
-                    <div className='flex items-center justify-between items-center bg-gray-100 p-10 rounded-md gap-4  shadow-md' key={index}>
+                    <div className='flex justify-between items-center bg-gray-100 p-10 rounded-md gap-4  shadow-md' key={index}>
                         <FontAwesomeIcon className='rounded-full text-rose-400 w-16 h-16' icon={item.icon} />
                         <div className='flex flex-col justify-between items-center text-center'>
                             <p className='text-rose-600 '>{item.name}</p>

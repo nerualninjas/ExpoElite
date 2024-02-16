@@ -8,7 +8,7 @@ const Banner = () => {
         <div className="flex items-center justify-between">
           <div className="pl-10 ">
             <h2 className="font-semibold text-md md:text-3xl">10% Discount</h2>
-            <p className="text-sm ">
+            <p className="text-base">
               Get a discount on certain days and don&apos;t miss it
             </p>
             <button className="rounded-full bg-[#FF385D] text-white md:text-3xl">
