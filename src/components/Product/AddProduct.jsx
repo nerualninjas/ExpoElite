@@ -11,7 +11,7 @@ const AddProduct = () => {
   const { refetch } = usePropertyAllData();
   const email = user?.email;
 
-  const [selectedType, setSelectedType] = useState("sell");
+  const [selectedType, setSelectedType] = useState("Sell");
 
   const handleTypeChange = (event) => {
     setSelectedType(event.target.value);
@@ -37,6 +37,7 @@ const AddProduct = () => {
     month6: "",
     month12: "",
     description: "",
+    propertyCategory: "",
   };
 
   const [formData, setFormData] = useState(initialFormData);
@@ -55,9 +56,10 @@ const AddProduct = () => {
 
     const myData = {
       ...formData,
-      propertyType: selectedType === "sell" ? "sell" : "rent",
+      propertyType: selectedType === "Sell" ? "Sell" : "Rent",
       likeBy: [" "],
       dislikeBy: [" "],
+      publishStatus: "unpublish",
       commentLogs: [
         {
           commentBy: " ",
@@ -94,7 +96,7 @@ const AddProduct = () => {
 
   return (
     <div className="w-full  p-8  rounded-xl  ">
-      <h3 className="font-bold text-lg">Add a Product</h3>
+      <h3 className="font-bold text-lg">Add a Property</h3>
 
       <form className="space-y-6" onSubmit={onSubmit}>
         <div className="space-y-1 text-sm">
@@ -109,7 +111,7 @@ const AddProduct = () => {
               className="w-full px-4 py-3 rounded-md dark-border-gray-700 dark-bg-gray-900 dark-text-gray-100 focus:dark-border-violet-400"
             />
           </label>
-          <label className="block dark-text-gray-400">Product Name</label>
+          <label className="block dark-text-gray-400">Property Name</label>
           <input
             required
             value={formData.propertyName}
@@ -134,7 +136,7 @@ const AddProduct = () => {
 
         <div className="flex w-full gap-4 flex-col lg:flex-row">
           <div className="space-y-1 text-sm w-full lg:w-1/2">
-            <label className="block dark-text-gray-400">bedrooms</label>
+            <label className="block dark-text-gray-400">Bedrooms</label>
             <input
               required
               value={formData.bedrooms}
@@ -145,7 +147,7 @@ const AddProduct = () => {
             />
           </div>
           <div className="space-y-1 text-sm w-full lg:w-1/2">
-            <label className="block dark-text-gray-400">bathrooms</label>
+            <label className="block dark-text-gray-400">Bathrooms</label>
             <input
               required
               value={formData.bathrooms}
@@ -169,14 +171,14 @@ const AddProduct = () => {
         </div>
 
         <div className="space-y-1 text-sm">
-          <label className="block dark-text-gray-400">Product Type/Tags</label>
+          <label className="block dark-text-gray-400">Property Type/Tags</label>
           <div className="flex items-center space-x-4">
             <label className="inline-flex items-center">
               <input
                 type="radio"
-                value="sell"
-                name="sell"
-                checked={selectedType === "sell"}
+                value="Sell"
+                name="Sell"
+                checked={selectedType === "Sell"}
                 onChange={handleTypeChange}
                 className="form-radio h-5 w-5 text-black"
               />
@@ -186,18 +188,18 @@ const AddProduct = () => {
             <label className="inline-flex items-center">
               <input
                 type="radio"
-                value="rant"
-                name="rant"
-                checked={selectedType === "rant"}
+                value="Rent"
+                name="Rent"
+                checked={selectedType === "Rent"}
                 onChange={handleTypeChange}
                 className="form-radio h-5 w-5 text-black"
               />
-              <span className="ml-2">Rant type property</span>
+              <span className="ml-2">Rent type property</span>
             </label>
           </div>
         </div>
 
-        {selectedType === "sell" && (
+        {selectedType === "Sell" && (
           <>
             <div className="space-y-1 text-sm">
               <label className="block dark-text-gray-400">Price</label>
@@ -222,7 +224,7 @@ const AddProduct = () => {
           </>
         )}
 
-        {selectedType === "rant" && (
+        {selectedType === "Rent" && (
           <>
             <div className="space-y-1 text-sm">
               <label className="block dark-text-gray-400">
@@ -264,7 +266,7 @@ const AddProduct = () => {
         )}
 
         <div className="space-y-1 text-sm">
-          <label className="block dark-text-gray-400">Product location</label>
+          <label className="block dark-text-gray-400">Property location</label>
           <input
             required
             value={formData.location}
@@ -274,10 +276,21 @@ const AddProduct = () => {
             className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 dark-bg-gray-900 dark-text-gray-100 focus:dark-border-violet-400"
           />
         </div>
+        <div className="space-y-1 text-sm">
+          <label className="block dark-text-gray-400">Property Category</label>
+          <input
+            required
+            value={formData.propertyCategory}
+            onChange={handleChange}
+            name="propertyCategory"
+            type="text"
+            className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 dark-bg-gray-900 dark-text-gray-100 focus:dark-border-violet-400"
+          />
+        </div>
 
         <div className="space-y-1 text-sm">
           <label className="block dark-text-gray-400">
-            Product Description
+            Property Description
           </label>
           <textarea
             required
@@ -293,7 +306,7 @@ const AddProduct = () => {
             type="submit"
             className="block p-3 text-center rounded-xl dark-text-gray-900 dark-bg-violet-400 btn   btn-1"
           >
-            Add Product
+            Add Property
           </button>
           <form method="dialog">
             <button className="btn btn-error text-white">Close</button>

@@ -9,6 +9,10 @@ const router = useRouter()
 
 const {user,loading}=UserAuth();
 
+if(loading){
+    return <Loading/>
+}
+
 useEffect(()=>{
     if(!loading && !user){
         router.replace('/login');

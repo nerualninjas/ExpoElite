@@ -50,10 +50,10 @@ const ManageProduct = () => {
   return (
     <div className="bg-base-200 p-4 m-4 rounded-xl">
       <div className="text-3xl py-2 ">
-        <h2> Manage Product</h2>
+        <h2> Manage Property</h2>
       </div>
 
-      <h4>Total Product: {properties?.length}</h4>
+      <h4>Total Property: {properties?.length}</h4>
 
       <div className=" w-full overflow-x-auto">
         <table className="table">
@@ -62,12 +62,12 @@ const ManageProduct = () => {
               <td>No</td>
               <td>Image</td>
               <td>Name</td>
-              <th>price</th>
+              <th>Price</th>
               <th>bedrooms</th>
-              <th>bathrooms</th>
-              <th>livingRoom</th>
-              <th>location</th>
-
+              <th>Bathrooms</th>
+              <th>LivingRoom</th>
+              <th>Location</th>
+              <th>Status</th>
               <th>Action</th>
             </tr>
           </thead>

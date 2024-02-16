@@ -33,7 +33,7 @@ const ShowPayment = () => {
 
 
   return (
-    <div className="bg-base-200 p-4 m-4 rounded-xl">
+    <div className="bg-base-100 p-4 m-4 rounded-xl">
       <div className="text-3xl py-2">
         <h2>Review your order history</h2>
       </div>
@@ -44,12 +44,12 @@ const ShowPayment = () => {
         <table className="table">
           <thead className="text-sm">
             <tr>
-              <td>No</td>
+              <td>#</td>
               <td>Property Name</td>
               <th>Price</th>
-              <th>Date</th>
-              <th>transactionId</th>
-              <th>status</th>
+              <th>Purchase Date</th>
+              <th>Transaction Id</th>
+            
                
             </tr>
           </thead>
