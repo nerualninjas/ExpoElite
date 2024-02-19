@@ -38,12 +38,8 @@ const Navbar = () => {
   const { unreadNotification, isLoading, refetch } = useUnreadNotificationCount();
   const { isAdmin } = useAdmin()
   const { isSeller } = useSeller()
-  // console.log(isAdmin)
-  // const [notificationLength,setLength]=useState(0)
-
-  // if(isLoading){
-  //   return <><Loading/> </>
-  // }
+ 
+ 
   useEffect(() => {
     refetch()
   }, [unreadNotification, refetch])
@@ -269,7 +265,7 @@ const Navbar = () => {
                 </svg> */}
                 <FaBell />
                 <span className="badge badge-xs badge-primary indicator-item">
-                  {unreadNotification}
+                  {unreadNotification?.unreadNotificationCount}
                 </span>
               </div>
             </button>
