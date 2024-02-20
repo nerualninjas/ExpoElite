@@ -58,16 +58,15 @@ const Comment = ({ propertyId }) => {
         <div className='mb-10'>
              <div>
         <h1 className="text-xl my-4 font-extrabold text-black ">Comment Section</h1>
-        {/* <hr className="border border-rose-600  w-2/3 md:w-1/4   my-4"/> */}
-        {/* <div className="w-2/3 md:1/4 border border-[#FF385D] my-2 mx-auto"></div> */}
+     
        
            
         </div>
-            {/* <div>
-      {items.map((commentLogs, index) => (
-        <ShowComment key={index} commentData={commentLogs} />
-      ))}
-    </div> */}
+        <div className='overflow-y-scroll max-h-[300px]'>
+                {commentLogs.map((commentData, index) => (
+                    <ShowComment key={index} commentData={commentData} />
+                ))}
+            </div>
          
          
            
