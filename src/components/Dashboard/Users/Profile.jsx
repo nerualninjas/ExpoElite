@@ -17,7 +17,7 @@ const Profile = () => {
     const { isAdmin } = useAdmin();
     const { userInfoData } = useAUser();
 
-    console.log(userInfoData)
+ 
 
     // const handleSellerRequest = async (id) => {
     //     console.log(id)
@@ -59,9 +59,8 @@ const Profile = () => {
             </div>
                  {/* seller card   */}
                  <div id="seller" className="md:flex gap-4 justify-center">
-                    <PremiumSeller/>
-                 {/* <FreeSellerCard/>
-                 <PremiumSellerCard/> */}
+                   {!isAdmin &&  <PremiumSeller/>}
+                
                  </div>
         </div>
     );
