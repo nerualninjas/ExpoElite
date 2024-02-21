@@ -12,7 +12,7 @@ const useUnreadNotificationCount = () => {
         console.log("User:", user);
     }, [user]);
    
-console.log("usread",user?.email);
+
 
    const {
     data:unreadNotification,

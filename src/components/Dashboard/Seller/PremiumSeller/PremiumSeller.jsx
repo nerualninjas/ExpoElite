@@ -1,15 +1,19 @@
 import PremiumSellerCard from '@/components/Dashboard/Seller/PremiumSeller/PremiumSellerCard';
 import PremiumSellerYearly from '@/components/Dashboard/Seller/PremiumSeller/PremiumSellerYear';
 import FreeSellerCard from '@/components/Dashboard/Seller/PremiumSeller/FreeSellerCard';
-// import React from "react";
+import { UserAuth } from "@/app/(auth)/context/AuthContext";
+import useAxiosSecure from '@/hooks/useAxiosSecure';
+import Swal from "sweetalert2";
 import {Tabs, Tab, Card, CardBody} from "@nextui-org/react";
 
 const PremiumSeller= ()=>{
+  const { user } = UserAuth();
+ const axiosSecure = useAxiosSecure();
 
-const handleBeSeller =(d)=>{
-  console.log(d)
 
-  //date calculation for subcription
+const handleBeSeller = (d)=>{
+
+  //date calculation for subscription
   const startDate=  new Date();
   const endDate = new Date(startDate);
 
@@ -24,10 +28,44 @@ const handleBeSeller =(d)=>{
   const sellerReg= {
     sellerRegStartDate: startDate,
     sellerExpireDate: endDate,
+    sellerRegStatus: "pending",
   }
 
-  const data={...d,...sellerReg};
-  console.log(data)
+  const data ={...d,...sellerReg};
+  if(data){
+    Swal.fire({
+      title: `Please pay ${d.amount}$`,
+      text: `You will be ${d.membership} seller !`,
+      icon: "info",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "ok"
+    }).then( async (result) => {
+      if (result.isConfirmed) {
+
+        try {
+          const res = await axiosSecure.patch(`/updateMemberShip/${user?.email}`, data)
+            
+          if(res?.data.modifiedCount === 1){
+            console.log(res?.data);
+           //todo payment route
+          }
+            
+            
+        } catch (error) {
+            console.error("Error updating user role:", error);
+        }
+        // Swal.fire({
+        //   title: "Deleted!",
+        //   text: "Your file has been deleted.",
+        //   icon: "success"
+        // });
+      }
+    });
+    
+    
+  }
 }
 
 
