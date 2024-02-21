@@ -7,10 +7,6 @@ import { RiseLoader } from "react-spinners";
 import { Image } from "@nextui-org/react";
 // import Rating from 'react-rating';
 // Rating
-
-
-
-
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 //fontawesome icon
@@ -93,6 +89,24 @@ const PropertyDetail = ({ propertyId }) => {
         notificationStatus: "unread"
       }]
     }
+
+    ////////////////comment Functionalty
+    const handleComment = async (commentText) => {
+      try {
+        // Call your backend API to update the comment using PUT method
+        const response = await axiosSecure.put(`/addComment?id=${_id}`, {
+          comment: commentText,
+        });
+  
+        // Handle success (you might want to update your state or refetch data)
+        console.log("Comment added successfully", response.data);
+  
+        // You can also notify the property creator here if needed
+      } catch (error) {
+        // Handle error
+        console.error("Error adding comment", error);
+      }
+    };
     // post api for notication 
     notificationPost(data)
 
