@@ -10,7 +10,10 @@ import MostPopular from "@/components/mostPopular/MostPopular";
 import BestHomeSection from "@/components/BsetHome/BestHomeSection";
 import ChatWindow from "@/components/ChatWindow/ChatWindow";
 import PremiumSeller from "@/components/Dashboard/Seller/PremiumSeller/PremiumSeller"
+
+
 export default function Home() {
+
   return (
     <div>
       <div className="bg-[#F9FAFE]    rounded-t-2xl">

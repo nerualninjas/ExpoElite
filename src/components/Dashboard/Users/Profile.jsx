@@ -3,12 +3,12 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
-import axios from 'axios';
 import useAxiosSecure from '@/hooks/useAxiosSecure';
 import useAUser from '@/hooks/users/useAUser';
 import useAdmin from '@/hooks/users/useAdmin';
 import PremiumSellerCard from '../Seller/PremiumSeller/PremiumSellerCard';
 import FreeSellerCard from '../Seller/PremiumSeller/FreeSellerCard';
+import PremiumSeller from '../Seller/PremiumSeller/PremiumSeller';
 
 const Profile = () => {
     const { user } = UserAuth();
@@ -17,17 +17,19 @@ const Profile = () => {
     const { isAdmin } = useAdmin();
     const { userInfoData } = useAUser();
 
-    const handleSellerRequest = async (id) => {
-        console.log(id)
-        const data = {roleStatus: "Pending" };
-        try {
-            await axiosSecure.patch(`/updateRole/${id}`, data);
-            setSellerRequestSent(true);
-        } catch (error) {
-            console.error("Error updating user role:", error);
-        }
+    console.log(userInfoData)
 
-    };
+    // const handleSellerRequest = async (id) => {
+    //     console.log(id)
+    //     const data = {roleStatus: "Pending" };
+    //     try {
+    //         await axiosSecure.patch(`/updateRole/${id}`, data);
+    //         setSellerRequestSent(true);
+    //     } catch (error) {
+    //         console.error("Error updating user role:", error);
+    //     }
+
+    // };
 
     return (
         <div className='w-full'>
@@ -44,19 +46,22 @@ const Profile = () => {
                         // <button className='btn text-white bg-[#3a9648]'>Admin</button>
                     )}
                     {/* Render request seller button if request has not been sent */}
-                    {!sellerRequestSent && !isAdmin && (
+                    {/* {!sellerRequestSent && !isAdmin && (
                         <button onClick={()=>handleSellerRequest(userInfoData?._id)} className='border-2 rounded-xl text-lg p-2 text-white bg-[#3a9648] hover:bg-white hover:text-[#3a9648]'>Request to Become Seller</button>
-                    )}
+                    )} */}
                     {/* Render "Request Sent" button if request has been sent */}
-                    {sellerRequestSent && (
+                    {/* {sellerRequestSent && (
                         <button className='border-2 rounded-xl text-lg p-2 text-white bg-rose-500 hover:bg-white hover:text-rose-500'>Request Sent</button>
-                    )}
+                    )} */}
+
+                    {!isAdmin && <a href="#seller" className="border-2 rounded-xl text-lg p-2 text-white bg-[#3a9648] hover:bg-white hover:text-[#3a9648] "> Become a seller </a>}
                 </div>
             </div>
                  {/* seller card   */}
-                 <div className="md:flex gap-4 justify-center">
-                 <FreeSellerCard/>
-                 <PremiumSellerCard/>
+                 <div id="seller" className="md:flex gap-4 justify-center">
+                    <PremiumSeller/>
+                 {/* <FreeSellerCard/>
+                 <PremiumSellerCard/> */}
                  </div>
         </div>
     );

@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import useAllSellerData from '@/hooks/users/useAllSellerData';
 import Image from 'next/image';
-
+import SellerDetailsModal from './SellerDetailsModal';
 
 const AllSellerTable = () => {
 
@@ -52,7 +52,10 @@ const AllSellerTable = () => {
   /></td>
            
             <td> {seller?.userRole}</td>
-            <td> <button  className='btn text-white bg-[#3a9648]'>Details</button></td>
+            <td>
+              <SellerDetailsModal data={seller}/>
+               {/* <button  className='btn text-white bg-[#3a9648]'>Details</button> */}
+               </td>
           
          
           
