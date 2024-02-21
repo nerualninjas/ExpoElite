@@ -9,6 +9,7 @@ import useAUser from '@/hooks/users/useAUser';
 import useAdmin from '@/hooks/users/useAdmin';
 import PremiumSellerCard from '../Seller/PremiumSeller/PremiumSellerCard';
 import FreeSellerCard from '../Seller/PremiumSeller/FreeSellerCard';
+import PremiumSeller from '../Seller/PremiumSeller/PremiumSeller';
 
 const Profile = () => {
     const { user } = UserAuth();
@@ -51,12 +52,15 @@ const Profile = () => {
                     {sellerRequestSent && (
                         <button className='border-2 rounded-xl text-lg p-2 text-white bg-rose-500 hover:bg-white hover:text-rose-500'>Request Sent</button>
                     )}
+
+                    {!isAdmin && <a href="#seller" className="btn "> Become a seller </a>}
                 </div>
             </div>
                  {/* seller card   */}
-                 <div className="md:flex gap-4 justify-center">
-                 <FreeSellerCard/>
-                 <PremiumSellerCard/>
+                 <div id="seller" className="md:flex gap-4 justify-center">
+                    <PremiumSeller/>
+                 {/* <FreeSellerCard/>
+                 <PremiumSellerCard/> */}
                  </div>
         </div>
     );

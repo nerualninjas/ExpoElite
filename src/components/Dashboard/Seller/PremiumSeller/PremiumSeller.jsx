@@ -1,9 +1,35 @@
-// import PremiumSellerCard from '@/components/Dashboard/Seller/PremiumSeller/PremiumSellerCard';
-// import FreeSellerCard from '@/components/Dashboard/Seller/PremiumSeller/FreeSellerCard';
+import PremiumSellerCard from '@/components/Dashboard/Seller/PremiumSeller/PremiumSellerCard';
+import PremiumSellerYearly from '@/components/Dashboard/Seller/PremiumSeller/PremiumSellerYear';
+import FreeSellerCard from '@/components/Dashboard/Seller/PremiumSeller/FreeSellerCard';
 // import React from "react";
 import {Tabs, Tab, Card, CardBody} from "@nextui-org/react";
 
 const PremiumSeller= ()=>{
+
+const handleBeSeller =(d)=>{
+  console.log(d)
+
+  //date calculation for subcription
+  const startDate=  new Date();
+  const endDate = new Date(startDate);
+
+  if(d.membership === "premium-monthly"){
+    endDate.setDate(endDate.getDate()+30);
+  }else if (d.membership === "premium-yearly"){
+    endDate.setDate(endDate.getDate()+365);
+  }else{
+    endDate.setDate(endDate.getDate()+2); //todo 15days
+  }
+
+  const sellerReg= {
+    sellerRegStartDate: startDate,
+    sellerExpireDate: endDate,
+  }
+
+  const data={...d,...sellerReg};
+  console.log(data)
+}
+
 
     return (
         <>
@@ -13,26 +39,26 @@ const PremiumSeller= ()=>{
 
 
 
-<div className="flex w-full flex-col">
+<div className="flex  flex-col">
       <Tabs aria-label="Options">
-        <Tab key="photos" title="Photos">
+        <Tab key="free" title="Free">
           <Card>
             <CardBody>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            <FreeSellerCard handleBeSeller={handleBeSeller}/>
             </CardBody>
           </Card>  
         </Tab>
-        <Tab key="music" title="Music">
+        <Tab key="Premium" title="Premium/Monthly">
           <Card>
             <CardBody>
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            <PremiumSellerCard handleBeSeller={handleBeSeller} />
             </CardBody>
           </Card>  
         </Tab>
-        <Tab key="videos" title="Videos">
+        <Tab key="PremiumYearly" title="Premium/Yearly">
           <Card>
             <CardBody>
-              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            <PremiumSellerYearly handleBeSeller={handleBeSeller}/>
             </CardBody>
           </Card>  
         </Tab>
@@ -41,8 +67,8 @@ const PremiumSeller= ()=>{
 
           {/* seller card   */}
     {/* <div className="md:flex gap-4 justify-center">
-    <FreeSellerCard/>
-    <PremiumSellerCard/>
+   
+    
     </div> */}
         </>
     )

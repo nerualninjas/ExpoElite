@@ -112,10 +112,8 @@ const Navbar = () => {
     greeting = "Good Mid-Night";
   }
 
-  // if (!loading) {
-  //   return (
-  //    setImageLoading(false)
-  //   );
+  // if (loading) {
+  //   return <Loading/>
   // }
   return (
     <>
