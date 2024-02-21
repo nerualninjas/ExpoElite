@@ -13,7 +13,7 @@ const SellerDetailsModal =({data})=>{
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">Seller Details</ModalHeader>
+              <ModalHeader className="flex flex-col gap-1">User Info</ModalHeader>
               <ModalBody>
              
               <Card className="py-4">
@@ -23,8 +23,8 @@ const SellerDetailsModal =({data})=>{
         <h4 className="font-bold text-large">{data?.userName}</h4>
         <small className="text-default-500">{data?.userEmail}</small></div>
         <div className="py-2">
-        <p className="text-tiny uppercase font-bold">Registration Date: {data?.sellerRegStartDate?.slice(0,10)}</p>
-        <p className="text-tiny uppercase font-bold">Expire Date: {data?.sellerExpireDate?.slice(0,10)}</p>  
+       {data?.userRole === "seller" && <> <p className="text-tiny uppercase font-bold">Registration Date: {data?.sellerRegStartDate?.slice(0,10)}</p>
+        <p className="text-tiny uppercase font-bold">Expire Date: {data?.sellerExpireDate?.slice(0,10)}</p> </>}  
         </div>
 
        </div>

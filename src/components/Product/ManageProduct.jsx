@@ -7,17 +7,22 @@ import useAxiosPublic from "./../../hooks/useAxiosPublic";
 import useAxiosSecure from "./../../hooks/useAxiosSecure";
 import EditProduct from "./EditProdut";
 import Image from "next/image";
+import useSellerProperty from '@/hooks/Propertys/useSellerProperty';
+
 
 const ManageProduct = () => {
   const axiosSecure = useAxiosSecure();
   const axiosPublic = useAxiosPublic();
-  const { propertyData, isPending, refetch } = usePropertyAllData();
-  const [properties, setProperties] = useState(propertyData);
+  // const { propertyData, isPending, refetch } = usePropertyAllData();
+  const {sellerProperty,isPending, refetch}=useSellerProperty();
+
+  const [properties, setProperties] = useState(sellerProperty);
+ 
 
   useEffect(() => {
-    setProperties(propertyData);
+    setProperties(sellerProperty);
     refetch();
-  }, [propertyData]);
+  }, [sellerProperty]);
 
   const handleDeleteProduct = (propertie) => {
     Swal.fire({
