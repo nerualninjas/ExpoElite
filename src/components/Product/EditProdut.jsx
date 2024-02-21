@@ -12,7 +12,7 @@ const EditProduct = ({ propertyData }) => {
   const [openDetail, handleOpenDetails] = useState(false);
   const axiosSecure = useAxiosSecure();
   const { refetch } = usePropertyAllData();
-  console.log(propertyData);
+ 
   const {
     register,
     handleSubmit,

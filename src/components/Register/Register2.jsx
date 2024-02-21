@@ -69,6 +69,7 @@ const Register2 = () => {
           notificationData: [{
             notificationText: "user registration success",
             notifyUserPhoto: photo,
+            notificationPath:"/profile",
             notificationStatus: "unread"
           }]
         }
