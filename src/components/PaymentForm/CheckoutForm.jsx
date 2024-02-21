@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
 import usePropertyData from "@/hooks/Propertys/usePropertyData";
 import Swal from "sweetalert2";
 
-const CheckoutForm = ({ propertyId, handlePackages }) => {
+const CheckoutForm = ({ propertyId }) => {
   const { user } = UserAuth();
   const axiosSecure = useAxiosSecure();
 
@@ -13,26 +14,14 @@ const CheckoutForm = ({ propertyId, handlePackages }) => {
   const [transactionId, setTransactionId] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const [loading, setLoading] = useState(true);
-  let totalPrice = 0;
 
   const { propertySingleData, isPending, refetch } =
     usePropertyData(propertyId);
-  const { _id, propertyName, propertyType, price, month1, month6, month12 } = propertySingleData || {};
+  const { _id, propertyName, propertyType, price } = propertySingleData || {};
 
   const stripe = useStripe();
   const elements = useElements();
-
-  if (propertyType === "Sell") {
-    totalPrice = parseInt(price);
-  } else if (propertyType === "Rent") {
-    if (month1) {
-      totalPrice = parseInt(month1);
-    } else if (month6) {
-      totalPrice = parseInt(month6);
-    } else if (month12) {
-      totalPrice = parseInt(month12);
-    }
-  }
+  const totalPrice = parseInt(price);
 
   useEffect(() => {
     if (totalPrice > 0) {
@@ -112,18 +101,20 @@ const CheckoutForm = ({ propertyId, handlePackages }) => {
                   title: "payment save!",
                   text: "You clicked the button!",
                   icon: "success",
-                });
+                })
               })
-              .catch(() => {
+              .catch(()=>{
                 setLoading(false);
-              });
+              })
+            
           }
         }
       }
     } catch (err) {
       console.error("Unexpected error:", err);
       setError("An unexpected error occurred. Please try again later.");
-    } finally {}
+    } finally {
+    }
   };
 
   return (
@@ -142,7 +133,7 @@ const CheckoutForm = ({ propertyId, handlePackages }) => {
           <p>Your Email: {user?.email}</p>
           <hr className="py-4" />
           <h2 className="text-gray-600 text-xl font-bold">
-            Total Payable bill: $ {totalPrice}
+            Total Payable bill: $ {price}
           </h2>
         </div>
         <div className="w-full lg:w-1/2">

@@ -9,9 +9,7 @@ const RentPackages = ({ propertyId }) => {
         propertyId
     );
     const { _id, month1, month6, month12 } = propertySingleData || {};
-    const handlePackages = () => {
-       
-    }
+  
     
     return (
         <div className='flex flex-col md:flex-row justify-center items-center gap-10 -translate-y-32 md:mx-10'>
@@ -25,7 +23,7 @@ const RentPackages = ({ propertyId }) => {
                     </div>
                     <div className='flex justify-center items-center text-center'>
                         <Link href={`../payment/${_id}`} >
-                            <button onClick={() => handlePackages({ _id, month1})} className="  rounded px-5 py-2 border-2 border-rose-600  text-lg  font-semibold text-rose-600 hover:text-white hover:bg-rose-600">Rent Now <FontAwesomeIcon icon={faArrowRight} /></button>
+                            <button className="  rounded px-5 py-2 border-2 border-rose-600  text-lg  font-semibold text-rose-600 hover:text-white hover:bg-rose-600">Rent Now <FontAwesomeIcon icon={faArrowRight} /></button>
                         </Link>
                     </div>
                 </div>
@@ -40,7 +38,7 @@ const RentPackages = ({ propertyId }) => {
                     </div>
                     <div className='flex justify-center items-center text-center'>
                         <Link href={`../payment/${_id}`}>
-                            <button onClick={() => handlePackages({ _id, month6})} className="  rounded px-5 py-2 border-2 border-rose-600  text-lg  font-semibold text-rose-600 hover:text-white hover:bg-rose-600">Rent Now <FontAwesomeIcon icon={faArrowRight} /></button>
+                            <button  className="  rounded px-5 py-2 border-2 border-rose-600  text-lg  font-semibold text-rose-600 hover:text-white hover:bg-rose-600">Rent Now <FontAwesomeIcon icon={faArrowRight} /></button>
                         </Link>
                     </div>
                 </div>
@@ -55,7 +53,7 @@ const RentPackages = ({ propertyId }) => {
                     </div>
                     <div className='flex justify-center items-center text-center'>
                         <Link href={`../payment/${_id}`}>
-                            <button onClick={() => handlePackages({ _id, month12})} className="  rounded px-5 py-2 border-2 border-rose-600  text-lg  font-semibold text-rose-600 hover:text-white hover:bg-rose-600">Rent Now <FontAwesomeIcon icon={faArrowRight} /></button>
+                            <button className="  rounded px-5 py-2 border-2 border-rose-600  text-lg  font-semibold text-rose-600 hover:text-white hover:bg-rose-600">Rent Now <FontAwesomeIcon icon={faArrowRight} /></button>
                         </Link>
                     </div>
                 </div>
