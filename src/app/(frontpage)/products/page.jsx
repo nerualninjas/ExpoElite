@@ -6,6 +6,8 @@ import React from "react";
 import useAUser from '@/hooks/users/useAUser';
 import { useState } from "react";
 import useSellerProperty from '@/hooks/Propertys/useSellerProperty';
+
+
 const ProductPage = () => {
   const { userInfoData } = useAUser();
   const {sellerPropertyLength}=useSellerProperty();
@@ -27,7 +29,7 @@ const ProductPage = () => {
         >
           Add a Property
         </button>: 
-        
+        //free user limit button
        <button
           className="btn btn-1 "
          onClick = {handleSellerNotify}
@@ -37,12 +39,13 @@ const ProductPage = () => {
         }
       </>
         :
-        <button
-          className="btn btn-1 "
-          onClick={() => document.getElementById("my_modal_1").showModal()}
-        >
-          Add a Property
-        </button>
+        <> {userInfoData?.membership === "premium-monthly" 
+        || userInfoData?.membership === "premium-yearly" && <button
+        className="btn btn-1 "
+        onClick={() => document.getElementById("my_modal_1").showModal()}
+      >
+        Add a Property
+      </button> } </>
         
         }
 
