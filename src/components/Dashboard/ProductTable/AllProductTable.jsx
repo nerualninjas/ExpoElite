@@ -5,13 +5,15 @@ import Link from 'next/link';
 import usePropertyAllData from '@/hooks/Propertys/usePropertyAllData';
 import useAxiosSecure from '@/hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
-
+import useNotification from "@/hooks/notifications/useNotificationCreate";
+import { UserAuth } from "@/app/(auth)/context/AuthContext";        
 const AllProductTable = () => {
 
     const { propertyData, isPending, refetch } = usePropertyAllData();
-    console.log('hello', propertyData);
     const properties = propertyData;
     const axiosSecure = useAxiosSecure();
+    const { notificationPost } = useNotification()
+    const { user } = UserAuth()
 
     useEffect(() => {
         console.log(properties); // Log properties to the console
@@ -22,7 +24,7 @@ const AllProductTable = () => {
     const handlePropertyStatusPublish = async (id) => {
         console.log(id);
         const res = await axiosSecure.patch(`/updatePropertyStatusPublish/${id}`);
-        console.log(res.data);
+        console.log(res.data.data);
         if (res.data) {
             refetch();
             Swal.fire({
@@ -30,6 +32,26 @@ const AllProductTable = () => {
                 text: "has Published successfully!",
                 icon: "success"
             });
+const email = res.data.data.propertyCreator;
+const photo = res.data.data.image;
+            // const notificationPhoto = res?.data.image;
+            // notifiacation add for like start
+            // need import ----dooo
+            // import useNotification from "@/hooks/notifications/useNotificationCreate";
+            // const { notificationPost } = useNotification()
+    const data = {
+        userEmail: email,
+        notificationData: [{
+          notificationText: `${res.data.data.propertyName} Published!`,
+          notifyUserPhoto: photo,
+          notificationPath: `/products/${id}`,
+          notificationStatus: "unread"
+        }]
+      }
+      // post api for notication 
+      notificationPost(data)
+  
+      //notification end
         }
     }
 
@@ -37,14 +59,27 @@ const AllProductTable = () => {
     const handlePropertyStatusUnpublish = async (id) => {
         console.log(id);
         const res = await axiosSecure.patch(`/updatePropertyStatusUnpublish/${id}`);
-        console.log(res.data);
-        if (res.data) {
+
+        if (res?.data) {
             refetch();
             Swal.fire({
                 title: "ok!",
                 text: "has unpublished successfully!",
                 icon: "success"
             });
+            const email = res.data.data.propertyCreator;
+            const photo = res.data.data.image;
+            const data = {
+                userEmail: email,
+                notificationData: [{
+                  notificationText: `${res.data.data.propertyName} unpublished!`,
+                  notifyUserPhoto: photo,
+                  notificationPath: `/products/${id}`,
+                  notificationStatus: "unread"
+                }]
+              }
+              // post api for notication 
+              notificationPost(data)
         }
 
 

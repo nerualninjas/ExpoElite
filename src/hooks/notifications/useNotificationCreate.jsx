@@ -10,6 +10,8 @@ const useNotification =  () => {
 
 const notificationPost = async (data)=>{
     console.log("Notification Log",data);
+
+   
     await axiosPublic.post("/createNotification",data).then((res)=>{
         if(res?.data){
         refetch()
