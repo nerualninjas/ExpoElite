@@ -41,7 +41,7 @@ const Sidebar = () => {
   const [isMenu, setIsMenu] = useState(false);
   const { isAdmin, isPending, refetch } = useAdmin();
   const { isSeller } = useSeller();
-  // console.log(isSeller)
+  console.log("is Seller ",isSeller)
   // console.log(isAdmin)
 
   const handleNavMenu = () => {
