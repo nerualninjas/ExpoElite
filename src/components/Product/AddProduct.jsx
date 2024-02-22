@@ -54,10 +54,8 @@ const AddProduct = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
- 
     const photoURL = e.target.photoURL.files[0];
-
-    console.log("image here",photoURL)
+ 
     const imageFile = { image: photoURL };
 
     try {
@@ -88,7 +86,7 @@ const AddProduct = () => {
       };
 
       axiosSecure.post("/addProperty", myData).then((res) => {
-        console.log(res.data);
+ 
         if (res?.data.insertedId === null) {
           Swal.fire({
             icon: "error",
