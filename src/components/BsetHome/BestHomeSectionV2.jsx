@@ -23,8 +23,9 @@ const BestHomeSectionV2 = () => {
   const [searchParams, setSearchParams] = useState({ location: "" });
   const [loading, setLoading] = useState(false);
   const [noProductFound, setNoProductFound] = useState(false);
-  const [location, setLocation] = useState();
-  console.log(location)
+  const [location, setLocation] = useState('');
+  const [type, setType] = useState('');
+  const [range, setRange] = useState(1000);
 
   useEffect(() => {
     setProperties(propertyData);
@@ -59,19 +60,21 @@ const BestHomeSectionV2 = () => {
 
                 <input
                   type="text"
+                  onChange={(e)=>setType(e.target.value)}
                   name="propertyType"
                   placeholder="Find by type"
                   className="input input-bordered"
                 />
                 <fieldset className="space-y-1 sm:w-60 dark:text-gray-100">
-                  <div aria-hidden="true" className="flex justify-between px-1">
-                    Find by price
+                  <div aria-hidden="true" className="px-1">
+                    Price Range: <span className="">{range}</span>
                   </div>
                   <input
                     type="range"
+                    onChange={(e)=>setRange(e.target.value)}
                     className="w-full dark:accent-violet-400"
-                    min="1"
-                    max="5000"
+                    min="1000"
+                    max="30000"
                   />
                 </fieldset>
 
