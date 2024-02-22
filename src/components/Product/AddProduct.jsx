@@ -26,7 +26,7 @@ const AddProduct = () => {
 
   const initialFormData = {
     propertyCreator: email,
-
+    specialOffers: "",
     propertyName: "",
     image: "",
     bedrooms: "",
@@ -63,7 +63,7 @@ const AddProduct = () => {
       email: user?.email,
       sellerImage: user?.photoURL,
       sellerName: user?.displayName,
-
+      image: res.data.data.url,
       dislikeBy: [" "],
       publishStatus: "unpublish",
       commentLogs: [
@@ -106,17 +106,6 @@ const AddProduct = () => {
 
       <form className="space-y-6" onSubmit={onSubmit}>
         <div className="space-y-1 text-sm">
-          <label className="block dark-text-gray-400">
-            Added by (email)
-            <input
-              required
-              type="text"
-              disabled
-              value={user?.email}
-              name="propertyCreator"
-              className="w-full px-4 py-3 rounded-md dark-border-gray-700 dark-bg-gray-900 dark-text-gray-100 focus:dark-border-violet-400"
-            />
-          </label>
           <label className="block dark-text-gray-400">Property Name</label>
           <input
             required
@@ -226,6 +215,18 @@ const AddProduct = () => {
                 type="number"
                 className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
               />
+            </div>
+            <div className="">
+              <label className="block dark-text-gray-400">
+                Special Offers
+                <input
+                   
+                  type="text"
+                  value={formData.specialOffers}
+                  name="specialOffers"
+                  className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+                />
+              </label>
             </div>
           </>
         )}
