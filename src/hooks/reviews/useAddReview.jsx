@@ -1,18 +1,15 @@
-import useAxiosSecure from '../useAxiosSecure';
-
+import useAxiosSecure from "@/hooks/useAxiosSecure";
 const useAddReview = () => {
-    const axiosSecure = useAxiosSecure();
-
+   const axiosSecure = useAxiosSecure();
     const addReview = async (data) => {
-        try {
-            const response = await axiosSecure.post("/addReview", data);
-            console.log('Review submitted successfully:', response.data);
-            return response.data;
-        } catch (error) {
-            console.error('Error submitting review:', error);
-            throw error;
-        }
-    };
+        console.log(data);
+        await axiosSecure.post("/addReview", data)
+        .then((res) => {
+            if(res?.data){
+                refetch()
+            }
+        })
+    }
 
     return { addReview };
 };

@@ -1,18 +1,25 @@
-"use client"
+"use client";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import useAUserPurchase from "@/hooks/users/useAUserPurchase";
 import Title2 from "../shared/Title/Title2";
 import Image from "next/image";
-import useAddReview from "@/hooks/reviews/useAddReview";
+
 import useAUser from "@/hooks/users/useAUser";
+import useAxiosPublic from "@/hooks/useAxiosPublic";
 
 const MyOrder = () => {
     const { MyPurchases } = useAUserPurchase();
-    const { addReview } = useAddReview(); 
     const [reviews, setReviews] = useState({});
     const { userInfoData } = useAUser();
-    const handleReviewClick = (transactionId) => {
+    const { axiosPublic } = useAxiosPublic();
+
+    const handleReviewClick = async(transactionId) => {
+        if (!userInfoData) {
+            Swal.fire('Error', 'User information not available', 'error');
+            return;
+        }
+
         Swal.fire({
             title: 'Write your review',
             input: 'textarea',
@@ -22,19 +29,23 @@ const MyOrder = () => {
             confirmButtonColor: '#F43F5E',
             cancelButtonText: 'Cancel',
             cancelButtonColor: '#2196f3',
-        }). then((result) => {
+        }).then(async (result) => {
             if (result.isConfirmed) {
                 const reviewText = result.value;
-                const user = userInfoData; // Assuming userInfoData contains user details
                 const reviewData = {
-                    userEmail: user.email,
-                    userPhoto: user.photo,
-                    userName: user.name,
+                    userEmail: userInfoData.userEmail,
+                    userPhoto: userInfoData.userPhoto,
+                    userName: userInfoData.userName,
                     transactionId,
                     review: reviewText,
                 };
+
                 try {
-                    addReview(reviewData);
+                    console.log("reviewData:", reviewData);
+                    const res = await axiosPublic.post("/addReview", reviewData);
+                    console.log("axiosPublic:", axiosPublic);
+
+                    console.log(res.data);
                     Swal.fire('Success', 'Review submitted successfully!', 'success');
                 } catch (error) {
                     console.error('Error submitting review:', error);
@@ -68,16 +79,6 @@ const MyOrder = () => {
                                 <p><span className="font-bold">Transaction Id: </span>{property?.transactionId}</p>
                             </div>
                         </div>
-                         {/* <div className="flex flex-col items-start justify-center">
-                                <p><span className="font-bold">Name: </span> {property?.propertyName}</p>
-                                <p><span className="font-bold">Amount: </span> {property?.price}</p>
-                              
-                            </div>
-
-                            <div className="flex flex-col items-start justify-center">
-                                <p><span className="font-bold">Purchase Date: </span>{property?.date}</p>
-                                <p><span className="font-bold">Transaction Id: </span>{property?.transactionId}</p>
-                            </div> */}
                         <button
                             className="px-4 py-2 font-bold rounded bg-rose-600 hover:bg-rose-300 text-white hover:text-rose-700"
                             onClick={() => handleReviewClick(property.transactionId)}
