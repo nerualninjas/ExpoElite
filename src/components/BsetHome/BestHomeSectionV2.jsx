@@ -133,7 +133,7 @@ const BestHomeSectionV2 = () => {
                       height={200}
                       src={property.image}
                       alt={property.propertyName}
-                      className="object-cover w-full mb-4 h-30 sm:h-60 dark:bg-gray-500"
+                      className="object-cover rounded-t-md w-full mb-4 h-30 sm:h-60 dark:bg-gray-500"
                     />
 
                     <h1 className="top-2 right-0 px-3 py-2 bg-slate-100 absolute">{property?.propertyType}</h1>

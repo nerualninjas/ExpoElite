@@ -60,12 +60,15 @@ const BuyerTable = () => {
                       className="rounded-full w-[70px] h-[70px]"
                     />
                   </td>
-                  <td>{user?.userRole}</td>
+                  <td>{user?.userRole}
+                  <br/>
+                  <button className={user?.membership && "p-1 border bg-rose-200 rounded-md"}>{user?.membership}</button>
+                   </td>
                   <td>
                     <button
                       className="btn text-white bg-[#3a9648]"
                       onClick={() => handleApprove(user._id)}
-                      disabled={!(user.roleStatus === 'Pending' && user.userRole === 'user')}
+                      disabled={!(user.roleStatus === 'pending')}
                     >
                       Approve <br /> Request
                     </button>

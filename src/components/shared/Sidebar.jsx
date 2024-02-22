@@ -23,6 +23,7 @@ import {
   faCartShopping,
   faCity,
   faMagnifyingGlassPlus,
+  faDollarSign,
 } from "@fortawesome/free-solid-svg-icons";
 // import {
 //   faSellsy,
@@ -30,6 +31,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import useAdmin from "@/hooks/users/useAdmin";
+import useSeller from "@/hooks/users/useSeller";
 // import useSeller from "@/hooks/users/useSeller";
 
 
@@ -37,9 +39,10 @@ const Sidebar = () => {
   const { user, logOut } = UserAuth();
   const pathName = usePathname();
   const [isMenu, setIsMenu] = useState(false);
-  const { isAdmin, isPending, refetch } = useAdmin()
-  // const { isSeller} = useSeller()
-  console.log(isAdmin)
+  const { isAdmin, isPending, refetch } = useAdmin();
+  const { isSeller } = useSeller();
+  console.log("is Seller ",isSeller)
+  // console.log(isAdmin)
 
   const handleNavMenu = () => {
     setIsMenu(!isMenu)
@@ -50,26 +53,23 @@ const Sidebar = () => {
     { pageName: "Discover", path: "/discover", icon: faMagnifyingGlassPlus },
     { pageName: "About Us", path: "/about", icon: faCircleInfo },
     { pageName: "Contact Us", path: "/contact", icon: faAddressBook },
-    { pageName: "Seller Dashboard", path: "/GraphAndAnalysisSeller", icon:faChartLine },
-   
   ];
 
   const adminDashboard = [
-    { pageName: "Dashboard", path: "/dashboard", icon: faChartLine },
+    { pageName: "My Dashboard", path: "/dashboard", icon: faChartLine },
     { pageName: "Manage Users", path: "/allUsers", icon: faPeopleGroup },
     { pageName: "Manage Property", path: "/allProducts", icon: faLandmark },
-    { pageName: "Property Sell Report", path: "/allPropertySellReport", icon: faLandmark },
-    { pageName: "AllSellers", path: "/allSellers", icon: faUsers },
+    { pageName: "Sell Report", path: "/allPropertySellReport", icon: faDollarSign },
+    { pageName: "All Sellers", path: "/allSellers", icon: faUsers },
   ];
   const userDashboard = [
-
-    { pageName: "All Property", path: "/products", icon: faCity },
-    { pageName: "Dashboard", path: "/graphAnalysisUsers", icon: faChartLine },
+    { pageName: "My Dashboard", path: "/graphAnalysisUsers", icon: faChartLine },
     { pageName: "My Orders", path: "/paymentList", icon: faCartShopping },
 
   ]
-  const sellerDashboard = [
-    { pageName: "Dashboard", path: "/GraphAndAnalysisSeller", icon:faChartLine },
+  const sellerDashboard = [ 
+    { pageName: "My Dashboard", path: "/GraphAndAnalysisSeller", icon:faChartLine }, 
+    { pageName: "All Property", path: "/products", icon: faCity },
 
   ];
   return (
@@ -131,7 +131,7 @@ const Sidebar = () => {
                 </li>
               ))}
               {/* if user login seller and admin  */}
-              {user && isAdmin && (
+              {user && isAdmin && !isSeller && (
                 adminDashboard.map((adminDash) => (
                   <li key={adminDash.pageName}>
                     <Link
@@ -147,8 +147,24 @@ const Sidebar = () => {
                   </li>
                 ))
               )}
+              {user && isSeller  && (
+                sellerDashboard.map((sellerDash) => (
+                  <li key={sellerDash.pageName}>
+                    <Link
+                      className={`${pathName === sellerDash.path
+                        ? "flex items-center gap-2  hover:text-rose-600 text-rose-500 "
+                        : "flex items-center gap-2  hover:text-rose-600 text-gray-800 "
+                        }`}
+                      href={sellerDash.path}
+                    >
+                      <FontAwesomeIcon icon={sellerDash.icon} />
+                      <h4>{sellerDash.pageName}</h4>
+                    </Link>
+                  </li>
+                ))
+              )}
               {/* Render products link for regular users */}
-              {user && !isAdmin && (
+              {user && !isAdmin && !isSeller && (
                 userDashboard.map((userDash) => (
                   <li key={userDash.pageName}>
                     <Link

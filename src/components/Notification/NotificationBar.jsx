@@ -28,8 +28,8 @@ const handleReadUpdate= async(id)=>{
                <Link href="/notification"> <button className="btn btn-sm btn-circle rounded-full text-center   "><HiOutlineDotsHorizontal /></button></Link>
             </div>
             <ul className="bg-base-200  space-y-2 py-2 rounded-lg" onMouseLeave={() => open(false)}>
-                {notificationData?.slice(0,5).map((data) => <li  key={data._id} className={data.notificationStatus==="unread" ? "bg-pink-200 hover:bg-gray-500 hover:text-white pb-2 mb-2  p-2 rounded-lg ":"hover:bg-gray-500 hover:text-white pb-2 mb-2  p-2 rounded-lg"} >
-                    <Link onClick={()=>handleReadUpdate(data._id)} href={data.notificationPath}>
+                {notificationData?.slice(0,5).map((data) => <li  key={data._id} className={data?.notificationStatus==="unread" ? "bg-pink-200 hover:bg-gray-500 hover:text-white pb-2 mb-2  p-2 rounded-lg ":"hover:bg-gray-500 hover:text-white pb-2 mb-2  p-2 rounded-lg"} >
+                    <Link onClick={()=>handleReadUpdate(data._id)} href={data?.notificationPath}>
                         
                    
                  <div className="flex gap-2 ">
