@@ -19,15 +19,20 @@ const BestHomeSection = () => {
   const axiosSecure = useAxiosSecure();
   const axiosPublic = useAxiosPublic();
   const { propertyData, isPending, refetch } = usePropertyAllData();
-  const [properties, setProperties] = useState(propertyData);
+
   const [searchParams, setSearchParams] = useState({ location: "" });
   const [loading, setLoading] = useState(false);
   const [noProductFound, setNoProductFound] = useState(false);
+
+
+  const [properties, setProperties] = useState(propertyData);
+
 
   useEffect(() => {
     setProperties(propertyData);
     refetch();
   }, [propertyData, refetch]);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -106,7 +111,7 @@ const BestHomeSection = () => {
             </div>
           ) : (
             <div className="mx-auto mt-2 grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2">
-              {properties?.map((property, index) => (
+               {properties?.slice(0, 6).map((property, index) => (
                 <div key={index} className="card bg-base-100 m-2 ">
                   <div>
                     <Image
