@@ -37,6 +37,13 @@ const BestHomeSectionV2 = () => {
 
   };
 
+  const handleSeach = async() =>{
+    console.log("location:", location, "type: " , type , "range: ", range);
+     const res = await axiosPublic.get(`/searchAndSort?maxPrice=${range}&propertyType=${type}&location=${location}`);
+     console.log(res);
+     
+  }
+
   return (
     <>
       <div className="w-full py-12">
@@ -78,7 +85,7 @@ const BestHomeSectionV2 = () => {
                   />
                 </fieldset>
 
-                <button type="submit" className="btn btn-square">
+                <button type="submit" onClick={()=>handleSeach()} className="btn btn-square">
                   {loading ? (
                     <FontAwesomeIcon
                       icon={faSearch}
