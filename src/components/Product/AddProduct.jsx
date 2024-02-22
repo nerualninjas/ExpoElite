@@ -5,18 +5,14 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "./../../hooks/useAxiosSecure";
 import { useState } from "react";
 
-
 const AddProduct = () => {
   const { user, loading } = UserAuth();
   const axiosSecure = useAxiosSecure();
   const { refetch } = usePropertyAllData();
- 
+
   const email = user?.email;
 
   const [selectedType, setSelectedType] = useState("Sell");
-
-
-
 
   const handleTypeChange = (event) => {
     setSelectedType(event.target.value);
@@ -61,8 +57,13 @@ const AddProduct = () => {
 
     const myData = {
       ...formData,
+
       propertyType: selectedType === "Sell" ? "Sell" : "Rent",
       likeBy: [],
+      email: user?.email,
+      sellerImage: user?.photoURL,
+      sellerName: user?.displayName,
+
       dislikeBy: [" "],
       publishStatus: "unpublish",
       commentLogs: [
