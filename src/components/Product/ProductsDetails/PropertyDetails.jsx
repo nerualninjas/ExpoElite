@@ -135,41 +135,19 @@ const PropertyDetail = ({ propertyId }) => {
               <Carousel className="text-center " autoPlay>
                 <div className="">
                   <img src={image} className="w-full h-full" />
-
                 </div>
                 <div>
                   <img src="https://i.ibb.co/jZJhPPq/apartment-bed-bedroom-book-shelves-439227.jpg" />
-
-                </div>
-                <div>
-                  <img src="https://i.ibb.co/dPsnkq1/apartment-bed-bedroom-comfort-545034.jpg" />
-
-
-                </div>
-                <div>
-                  <img src="https://i.ibb.co/dPsnkq1/apartment-bed-bedroom-comfort-545034.jpg" />
-
                 </div>
                 <div>
                   <img src="https://i.ibb.co/dPsnkq1/apartment-bed-bedroom-comfort-545034.jpg" />
                 </div>
+               
               </Carousel>
             </div>
             {/* <Carousel className="text-center " autoPlay>
             <div className="">
               <Image width={400} height={400} className="w-full h-full"  src={image} />
-            </div>
-            <div>
-              <Image width={400} height={400} className="w-full h-full" src="https://i.ibb.co/jZJhPPq/apartment-bed-bedroom-book-shelves-439227.jpg" />
-            </div>
-            <div>
-              <Image width={400} height={400} className="w-full h-full" src="https://i.ibb.co/dPsnkq1/apartment-bed-bedroom-comfort-545034.jpg" />
-            </div>
-            <div>
-              <Image width={400} height={400} className="w-full h-full" src="https://i.ibb.co/dPsnkq1/apartment-bed-bedroom-comfort-545034.jpg" />
-            </div>
-            <div>
-              <Image width={400} height={400} className="w-full h-full" src="https://i.ibb.co/dPsnkq1/apartment-bed-bedroom-comfort-545034.jpg" />
             </div>
           </Carousel> */}
 
@@ -257,11 +235,7 @@ const PropertyDetail = ({ propertyId }) => {
               ) :
               (
                 null
-                // <div className="flex">
-                //   <div className=" rounded px-5 py-2 border-2 text-black text-lg mr-2 ">
-                //   3 Packages
-                // </div>
-                // </div>
+                
               )
             }
 
@@ -296,9 +270,12 @@ const PropertyDetail = ({ propertyId }) => {
               </div>
             </div>
 
-
+{/* information of prpperty creator */}
             <div className="py-3">
-              <h3 className=" text-black font-bold text-lg mr-2 my-2 ">  Property Creator</h3>
+           <div className="flex items-center">
+           <h3 className=" text-black font-bold text-lg mr-2 my-2 ">Property Creator</h3>
+         <Link href={`/BookAppointment/${propertyId}`}><button className="btn btn-sm  rounded-full px-3 py-1 border-2 border-rose-600  text-sm font-semibold text-rose-600 hover:text-white bg-[#FFE4E6] hover:bg-rose-600"> Book Appointment</button></Link>  
+           </div>   
 
               <p className=" text-md mr-2"> {propertyCreator}</p>
             </div>

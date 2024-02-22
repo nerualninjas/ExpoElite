@@ -62,14 +62,20 @@ const Comment = ({ propertyId }) => {
        
            
         </div>
-        <div className='overflow-y-scroll max-h-[300px]'>
-                {commentLogs.map((commentData, index) => (
+        {/* <div className='overflow-y-scroll max-h-[300px]'>
+                {commentLogs?.map((commentData, index) => (
                     <ShowComment key={index} commentData={commentData} />
                 ))}
-            </div>
+            </div> */}
+            {commentLogs && commentLogs?.length > 1 ? (
+    <div className='overflow-y-scroll max-h-[300px]'>
+        {commentLogs.slice(1).map((commentData, index) => (
+            <ShowComment key={index} commentData={commentData} />
+        ))}
+    </div>
+) : null}
          
-         
-           
+
             
             <div>
                 {/* --------------------inputComment---------------------- */}
