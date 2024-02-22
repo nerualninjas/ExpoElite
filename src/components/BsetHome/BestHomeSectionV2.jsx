@@ -14,6 +14,7 @@ import "aos/dist/aos.css";
 import usePropertyAllData from "./../../hooks/Propertys/usePropertyAllData";
 import useAxiosPublic from "./../../hooks/useAxiosPublic";
 import useAxiosSecure from "./../../hooks/useAxiosSecure";
+import { Range } from 'react-range';
 
 const BestHomeSectionV2 = () => {
   const axiosSecure = useAxiosSecure();
@@ -23,6 +24,7 @@ const BestHomeSectionV2 = () => {
   const [searchParams, setSearchParams] = useState({ location: "" });
   const [loading, setLoading] = useState(false);
   const [noProductFound, setNoProductFound] = useState(false);
+  const [values, setValues] = useState([50]);
 
   useEffect(() => {
     setProperties(propertyData);
@@ -81,18 +83,40 @@ const BestHomeSectionV2 = () => {
                   placeholder="Find by type"
                   className="input input-bordered"
                 />
-                <fieldset className="space-y-1 sm:w-60 dark:text-gray-100">
-                  <div aria-hidden="true" className="flex justify-between px-1">
-                    Find by price
-                  </div>
-                  <input
-                    type="range"
-                    className="w-full dark:accent-violet-400"
-                    min="1"
-                    max="5000"
+                <div>
+                  <Range
+                    step={0.1}
+                    min={0}
+                    max={100}
+                    values={values}
+                    onChange={(newValues) => setValues(newValues)}
+                    renderTrack={({ props, children }) => (
+                      <div
+                        {...props}
+                        style={{
+                          ...props.style,
+                          height: '6px',
+                          width: '100%',
+                          backgroundColor: '#ccc'
+                        }}
+                      >
+                        {children}
+                      </div>
+                    )}
+                    renderThumb={({ props }) => (
+                      <div
+                        {...props}
+                        style={{
+                          ...props.style,
+                          height: '42px',
+                          width: '42px',
+                          backgroundColor: '#999'
+                        }}
+                      />
+                    )}
                   />
-                </fieldset>
-
+                  <p>Selected Value: {values[0]}</p>
+                </div>
                 <button type="submit" className="btn btn-square">
                   {loading ? (
                     <FontAwesomeIcon
