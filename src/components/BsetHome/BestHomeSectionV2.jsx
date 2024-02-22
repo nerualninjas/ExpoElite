@@ -14,7 +14,6 @@ import "aos/dist/aos.css";
 import usePropertyAllData from "./../../hooks/Propertys/usePropertyAllData";
 import useAxiosPublic from "./../../hooks/useAxiosPublic";
 import useAxiosSecure from "./../../hooks/useAxiosSecure";
-import { Range } from 'react-range';
 
 const BestHomeSectionV2 = () => {
   const axiosSecure = useAxiosSecure();
@@ -24,7 +23,8 @@ const BestHomeSectionV2 = () => {
   const [searchParams, setSearchParams] = useState({ location: "" });
   const [loading, setLoading] = useState(false);
   const [noProductFound, setNoProductFound] = useState(false);
-  const [values, setValues] = useState([50]);
+  const [location, setLocation] = useState();
+  console.log(location)
 
   useEffect(() => {
     setProperties(propertyData);
@@ -34,29 +34,8 @@ const BestHomeSectionV2 = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      setLoading(true);
-      setNoProductFound(false);
-
-      const locationValue = e.target.elements.location.value;
-      const response = await axiosPublic.get(
-        `searchbyloc?location=${locationValue}`
-      );
-
-      if (response.data.length === 0) {
-        setNoProductFound(true);
-      } else {
-        setProperties(response.data);
-      }
-
-      setSearchParams({ location: "" }); // Clear the input field
-    } catch (error) {
-      console.error("Error in submitting form:", error);
-      // Display an error message to the user
-    } finally {
-      setLoading(false);
-    }
   };
+
   return (
     <>
       <div className="w-full py-12">
@@ -71,6 +50,7 @@ const BestHomeSectionV2 = () => {
             <div className="form-control w-full">
               <div className="input-group mx-auto  gap-2 flex flex-col lg:flex-row ">
                 <input
+                  onChange={(e)=>setLocation(e.target.value)}
                   type="text"
                   name="location"
                   placeholder="Find by Location"
@@ -83,40 +63,18 @@ const BestHomeSectionV2 = () => {
                   placeholder="Find by type"
                   className="input input-bordered"
                 />
-                <div>
-                  <Range
-                    step={0.1}
-                    min={0}
-                    max={100}
-                    values={values}
-                    onChange={(newValues) => setValues(newValues)}
-                    renderTrack={({ props, children }) => (
-                      <div
-                        {...props}
-                        style={{
-                          ...props.style,
-                          height: '6px',
-                          width: '100%',
-                          backgroundColor: '#ccc'
-                        }}
-                      >
-                        {children}
-                      </div>
-                    )}
-                    renderThumb={({ props }) => (
-                      <div
-                        {...props}
-                        style={{
-                          ...props.style,
-                          height: '42px',
-                          width: '42px',
-                          backgroundColor: '#999'
-                        }}
-                      />
-                    )}
+                <fieldset className="space-y-1 sm:w-60 dark:text-gray-100">
+                  <div aria-hidden="true" className="flex justify-between px-1">
+                    Find by price
+                  </div>
+                  <input
+                    type="range"
+                    className="w-full dark:accent-violet-400"
+                    min="1"
+                    max="5000"
                   />
-                  <p>Selected Value: {values[0]}</p>
-                </div>
+                </fieldset>
+
                 <button type="submit" className="btn btn-square">
                   {loading ? (
                     <FontAwesomeIcon
