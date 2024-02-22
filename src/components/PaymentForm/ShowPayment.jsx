@@ -4,35 +4,33 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
 import useAxiosPublic from "./../../hooks/useAxiosPublic";
+import useAxiosSecure from "./../../hooks/useAxiosSecure";
+
 import Image from "next/image";
 import { useQuery } from "@tanstack/react-query";
-import useAUserPurchase from "@/hooks/users/useAUserPurchase";
 
 const ShowPayment = () => {
   const [payments, setPayments] = useState([]);
-  // usehook for show payment history
-  const {MyPurchases} = useAUserPurchase();
+  
 
 
-  // const { loading,user } = UserAuth();
-  // const axiosPublic = useAxiosPublic();
+  const { loading,user } = UserAuth();
+  const axiosPublic = useAxiosPublic();
 
-  // const {
-  //   data: MyPurchases,
-  //   isPending,
-  //   refetch,
-  // } = useQuery({
-  //   queryKey: ["MyPurchases"],
-  //   enabled: !loading, // Don't fetch data during SSR
-  //   queryFn: async () => {
-  //     const res = await axiosPublic.get(`/showPayment?email=${user?.email}`);
-  //     console.log(res?.data);
-  //     return res?.data;
-  //   },
-  // });
+  const {
+    data: MyPurchases,
+    isPending,
+    refetch,
+  } = useQuery({
+    queryKey: ["MyPurchases"],
+    enabled: !loading, // Don't fetch data during SSR
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/showPayment?email=${user?.email}`);
+      console.log(res?.data);
+      return res?.data;
+    },
+  });
 
-  // // Calculate total payment items length
-  const totalPaymentItems = MyPurchases?.length || 0;
 
   return (
     <div className="bg-base-100 p-4 m-4 rounded-xl">
@@ -40,7 +38,7 @@ const ShowPayment = () => {
         <h2>Review your order history</h2>
       </div>
 
-      <h4>Total Payment Items: {totalPaymentItems}</h4>
+      <h4>Total Payment Items: {payments?.length}</h4>
 
       <div className="overflow-x-auto">
         <table className="table">
@@ -49,7 +47,6 @@ const ShowPayment = () => {
               <td>#</td>
               <td>Property Name</td>
               <th>Price</th>
-              <th>Image</th>
               <th>Purchase Date</th>
               <th>Transaction Id</th>
             
@@ -69,8 +66,6 @@ const ShowPayment = () => {
                   </div>
                 </td>
                 <td>{property?.price}</td>
-
-                <td><Image src={property?.image} height={100} width={150} alt="Contest Image" /></td>
                 <td>{property?.date}</td>
                 <td>{property?.transactionId}</td>
                
