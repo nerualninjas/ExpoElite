@@ -41,7 +41,7 @@ const BestHomeSectionV2 = () => {
     console.log("location:", location, "type: " , type , "range: ", range);
      const res = await axiosPublic.get(`/searchAndSort?maxPrice=${range}&propertyType=${type}&location=${location}`);
      console.log(res);
-     
+     setProperties(res.data);
   }
 
   return (
