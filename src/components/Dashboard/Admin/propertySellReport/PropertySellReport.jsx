@@ -31,9 +31,9 @@ const PropertySellReport = () => {
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Property Id</th>
                             <th>Property Name</th>
                             <th>Seller Info</th>
+                            <th>Buyer Info</th>
                             <th>Property Details</th>
                             <th>Action</th>
                         </tr>
@@ -51,9 +51,12 @@ const PropertySellReport = () => {
                                         alt="image"
                                     />
                                 </td> */}
-                                <td>{soldProperty.propertyId}</td>
                                 <td>{soldProperty.propertyName}</td>
                                 {/* <td>{property.SellerName}</td> */}
+                                <td className="px-3 py-2">
+                                    <span>{soldProperty.name}</span>
+                                    <p className="dark:text-gray-400">{soldProperty.email}</p>
+                                </td>
                                 <td className="px-3 py-2">
                                     <span>{soldProperty.name}</span>
                                     <p className="dark:text-gray-400">{soldProperty.email}</p>
