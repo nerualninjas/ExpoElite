@@ -232,7 +232,8 @@ const AddProduct = () => {
               <label className="block dark-text-gray-400">
                 Special Offers
                 <input
-                  type="text"
+                  type="number"
+                  onChange={handleChange}
                   value={formData.specialOffers}
                   name="specialOffers"
                   className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
