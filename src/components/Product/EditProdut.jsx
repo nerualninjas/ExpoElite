@@ -12,7 +12,7 @@ const EditProduct = ({ propertyData }) => {
   const [openDetail, handleOpenDetails] = useState(false);
   const axiosSecure = useAxiosSecure();
   const { refetch } = usePropertyAllData();
-  console.log(propertyData);
+ 
   const {
     register,
     handleSubmit,
@@ -195,7 +195,7 @@ const EditProduct = ({ propertyData }) => {
                 </div>
               </div>
 
-              {/* Product Type/Tags */}
+              {/* Product Type/Tags
               <div className="space-y-1 text-sm">
                 <label className="block dark-text-gray-400">
                   Product Type/Tags
@@ -215,6 +215,15 @@ const EditProduct = ({ propertyData }) => {
                 {errors.propertyType && (
                   <p className="text-red-500">{errors.propertyType.message}</p>
                 )}
+              </div> */}
+              {/* propertyType */}
+              <div className="space-y-1 text-sm">
+                <label className="block dark-text-gray-400">
+                  Product Type
+                </label>
+
+                <input  className="w-full px-4 py-3 rounded-md text-black" value={propertyData.propertyType}  />
+          
               </div>
 
               {/* Product Description */}

@@ -23,6 +23,9 @@ const BestHomeSectionV2 = () => {
   const [searchParams, setSearchParams] = useState({ location: "" });
   const [loading, setLoading] = useState(false);
   const [noProductFound, setNoProductFound] = useState(false);
+  const [location, setLocation] = useState('');
+  const [type, setType] = useState('');
+  const [range, setRange] = useState(1000);
 
   useEffect(() => {
     setProperties(propertyData);
@@ -32,29 +35,15 @@ const BestHomeSectionV2 = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      setLoading(true);
-      setNoProductFound(false);
-
-      const locationValue = e.target.elements.location.value;
-      const response = await axiosPublic.get(
-        `searchbyloc?location=${locationValue}`
-      );
-
-      if (response.data.length === 0) {
-        setNoProductFound(true);
-      } else {
-        setProperties(response.data);
-      }
-
-      setSearchParams({ location: "" }); // Clear the input field
-    } catch (error) {
-      console.error("Error in submitting form:", error);
-      // Display an error message to the user
-    } finally {
-      setLoading(false);
-    }
   };
+
+  const handleSeach = async() =>{
+    console.log("location:", location, "type: " , type , "range: ", range);
+     const res = await axiosPublic.get(`/searchAndSort?maxPrice=${range}&propertyType=${type}&location=${location}`);
+     console.log(res);
+     setProperties(res.data);
+  }
+
   return (
     <>
       <div className="w-full py-12">
@@ -69,6 +58,7 @@ const BestHomeSectionV2 = () => {
             <div className="form-control w-full">
               <div className="input-group mx-auto  gap-2 flex flex-col lg:flex-row ">
                 <input
+                  onChange={(e)=>setLocation(e.target.value)}
                   type="text"
                   name="location"
                   placeholder="Find by Location"
@@ -77,23 +67,25 @@ const BestHomeSectionV2 = () => {
 
                 <input
                   type="text"
+                  onChange={(e)=>setType(e.target.value)}
                   name="propertyType"
                   placeholder="Find by type"
                   className="input input-bordered"
                 />
                 <fieldset className="space-y-1 sm:w-60 dark:text-gray-100">
-                  <div aria-hidden="true" className="flex justify-between px-1">
-                    Find by price
+                  <div aria-hidden="true" className="px-1">
+                    Price Range: <span className="">{range}</span>
                   </div>
                   <input
                     type="range"
+                    onChange={(e)=>setRange(e.target.value)}
                     className="w-full dark:accent-violet-400"
-                    min="1"
-                    max="5000"
+                    min="1000"
+                    max="30000"
                   />
                 </fieldset>
 
-                <button type="submit" className="btn btn-square">
+                <button type="submit" onClick={()=>handleSeach()} className="btn btn-square">
                   {loading ? (
                     <FontAwesomeIcon
                       icon={faSearch}
@@ -133,7 +125,7 @@ const BestHomeSectionV2 = () => {
                       height={200}
                       src={property.image}
                       alt={property.propertyName}
-                      className="object-cover w-full mb-4 h-30 sm:h-60 dark:bg-gray-500"
+                      className="object-cover rounded-t-md w-full mb-4 h-30 sm:h-60 dark:bg-gray-500"
                     />
 
                     <h1 className="top-2 right-0 px-3 py-2 bg-slate-100 absolute">{property?.propertyType}</h1>

@@ -77,13 +77,14 @@ export const AuthContextProvider = ({ children }) => {
     const unsubcribe = onAuthStateChanged(auth, (currentUser) => {
       setLoading(true)
 
-      console.log(currentUser);
+      // console.log(currentUser);
       setUser(currentUser);
       if (currentUser) {
         const userInfo = {email:currentUser.email};
         axiosPublic.post('/jwt',userInfo)
         .then(res=>{
-          if(res.data?.token){
+         
+          if(res.data.token){
             try {
               if(typeof window !== 'undefined') {
                   localStorage.setItem('token', res.data?.token);

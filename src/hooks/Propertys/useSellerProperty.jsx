@@ -5,21 +5,23 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../useAxiosSecure";
 
 
-const useAdmin = () => {
+const useSellerProperty = () => {
     const { user,loading } = UserAuth();
     const axiosSecure = useAxiosSecure();
-
-    const { data: isAdmin, isPending, refetch } = useQuery({
-        queryKey: ["isAdmin"],
+let sellerPropertyLength = 0;
+    const { data: sellerProperty, isPending, refetch } = useQuery({
+        queryKey: ["sellerProperty"],
         enabled: !loading,
         queryFn: async () => {
-            const res = await axiosSecure.get(`/getIsAdmin/${user?.email}`,getLocalStorgeToken);
+            const res = await axiosSecure.get(`/getSellerPropertys/${user?.email}`,getLocalStorgeToken);
            
               return res?.data;
             },
     })
 
-    return {isAdmin, isPending, refetch }
+    sellerPropertyLength = sellerProperty?.length;
+
+    return {sellerProperty, sellerPropertyLength,isPending, refetch }
 };
 
-export default useAdmin;
+export default useSellerProperty;
