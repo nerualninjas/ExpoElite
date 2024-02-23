@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 
 const Review = ({ transactionId }) => {
     const { userInfoData } = useAUser();
-    const { axiosPublic } = useAxiosPublic();
+    const axiosPublic  = useAxiosPublic();
     const [reviewText, setReviewText] = useState('');
     console.log('axiosPublic:', axiosPublic);
   

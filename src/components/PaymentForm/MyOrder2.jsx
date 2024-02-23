@@ -23,14 +23,15 @@ const MyOrder2 = () => {
         setSelectedTransactionId(transactionId);
         document.getElementById('my_modal_1').showModal();
     };
-
+    const totalPurchases = MyPurchases?.length || 0;
 
     return (
         <div className="bg-white text-black p-4 m-4 rounded-xl">
             <Title2 title="Review My Order History " className=" mt-6" />
+            <h1 className="text-2xl font-bold text-[#54595F] ml-10">Total Purchases: <span className="font-bold text-rose-500">{totalPurchases}</span></h1>
             <div className='bg-rose-200 rounded py-10 px-4 md:px-20 my-10 md:mx-10'>
                 {MyPurchases?.map((property, index) => (
-                    <div key={index} className='flex flex-col md:flex-row justify-between items-center gap-4'>
+                    <div key={index} className='flex flex-col md:flex-row justify-between items-center gap-4 my-6'>
                         <p className="text-xl font-bold">{index + 1}</p>
                         <Image src={property?.image} alt="property image" width={150} height={150} />
                         <div className="flex md:hidden ">

@@ -1,5 +1,4 @@
 import { UserAuth } from '@/app/(auth)/context/AuthContext';
-import { useState } from 'react';
 import useAxiosSecure from '../useAxiosSecure';
 import { useQuery } from "@tanstack/react-query"; // Import useQuery hook
 
