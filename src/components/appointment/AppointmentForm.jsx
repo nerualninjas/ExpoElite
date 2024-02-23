@@ -14,10 +14,9 @@ const AppointmentForm = ({ propertyId }) => {
     const { user } = UserAuth();
     console.log(user);
     const { propertySingleData, isPending, refetch } = usePropertyData(propertyId);
-    const { _id, propertyName, propertyType, propertyCategory, price, image, bathrooms, bedrooms, livingRoom, propertyDetails, propertyCreator,month1,month6,month12,location
+    const { _id, propertyName, sellerImage, sellerName, image,  propertyCreator,month1,month6,month12,location
     } = propertySingleData || {};
-    const  propertyCreatorName='Tahsin Tarannum Chowdhury';
-   const  propertyCreatorImg='https://i.ibb.co/DC2Ppvn/member2.png';
+    
   const axiosSecure=useAxiosSecure();
     const [selectedDate, setSelectedDate] = useState(null);
     const [selectedStartTime, setSelectedStartTime] = useState(null);
@@ -48,8 +47,8 @@ console.log('formattedEndTime',formattedEndTime);
                userName:userName,
                userPhoto:userPhoto,
                sellerEmail:propertyCreator,
-               sellerName:propertyCreatorName,
-               sellerPhoto:propertyCreatorImg,
+               sellerName:sellerName,
+               sellerPhoto:sellerImage,
                propertyName:propertyName,
                propertyId:propertyId,
                appointmentDate: formattedDate,
@@ -94,8 +93,8 @@ console.log('formattedEndTime',formattedEndTime);
   <div className="card-body">
     <h2 className="card-title">{propertyName}</h2>
     <p>{location}</p>
-    <div className="card-actions justify-center lg:justify-end">
-      <div className=""><div className='flex items-center'> <div><Image width={50} height={50} src={propertyCreatorImg} alt="sellerPhoto"  className='rounded-full'/></div> <div> <span className='font-semibold'>Property Seller </span><br />  {propertyCreatorName}</div></div></div>
+    <div className="card-actions flexjustify-center lg:justify-end">
+      <div className=""><div className='flex items-center'> <div><Image width={50} height={50} src={sellerImage} alt="sellerPhoto"  className='rounded-full'/></div> <div> <span className='font-semibold'>Property Seller </span><br />  {sellerName}</div></div></div>
     </div>
   </div>
 </div>
