@@ -7,13 +7,15 @@ import useAllGetReviews from "@/hooks/reviews/useAllGetReviews";
 
 const Testimonials = () => {
   const { AllReviews } = useAllGetReviews();
+
   console.log(AllReviews)
+  const DisplayedReviews = AllReviews ? AllReviews.slice(0, 4) : [];
   return (
     <div className="text-center   my-5 py-5 text-blue-950 font-semibold ">
       <Title title="Clients Reviews" heading="See what our clients have to say about their experience." />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 pt-5 gap-4 place-items-center " >
-        {AllReviews?.map((person, index) => (
+        {DisplayedReviews?.map((person, index) => (
           <div
             key={index}
             className="flex flex-col justify-center items-center mx-4 rounded border-2 shadow-2xl my-5 w-full h-64 "

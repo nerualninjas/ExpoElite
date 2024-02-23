@@ -20,6 +20,7 @@ const useAllGetReviews = () => {
             console.log(res?.data);
             return res?.data;
         }
+        
     });
 
     return { AllReviews, isPending, refetch };
