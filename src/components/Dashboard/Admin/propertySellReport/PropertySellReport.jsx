@@ -52,7 +52,7 @@ const PropertySellReport = () => {
                             <th>Seller Info</th>
                             <th>Buyer Info</th>
                             <th>Property Details</th>
-                            <th>Action</th>
+                            {/* <th>Action</th> */}
                         </tr>
                     </thead>
                     <tbody>
@@ -86,16 +86,29 @@ const PropertySellReport = () => {
                                 {/* <td>
                                     <button className="btn text-white bg-rose-500">View</button>
                                 </td> */}
-                                <td>
+                                {/* <td>
                                     <button
                                         className="btn text-white bg-[#6090e9] hover:bg-[#4053a8] transition duration-700 ease-in-out"
                                         onClick={generatePDF}
                                     >Print Invoice</button>
-                                </td>
+                                </td> */}
                             </tr>
                         ))}
                     </tbody>
                 </table>
+                {/* <button
+                    className="btn flex justify-end  text-white bg-[#46df6c] hover:bg-[#2f8a43] transition duration-700 ease-in-out"
+                    onClick={generatePDF}
+                >Download PDF</button> */}
+                <div className="flex justify-end items-end mr-20 mb-8">
+                    <button
+                        className="btn text-white bg-[#46df6c] hover:bg-[#2f8a43] transition duration-700 ease-in-out"
+                        onClick={generatePDF}
+                    >
+                        Download Sell Report
+                    </button>
+                </div>
+
             </div>
         </div>
     );
