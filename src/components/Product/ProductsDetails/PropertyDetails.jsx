@@ -64,7 +64,8 @@ const PropertyDetail = ({ propertyId }) => {
   }
 
   // const { title, price /* other properties */ } = propertyData;
-  const { _id, propertyName, propertyType, propertyCategory, price, image, bathrooms, bedrooms, livingRoom, propertyDetails, propertyCreator,month1,month6,month12
+  const { _id, propertyName, propertyType, propertyCategory, price, image, bathrooms, bedrooms, livingRoom, propertyDetails, propertyCreator,sellerImage
+,sellerName, month1,month6,month12
   } = propertySingleData || {};
 
 
@@ -274,10 +275,13 @@ const PropertyDetail = ({ propertyId }) => {
             <div className="py-3">
            <div className="flex items-center">
            <h3 className=" text-black font-bold text-lg mr-2 my-2 ">Property Creator</h3>
-         <Link href={`/BookAppointment/${propertyId}`}><button className="btn btn-sm  rounded-full px-3 py-1 border-2 border-rose-600  text-sm font-semibold text-rose-600 hover:text-white bg-[#FFE4E6] hover:bg-rose-600"> Book Appointment</button></Link>  
+         <Link href={`/BookAppointment/${propertyId}`}><button className="btn btn-sm rounded-none  px-3 py-1 border-2 border-rose-600  text-sm font-semibold text-rose-600 hover:text-white bg-[#FFE4E6] hover:bg-rose-600"> Book Appointment</button></Link>  
            </div>   
-
-              <p className=" text-md mr-2"> {propertyCreator}</p>
+<div className="flex items-center">
+<Image width={40} height={40} className="w-full h-full rounded-full"  src={sellerImage} alt="photo"/>
+<p className=" text-md ml-2"> {sellerName}</p>
+</div>
+            
             </div>
           </div>
         </div>
