@@ -180,8 +180,8 @@ const PropertyDetail = ({ propertyId }) => {
               </div>
             </div>
 
-            <br />
-            <div className="flex justify-between items-center">
+          
+            <div className="flex justify-between items-center my-1">
               <div className="property-type text-lg font-semibold bg-gray-100 px-3 py-2 rounded  text-gray-700">
                 {propertyType}
               </div>
@@ -196,16 +196,14 @@ const PropertyDetail = ({ propertyId }) => {
 
             {/* -----------property title and buy now button ------------*/}
             <div className="flex flex-col lg:flex-row justify-start lg:justify-between ">
-              <div className="property-title text-xl font-bold mb-2 text-rose-500">
+              <div className="property-title text-2xl font-bold mb-2 text-rose-500">
                 {propertyName}
               </div>
 
             </div>
 
-            <div>
-              <Rating style={{ maxWidth: 120 }} value={4} readOnly />
-            </div>
-            <br />
+           
+           
             <div >
               <h2 className="text-xl font-bold mb-2">Location</h2>
               <div>
