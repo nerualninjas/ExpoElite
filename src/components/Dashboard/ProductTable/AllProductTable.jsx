@@ -1,12 +1,16 @@
 "use client";
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import usePropertyAllData from '@/hooks/Propertys/usePropertyAllData';
 import useAxiosSecure from '@/hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 import useNotification from "@/hooks/notifications/useNotificationCreate";
-import { UserAuth } from "@/app/(auth)/context/AuthContext";        
+import { UserAuth } from "@/app/(auth)/context/AuthContext";
+import ReactPaginate from 'react-paginate';
+
+
+
 const AllProductTable = () => {
 
     const { propertyData, isPending, refetch } = usePropertyAllData();
@@ -14,6 +18,12 @@ const AllProductTable = () => {
     const axiosSecure = useAxiosSecure();
     const { notificationPost } = useNotification()
     const { user } = UserAuth()
+
+    // // pagination
+    // const [data, setData] = useState([]);
+    // const [limit, setLimit] = useState(5);
+    // const [pageCount, setPageCount] = useState(1);
+    // const currentPage = useRef();
 
     useEffect(() => {
         console.log(properties); // Log properties to the console
@@ -32,26 +42,26 @@ const AllProductTable = () => {
                 text: "has Published successfully!",
                 icon: "success"
             });
-const email = res.data.data.propertyCreator;
-const photo = res.data.data.image;
+            const email = res.data.data.propertyCreator;
+            const photo = res.data.data.image;
             // const notificationPhoto = res?.data.image;
             // notifiacation add for like start
             // need import ----dooo
             // import useNotification from "@/hooks/notifications/useNotificationCreate";
             // const { notificationPost } = useNotification()
-    const data = {
-        userEmail: email,
-        notificationData: [{
-          notificationText: `${res.data.data.propertyName} Published!`,
-          notifyUserPhoto: photo,
-          notificationPath: `/products/${id}`,
-          notificationStatus: "unread"
-        }]
-      }
-      // post api for notication 
-      notificationPost(data)
-  
-      //notification end
+            const data = {
+                userEmail: email,
+                notificationData: [{
+                    notificationText: `${res.data.data.propertyName} Published!`,
+                    notifyUserPhoto: photo,
+                    notificationPath: `/products/${id}`,
+                    notificationStatus: "unread"
+                }]
+            }
+            // post api for notication 
+            notificationPost(data)
+
+            //notification end
         }
     }
 
@@ -72,21 +82,44 @@ const photo = res.data.data.image;
             const data = {
                 userEmail: email,
                 notificationData: [{
-                  notificationText: `${res.data.data.propertyName} unpublished!`,
-                  notifyUserPhoto: photo,
-                  notificationPath: `/products/${id}`,
-                  notificationStatus: "unread"
+                    notificationText: `${res.data.data.propertyName} unpublished!`,
+                    notifyUserPhoto: photo,
+                    notificationPath: `/products/${id}`,
+                    notificationStatus: "unread"
                 }]
-              }
-              // post api for notication 
-              notificationPost(data)
+            }
+            // post api for notication 
+            notificationPost(data)
         }
 
 
     }
+    // //pagination
+    // useEffect(() => {
+    //     currentPage.current = 1;
+    //     getAllProperty();
+    // }, [])
 
 
+    //pagination
+    function handlePageClick(e) {
+        console.log(e);
+        // currentPage.current = e.selected + 1;
+        // getAllProperty();
 
+
+    }
+
+    // const getAllProperty = async () => {
+    //     await axiosSecure.get(`getAllProperty?page=${currentPage.current}&limit=${limit}`)
+    //     if (res.data) {
+    //         console.log(data, "userData");
+    //         setPageCount(data.pageCount);
+    //         setData(data.result)
+
+    //     }
+
+    // }
 
 
     return (
@@ -162,6 +195,27 @@ const photo = res.data.data.image;
                         ))}
                     </tbody>
                 </table>
+            </div>
+            <div>
+                <ReactPaginate
+                    breakLabel="..."
+                    nextLabel="next >"
+                    onPageChange={handlePageClick}
+                    pageRangeDisplayed={5}
+                    pageCount={8}
+                    previousLabel="< previous"
+                    renderOnZeroPageCount={null}
+                    marginPagesDisplayed={2}
+                    containerClassName="flex justify-center my-3"
+                    pageClassName="page-item bg-white py-4 px-4 border border-rose-600"
+                    pageLinkClassName="page-link"
+                    previousClassName="page-item bg-rose-300 py-4 px-4 border border-rose-600"
+                    previousLinkClassName="page-link"
+                    nextClassName="page-item bg-rose-300 py-4 px-4 border border-rose-600"
+                    nextLinkClassName="page-link"
+                    activeClassName="text-rose-600 bg-rose-50"
+                    disabledClassName="bg-rose-300"
+                />
             </div>
         </div>
     );

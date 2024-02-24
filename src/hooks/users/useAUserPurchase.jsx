@@ -1,10 +1,11 @@
+"use client";
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
 import useAxiosPublic from "../useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 
 
 const useAUserPurchase = () => {
-    const { loading,user } = UserAuth();
+    const { user,loading } = UserAuth();
     const axiosPublic = useAxiosPublic();
 
     const {

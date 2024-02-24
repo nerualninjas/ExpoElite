@@ -12,7 +12,7 @@ const MyOrder = () => {
     const { MyPurchases } = useAUserPurchase();
     const [reviews, setReviews] = useState({});
     const { userInfoData } = useAUser();
-    const { axiosPublic } = useAxiosPublic();
+    const  axiosPublic  = useAxiosPublic();
 
     const handleReviewClick = async(transactionId) => {
         if (!userInfoData) {
