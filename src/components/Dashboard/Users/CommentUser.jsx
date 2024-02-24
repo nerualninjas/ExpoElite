@@ -1,21 +1,22 @@
+"use client"
 import React from 'react';
 import { faComments } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-const CommentUser = () => {
+import useAUserComment from '@/hooks/users/useAUserComment';
+const CommentUser = () => { 
+    const { MyComments } = useAUserComment();
+    const count = MyComments?.totalComments;
     return (
-        <div className='flex flex-col md:flex-row justify-center items-center gap-5 mx-auto '>
-            {
-                data.map((item, index) => (
-                    <div className='flex justify-between items-center bg-gray-100 p-10 rounded-md gap-4  shadow-md' key={index}>
-                        <FontAwesomeIcon className='rounded-full text-rose-400 w-16 h-16' icon={faComments} />
-                        <div className='flex flex-col justify-between items-center text-center'>
-                            <p className='text-rose-600 '>{item.name}</p>
-                            <p className='text-rose-600 text-2xl'>{item.count}</p>
-                        </div>
-                    </div>
-                ))
-            }
+
+       
+        <div className='flex justify-between items-center bg-gray-100 p-10 rounded-md gap-4  shadow-md' >
+            <FontAwesomeIcon className='rounded-full text-rose-400 w-16 h-16' icon={faComments} />
+            <div className='flex flex-col justify-between items-center text-center'>
+                <p className='text-rose-600 '>Comments</p>
+                <p className='text-rose-600 text-2xl'>{count}</p>
+            </div>
         </div>
+
     );
 };
 
