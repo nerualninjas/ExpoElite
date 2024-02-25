@@ -5,6 +5,7 @@ import { UserAuth } from "@/app/(auth)/context/AuthContext";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
 import usePropertyData from "@/hooks/Propertys/usePropertyData";
 import Swal from "sweetalert2";
+import Image from "next/image";
 
 const CheckoutForm = ({ propertyId }) => {
   const { user } = UserAuth();
@@ -17,7 +18,7 @@ const CheckoutForm = ({ propertyId }) => {
 
   const { propertySingleData, isPending, refetch } =
     usePropertyData(propertyId);
-  const { _id, propertyName, propertyType, price } = propertySingleData || {};
+  const { _id, image, propertyName, propertyType, price } = propertySingleData || {};
 
   const stripe = useStripe();
   const elements = useElements();
@@ -89,6 +90,7 @@ const CheckoutForm = ({ propertyId }) => {
               price: totalPrice,
               date: new Date(),
               propertyName: propertyName,
+              image: image,
               propertyId: _id,
               transactionId: paymentIntent.id,
               status: "pending",
@@ -128,6 +130,7 @@ const CheckoutForm = ({ propertyId }) => {
           <p>Property Name: {propertyName}</p>
           <p>Property Type: {propertyType}</p>
           <p>Property Price: {price} </p>
+          {/* <p>Property Image: <Image src={image} width={200} height={200} alt="image" /></p> */}
           <hr />
           <p>Your name: {user?.displayName}</p>
           <p>Your Email: {user?.email}</p>

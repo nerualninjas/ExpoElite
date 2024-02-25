@@ -20,8 +20,6 @@ const Comment = ({ propertyId }) => {
     const [commentText, setCommentText] = useState('');
     const { propertySingleData, refetch } = usePropertyData(propertyId);
     const { propertyName, commentLogs } = propertySingleData || {};
-   
-
 
     const handleComment = async (e) => {
         e.preventDefault();
@@ -51,26 +49,20 @@ const Comment = ({ propertyId }) => {
             console.error('Error adding comment', error);
         }
     };
-
-
     
     return (
         <div className='mb-10'>
              <div>
-        <h1 className="text-xl my-4 font-extrabold text-black ">Comment Section</h1>
-     
-       
-           
+        <h1 className="text-xl my-4 font-extrabold text-black ">Comment Section</h1>   
         </div>
-        <div className='overflow-y-scroll max-h-[300px]'>
-                {commentLogs.map((commentData, index) => (
-                    <ShowComment key={index} commentData={commentData} />
-                ))}
-            </div>
-         
-         
-           
-            
+
+            {commentLogs && commentLogs?.length > 1 ? (
+    <div className='overflow-y-scroll max-h-[300px]'>
+        {commentLogs.slice(1).map((commentData, index) => (
+            <ShowComment key={index} commentData={commentData} />
+        ))}
+    </div>
+) : null}       
             <div>
                 {/* --------------------inputComment---------------------- */}
                
@@ -90,9 +82,7 @@ const Comment = ({ propertyId }) => {
                 </form>
                 <p className="ms-auto text-xs text-gray-500 dark:text-gray-400">Remember, contributions to this topic should follow our <a href="#" className="text-blue-600 dark:text-blue-500 hover:underline">Community Guidelines</a>.</p>
             </div>  
-            
-            
-           
+
         </div>
     );
 };
