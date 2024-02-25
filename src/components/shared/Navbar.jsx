@@ -72,6 +72,8 @@ const Navbar = () => {
 
   ];
 
+
+
   const adminDashboard = [
     {pageName: "Dashboard" , path: "/dashboard", icon: faChartLine},
     {pageName: "Manage Users" , path: "/allUsers", icon: faPeopleGroup},
