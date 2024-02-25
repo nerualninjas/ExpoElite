@@ -4,12 +4,17 @@ import Link from 'next/link';
 import useGetSoldProperty from '@/hooks/soldProperty/useGetSoldProperty';
 import { useReactToPrint } from 'react-to-print';
 import Swal from 'sweetalert2';
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 
 const PropertySellReport = () => {
 
     const { soldPropertyData, isPending, refetch } = useGetSoldProperty();
     console.log('hello', soldPropertyData);
     const soldProperties = soldPropertyData;
+
+
+    // const notify = () => toast("Wow so easy!");
 
     // react-to-print
     const componentPDF = useRef();
@@ -21,7 +26,6 @@ const PropertySellReport = () => {
         console.log(soldProperties); // Log properties to the console
         // setSoldProperties(soldProperties); // Log properties to the console
     }, [soldProperties]); // Make sure to add properties to the dependency array
-
 
 
 
@@ -96,10 +100,6 @@ const PropertySellReport = () => {
                         ))}
                     </tbody>
                 </table>
-                {/* <button
-                    className="btn flex justify-end  text-white bg-[#46df6c] hover:bg-[#2f8a43] transition duration-700 ease-in-out"
-                    onClick={generatePDF}
-                >Download PDF</button> */}
                 <div className="flex justify-end items-end mr-20 mb-8">
                     <button
                         className="btn text-white bg-[#46df6c] hover:bg-[#2f8a43] transition duration-700 ease-in-out"
@@ -107,6 +107,7 @@ const PropertySellReport = () => {
                     >
                         Download Sell Report
                     </button>
+                    {/* <ToastContainer /> */}
                 </div>
 
             </div>
