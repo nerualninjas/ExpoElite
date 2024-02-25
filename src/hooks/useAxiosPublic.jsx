@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosPublic = axios.create({
-  baseURL: "https://expo-elite-server.vercel.app",
+    baseURL:"https://expo-elite-server.vercel.app",
   // baseURL: "http://localhost:5000",
 });
 

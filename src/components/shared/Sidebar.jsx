@@ -66,6 +66,7 @@ const Sidebar = () => {
   const userDashboard = [
     { pageName: "My Dashboard", path: "/graphAnalysisUsers", icon: faChartLine },
     { pageName: "My Orders", path: "/paymentList", icon: faCartShopping },
+    { pageName: "My Appointments", path: "/myAppointments", icon: faCalendarCheck },
 
   ]
   const sellerDashboard = [ 
