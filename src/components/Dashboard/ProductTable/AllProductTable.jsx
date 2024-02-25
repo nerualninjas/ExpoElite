@@ -7,17 +7,29 @@ import useAxiosSecure from '@/hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 import useNotification from "@/hooks/notifications/useNotificationCreate";
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
-import ReactPaginate from 'react-paginate';
+
 
 
 
 const AllProductTable = () => {
-
-    const { propertyData, isPending, refetch } = usePropertyAllData();
+    const [currentPage, setCurrentPage] = useState(1);
+    const [pageLimit, setPageLimit] = useState(5);
+    const { propertyData, isPending, refetch } = usePropertyAllData(currentPage, pageLimit);
     const properties = propertyData;
     const axiosSecure = useAxiosSecure();
     const { notificationPost } = useNotification()
     const { user } = UserAuth()
+
+    const [displayProperty, setDisplayData] = useState(properties)
+
+
+
+
+    useEffect(() => {
+        refetch()
+        setDisplayData(properties)
+    }, [properties, refetch, pageLimit])
+
 
     // // pagination
     // const [data, setData] = useState([]);
@@ -94,32 +106,36 @@ const AllProductTable = () => {
 
 
     }
-    // //pagination
-    // useEffect(() => {
-    //     currentPage.current = 1;
-    //     getAllProperty();
-    // }, [])
 
 
-    //pagination
-    function handlePageClick(e) {
-        console.log(e);
-        // currentPage.current = e.selected + 1;
-        // getAllProperty();
+
+
+    //pagination start
+
+    const handlePagination = (e) => {
+        e.preventDefault()
+        const pageLimitValue = e.target.value;
+        console.log(pageLimitValue);
+        setPageLimit(pageLimitValue)
 
 
     }
 
-    // const getAllProperty = async () => {
-    //     await axiosSecure.get(`getAllProperty?page=${currentPage.current}&limit=${limit}`)
-    //     if (res.data) {
-    //         console.log(data, "userData");
-    //         setPageCount(data.pageCount);
-    //         setData(data.result)
+    const handlePreviousPage = () => {
+        if (currentPage > 1) {
+            setCurrentPage(currentPage - 1)
+        }
+    }
+    const totalPage = properties?.length;
 
-    //     }
 
-    // }
+    const handleNextPage = () => {
+        if (currentPage < totalPage) {
+            setCurrentPage(currentPage + 1)
+        }
+    }
+
+    // pagination end
 
 
     return (
@@ -144,7 +160,7 @@ const AllProductTable = () => {
                     </thead>
                     <tbody>
                         {/* rows */}
-                        {properties?.map((property, index) => (
+                        {displayProperty?.map((property, index) => (
                             <tr key={property._id}>
                                 <th>{index + 1}</th>
                                 <td>
@@ -184,23 +200,16 @@ const AllProductTable = () => {
                                             </button>
                                     }
                                 </td>
-                                {/* <td>
-                                    <button
-                                        onClick={() => handleTogglePropertyStatus(property._id, property.publishStatus)}
-                                        className={`btn text-white ${property.publishStatus === 'unpublish' ? 'bg-[#53e068]' : 'bg-[#eb4343]'}`}>
-                                        {property.publishStatus === 'unpublish' ? 'Publish' : 'Unpublish'}
-                                    </button>
-                                </td> */}
                             </tr>
                         ))}
                     </tbody>
                 </table>
             </div>
             <div>
-                <ReactPaginate
+                {/* <ReactPaginate
                     breakLabel="..."
                     nextLabel="next >"
-                    onPageChange={handlePageClick}
+                    onPageChange={handlePagination}
                     pageRangeDisplayed={5}
                     pageCount={8}
                     previousLabel="< previous"
@@ -215,7 +224,32 @@ const AllProductTable = () => {
                     nextLinkClassName="page-link"
                     activeClassName="text-rose-600 bg-rose-50"
                     disabledClassName="bg-rose-300"
-                />
+                /> */}
+                <div className="flex gap-2">
+                    <select onChange={handlePagination} value={pageLimit} className="p-2 border-2 bg-blue-gray-50" name="limit" id="">
+
+                        <option value={3}>
+                            3
+                        </option>
+                        <option value={5}>
+                            5
+                        </option>
+                        <option value={10}>
+                            10
+                        </option>
+                        <option value={20}>
+                            20
+                        </option>
+                    </select>
+
+                    <button className='btn bg-rose-600' onClick={handlePreviousPage} >
+                        Previous
+                    </button>
+
+                    <button className='btn bg-rose-600' onClick={handleNextPage}>
+                        Next
+                    </button>
+                </div>
             </div>
         </div>
     );

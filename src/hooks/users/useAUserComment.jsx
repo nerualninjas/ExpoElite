@@ -4,25 +4,25 @@ import useAxiosPublic from "../useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 
 
-const useAUserPurchase = () => {
+const useAUserComment = () => {
     const { user,loading } = UserAuth();
     const axiosPublic = useAxiosPublic();
 
     const {
-        data: MyPurchases,
+        data: MyComments,
         isPending,
         refetch,
       } = useQuery({
-        queryKey: ["MyPurchases"],
-        enabled: !loading, 
+        queryKey: ["MyComments"],
+        enabled: !loading,
         queryFn: async () => {
-          const res = await axiosPublic.get(`/showPayment?email=${user?.email}`);
+          const res = await axiosPublic.get(`/getUserCommentCount/${user?.email}`);
           console.log(res?.data);
           return res?.data;
         },
       });
     
-    return { MyPurchases, isPending, refetch };
+    return { MyComments, isPending, refetch };
 };
 
-export default useAUserPurchase;
+export default useAUserComment;
