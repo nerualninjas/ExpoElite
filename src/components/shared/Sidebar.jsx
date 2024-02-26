@@ -24,6 +24,7 @@ import {
   faCity,
   faMagnifyingGlassPlus,
   faDollarSign,
+  faCalendarCheck
 } from "@fortawesome/free-solid-svg-icons";
 // import {
 //   faSellsy,
@@ -65,11 +66,13 @@ const Sidebar = () => {
   const userDashboard = [
     { pageName: "My Dashboard", path: "/graphAnalysisUsers", icon: faChartLine },
     { pageName: "My Orders", path: "/paymentList", icon: faCartShopping },
+    { pageName: "My Appointments", path: "/myAppointments", icon: faCalendarCheck },
 
   ]
   const sellerDashboard = [ 
     { pageName: "My Dashboard", path: "/GraphAndAnalysisSeller", icon:faChartLine }, 
-    { pageName: "All Property", path: "/products", icon: faCity },
+    { pageName: "All Property", path: "/products", icon:faCity },
+    { pageName: "Manage Appointment", path: "/AppointmentManage", icon:faCalendarCheck }, 
 
   ];
   return (
