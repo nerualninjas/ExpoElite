@@ -3,13 +3,14 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import usePropertyAllData from "./../../hooks/Propertys/usePropertyAllData";
+import useSellerProperty from '@/hooks/Propertys/useSellerProperty';
 import useAxiosSecure from "./../../hooks/useAxiosSecure";
 
 const SetOffer = ({ propertyData }) => {
   const [openDetail, handleOpenDetails] = useState(false);
   const axiosSecure = useAxiosSecure();
-  const { refetch } = usePropertyAllData();
+  
+  const { refetch } = useSellerProperty();
 
   const {
     register,

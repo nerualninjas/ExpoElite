@@ -1,17 +1,14 @@
-"use client";
-
-import useAxiosSecure from "./../../hooks/useAxiosSecure";
-import usePropertyAllData from "./../../hooks/Propertys/usePropertyAllData";
-import Swal from "sweetalert2";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import productsCollection from "@/models/products";
-import { useState } from "react";
- 
+import Swal from "sweetalert2";
+import axiosSecure from "./../../axios"; // Assuming axiosSecure is your axios instance
+import useSellerProperty from '@/hooks/Propertys/useSellerProperty';
 
 const EditProduct = ({ propertyData }) => {
+ 
   const [openDetail, handleOpenDetails] = useState(false);
-  const axiosSecure = useAxiosSecure();
-  const { refetch } = usePropertyAllData();
+
+  const {  refetch } = useSellerProperty();
  
   const {
     register,
@@ -21,31 +18,30 @@ const EditProduct = ({ propertyData }) => {
   } = useForm();
 
   const closeModal = () => {
-    reset(); // Reset form fields
+    reset();
     document.getElementById("my_modal_2").close();
   };
 
   const onSubmit = async (data) => {
-    console.log(propertyData._id);
+    console.log(sellerPropertyData._id);
     try {
-      await axiosSecure.patch(`/updateProperty/${propertyData._id}`, data);
-      console.log("Product updated successfully");
+      // Fix the axios request to use axiosSecure
+      await axiosSecure.patch(`/updateProperty/${sellerPropertyData._id}`, data);
+ 
+      refetch();
 
       Swal.fire({
         title: "Property Update Success!",
-        text: "Thanks You!",
+        text: "Thank You!",
         icon: "success",
         position: "top-right",
         timer: 1500,
       });
 
-      refetch();
 
       handleOpenDetails(false);
     } catch (error) {
-      console.error("Error updating product:", error);
-      
-
+      console.error("Error updating property:", error);
     }
   };
 
