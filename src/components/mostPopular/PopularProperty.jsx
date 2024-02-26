@@ -19,11 +19,11 @@ const PopularProperty = () => {
         ...property,
         likesCount: property?.likeBy?.length,
       }));
-      console.log(propertiesWithLikes)
+
       const sortedProperties = propertiesWithLikes?.sort((propertyA, propertyB) => propertyB.likesCount - propertyA.likesCount);
       const top8Properties = sortedProperties?.slice(0, Math.min(8, sortedProperties.length));
 
-      console.log(top8Properties);
+
     return (
         <div>
           

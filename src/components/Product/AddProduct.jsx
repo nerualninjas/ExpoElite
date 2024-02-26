@@ -55,7 +55,7 @@ const AddProduct = () => {
     e.preventDefault();
 
     const photoURL = e.target.photoURL.files[0];
- 
+
     const imageFile = { image: photoURL };
 
     try {
@@ -86,7 +86,6 @@ const AddProduct = () => {
       };
 
       axiosSecure.post("/addProperty", myData).then((res) => {
- 
         if (res?.data.insertedId === null) {
           Swal.fire({
             icon: "error",
@@ -128,9 +127,8 @@ const AddProduct = () => {
             className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 dark-bg-gray-900 dark-text-gray-100 focus:dark-border-violet-400"
           />
         </div>
-
         <div className="space-y-1 text-sm">
-          <label className="block dark-text-gray-400">Image </label>
+          <label className="block dark-text-gray-400">Image 1</label>
           <input
             name="photoURL"
             required
@@ -138,7 +136,24 @@ const AddProduct = () => {
             className="w-full bg-white text-black px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
           />
         </div>
-
+        <div className="space-y-1 text-sm">
+          <label className="block dark-text-gray-400">Image 2 </label>
+          <input
+            name="photoURL2"
+           
+            type="text"
+            className="w-full bg-white text-black px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+          />
+        </div>{" "}
+        <div className="space-y-1 text-sm">
+          <label className="block dark-text-gray-400">Image 3 </label>
+          <input
+            name="photoURL3"
+             
+            type="text"
+            className="w-full bg-white text-black px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+          />
+        </div>
         <div className="flex w-full gap-4 flex-col lg:flex-row">
           <div className="space-y-1 text-sm w-full lg:w-1/2">
             <label className="block dark-text-gray-400">Bedrooms</label>
@@ -174,7 +189,6 @@ const AddProduct = () => {
             />
           </div>
         </div>
-
         <div className="space-y-1 text-sm">
           <label className="block dark-text-gray-400">Property Type/Tags</label>
           <div className="flex items-center space-x-4">
@@ -203,7 +217,6 @@ const AddProduct = () => {
             </label>
           </div>
         </div>
-
         {selectedType === "Sell" && (
           <>
             <div className="space-y-1 text-sm">
@@ -240,7 +253,6 @@ const AddProduct = () => {
             </div>
           </>
         )}
-
         {selectedType === "Rent" && (
           <>
             <div className="space-y-1 text-sm">
@@ -281,7 +293,6 @@ const AddProduct = () => {
             </div>
           </>
         )}
-
         <div className="space-y-1 text-sm">
           <label className="block dark-text-gray-400">Property location</label>
           <input
@@ -304,7 +315,6 @@ const AddProduct = () => {
             className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 dark-bg-gray-900 dark-text-gray-100 focus:dark-border-violet-400"
           />
         </div>
-
         <div className="space-y-1 text-sm">
           <label className="block dark-text-gray-400">
             Property Description

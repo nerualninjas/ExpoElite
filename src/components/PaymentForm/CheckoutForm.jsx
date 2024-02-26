@@ -120,28 +120,28 @@ const CheckoutForm = ({ propertyId }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-base-200 p-4 m-2 rounded-md">
-      <h3 className="text-3xl py-8">Payment</h3>
-      <div className="flex w-full flex-col lg:flex-row">
+    <form onSubmit={handleSubmit} className="bg-white p-6 m-4 rounded-md shadow-md">
+      <h3 className="text-2xl font-semibold mb-6">Payment</h3>
+      <div className="flex flex-col lg:flex-row space-y-4 lg:space-x-4 lg:space-y-0">
         <div className="w-full lg:w-1/2">
-          <h2 className="text-gray-800 text-xl">Payment info:</h2>
-          <hr />
-          <p>Property ID: {_id}</p>
-          <p>Property Name: {propertyName}</p>
-          <p>Property Type: {propertyType}</p>
-          <p>Property Price: {price} </p>
-          {/* <p>Property Image: <Image src={image} width={200} height={200} alt="image" /></p> */}
-          <hr />
-          <p>Your name: {user?.displayName}</p>
-          <p>Your Email: {user?.email}</p>
-          <hr className="py-4" />
-          <h2 className="text-gray-600 text-xl font-bold">
-            Total Payable bill: $ {price}
+          <h2 className="text-gray-800 text-lg font-semibold mb-4">Payment info:</h2>
+          <div className="border-b mb-4 pb-4">
+            <p className="text-sm">Property ID: {_id}</p>
+            <p className="text-sm">Property Name: {propertyName}</p>
+            <p className="text-sm">Property Type: {propertyType}</p>
+            <p className="text-sm">Property Price: ${price}</p>
+          </div>
+          <div className="border-b mb-4 pb-4">
+            <p className="text-sm">Your Name: {user?.displayName}</p>
+            <p className="text-sm">Your Email: {user?.email}</p>
+          </div>
+          <h2 className="text-gray-600 text-lg font-semibold">
+            Total Payable Bill: ${price}
           </h2>
         </div>
         <div className="w-full lg:w-1/2">
           <CardElement
-            className="input input-bordered input-warning pt-3"
+            className="input input-bordered input-warning pt-3 mb-4"
             options={{
               style: {
                 base: {
@@ -157,15 +157,15 @@ const CheckoutForm = ({ propertyId }) => {
             }}
           />
           <button
-            className="btn btn-sm btn-primary my-4"
+            className="btn btn-primary btn-block"
             type="submit"
             disabled={!stripe || !clientSecret || loading}
           >
             {loading ? "Processing..." : "Pay"}
           </button>
-          <p className="text-error">{error}</p>
+          <p className="text-error mt-2">{error}</p>
           {transactionId && (
-            <p className="text-success">Your transaction id: {transactionId}</p>
+            <p className="text-success mt-2">Transaction ID: {transactionId}</p>
           )}
         </div>
       </div>
