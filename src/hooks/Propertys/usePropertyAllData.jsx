@@ -11,12 +11,13 @@ const usePropertyAllData = () => {
     isPending,
     refetch,
   } = useQuery({
-    queryKey: ["propertyData"],
+    queryKey: ["property"],
     enabled: !loading,
     queryFn: async () => {
       const res = await axiosPublic.get("/getAllProperty");
       // console.log(res?.data);
       return res?.data;
+
     },
   });
 

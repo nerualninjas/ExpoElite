@@ -195,28 +195,7 @@ const EditProduct = ({ propertyData }) => {
                 </div>
               </div>
 
-              {/* Product Type/Tags
-              <div className="space-y-1 text-sm">
-                <label className="block dark-text-gray-400">
-                  Product Type/Tags
-                </label>
-                <select
-                  defaultValue={propertyData.propertyType}
-                  {...register("propertyType", {
-                    required: "Product Type is required",
-                  })}
-                  className="w-full px-4 py-3 rounded-md text-black"
-                >
-                  <option value="Business">Type 1</option>
-                  <option value="Business">Type 1</option>
-                  <option value="Business">Type 1</option>
-                  <option value="Business">Type 1</option>
-                </select>
-                {errors.propertyType && (
-                  <p className="text-red-500">{errors.propertyType.message}</p>
-                )}
-              </div> */}
-              {/* propertyType */}
+ 
               <div className="space-y-1 text-sm">
                 <label className="block dark-text-gray-400">
                   Product Type
