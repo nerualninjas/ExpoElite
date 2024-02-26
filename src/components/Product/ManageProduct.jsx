@@ -23,7 +23,7 @@ const ManageProduct = () => {
   useEffect(() => {
     setProperties(sellerProperty);
     refetch();
-  }, [sellerProperty ]);
+  }, [sellerProperty]);
 
   const handleDeleteProduct = (propertie) => {
     Swal.fire({
@@ -124,12 +124,7 @@ const ManageProduct = () => {
 
                 <td className="flex items-center gap-2">
                   <EditProduct propertyData={property} />
-
-
-                  <SetOffer propertyData={property} /> 
-
-
-
+                  <SetOffer propertyData={property} />
                   <button
                     className="btn btn-sm btn-error"
                     onClick={() => handleDeleteProduct(property)}

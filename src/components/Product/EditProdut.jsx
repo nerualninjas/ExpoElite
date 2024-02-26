@@ -1,14 +1,18 @@
-import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+"use client";
+
+import useAxiosSecure from "./../../hooks/useAxiosSecure";
+import usePropertyAllData from "./../../hooks/Propertys/usePropertyAllData";
 import Swal from "sweetalert2";
-import axiosSecure from "./../../axios"; // Assuming axiosSecure is your axios instance
-import useSellerProperty from '@/hooks/Propertys/useSellerProperty';
+import { useForm } from "react-hook-form";
+ 
+import { useState } from "react";
+import useSellerProperty from "@/hooks/Propertys/useSellerProperty";
+ 
 
 const EditProduct = ({ propertyData }) => {
- 
   const [openDetail, handleOpenDetails] = useState(false);
-
-  const {  refetch } = useSellerProperty();
+  const axiosSecure = useAxiosSecure();
+  const { refetch } = useSellerProperty();
  
   const {
     register,
@@ -18,30 +22,31 @@ const EditProduct = ({ propertyData }) => {
   } = useForm();
 
   const closeModal = () => {
-    reset();
+    reset(); // Reset form fields
     document.getElementById("my_modal_2").close();
   };
 
   const onSubmit = async (data) => {
-    console.log(sellerPropertyData._id);
+    console.log(propertyData._id);
     try {
-      // Fix the axios request to use axiosSecure
-      await axiosSecure.patch(`/updateProperty/${sellerPropertyData._id}`, data);
- 
-      refetch();
+      await axiosSecure.patch(`/updateProperty/${propertyData._id}`, data);
+      
 
       Swal.fire({
         title: "Property Update Success!",
-        text: "Thank You!",
+        text: "Thanks You!",
         icon: "success",
         position: "top-right",
         timer: 1500,
       });
 
-
+      refetch();
+      
       handleOpenDetails(false);
     } catch (error) {
-      console.error("Error updating property:", error);
+      console.error("Error updating product:", error);
+      
+
     }
   };
 
@@ -191,7 +196,28 @@ const EditProduct = ({ propertyData }) => {
                 </div>
               </div>
 
- 
+              {/* Product Type/Tags
+              <div className="space-y-1 text-sm">
+                <label className="block dark-text-gray-400">
+                  Product Type/Tags
+                </label>
+                <select
+                  defaultValue={propertyData.propertyType}
+                  {...register("propertyType", {
+                    required: "Product Type is required",
+                  })}
+                  className="w-full px-4 py-3 rounded-md text-black"
+                >
+                  <option value="Business">Type 1</option>
+                  <option value="Business">Type 1</option>
+                  <option value="Business">Type 1</option>
+                  <option value="Business">Type 1</option>
+                </select>
+                {errors.propertyType && (
+                  <p className="text-red-500">{errors.propertyType.message}</p>
+                )}
+              </div> */}
+              {/* propertyType */}
               <div className="space-y-1 text-sm">
                 <label className="block dark-text-gray-400">
                   Product Type

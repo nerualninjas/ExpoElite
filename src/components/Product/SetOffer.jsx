@@ -3,13 +3,13 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import useSellerProperty from '@/hooks/Propertys/useSellerProperty';
-import useAxiosSecure from "./../../hooks/useAxiosSecure";
-
+ 
+import useAxiosSecure from "@/hooks/useAxiosSecure";
+import useSellerProperty from "@/hooks/Propertys/useSellerProperty";
 const SetOffer = ({ propertyData }) => {
   const [openDetail, handleOpenDetails] = useState(false);
   const axiosSecure = useAxiosSecure();
-  
+
   const { refetch } = useSellerProperty();
 
   const {
@@ -20,7 +20,7 @@ const SetOffer = ({ propertyData }) => {
   } = useForm();
 
   const closeModal = () => {
-    reset(); // Reset form fields
+    reset(); 
     document.getElementById("my_modal_2").close();
   };
 
