@@ -1,3 +1,5 @@
+"use-client"
+
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
