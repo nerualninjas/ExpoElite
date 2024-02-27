@@ -13,6 +13,7 @@ import { UserAuth } from "@/app/(auth)/context/AuthContext";
 
 const AllProductTable = () => {
     const [currentPage, setCurrentPage] = useState(1);
+    console.log('hi', currentPage);
     const [pageLimit, setPageLimit] = useState(5);
     const { propertyData, isPending, refetch } = usePropertyAllData(currentPage, pageLimit);
     const properties = propertyData;
@@ -28,7 +29,7 @@ const AllProductTable = () => {
     useEffect(() => {
         refetch()
         setDisplayData(properties)
-    }, [properties, refetch, pageLimit])
+    }, [properties, refetch, pageLimit, currentPage])
 
 
     // // pagination
@@ -132,10 +133,13 @@ const AllProductTable = () => {
     const handleNextPage = () => {
         if (currentPage < totalPage) {
             setCurrentPage(currentPage + 1)
+
         }
+        // console.log(currentPage, totalPage);
     }
 
     // pagination end
+
 
 
     return (
@@ -162,7 +166,7 @@ const AllProductTable = () => {
                         {/* rows */}
                         {displayProperty?.map((property, index) => (
                             <tr key={property._id}>
-                                <th>{index + 1}</th>
+                                <th>{property._id}</th>
                                 <td>
                                     <Image
                                         width={100}
@@ -225,31 +229,37 @@ const AllProductTable = () => {
                     activeClassName="text-rose-600 bg-rose-50"
                     disabledClassName="bg-rose-300"
                 /> */}
-                <div className="flex gap-2">
-                    <select onChange={handlePagination} value={pageLimit} className="p-2 border-2 bg-blue-gray-50" name="limit" id="">
+                <div className="flex justify-between items-center gap-2">
+                    <div>
+                        CurrentPage:{currentPage}
+                    </div>
+                    <div>
+                        <select onChange={handlePagination} value={pageLimit} className="p-2 border-2 bg-blue-gray-50" name="limit" id="">
 
-                        <option value={3}>
-                            3
-                        </option>
-                        <option value={5}>
-                            5
-                        </option>
-                        <option value={10}>
-                            10
-                        </option>
-                        <option value={20}>
-                            20
-                        </option>
-                    </select>
+                            <option value={3}>
+                                3
+                            </option>
+                            <option value={5}>
+                                5
+                            </option>
+                            <option value={10}>
+                                10
+                            </option>
+                            <option value={20}>
+                                20
+                            </option>
+                        </select>
 
-                    <button className='btn bg-rose-600' onClick={handlePreviousPage} >
-                        Previous
-                    </button>
+                        <button className='btn text-white bg-rose-600' onClick={handlePreviousPage} >
+                            Previous
+                        </button>
 
-                    <button className='btn bg-rose-600' onClick={handleNextPage}>
-                        Next
-                    </button>
+                        <button className='btn text-white bg-rose-600' onClick={handleNextPage}>
+                            Next
+                        </button>
+                    </div>
                 </div>
+
             </div>
         </div>
     );
