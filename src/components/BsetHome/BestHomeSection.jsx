@@ -64,7 +64,7 @@ const BestHomeSection = () => {
     <>
       <div className="w-full py-12">
         <div className="container mx-auto">
-          <h3 className="text-center w-100 text-xl font-bold text-gray-900 p-4 ">
+          <h3 className="text-center w-100 text-xl font-bold  p-4 ">
             Find your Best Home
           </h3>
           <hr className="w-1/4 mx-auto border-rose-400 border-2" />
@@ -110,9 +110,9 @@ const BestHomeSection = () => {
               </Link>
             </div>
           ) : (
-            <div className="mx-auto mt-2 grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2">
+            <div className="mx-auto mt-2 grid 2xl:grid-cols-4 xl:grid-cols-3  md:grid-cols-2 grid-cols-1 gap-2">
                {properties?.slice(0, 6).map((property, index) => (
-                <div key={index} className="card bg-base-100 m-2 ">
+                <div key={index} className="card bg-base-200 m-2 ">
                   <div>
                     <Image
                       width={400}
@@ -127,7 +127,7 @@ const BestHomeSection = () => {
 
                   <div className=" px-3   ">
 
-                    <h2 className="flex justify-between card-title font-bold text-2xl text-[#2C2946] text-left py-2">
+                    <h2 className="flex justify-between card-title font-bold text-2xl text-left py-2">
                       {property?.propertyType === "Sell" ? (
                         <>
                           ${property?.price}

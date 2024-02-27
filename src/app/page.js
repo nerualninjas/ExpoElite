@@ -16,7 +16,7 @@ export default function Home() {
 
   return (
     <div>
-      <div className="bg-[#F9FAFE]    rounded-t-2xl">
+      <div className="bg-base-100    rounded-t-2xl">
         <div className="flex flex-1">
           <Sidebar />
           <div className=" w-full  min-h-screen shadow-md rounded-t-2xl ">
