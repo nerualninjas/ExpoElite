@@ -1,3 +1,4 @@
+"use client"
 import React from 'react';
 import GoogleMapReact from 'google-map-react';
 import mapStyles from './mapStyles';
@@ -17,7 +18,7 @@ const Map = () => {
         <div className="min-h-[90vh] w-full">
             Map Goog
             <GoogleMapReact
-                bootstrapURLKeys={{ key:'AIzaSyBE2oynq1Ib2EoMoXeMMpaQ_gZU_coQnSA'}} // Replace YOUR_API_KEY with your actual Google Maps API key
+                bootstrapURLKeys={{ key: process.env.GOOGLE_MAP_API_KEY}} // Replace YOUR_API_KEY with your actual Google Maps API key
                 defaultCenter={defaultProps.center}
                 defaultZoom={defaultProps.zoom}
                 margin={[50, 50, 50, 50]}
