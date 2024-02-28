@@ -63,7 +63,6 @@ const BestHomeSectionV2 = () => {
                   placeholder="Find by Location"
                   className="input input-bordered"
                 />
-
                 <select
                   onChange={(e) => setType(e.target.value)}
                   name="propertyType"
