@@ -15,7 +15,7 @@ const CheckoutForm = ({ propertyId, params }) => {
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
 
-  console.log('from checkoUt page: ',params);
+  console.log('from checkoUt page: ', params);
 
   const [error, setError] = useState("");
   const [transactionId, setTransactionId] = useState("");
@@ -25,12 +25,12 @@ const CheckoutForm = ({ propertyId, params }) => {
   const { data: packegeData = [], isLoading: packegeDataLoading, refetch: packegerefetch, isPending: packegeIsPending } = useQuery({
     queryKey: ["packege", user?.email],
     queryFn: async () => {
-        const res = await axiosPublic.get(`/getPackege?userId=${user.email}`);
-        return res.data;
+      const res = await axiosPublic.get(`/getPackege?userId=${user.email}`);
+      return res.data;
     }
-})
+  })
 
-console.log("from checkOut page::::::::::::::::::::::::", packegeData);
+  console.log("from checkOut page::::::::::::::::::::::::", packegeData);
 
   const { propertySingleData, isPending, refetch } =
     usePropertyData(propertyId);
@@ -110,25 +110,23 @@ console.log("from checkOut page::::::::::::::::::::::::", packegeData);
 
             await axiosSecure
               .post("/addPayment", payment)
-              .then(() => {
+              .then(async() => {
                 setLoading(false);
                 Swal.fire({
                   title: "Payment saved!",
                   text: `Transaction ID: {transactionId}`,
                   icon: "success",
                 })
+                  // ----------------------------rentCollection
+
+                // propertyId, buyerId, amout, duration
+
+                const responsee = await axiosPublic.post(`/storeRentData?propertyId=${propertyId}&buyerId=${user.email}&amout=${packegeData.amount}&duration=${packegeData.packege}`)
+                console.log(responsee.data);
               })
               .catch(() => {
                 setLoading(false);
                 setError("Failed to save payment. Please try again.");
-
-              // ----------------------------rentCollection
-
-              // propertyId, buyerId, amout, duration
-
-              const responsee = await axiosPublic.post(`/storeRentData?propertyId=${propertyId}&buyerId=${user.email}&amout=${packegeData.amount}&duration=${packegeData.packege}`)
-              console.log(responsee.data); 
-              
 
               });
           }
@@ -159,7 +157,7 @@ console.log("from checkOut page::::::::::::::::::::::::", packegeData);
           </div>
           <p className=" text-center py-3">{propertyName}</p>
           <p className="error-message">{error}</p>
-       
+
         </div>
         <div className="payment-info">
           <div className="property-details">
@@ -176,7 +174,7 @@ console.log("from checkOut page::::::::::::::::::::::::", packegeData);
             <p className="user-name">Your Name: {user?.displayName}</p>
             <p className="user-email">Your Email: {user?.email}</p>
           </div>
-          <h2 className="total-bill">Total Payable Bill: ${price}</h2>
+          <h2 className="total-bill">Total Payable Bill: ${packegeData?.amount}</h2>
           <CardElement
             className="input input-bordered input-warning pt-3 my-8"
             options={{
@@ -193,7 +191,7 @@ console.log("from checkOut page::::::::::::::::::::::::", packegeData);
               },
             }}
           />
-           
+
           <button
             className=" w-full  rounded px-5 py-2.5 overflow-hidden group bg-green-500 relative hover:bg-gradient-to-r hover:from-green-500 hover:to-green-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-green-400 transition-all ease-out duration-300"
             type="submit"
