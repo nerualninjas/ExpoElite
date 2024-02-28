@@ -55,9 +55,7 @@ const PropertyDetailsSmallPart = ({ propertyId }) => {
                 </div>
 
                 <h1 className=' text-xl font-bold text-rose-600 md:text-2xl  '>${price}</h1>
-                {/* will take to rentdetails page */}
-                {/* <Link href={'/rent'} className='bg-rose-600 hover:bg-rose-100 text-white hover:text-rose-700 px-4 py-2 rounded text-extrabold'>Wanna Rent?</Link> */}
-
+                <Link href={'/'} className='bg-rose-600 hover:bg-rose-100 text-white hover:text-rose-700 px-4 py-2 rounded text-extrabold'>Wanna Compare?</Link>
             </div>
         </div>
     );
