@@ -61,7 +61,7 @@ const Sidebar = () => {
     { pageName: "Manage Users", path: "/allUsers", icon: faPeopleGroup },
     { pageName: "Manage Property", path: "/allProducts", icon: faLandmark },
     { pageName: "Sell Report", path: "/allPropertySellReport", icon: faDollarSign },
-    { pageName: "All Sellers", path: "/allSellers", icon: faUsers },
+    // { pageName: "All Sellers", path: "/allSellers", icon: faUsers },
   ];
   const userDashboard = [
     { pageName: "My Dashboard", path: "/graphAnalysisUsers", icon: faChartLine },
@@ -134,7 +134,7 @@ const Sidebar = () => {
                 </li>
               ))}
               {/* if user login seller and admin  */}
-              {user && isAdmin && !isSeller && (
+              {user && isAdmin  && (
                 adminDashboard.map((adminDash) => (
                   <li key={adminDash.pageName}>
                     <Link

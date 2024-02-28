@@ -4,6 +4,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
  import './tab_style.css';
 
 import PopularProperty from "./PopularProperty";
+import SpecialOfferProperty from "./SpecialOfferProperty";
 const MostPopular = ({ house }) => {
     const [properties, setProperties] = useState([]);
 
@@ -19,7 +20,7 @@ const MostPopular = ({ house }) => {
           <Tab>Most Popular</Tab>
          
           <Tab>Special Offers</Tab>
-          <Tab>Near Me</Tab>
+          {/* <Tab>Near Me</Tab> */}
         
         </TabList>
     
@@ -31,15 +32,16 @@ const MostPopular = ({ house }) => {
         </TabPanel>
         <TabPanel>
           <p>
-           special offers
+          
+           <SpecialOfferProperty />
            
           </p>
         </TabPanel>
-        <TabPanel>
+        {/* <TabPanel>
           <p>
          near me
           </p>
-        </TabPanel>
+        </TabPanel> */}
         
       </Tabs>
         </div>
