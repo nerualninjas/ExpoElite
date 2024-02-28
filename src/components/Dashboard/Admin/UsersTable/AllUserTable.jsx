@@ -27,7 +27,6 @@ const BuyerTable = () => {
       }
 
     };
-
   
     return (
       <div>
@@ -42,7 +41,6 @@ const BuyerTable = () => {
                 <th>Image</th>
                 <th>Role</th>
                 <th>Action</th>
-               
               </tr>
             </thead>
             <tbody>
