@@ -34,7 +34,6 @@ const BestHomeSectionV2 = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
   };
 
   const handleSeach = async() =>{
