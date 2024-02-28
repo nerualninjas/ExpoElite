@@ -19,8 +19,16 @@ const CheckoutForm = ({ propertyId }) => {
 
   const { propertySingleData, isPending, refetch } =
     usePropertyData(propertyId);
-  const { _id, image, propertyName, propertyType, price } =
-    propertySingleData || {};
+  const {
+    _id,
+    image,
+    propertyName,
+    propertyType,
+    price,
+    email,
+    sellerName,
+    sellerImage,
+  } = propertySingleData || {};
 
   const stripe = useStripe();
   const elements = useElements();
@@ -82,13 +90,22 @@ const CheckoutForm = ({ propertyId }) => {
             setTransactionId(paymentIntent.id);
 
             const payment = {
-              email: user.email,
-              name: user?.displayName,
-              price: totalPrice,
-              date: new Date(),
-              propertyName: propertyName,
-              image: image,
+              //seller info
+              sellerEmail: email,
+              sellerImage: sellerImage,
+              sellerName: sellerName,
+              // buyer info
+              buyerEmail: user.email,
+              buyerPhotoURL: user.photoURL,
+              buyerName: user?.displayName,
+              //product info
               propertyId: _id,
+              propertyName: propertyName,
+              price: totalPrice,
+              purchaseDate: new Date(),
+              image: image,
+              
+              //payment info
               transactionId: paymentIntent.id,
               status: "pending",
             };
@@ -102,8 +119,6 @@ const CheckoutForm = ({ propertyId }) => {
                   text: `Transaction ID: {transactionId}`,
                   icon: "success",
                 });
-
-
               })
               .catch(() => {
                 setLoading(false);
@@ -137,13 +152,16 @@ const CheckoutForm = ({ propertyId }) => {
           </div>
           <p className=" text-center py-3">{propertyName}</p>
           <p className="error-message">{error}</p>
-       
         </div>
         <div className="payment-info">
           <div className="property-details">
             <p className=" property-type">Property Name:{propertyName}</p>
             <p className="property-type">Property Type: {propertyType}</p>
             <p className="property-price">Property Price: ${price}</p>
+          </div>
+          <div className="user-details">
+            <p className="user-name">Seller Name: {sellerName}</p>
+            <p className="user-email">Seller Email: {email}</p>
           </div>
           <div className="user-details">
             <p className="user-name">Your Name: {user?.displayName}</p>
@@ -166,7 +184,7 @@ const CheckoutForm = ({ propertyId }) => {
               },
             }}
           />
-           
+
           <button
             className=" w-full  rounded px-5 py-2.5 overflow-hidden group bg-green-500 relative hover:bg-gradient-to-r hover:from-green-500 hover:to-green-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-green-400 transition-all ease-out duration-300"
             type="submit"

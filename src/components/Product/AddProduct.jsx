@@ -25,7 +25,7 @@ const AddProduct = () => {
 
   const initialFormData = {
     propertyCreator: email,
-    specialOffers: "",
+
     propertyName: "",
     image: "",
     bedrooms: "",
@@ -67,12 +67,18 @@ const AddProduct = () => {
 
       const myData = {
         ...formData,
+        propertyName: formData.propertyName,
+
         propertyType: selectedType === "Sell" ? "Sell" : "Rent",
-        likeBy: [],
+
+        //seller info
         email: user?.email,
         sellerImage: user?.photoURL,
         sellerName: user?.displayName,
+        likeBy: [],
         image: res.data.data.url,
+        //init value
+        createDate: new Date(),
         dislikeBy: [" "],
         publishStatus: "unpublish",
         commentLogs: [
@@ -140,7 +146,6 @@ const AddProduct = () => {
           <label className="block dark-text-gray-400">Image 2 </label>
           <input
             name="photoURL2"
-           
             type="text"
             className="w-full bg-white text-black px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
           />
@@ -149,7 +154,6 @@ const AddProduct = () => {
           <label className="block dark-text-gray-400">Image 3 </label>
           <input
             name="photoURL3"
-             
             type="text"
             className="w-full bg-white text-black px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
           />
@@ -238,18 +242,6 @@ const AddProduct = () => {
                 type="number"
                 className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
               />
-            </div>
-            <div className="">
-              <label className="block dark-text-gray-400">
-                Special Offers
-                <input
-                  type="number"
-                  onChange={handleChange}
-                  value={formData.specialOffers}
-                  name="specialOffers"
-                  className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
-                />
-              </label>
             </div>
           </>
         )}
