@@ -16,7 +16,9 @@ import {
   faCircleInfo,
   faChartLine,
   faPeopleGroup,
-  faLandmark
+  faCity,
+  faLandmark,
+  faCalendarCheck
 
 } from "@fortawesome/free-solid-svg-icons";
 import { usePathname } from "next/navigation";
@@ -70,6 +72,8 @@ const Navbar = () => {
 
   ];
 
+
+
   const adminDashboard = [
     {pageName: "Dashboard" , path: "/dashboard", icon: faChartLine},
     {pageName: "Manage Users" , path: "/allUsers", icon: faPeopleGroup},
@@ -79,6 +83,8 @@ const Navbar = () => {
 
   const sellerDashboard = [
     { pageName: "Dashboard", path: "/GraphAndAnalysisSeller", icon:faChartLine },
+    { pageName: "All Property", path: "/products", icon:faCity },
+    { pageName: "Manage Appointment", path: "/AppointmentManage", icon:faCalendarCheck }, 
 
   ];
 

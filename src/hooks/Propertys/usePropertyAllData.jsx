@@ -2,21 +2,25 @@ import { UserAuth } from "@/app/(auth)/context/AuthContext";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "./../useAxiosPublic";
 
-const usePropertyAllData = () => {
+const usePropertyAllData = (page, limit) => {
+
   const { loading } = UserAuth();
   const axiosPublic = useAxiosPublic();
+  const limitInt = parseInt(limit);
+  console.log(page, limitInt);
 
   const {
     data: propertyData,
     isPending,
     refetch,
   } = useQuery({
-    queryKey: ["propertyData"],
+    queryKey: ["property"],
     enabled: !loading,
     queryFn: async () => {
-      const res = await axiosPublic.get("/getAllProperty");
+      const res = await axiosPublic.get(`/getAllProperty?page=${page}&limit=${limitInt}`);
       // console.log(res?.data);
       return res?.data;
+
     },
   });
 

@@ -7,60 +7,31 @@ import Image from "next/image";
 
 import useAUser from "@/hooks/users/useAUser";
 import useAxiosPublic from "@/hooks/useAxiosPublic";
+import Review from "./Review";
 
-const MyOrder = () => {
+const MyOrder2 = () => {
     const { MyPurchases } = useAUserPurchase();
     const [reviews, setReviews] = useState({});
     const { userInfoData } = useAUser();
-    const  axiosPublic  = useAxiosPublic();
-
-    const handleReviewClick = async(transactionId) => {
+    const { axiosPublic } = useAxiosPublic();
+    const [selectedTransactionId, setSelectedTransactionId] = useState(null);
+    const handleReviewClick = (transactionId) => {
         if (!userInfoData) {
             Swal.fire('Error', 'User information not available', 'error');
             return;
         }
-
-        Swal.fire({
-            title: 'Write your review',
-            input: 'textarea',
-            inputPlaceholder: 'Write your review here...',
-            showCancelButton: true,
-            confirmButtonText: 'Submit',
-            confirmButtonColor: '#F43F5E',
-            cancelButtonText: 'Cancel',
-            cancelButtonColor: '#2196f3',
-        }).then(async (result) => {
-            if (result.isConfirmed) {
-                const reviewText = result.value;
-                const reviewData = {
-                    userEmail: userInfoData.userEmail,
-                    userPhoto: userInfoData.userPhoto,
-                    userName: userInfoData.userName,
-                    transactionId,
-                    review: reviewText,
-                };
-
-                try {
-                    console.log("reviewData:", reviewData);
-                    const res = await axiosPublic.post("/addReview", reviewData);
-                    console.log("axiosPublic:", axiosPublic);
-
-                    console.log(res.data);
-                    Swal.fire('Success', 'Review submitted successfully!', 'success');
-                } catch (error) {
-                    console.error('Error submitting review:', error);
-                    Swal.fire('Error', 'Failed to submit review', 'error');
-                }
-            }
-        });
+        setSelectedTransactionId(transactionId);
+        document.getElementById('my_modal_1').showModal();
     };
+    const totalPurchases = MyPurchases?.length || 0;
 
     return (
         <div className="bg-white text-black p-4 m-4 rounded-xl">
             <Title2 title="Review My Order History " className=" mt-6" />
+            <h1 className="text-2xl font-bold text-[#54595F] ml-10">Total Purchases: <span className="font-bold text-rose-500">{totalPurchases}</span></h1>
             <div className='bg-rose-200 rounded py-10 px-4 md:px-20 my-10 md:mx-10'>
                 {MyPurchases?.map((property, index) => (
-                    <div key={index} className='flex flex-col md:flex-row justify-between items-center gap-4'>
+                    <div key={index} className='flex flex-col md:flex-row justify-between items-center gap-4 my-6'>
                         <p className="text-xl font-bold">{index + 1}</p>
                         <Image src={property?.image} alt="property image" width={150} height={150} />
                         <div className="flex md:hidden ">
@@ -85,6 +56,15 @@ const MyOrder = () => {
                         >
                             Review
                         </button>
+
+                        {/* modal */}
+                        <dialog id="my_modal_1" className="modal">
+                            <div className="modal-box m-0 bg-base-300">
+                                <div className="modal-action">
+                                    {selectedTransactionId && <Review transactionId={selectedTransactionId} />}
+                                </div>
+                            </div>
+                        </dialog>
                     </div>
                 ))}
             </div>
@@ -92,4 +72,4 @@ const MyOrder = () => {
     );
 };
 
-export default MyOrder;
+export default MyOrder2;

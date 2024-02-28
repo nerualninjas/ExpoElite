@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
-import useAxiosSecure from "@/hooks/useAxiosSecure";
 import usePropertyData from "@/hooks/Propertys/usePropertyData";
-import Swal from "sweetalert2";
+import useAxiosSecure from "@/hooks/useAxiosSecure";
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
+
+import "./CheckoutForm.css"; // You can create a separate CSS file for styling
 
 const CheckoutForm = ({ propertyId }) => {
   const { user } = UserAuth();
@@ -18,7 +19,8 @@ const CheckoutForm = ({ propertyId }) => {
 
   const { propertySingleData, isPending, refetch } =
     usePropertyData(propertyId);
-  const { _id, image, propertyName, propertyType, price } = propertySingleData || {};
+  const { _id, image, propertyName, propertyType, price } =
+    propertySingleData || {};
 
   const stripe = useStripe();
   const elements = useElements();
@@ -42,6 +44,7 @@ const CheckoutForm = ({ propertyId }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
+
     if (!stripe || !elements) {
       return;
     }
@@ -59,12 +62,8 @@ const CheckoutForm = ({ propertyId }) => {
       });
 
       if (error) {
-        console.log("Payment error:", error);
         setError("Payment failed. Please check your card details.");
       } else {
-        console.log("Payment successful", paymentMethod);
-        setError("");
-
         const { paymentIntent, error: confirmError } =
           await stripe.confirmCardPayment(clientSecret, {
             payment_method: {
@@ -77,11 +76,9 @@ const CheckoutForm = ({ propertyId }) => {
           });
 
         if (confirmError) {
-          console.log("Payment confirmation error:", confirmError);
+          setError("Payment confirmation failed. Please try again.");
         } else {
-          console.log("Payment intent", paymentIntent);
           if (paymentIntent.status === "succeeded") {
-            console.log("Transaction ID", paymentIntent.id);
             setTransactionId(paymentIntent.id);
 
             const payment = {
@@ -95,20 +92,23 @@ const CheckoutForm = ({ propertyId }) => {
               transactionId: paymentIntent.id,
               status: "pending",
             };
-            const res = await axiosSecure
+
+            await axiosSecure
               .post("/addPayment", payment)
               .then(() => {
                 setLoading(false);
                 Swal.fire({
-                  title: "payment save!",
-                  text: "You clicked the button!",
+                  title: "Payment saved!",
+                  text: `Transaction ID: {transactionId}`,
                   icon: "success",
-                })
+                });
+
+
               })
-              .catch(()=>{
+              .catch(() => {
                 setLoading(false);
-              })
-            
+                setError("Failed to save payment. Please try again.");
+              });
           }
         }
       }
@@ -116,32 +116,42 @@ const CheckoutForm = ({ propertyId }) => {
       console.error("Unexpected error:", err);
       setError("An unexpected error occurred. Please try again later.");
     } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-base-200 p-4 m-2 rounded-md">
-      <h3 className="text-3xl py-8">Payment</h3>
-      <div className="flex w-full flex-col lg:flex-row">
-        <div className="w-full lg:w-1/2">
-          <h2 className="text-gray-800 text-xl">Payment info:</h2>
-          <hr />
-          <p>Property ID: {_id}</p>
-          <p>Property Name: {propertyName}</p>
-          <p>Property Type: {propertyType}</p>
-          <p>Property Price: {price} </p>
-          {/* <p>Property Image: <Image src={image} width={200} height={200} alt="image" /></p> */}
-          <hr />
-          <p>Your name: {user?.displayName}</p>
-          <p>Your Email: {user?.email}</p>
-          <hr className="py-4" />
-          <h2 className="text-gray-600 text-xl font-bold">
-            Total Payable bill: $ {price}
-          </h2>
+    <form onSubmit={handleSubmit} className="checkout-form">
+      <h3 className="checkout-heading">Checkout</h3>
+      <hr className="checkout-divider" />
+      <div className="checkout-grid">
+        <div className="property-info">
+          <div className="property-image">
+            <Image
+              width={400}
+              height={300}
+              src={image}
+              alt={propertyName}
+              className="property-image-inner"
+            />
+          </div>
+          <p className=" text-center py-3">{propertyName}</p>
+          <p className="error-message">{error}</p>
+       
         </div>
-        <div className="w-full lg:w-1/2">
+        <div className="payment-info">
+          <div className="property-details">
+            <p className=" property-type">Property Name:{propertyName}</p>
+            <p className="property-type">Property Type: {propertyType}</p>
+            <p className="property-price">Property Price: ${price}</p>
+          </div>
+          <div className="user-details">
+            <p className="user-name">Your Name: {user?.displayName}</p>
+            <p className="user-email">Your Email: {user?.email}</p>
+          </div>
+          <h2 className="total-bill">Total Payable Bill: ${price}</h2>
           <CardElement
-            className="input input-bordered input-warning pt-3"
+            className="input input-bordered input-warning pt-3 my-8"
             options={{
               style: {
                 base: {
@@ -156,19 +166,22 @@ const CheckoutForm = ({ propertyId }) => {
               },
             }}
           />
+           
           <button
-            className="btn btn-sm btn-primary my-4"
+            className=" w-full  rounded px-5 py-2.5 overflow-hidden group bg-green-500 relative hover:bg-gradient-to-r hover:from-green-500 hover:to-green-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-green-400 transition-all ease-out duration-300"
             type="submit"
             disabled={!stripe || !clientSecret || loading}
           >
+            <span class="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
             {loading ? "Processing..." : "Pay"}
           </button>
-          <p className="text-error">{error}</p>
+          <p className="text-error mt-2">{error}</p>
           {transactionId && (
-            <p className="text-success">Your transaction id: {transactionId}</p>
+            <p className="text-success mt-2">Transaction ID: {transactionId}</p>
           )}
         </div>
       </div>
+      <hr className="checkout-divider my-2" />
     </form>
   );
 };

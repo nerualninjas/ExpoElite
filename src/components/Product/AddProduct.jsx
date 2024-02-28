@@ -1,36 +1,31 @@
-"use client";
+import { useState } from "react";
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
 import usePropertyAllData from "@/hooks/Propertys/usePropertyAllData";
 import Swal from "sweetalert2";
 import useAxiosSecure from "./../../hooks/useAxiosSecure";
-import { useState } from "react";
-
 
 const AddProduct = () => {
   const { user, loading } = UserAuth();
   const axiosSecure = useAxiosSecure();
   const { refetch } = usePropertyAllData();
- 
+
   const email = user?.email;
 
   const [selectedType, setSelectedType] = useState("Sell");
-
-
-
+  const apiKey = "ed43ba8e57abccece726e3d23ee12a6e";
+  const imageHostingApi = `https://api.imgbb.com/1/upload?key=${apiKey}`;
 
   const handleTypeChange = (event) => {
     setSelectedType(event.target.value);
   };
 
   const closeModal = () => {
-    // Assuming reset is a function you want to call on modal close
-    // reset();
     document.getElementById("my_modal_1").close();
   };
 
   const initialFormData = {
     propertyCreator: email,
-
+    specialOffers: "",
     propertyName: "",
     image: "",
     bedrooms: "",
@@ -50,72 +45,78 @@ const AddProduct = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    setFormData({
-      ...formData,
+    setFormData((prevFormData) => ({
+      ...prevFormData,
       [name]: value,
-    });
+    }));
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
-    const myData = {
-      ...formData,
-      propertyType: selectedType === "Sell" ? "Sell" : "Rent",
-      likeBy: [],
-      dislikeBy: [" "],
-      publishStatus: "unpublish",
-      commentLogs: [
-        {
-          commentBy: " ",
-          comment: " ",
-          commentDate: " ",
-          commentTime: " ",
-        },
-      ],
-    };
+    const photoURL = e.target.photoURL.files[0];
 
-    axiosSecure.post("/addProperty", myData).then((res) => {
-      console.log(res.data);
-      if (res?.data.insertedId === null) {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Player Already Registered!",
-          position: "top-right",
-        });
-      } else {
-        Swal.fire({
-          title: "Property added Success!",
-          text: "Congratulations!",
-          icon: "success",
-          position: "top-right",
-          timer: 1500,
-        });
-        refetch();
-        closeModal();
-        setFormData(initialFormData);
-      }
-    });
+    const imageFile = { image: photoURL };
+
+    try {
+      const res = await axiosSecure.post(imageHostingApi, imageFile, {
+        headers: {
+          "content-type": "multipart/form-data",
+        },
+      });
+
+      const myData = {
+        ...formData,
+        propertyType: selectedType === "Sell" ? "Sell" : "Rent",
+        likeBy: [],
+        email: user?.email,
+        sellerImage: user?.photoURL,
+        sellerName: user?.displayName,
+        image: res.data.data.url,
+        dislikeBy: [" "],
+        publishStatus: "unpublish",
+        commentLogs: [
+          {
+            commentBy: " ",
+            comment: " ",
+            commentDate: " ",
+            commentTime: " ",
+          },
+        ],
+      };
+
+      axiosSecure.post("/addProperty", myData).then((res) => {
+        if (res?.data.insertedId === null) {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Player Already Registered!",
+            position: "top-right",
+          });
+        } else {
+          Swal.fire({
+            title: "Property added Success!",
+            text: "Congratulations!",
+            icon: "success",
+            position: "top-right",
+            timer: 1500,
+          });
+          refetch();
+          closeModal();
+          setFormData(initialFormData);
+        }
+      });
+    } catch (error) {
+      console.error("Error uploading image:", error);
+    }
   };
 
   return (
-    <div className="w-full  p-8  rounded-xl  ">
+    <div className="w-full p-8 rounded-xl">
       <h3 className="font-bold text-lg">Add a Property</h3>
 
       <form className="space-y-6" onSubmit={onSubmit}>
         <div className="space-y-1 text-sm">
-          <label className="block dark-text-gray-400">
-            Added by (email)
-            <input
-              required
-              type="text"
-              disabled
-              value={user?.email}
-              name="propertyCreator"
-              className="w-full px-4 py-3 rounded-md dark-border-gray-700 dark-bg-gray-900 dark-text-gray-100 focus:dark-border-violet-400"
-            />
-          </label>
           <label className="block dark-text-gray-400">Property Name</label>
           <input
             required
@@ -126,19 +127,33 @@ const AddProduct = () => {
             className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 dark-bg-gray-900 dark-text-gray-100 focus:dark-border-violet-400"
           />
         </div>
-
         <div className="space-y-1 text-sm">
-          <label className="block dark-text-gray-400">Image </label>
+          <label className="block dark-text-gray-400">Image 1</label>
           <input
+            name="photoURL"
             required
-            value={formData.image}
-            onChange={handleChange}
-            name="image"
+            type="file"
+            className="w-full bg-white text-black px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+          />
+        </div>
+        <div className="space-y-1 text-sm">
+          <label className="block dark-text-gray-400">Image 2 </label>
+          <input
+            name="photoURL2"
+           
+            type="text"
+            className="w-full bg-white text-black px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+          />
+        </div>{" "}
+        <div className="space-y-1 text-sm">
+          <label className="block dark-text-gray-400">Image 3 </label>
+          <input
+            name="photoURL3"
+             
             type="text"
             className="w-full bg-white text-black px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
           />
         </div>
-
         <div className="flex w-full gap-4 flex-col lg:flex-row">
           <div className="space-y-1 text-sm w-full lg:w-1/2">
             <label className="block dark-text-gray-400">Bedrooms</label>
@@ -174,7 +189,6 @@ const AddProduct = () => {
             />
           </div>
         </div>
-
         <div className="space-y-1 text-sm">
           <label className="block dark-text-gray-400">Property Type/Tags</label>
           <div className="flex items-center space-x-4">
@@ -203,7 +217,6 @@ const AddProduct = () => {
             </label>
           </div>
         </div>
-
         {selectedType === "Sell" && (
           <>
             <div className="space-y-1 text-sm">
@@ -226,9 +239,20 @@ const AddProduct = () => {
                 className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
               />
             </div>
+            <div className="">
+              <label className="block dark-text-gray-400">
+                Special Offers
+                <input
+                  type="number"
+                  onChange={handleChange}
+                  value={formData.specialOffers}
+                  name="specialOffers"
+                  className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+                />
+              </label>
+            </div>
           </>
         )}
-
         {selectedType === "Rent" && (
           <>
             <div className="space-y-1 text-sm">
@@ -269,7 +293,6 @@ const AddProduct = () => {
             </div>
           </>
         )}
-
         <div className="space-y-1 text-sm">
           <label className="block dark-text-gray-400">Property location</label>
           <input
@@ -292,7 +315,6 @@ const AddProduct = () => {
             className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 dark-bg-gray-900 dark-text-gray-100 focus:dark-border-violet-400"
           />
         </div>
-
         <div className="space-y-1 text-sm">
           <label className="block dark-text-gray-400">
             Property Description
@@ -305,17 +327,20 @@ const AddProduct = () => {
             className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 dark-bg-gray-900 dark-text-gray-100 focus:dark-border-violet-400"
           />
         </div>
-
         <div className="flex gap-2 items-end justify-end">
           <button
             type="submit"
-            className="block p-3 text-center rounded-xl dark-text-gray-900 dark-bg-violet-400 btn   btn-1"
+            className="block p-3 text-center rounded-xl dark-text-gray-900 dark-bg-violet-400 btn btn-1"
           >
             Add Property
           </button>
-          <form method="dialog">
-            <button className="btn btn-error text-white">Close</button>
-          </form>
+          <button
+            type="button"
+            className="btn btn-error text-white"
+            onClick={closeModal}
+          >
+            Close
+          </button>
         </div>
       </form>
     </div>

@@ -25,7 +25,9 @@ const BestHomeSectionV2 = () => {
   const [noProductFound, setNoProductFound] = useState(false);
   const [location, setLocation] = useState('');
   const [type, setType] = useState('');
+
   const [range, setRange] = useState(24000);
+
 
   useEffect(() => {
     setProperties(propertyData);
@@ -34,7 +36,6 @@ const BestHomeSectionV2 = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
   };
 
   const handleSeach = async () => {
@@ -88,7 +89,9 @@ const BestHomeSectionV2 = () => {
                     type="range"
                     onChange={(e) => setRange(e.target.value)}
                     className="w-full dark:accent-violet-400"
+
                     min="2000"
+
                     max="50000"
                   />
                 </fieldset>

@@ -4,14 +4,15 @@ import useAxiosSecure from "./../../hooks/useAxiosSecure";
 import usePropertyAllData from "./../../hooks/Propertys/usePropertyAllData";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
-import productsCollection from "@/models/products";
+ 
 import { useState } from "react";
+import useSellerProperty from "@/hooks/Propertys/useSellerProperty";
  
 
 const EditProduct = ({ propertyData }) => {
   const [openDetail, handleOpenDetails] = useState(false);
   const axiosSecure = useAxiosSecure();
-  const { refetch } = usePropertyAllData();
+  const { refetch } = useSellerProperty();
  
   const {
     register,
@@ -29,7 +30,7 @@ const EditProduct = ({ propertyData }) => {
     console.log(propertyData._id);
     try {
       await axiosSecure.patch(`/updateProperty/${propertyData._id}`, data);
-      console.log("Product updated successfully");
+      
 
       Swal.fire({
         title: "Property Update Success!",
@@ -40,7 +41,7 @@ const EditProduct = ({ propertyData }) => {
       });
 
       refetch();
-
+      
       handleOpenDetails(false);
     } catch (error) {
       console.error("Error updating product:", error);
