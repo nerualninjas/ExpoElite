@@ -25,7 +25,7 @@ const BestHomeSectionV2 = () => {
   const [noProductFound, setNoProductFound] = useState(false);
   const [location, setLocation] = useState('');
   const [type, setType] = useState('');
-  const [range, setRange] = useState(1000);
+  const [range, setRange] = useState(26000);
 
   useEffect(() => {
     setProperties(propertyData);
@@ -36,11 +36,11 @@ const BestHomeSectionV2 = () => {
     e.preventDefault();
   };
 
-  const handleSeach = async() =>{
-    console.log("location:", location, "type: " , type , "range: ", range);
-     const res = await axiosPublic.get(`/searchAndSort?maxPrice=${range}&propertyType=${type}&location=${location}`);
-     console.log(res);
-     setProperties(res.data);
+  const handleSeach = async () => {
+    console.log("location:", location, "type: ", type, "range: ", range);
+    const res = await axiosPublic.get(`/searchAndSort?maxPrice=${range}&propertyType=${type}&location=${location}`);
+    console.log(res);
+    setProperties(res.data);
   }
 
   return (
@@ -57,34 +57,41 @@ const BestHomeSectionV2 = () => {
             <div className="form-control w-full">
               <div className="input-group mx-auto  gap-2 flex flex-col lg:flex-row ">
                 <input
-                  onChange={(e)=>setLocation(e.target.value)}
+                  onChange={(e) => setLocation(e.target.value)}
                   type="text"
                   name="location"
                   placeholder="Find by Location"
                   className="input input-bordered"
                 />
-
-                <input
-                  type="text"
-                  onChange={(e)=>setType(e.target.value)}
+                <select
+                  onChange={(e) => setType(e.target.value)}
                   name="propertyType"
-                  placeholder="Find by type"
                   className="input input-bordered"
-                />
+                >
+                  <option value="">Select property type</option>
+                  <option value="Business">Business</option>
+                  <option value="Cabin">Cabin</option>
+                  <option value="Cottage">Cottage</option>
+                  <option value="Beach House">Beach House</option>
+                  <option value="Villa">Villa</option>
+                  <option value="Resort">Resort</option>
+                  <option value="House">House</option>
+                </select>
+
                 <fieldset className="space-y-1 sm:w-60 dark:text-gray-100">
                   <div aria-hidden="true" className="px-1">
                     Price Range: <span className="">{range}</span>
                   </div>
                   <input
                     type="range"
-                    onChange={(e)=>setRange(e.target.value)}
+                    onChange={(e) => setRange(e.target.value)}
                     className="w-full dark:accent-violet-400"
                     min="1000"
-                    max="30000"
+                    max="50000"
                   />
                 </fieldset>
 
-                <button type="submit" onClick={()=>handleSeach()} className="btn btn-square">
+                <button type="submit" onClick={() => handleSeach()} className="btn btn-square">
                   {loading ? (
                     <FontAwesomeIcon
                       icon={faSearch}
