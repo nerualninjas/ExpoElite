@@ -18,7 +18,6 @@ const RentPackages = ({ propertyId }) => {
     const packegeThree = '1-year'
 
     const storePackegeInfo = async (packege, amount) => {
-        console.log('gittttttttttttttttttttttttttttttttttttttttttttttt', packege, amount);
         const amountInt = parseInt(amount);
         const res = await axiosPublic.post(`/postPackege?userId=${user.email}&productId=${propertyId}&packege=${packege}&amount=${amountInt}`);
         console.log(res.data);
