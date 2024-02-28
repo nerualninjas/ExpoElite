@@ -22,7 +22,7 @@ const CheckoutForm = ({ propertyId, params }) => {
   const [loading, setLoading] = useState(true);
 
   const { data: packegeData = [], isLoading: packegeDataLoading, refetch: packegerefetch, isPending: packegeIsPending } = useQuery({
-    queryKey: ["packege", user.email],
+    queryKey: ["packege", user?.email],
     queryFn: async () => {
         const res = await axiosPublic.get(`/getPackege?userId=${user.email}`);
         return res.data;
@@ -126,6 +126,13 @@ console.log("from checkOut page::::::::::::::::::::::::", packegeData);
               })
 
               // ----------------------------rentCollection
+
+              // propertyId, buyerId, amout, duration
+
+              const responsee = await axiosPublic.post(`/storeRentData?propertyId=${propertyId}&buyerId=${user.email}&amout=${packegeData.amount}&duration=${packegeData.packege}`)
+              console.log(responsee.data); 
+              
+
             
           }
         }
