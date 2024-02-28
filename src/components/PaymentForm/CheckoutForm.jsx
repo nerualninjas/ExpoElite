@@ -7,9 +7,11 @@ import usePropertyData from "@/hooks/Propertys/usePropertyData";
 import Swal from "sweetalert2";
 import Image from "next/image";
 
-const CheckoutForm = ({ propertyId }) => {
+const CheckoutForm = ({ propertyId, params }) => {
   const { user } = UserAuth();
   const axiosSecure = useAxiosSecure();
+
+  console.log('from checkoUt page: ',params);
 
   const [error, setError] = useState("");
   const [transactionId, setTransactionId] = useState("");
@@ -104,6 +106,7 @@ const CheckoutForm = ({ propertyId }) => {
                   text: "You clicked the button!",
                   icon: "success",
                 })
+
               })
               .catch(()=>{
                 setLoading(false);
