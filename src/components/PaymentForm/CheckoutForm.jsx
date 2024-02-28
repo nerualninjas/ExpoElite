@@ -6,9 +6,12 @@ import useAxiosSecure from "@/hooks/useAxiosSecure";
 import usePropertyData from "@/hooks/Propertys/usePropertyData";
 import Swal from "sweetalert2";
 import Image from "next/image";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "@/hooks/useAxiosPublic";
 
 const CheckoutForm = ({ propertyId, params }) => {
   const { user } = UserAuth();
+  const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
 
   console.log('from checkoUt page: ',params);
@@ -17,6 +20,16 @@ const CheckoutForm = ({ propertyId, params }) => {
   const [transactionId, setTransactionId] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const [loading, setLoading] = useState(true);
+
+  const { data: packegeData = [], isLoading: packegeDataLoading, refetch: packegerefetch, isPending: packegeIsPending } = useQuery({
+    queryKey: ["packege", user.email],
+    queryFn: async () => {
+        const res = await axiosPublic.get(`/getPackege?userId=${user.email}`);
+        return res.data;
+    }
+})
+
+console.log("from checkOut page::::::::::::::::::::::::", packegeData);
 
   const { propertySingleData, isPending, refetch } =
     usePropertyData(propertyId);
@@ -111,6 +124,8 @@ const CheckoutForm = ({ propertyId, params }) => {
               .catch(()=>{
                 setLoading(false);
               })
+
+              // ----------------------------rentCollection
             
           }
         }
@@ -139,7 +154,7 @@ const CheckoutForm = ({ propertyId, params }) => {
             <p className="text-sm">Your Email: {user?.email}</p>
           </div>
           <h2 className="text-gray-600 text-lg font-semibold">
-            Total Payable Bill: ${price}
+            Total Payable Bill: ${packegeData?.amount}
           </h2>
         </div>
         <div className="w-full lg:w-1/2">

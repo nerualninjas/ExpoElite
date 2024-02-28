@@ -52,7 +52,7 @@ const RentPackages = ({ propertyId }) => {
                     </div>
                     <div className='flex justify-center items-center text-center'>
                         <Link href={`../payment/${_id}`}>
-                            <button className="  rounded px-5 py-2 border-2 border-rose-600  text-lg  font-semibold text-rose-600 hover:text-white hover:bg-rose-600">Rent Now <FontAwesomeIcon icon={faArrowRight} /></button>
+                            <button onClick={() => storePackegeInfo(packegeTwo, month6)} className="  rounded px-5 py-2 border-2 border-rose-600  text-lg  font-semibold text-rose-600 hover:text-white hover:bg-rose-600">Rent Now <FontAwesomeIcon icon={faArrowRight} /></button>
                         </Link>
                     </div>
                 </div>
@@ -67,7 +67,7 @@ const RentPackages = ({ propertyId }) => {
                     </div>
                     <div className='flex justify-center items-center text-center'>
                         <Link href={`../payment/${_id}`}>
-                            <button className="  rounded px-5 py-2 border-2 border-rose-600  text-lg  font-semibold text-rose-600 hover:text-white hover:bg-rose-600">Rent Now <FontAwesomeIcon icon={faArrowRight} /></button>
+                            <button onClick={() => storePackegeInfo(packegeThree, month12)} className="  rounded px-5 py-2 border-2 border-rose-600  text-lg  font-semibold text-rose-600 hover:text-white hover:bg-rose-600">Rent Now <FontAwesomeIcon icon={faArrowRight} /></button>
                         </Link>
                     </div>
                 </div>
