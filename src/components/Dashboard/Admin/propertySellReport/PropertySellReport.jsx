@@ -45,6 +45,12 @@ const PropertySellReport = () => {
             <div className="flex items-center justify-between w-full p-8 rounded-lg">
                 <h2 className="text-xl font-semibold">All Property Sell Report</h2>
                 {/* <button className="px-4 py-2 font-medium bg-rose-600 text-white rounded-lg hover:bg-rose-200">Refresh</button> */}
+                <button
+                    className="btn text-white bg-[#46df6c] hover:bg-[#2f8a43] transition duration-700 ease-in-out"
+                    onClick={generatePDF}
+                >
+                    Download Sell Report
+                </button>
             </div>
             <div ref={componentPDF} style={{ width: '100%' }} className="overflow-x-auto">
                 <table className="table mx-5 w-full mt-5 mb-10 pb-6">
@@ -100,16 +106,13 @@ const PropertySellReport = () => {
                         ))}
                     </tbody>
                 </table>
-                <div className="flex justify-end items-end mr-20 mb-8">
-                    <button
+                {/* <button
                         className="btn text-white bg-[#46df6c] hover:bg-[#2f8a43] transition duration-700 ease-in-out"
                         onClick={generatePDF}
                     >
                         Download Sell Report
-                    </button>
-                    {/* <ToastContainer /> */}
-                </div>
-
+                    </button> */}
+                {/* <ToastContainer /> */}
             </div>
         </div>
     );
