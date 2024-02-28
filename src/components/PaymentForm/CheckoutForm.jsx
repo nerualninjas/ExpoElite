@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
-import useAxiosSecure from "@/hooks/useAxiosSecure";
 import usePropertyData from "@/hooks/Propertys/usePropertyData";
-import Swal from "sweetalert2";
+import useAxiosSecure from "@/hooks/useAxiosSecure";
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
+
+import "./CheckoutForm.css"; // You can create a separate CSS file for styling
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "@/hooks/useAxiosPublic";
 
@@ -33,7 +34,8 @@ console.log("from checkOut page::::::::::::::::::::::::", packegeData);
 
   const { propertySingleData, isPending, refetch } =
     usePropertyData(propertyId);
-  const { _id, image, propertyName, propertyType, price } = propertySingleData || {};
+  const { _id, image, propertyName, propertyType, price } =
+    propertySingleData || {};
 
   const stripe = useStripe();
   const elements = useElements();
@@ -57,6 +59,7 @@ console.log("from checkOut page::::::::::::::::::::::::", packegeData);
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
+
     if (!stripe || !elements) {
       return;
     }
@@ -74,12 +77,8 @@ console.log("from checkOut page::::::::::::::::::::::::", packegeData);
       });
 
       if (error) {
-        console.log("Payment error:", error);
         setError("Payment failed. Please check your card details.");
       } else {
-        console.log("Payment successful", paymentMethod);
-        setError("");
-
         const { paymentIntent, error: confirmError } =
           await stripe.confirmCardPayment(clientSecret, {
             payment_method: {
@@ -92,11 +91,9 @@ console.log("from checkOut page::::::::::::::::::::::::", packegeData);
           });
 
         if (confirmError) {
-          console.log("Payment confirmation error:", confirmError);
+          setError("Payment confirmation failed. Please try again.");
         } else {
-          console.log("Payment intent", paymentIntent);
           if (paymentIntent.status === "succeeded") {
-            console.log("Transaction ID", paymentIntent.id);
             setTransactionId(paymentIntent.id);
 
             const payment = {
@@ -110,20 +107,20 @@ console.log("from checkOut page::::::::::::::::::::::::", packegeData);
               transactionId: paymentIntent.id,
               status: "pending",
             };
-            const res = await axiosSecure
+
+            await axiosSecure
               .post("/addPayment", payment)
               .then(() => {
                 setLoading(false);
                 Swal.fire({
-                  title: "payment save!",
-                  text: "You clicked the button!",
+                  title: "Payment saved!",
+                  text: `Transaction ID: {transactionId}`,
                   icon: "success",
                 })
-
               })
-              .catch(()=>{
+              .catch(() => {
                 setLoading(false);
-              })
+                setError("Failed to save payment. Please try again.");
 
               // ----------------------------rentCollection
 
@@ -133,7 +130,7 @@ console.log("from checkOut page::::::::::::::::::::::::", packegeData);
               console.log(responsee.data); 
               
 
-            
+              });
           }
         }
       }
@@ -141,32 +138,47 @@ console.log("from checkOut page::::::::::::::::::::::::", packegeData);
       console.error("Unexpected error:", err);
       setError("An unexpected error occurred. Please try again later.");
     } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white p-6 m-4 rounded-md shadow-md">
-      <h3 className="text-2xl font-semibold mb-6">Payment</h3>
-      <div className="flex flex-col lg:flex-row space-y-4 lg:space-x-4 lg:space-y-0">
-        <div className="w-full lg:w-1/2">
-          <h2 className="text-gray-800 text-lg font-semibold mb-4">Payment info:</h2>
-          <div className="border-b mb-4 pb-4">
-            <p className="text-sm">Property ID: {_id}</p>
-            <p className="text-sm">Property Name: {propertyName}</p>
-            <p className="text-sm">Property Type: {propertyType}</p>
-            <p className="text-sm">Property Price: ${price}</p>
+    <form onSubmit={handleSubmit} className="checkout-form">
+      <h3 className="checkout-heading">Checkout</h3>
+      <hr className="checkout-divider" />
+      <div className="checkout-grid">
+        <div className="property-info">
+          <div className="property-image">
+            <Image
+              width={400}
+              height={300}
+              src={image}
+              alt={propertyName}
+              className="property-image-inner"
+            />
           </div>
-          <div className="border-b mb-4 pb-4">
-            <p className="text-sm">Your Name: {user?.displayName}</p>
-            <p className="text-sm">Your Email: {user?.email}</p>
+          <p className=" text-center py-3">{propertyName}</p>
+          <p className="error-message">{error}</p>
+       
+        </div>
+        <div className="payment-info">
+          <div className="property-details">
+            <p className=" property-type">Property Name:{propertyName}</p>
+            <p className="property-type">Property Type: {propertyType}</p>
+            <p className="property-price">Property Price: ${price}</p>
           </div>
           <h2 className="text-gray-600 text-lg font-semibold">
             Total Payable Bill: ${packegeData?.amount}
           </h2>
         </div>
         <div className="w-full lg:w-1/2">
+          <div className="user-details">
+            <p className="user-name">Your Name: {user?.displayName}</p>
+            <p className="user-email">Your Email: {user?.email}</p>
+          </div>
+          <h2 className="total-bill">Total Payable Bill: ${price}</h2>
           <CardElement
-            className="input input-bordered input-warning pt-3 mb-4"
+            className="input input-bordered input-warning pt-3 my-8"
             options={{
               style: {
                 base: {
@@ -181,11 +193,13 @@ console.log("from checkOut page::::::::::::::::::::::::", packegeData);
               },
             }}
           />
+           
           <button
-            className="btn btn-primary btn-block"
+            className=" w-full  rounded px-5 py-2.5 overflow-hidden group bg-green-500 relative hover:bg-gradient-to-r hover:from-green-500 hover:to-green-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-green-400 transition-all ease-out duration-300"
             type="submit"
             disabled={!stripe || !clientSecret || loading}
           >
+            <span class="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
             {loading ? "Processing..." : "Pay"}
           </button>
           <p className="text-error mt-2">{error}</p>
@@ -194,6 +208,7 @@ console.log("from checkOut page::::::::::::::::::::::::", packegeData);
           )}
         </div>
       </div>
+      <hr className="checkout-divider my-2" />
     </form>
   );
 };
