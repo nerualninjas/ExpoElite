@@ -95,7 +95,6 @@ const CheckoutForm = ({ propertyId, params }) => {
         } else {
           if (paymentIntent.status === "succeeded") {
             setTransactionId(paymentIntent.id);
-
             const payment = {
               email: user.email,
               name: user?.displayName,
