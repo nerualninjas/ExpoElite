@@ -9,6 +9,8 @@ import EditProduct from "./EditProdut";
 import Image from "next/image";
 import useSellerProperty from '@/hooks/Propertys/useSellerProperty';
 import SetOffer from "./SetOffer";
+import Link from "next/link";
+import Title2 from "../shared/Title/Title2";
 
 
 const ManageProduct = () => {
@@ -56,10 +58,10 @@ const ManageProduct = () => {
   return (
     <div className="bg-base-200 p-4 m-4 rounded-xl">
       <div className="text-3xl py-2 ">
-        <h2> Manage Property</h2>
+        <Title2 title="Manage Properties" />
       </div>
 
-      <h4>Total Property: {properties?.length}</h4>
+      <h4 className="text-xl text-rose-600">Total Property: <span className="font-bold text-black">{properties?.length}</span></h4>
 
       <div className=" w-full overflow-x-auto">
         <table className="table">
@@ -74,6 +76,7 @@ const ManageProduct = () => {
               <th>LivingRoom</th>
               <th>Location</th>
               <th>Status</th>
+              <th>Type</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -85,12 +88,14 @@ const ManageProduct = () => {
                   <div className="flex items-center gap-3">
                     <div className="avatar">
                       <div className="mask mask-squircle w-12 h-12">
-                        <Image
+                       <Link href={`/products/${property?._id}`}> 
+                       <Image
                           height={100}
                           width={150}
                           src={property?.image}
-                          alt="Contest Image"
+                          alt="Image"
                         />
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -98,7 +103,8 @@ const ManageProduct = () => {
                 <td>
                   <div className="flex items-center gap-3">
                     <div>
-                      <div className="font-bold">{property?.propertyName}</div>
+                      <Link href={`/products/${property?._id}`}> {property?.propertyName} </Link>
+                      {/* <div className="font-bold">{property?.propertyName}</div> */}
                     </div>
                   </div>
                 </td>
@@ -107,7 +113,7 @@ const ManageProduct = () => {
                 <td>{property?.bathrooms}</td>
                 <td>{property?.livingRoom}</td>
                 <td>{property?.location}</td>
-
+                <td>{property?.publishStatus}</td>
                 <td
                   className={
                     property?.propertyType === "rent" ? " text-green-500 " : " "

@@ -1,8 +1,8 @@
 "use client"
 import React, { useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
- import './tab_style.css';
-
+import './tab_style.css';
+import Title from "../shared/Title/Tilte";
 import PopularProperty from "./PopularProperty";
 import SpecialOfferProperty from "./SpecialOfferProperty";
 const MostPopular = ({ house }) => {
@@ -15,6 +15,7 @@ const MostPopular = ({ house }) => {
     }, []);
     return (
         <div className="w-full mx-auto lg:py-16">
+          <Title title="Popular and Offered Properties" className="mb-20 md:mb-10"/>
             <Tabs className=" mx-auto  flex flex-col justify-center items-center">
         <TabList>
           <Tab>Most Popular</Tab>
