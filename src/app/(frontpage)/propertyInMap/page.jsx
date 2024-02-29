@@ -1,6 +1,7 @@
 "use client"
 
 import React from 'react';
+import {Card, CardBody, CardFooter, Image} from "@nextui-org/react";
 import Map from "@/components/PropertyMapComp/Map/Map";
 const PropertyViewInMap = () => {
     return (
