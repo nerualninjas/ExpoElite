@@ -1,10 +1,11 @@
-import Compare from '@/components/Product/ProductsDetails/Compare/Compare';
+
 import React from 'react';
 
+import ViewComparison from '@/components/Product/ProductsDetails/Compare/ViewComparison';
 const ComparePages = () => {
     return (
         <div>
-            <Compare />
+            <ViewComparison />
         </div>
     );
 };
