@@ -19,8 +19,8 @@ const ProductPage = () => {
 
   return (
     <div className=" w-full">
-      <div className="  font-bold ml-4  ">
-        Property management <hr /> <br />
+      <div className="  font-bold ml-4 mt-10 ">
+
         {userInfoData?.membership === "free" ?
       <>
         {sellerPropertyLength < 3 ? <button
