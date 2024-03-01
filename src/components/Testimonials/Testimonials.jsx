@@ -11,8 +11,10 @@ const Testimonials = () => {
   console.log(AllReviews)
   const DisplayedReviews = AllReviews ? AllReviews.slice(0, 4) : [];
   return (
-    <div className="text-center   my-5 py-5  font-semibold ">
-      <Title title="Clients Reviews" heading="See what our clients have to say about their experience." />
+
+    <div className="text-center   my-5 py-5 text-blue-950 font-semibold ">
+      <Title title="Clients Reviews"  />
+
 
       <div className="grid grid-cols-1 md:grid-cols-2   lg:grid-cols-3 2xl:grid-cols-4 pt-5 gap-4 place-items-center " >
         {DisplayedReviews?.map((person, index) => (

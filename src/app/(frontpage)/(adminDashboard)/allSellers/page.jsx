@@ -15,9 +15,7 @@ const AllUsersDataTable = () => {
     return (
         <PrivateRoutes>
         <div>
-        
-         {/* <AllUserTable /> */}
-         <AllSellerTable />
+         {/* <AllSellerTable /> */}
         </div>
         </PrivateRoutes>
     );

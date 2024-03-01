@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Title from "../shared/Title/Tilte";
 
 const FQ = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -11,14 +12,10 @@ const FQ = () => {
   };
 
   return (
-    <div className="my-10 pb-10 mx-auto w-full md:w-4/5">
-      <div>
-        <h1 className="text-center text-4xl font-bold  mb-2">
-          Frequently Asked Questions
-        </h1>
-        <p className="text-center text-[#FF385D] font-semibold">
-          Your Comprehensive Guide to Property Transactions on ExpoElite
-        </p>
+    <div className="my-10 pb-10 mx-auto w-full ">
+      <Title title="Frequently Asked Questions" />
+      <div className="w-full md:w-4/5">
+
         <div className="flex flex-col md:flex-row items-center justify-center mx-auto py-10 px-4 gap-5 rounded">
           <div className="w-full md:w-1/2 mt-5 md:mt-1">
             <Image
@@ -43,9 +40,8 @@ const FQ = () => {
                     >
                       <span>What is ExpoElite?</span>
                       <svg
-                        className={`w-4 h-4 transform ${
-                          activeIndex === 0 ? "rotate-180" : ""
-                        }`}
+                        className={`w-4 h-4 transform ${activeIndex === 0 ? "rotate-180" : ""
+                          }`}
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 10 6"
@@ -80,9 +76,8 @@ const FQ = () => {
                     >
                       <span>Is ExpoElite only for residential properties?</span>
                       <svg
-                        className={`w-4 h-4 transform ${
-                          activeIndex === 1 ? "rotate-180" : ""
-                        }`}
+                        className={`w-4 h-4 transform ${activeIndex === 1 ? "rotate-180" : ""
+                          }`}
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 10 6"
@@ -117,9 +112,8 @@ const FQ = () => {
                     >
                       <span>How do I search for properties on ExpoElite?</span>
                       <svg
-                        className={`w-4 h-4 transform ${
-                          activeIndex === 2 ? "rotate-180" : ""
-                        }`}
+                        className={`w-4 h-4 transform ${activeIndex === 2 ? "rotate-180" : ""
+                          }`}
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 10 6"
@@ -155,9 +149,8 @@ const FQ = () => {
                     >
                       <span>what is the transaction process on ExpoElite?</span>
                       <svg
-                        className={`w-4 h-4 transform ${
-                          activeIndex === 3 ? "rotate-180" : ""
-                        }`}
+                        className={`w-4 h-4 transform ${activeIndex === 3 ? "rotate-180" : ""
+                          }`}
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 10 6"

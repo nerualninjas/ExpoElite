@@ -59,9 +59,9 @@ const Sidebar = () => {
   const adminDashboard = [
     { pageName: "My Dashboard", path: "/dashboard", icon: faChartLine },
     { pageName: "Manage Users", path: "/allUsers", icon: faPeopleGroup },
-    { pageName: "Manage Property", path: "/allProducts", icon: faLandmark },
+    { pageName: "All Property", path: "/allProducts", icon: faLandmark },
     { pageName: "Sell Report", path: "/allPropertySellReport", icon: faDollarSign },
-    { pageName: "All Sellers", path: "/allSellers", icon: faUsers },
+    // { pageName: "All Sellers", path: "/allSellers", icon: faUsers },
   ];
   const userDashboard = [
     { pageName: "My Dashboard", path: "/graphAnalysisUsers", icon: faChartLine },
@@ -71,7 +71,7 @@ const Sidebar = () => {
   ]
   const sellerDashboard = [ 
     { pageName: "My Dashboard", path: "/GraphAndAnalysisSeller", icon:faChartLine }, 
-    { pageName: "All Property", path: "/products", icon:faCity },
+    { pageName: "Manage Property", path: "/products", icon:faCity },
     { pageName: "Manage Appointment", path: "/AppointmentManage", icon:faCalendarCheck }, 
 
   ];
@@ -134,7 +134,7 @@ const Sidebar = () => {
                 </li>
               ))}
               {/* if user login seller and admin  */}
-              {user && isAdmin && !isSeller && (
+              {user && isAdmin  && (
                 adminDashboard.map((adminDash) => (
                   <li key={adminDash.pageName}>
                     <Link
