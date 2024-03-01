@@ -34,8 +34,16 @@ const CheckoutForm = ({ propertyId, params }) => {
 
   const { propertySingleData, isPending, refetch } =
     usePropertyData(propertyId);
-  const { _id, image, propertyName, propertyType, price } =
-    propertySingleData || {};
+  const {
+    _id,
+    image,
+    propertyName,
+    propertyType,
+    price,
+    email,
+    sellerName,
+    sellerImage,
+  } = propertySingleData || {};
 
   const stripe = useStripe();
   const elements = useElements();
@@ -96,13 +104,22 @@ const CheckoutForm = ({ propertyId, params }) => {
           if (paymentIntent.status === "succeeded") {
             setTransactionId(paymentIntent.id);
             const payment = {
-              email: user.email,
-              name: user?.displayName,
-              price: totalPrice,
-              date: new Date(),
-              propertyName: propertyName,
-              image: image,
+              //seller info
+              sellerEmail: email,
+              sellerImage: sellerImage,
+              sellerName: sellerName,
+              // buyer info
+              buyerEmail: user.email,
+              buyerPhotoURL: user.photoURL,
+              buyerName: user?.displayName,
+              //product info
               propertyId: _id,
+              propertyName: propertyName,
+              price: totalPrice,
+              purchaseDate: new Date(),
+              image: image,
+              
+              //payment info
               transactionId: paymentIntent.id,
               status: "pending",
             };
@@ -115,13 +132,10 @@ const CheckoutForm = ({ propertyId, params }) => {
                   title: "Payment saved!",
                   text: `Transaction ID: {transactionId}`,
                   icon: "success",
-                })
-                  // ----------------------------rentCollection
-
-                // propertyId, buyerId, amout, duration
 
                 const responsee = await axiosPublic.post(`/storeRentData?propertyId=${propertyId}&buyerId=${user.email}&amout=${packegeData.amount}&duration=${packegeData.packege}`)
                 console.log(responsee.data);
+   
               })
               .catch(() => {
                 setLoading(false);
@@ -169,6 +183,10 @@ const CheckoutForm = ({ propertyId, params }) => {
           </h2>
         </div>
         <div className="w-full lg:w-1/2">
+          <div className="user-details">
+            <p className="user-name">Seller Name: {sellerName}</p>
+            <p className="user-email">Seller Email: {email}</p>
+          </div>
           <div className="user-details">
             <p className="user-name">Your Name: {user?.displayName}</p>
             <p className="user-email">Your Email: {user?.email}</p>
