@@ -14,6 +14,7 @@ import "aos/dist/aos.css";
 import usePropertyAllData from "./../../hooks/Propertys/usePropertyAllData";
 import useAxiosPublic from "./../../hooks/useAxiosPublic";
 import useAxiosSecure from "./../../hooks/useAxiosSecure";
+import Title from "../shared/Title/Tilte";
 
 const BestHomeSection = () => {
   const axiosSecure = useAxiosSecure();
@@ -24,15 +25,12 @@ const BestHomeSection = () => {
   const [loading, setLoading] = useState(false);
   const [noProductFound, setNoProductFound] = useState(false);
 
-
   const [properties, setProperties] = useState(propertyData);
-
 
   useEffect(() => {
     setProperties(propertyData);
     refetch();
   }, [propertyData, refetch]);
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -55,7 +53,6 @@ const BestHomeSection = () => {
       setSearchParams({ location: "" });
     } catch (error) {
       console.error("Error in submitting form:", error);
-
     } finally {
       setLoading(false);
     }
@@ -64,10 +61,11 @@ const BestHomeSection = () => {
     <>
       <div className="w-full py-12">
         <div className="container mx-auto">
-          <h3 className="text-center w-100 text-xl font-bold text-gray-900 p-4 ">
+          {/* <h3 className="text-center w-100 text-xl font-bold text-gray-900 p-4 ">
             Find your Best Home
           </h3>
-          <hr className="w-1/4 mx-auto border-rose-400 border-2" />
+          <hr className="w-1/4 mx-auto border-rose-400 border-2" /> */}
+          <Title title="Find your Best Home" /> 
           <br />
 
           <form onSubmit={handleSubmit} className="flex w-full  p-4">
@@ -111,7 +109,7 @@ const BestHomeSection = () => {
             </div>
           ) : (
             <div className="mx-auto mt-2 grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2">
-               {properties?.slice(0, 6).map((property, index) => (
+              {properties?.slice(0, 6).map((property, index) => (
                 <div key={index} className="card bg-base-100 m-2 ">
                   <div>
                     <Image
@@ -122,26 +120,22 @@ const BestHomeSection = () => {
                       className="object-cover rounded-t-md w-full mb-4 h-30 sm:h-60 dark:bg-gray-500"
                     />
 
-                    <h1 className="top-2 right-0 px-3 py-2 bg-slate-100 absolute">{property?.propertyType}</h1>
+                    <h1 className="top-2 right-0 px-3 py-2 bg-slate-100 absolute">
+                      {property?.propertyType}
+                    </h1>
                   </div>
 
                   <div className=" px-3   ">
-
                     <h2 className="flex justify-between card-title font-bold text-2xl text-[#2C2946] text-left py-2">
                       {property?.propertyType === "Sell" ? (
-                        <>
-                          ${property?.price}
-                        </>
+                        <>${property?.price}</>
                       ) : (
-                        <>
-                          ${property?.month12}
-                        </>
+                        <>${property?.month12}</>
                       )}
                       <div className="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
                         {property?.propertyCategory}
                       </div>
                     </h2>
-
 
                     <div className="flex text-xs  w-full    content-stretch justify-between pb-2">
                       <div>
@@ -150,10 +144,7 @@ const BestHomeSection = () => {
                             icon={faBed}
                             className="text-gray-500 mr-1"
                           />
-                          <span className="font-bold">
-                            {" "}
-                            {property.bedrooms}{" "}
-                          </span>
+                          <span className="font-bold">{property.bedrooms}</span>
                         </div>
                         <br />
                         Bedrooms

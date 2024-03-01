@@ -8,6 +8,7 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import useAxiosSecure from '@/hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import Title2 from '../shared/Title/Title2';
 
 
 const AppointmentForm = ({ propertyId }) => {
@@ -86,9 +87,10 @@ const AppointmentForm = ({ propertyId }) => {
   };
   return (
     <div className='min-h-screen mx-auto mt-5'>
-      <h1 className="text-2xl md:text-5xl font-bold text-center text-rose-600 py-10 ">
+      {/* <h1 className="text-2xl md:text-5xl font-bold text-center text-rose-600 py-10 ">
         Book Appointment
-      </h1>
+      </h1> */}
+      <Title2 title="Book Appointment"/>
       <div>
         <div className=" mx-auto  ">
           <div className="mx-auto w-5/6 card lg:card-side bg-base-100 shadow-sm">
@@ -102,7 +104,7 @@ const AppointmentForm = ({ propertyId }) => {
             </div>
           </div>
 
-          <div className='my-3 p-3 card mx-auto w-5/6 flex lg:card-side bg-base-100 shadow-sm'>
+          <div className='my-3 p-3 card mx-auto w-5/6 flex justify-ceenter items-center lg:card-side bg-base-100 shadow-sm'>
             <div className="w-full lg:w-1/2">
               <Lottie animationData={Book_Appointment} loop={true} />
             </div>
@@ -119,14 +121,14 @@ const AppointmentForm = ({ propertyId }) => {
 
                 </div>
                 <div className="space-y-1 text-sm">
-                  <label for="date" className="block text-rose-700">
+                  <label for="date" className="block text-[#E11D48]">
                     Select Date
                   </label>
                   <DatePicker format="DD-MM-YYYY" onChange={(date) => setSelectedDate(date)} className="w-full px-4 py-3 rounded-md bg-rose-50" />
                 </div>
 
                 <div className="space-y-1 text-sm">
-                  <label for="starttime" className="block text-rose-700">
+                  <label for="starttime" className="block text-[#E11D48]">
                     Select Start Time
                   </label>
                   {/* <TimePicker format="HH:mm"  onChange={(time1) => setSelectedStartTime(time1)}  className="w-full px-4 py-3 rounded-md bg-rose-50"/> */}
@@ -142,7 +144,7 @@ const AppointmentForm = ({ propertyId }) => {
                 </div>
 
                 <div className="space-y-1 text-sm">
-                  <label for="time" className="block text-rose-700">
+                  <label for="time" className="block text-[#E11D48]">
                     Select End Time
                   </label>
                   {/* <TimePicker format="HH:mm"  onChange={(time2) => setSelectedEndTime(time2)}  className="w-full px-4 py-3 rounded-md bg-rose-50"/> */}
@@ -157,7 +159,7 @@ const AppointmentForm = ({ propertyId }) => {
 
 
                 </div>
-                <button className="block w-full p-3 text-center rounded bg-rose-600 text-white">
+                <button className="block w-full p-3 text-center rounded bg-[#E11D48] text-white">
                   Book Appointment
                 </button>
               </form>

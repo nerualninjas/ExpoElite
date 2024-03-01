@@ -57,7 +57,12 @@ const RentPropertyDetails = ({ propertyId }) => {
     if (isPending) {
         return (
             <div className="h-screen w-screen flex justify-center items-center  ">
-                <RiseLoader color="rgba(237, 95, 180, 0.83)" size={35} speedMultiplier={1} className="text-center" />
+                <RiseLoader
+                    color="rgb(220, 20, 60)" 
+                    size={35} 
+                    speedMultiplier={1} 
+                    className="text-center" 
+                />
             </div>
         )
     }
@@ -217,7 +222,7 @@ const RentPropertyDetails = ({ propertyId }) => {
                         <div>
                             <Rating style={{ maxWidth: 120 }} value={4} readOnly />
                         </div>
-                      
+
                         <br />
                         <div >
                             <h2 className="text-xl font-bold mb-2">Location</h2>
