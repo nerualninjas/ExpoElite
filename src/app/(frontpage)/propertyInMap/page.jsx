@@ -14,18 +14,13 @@ const PropertyViewInMap = () => {
         <div>
             <h2 className="text-2xl font-bold"><span className="text-rose-500">Property</span> Map View </h2>
             {/* list property  */}
-        <div>
-            
-    
-      
-       </div>
-
+   
         {/* Map view  */}
-        <div>
+       
         {typeof window !== 'undefined' && (
 <Map  />
         )}
-        </div>
+        
         </div>
     );
 };

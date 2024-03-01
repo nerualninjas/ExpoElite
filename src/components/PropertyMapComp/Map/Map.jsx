@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import PropertyCard from "@/components/PropertyMapComp/PropertyCard/PropertyCard";
-import usePropertyAllData from '@/hooks/Propertys/usePropertyAllData';
+// import usePropertyAllData from '@/hooks/Propertys/usePropertyAllData';
 import { Card, CardBody, CardFooter, Image } from "@nextui-org/react";
-import { IoLocationOutline } from "react-icons/io5";
+
 import "./mapStyle.css"
 import 'leaflet/dist/leaflet.css';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
@@ -11,7 +11,7 @@ import MarkerClusterGroup from "react-leaflet-cluster"
 import markers from './mapData.js'
 
 const Map = () => {
-  const { propertyData, isPending, refetch } = usePropertyAllData();
+  // const { propertyData, isPending, refetch } = usePropertyAllData();
   const [markerPosition, setPosition] = useState([0, 0]);
 
   const customImg = new Icon({
