@@ -14,6 +14,7 @@ import "aos/dist/aos.css";
 import usePropertyAllData from "./../../hooks/Propertys/usePropertyAllData";
 import useAxiosPublic from "./../../hooks/useAxiosPublic";
 import useAxiosSecure from "./../../hooks/useAxiosSecure";
+import Title from "../shared/Title/Tilte";
 
 const BestHomeSection = () => {
   const axiosSecure = useAxiosSecure();
@@ -60,10 +61,11 @@ const BestHomeSection = () => {
     <>
       <div className="w-full py-12">
         <div className="container mx-auto">
-          <h3 className="text-center w-100 text-xl font-bold text-gray-900 p-4 ">
+          {/* <h3 className="text-center w-100 text-xl font-bold text-gray-900 p-4 ">
             Find your Best Home
           </h3>
-          <hr className="w-1/4 mx-auto border-rose-400 border-2" />
+          <hr className="w-1/4 mx-auto border-rose-400 border-2" /> */}
+          <Title title="Find your Best Home" /> 
           <br />
 
           <form onSubmit={handleSubmit} className="flex w-full  p-4">
