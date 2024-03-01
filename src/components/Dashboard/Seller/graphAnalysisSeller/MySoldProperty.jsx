@@ -1,3 +1,4 @@
+"use client"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import {faBuildingCircleCheck} from "@fortawesome/free-solid-svg-icons";
@@ -16,7 +17,7 @@ const MySoldProperty = () => {
 
           <div className='ml-2'>
               <h2 className='text-xl font-semibold'>My Sold Propety</h2>
-              <p className='text-lg font-semibold text-red-400 '>{sellerSoldPropertyLength}</p>
+              <p className='text-lg font-semibold text-red-400 '>{sellerSoldPropertyLength}+</p>
           </div>
       </div>
 
