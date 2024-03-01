@@ -7,7 +7,7 @@ import useAxiosSecure from "./../../hooks/useAxiosSecure";
 const AddProduct = () => {
   const { user, loading } = UserAuth();
   const axiosSecure = useAxiosSecure();
-  const { refetch } = usePropertyAllData();
+  const { propertyData, refetch } = usePropertyAllData();
 
   const email = user?.email;
 
@@ -25,8 +25,7 @@ const AddProduct = () => {
 
   const initialFormData = {
     propertyCreator: email,
-    photoURL2: "",
-    photoURL3: "",
+    specialOffers: "",
     propertyName: "",
     image: "",
     bedrooms: "",
@@ -67,32 +66,14 @@ const AddProduct = () => {
       });
 
       const myData = {
-        //property info
-        image: res.data.data.url,
-        createDate: new Date(),
+        ...formData,
+        propertyMainId: propertyData?.length + 1,
         propertyType: selectedType === "Sell" ? "Sell" : "Rent",
-        propertyName: formData.propertyName,
-        bedrooms: formData.bedrooms,
-        bathrooms: formData.bathrooms,
-        livingRoom: formData.livingRoom,
-        price: parseInt(formData.price),
-        location: formData.location,
-        month1: formData.month1,
-        month6: formData.month6,
-        month12: formData.month12,
-        propertyCategory: formData.propertyCategory,
-        description: formData.description,
-        photoURL2: formData.photoURL2,
-        photoURL3: formData.photoURL3,
-
-        //seller info
+        likeBy: [],
         email: user?.email,
         sellerImage: user?.photoURL,
         sellerName: user?.displayName,
-        likeBy: [],
-
-        //init value
-
+        image: res.data.data.url,
         dislikeBy: [" "],
         publishStatus: "unpublish",
         commentLogs: [
@@ -105,7 +86,6 @@ const AddProduct = () => {
         ],
       };
 
-      
       axiosSecure.post("/addProperty", myData).then((res) => {
         if (res?.data.insertedId === null) {
           Swal.fire({
@@ -158,27 +138,23 @@ const AddProduct = () => {
           />
         </div>
         <div className="space-y-1 text-sm">
-          <label className="block dark-text-gray-400">Image 2</label>
+          <label className="block dark-text-gray-400">Image 2 </label>
           <input
-            value={formData.photoURL2}
-            onChange={handleChange}
             name="photoURL2"
+
             type="text"
             className="w-full bg-white text-black px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
           />
-        </div>
-
+        </div>{" "}
         <div className="space-y-1 text-sm">
-          <label className="block dark-text-gray-400">Image 3</label>
+          <label className="block dark-text-gray-400">Image 3 </label>
           <input
-            value={formData.photoURL3}
-            onChange={handleChange}
             name="photoURL3"
+
             type="text"
             className="w-full bg-white text-black px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
           />
         </div>
-
         <div className="flex w-full gap-4 flex-col lg:flex-row">
           <div className="space-y-1 text-sm w-full lg:w-1/2">
             <label className="block dark-text-gray-400">Bedrooms</label>
@@ -263,6 +239,18 @@ const AddProduct = () => {
                 type="number"
                 className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
               />
+            </div>
+            <div className="">
+              <label className="block dark-text-gray-400">
+                Special Offers
+                <input
+                  type="number"
+                  onChange={handleChange}
+                  value={formData.specialOffers}
+                  name="specialOffers"
+                  className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+                />
+              </label>
             </div>
           </>
         )}

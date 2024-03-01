@@ -1,8 +1,12 @@
+"use client"
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import {faBuilding} from "@fortawesome/free-solid-svg-icons";
+import useSellerProperty from '@/hooks/Propertys/useSellerProperty';
 
 const MyListedProperty = () => {
+    const { sellerPropertyLength}=useSellerProperty();
     return (
       
             <div className="card  bg-base-100 px-4 py-10 justify-around items-center flex flex-col lg:flex-row">
@@ -11,7 +15,7 @@ const MyListedProperty = () => {
 
                 <div className='ml-2'>
                     <h2 className='text-xl font-semibold'> My Listed Propety</h2>
-                    <p className='text-lg font-semibold text-red-400 '>1239+</p>
+                    <p className='text-lg font-semibold text-red-400 '>{sellerPropertyLength}+</p>
                 </div>
             </div>
       

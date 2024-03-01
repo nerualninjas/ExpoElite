@@ -9,10 +9,12 @@ const stripePromise = loadStripe(
 );
 
 const Payment = ({ params }) => {
+
+  console.log('from payment: ',params);
   return (
     <div>
       <Elements stripe={stripePromise}>
-        <CheckoutForm propertyId={params?.id} />
+        <CheckoutForm propertyId={params?.id} params={params}/>
       </Elements>
     </div>
   );

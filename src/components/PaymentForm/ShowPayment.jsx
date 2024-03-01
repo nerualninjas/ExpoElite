@@ -1,3 +1,5 @@
+"use client"
+
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
 
 import Swal from "sweetalert2";

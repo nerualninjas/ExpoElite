@@ -24,7 +24,6 @@ const UserAppointments = () => {
    console.log(userAppointmentData);
 
 
-
     return (
         <div>
               {userAppointmentData?.length > 0 ?(
@@ -69,15 +68,14 @@ const UserAppointments = () => {
                 <td className='text-xl font-semibold' style={{ color: getStatusColor(appointment?.appointmentStatus) }}>
   {appointment?.appointmentStatus}
 </td>
-   
-        
+
 
             </tr>
         ))}
     </tbody>
 </table>
 </div>
-              ):( <p className='text-center my-10 text-yellow-500 font-semibold text-xl'>You didn't book any appointment yet.</p>)
+              ):( <p className='text-center my-10 text-yellow-500 font-semibold text-xl'>You didn&apos;t book any appointment yet.</p>)
               }
           
         </div>

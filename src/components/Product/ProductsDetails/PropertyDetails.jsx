@@ -53,7 +53,7 @@ const PropertyDetail = ({ propertyId }) => {
     return (
       <div className="h-screen w-screen flex justify-center items-center  ">
         <RiseLoader
-          color="rgba(237, 95, 180, 0.83)"
+           color="rgb(220, 20, 60)"
           size={35}
           speedMultiplier={1}
           className="text-center"

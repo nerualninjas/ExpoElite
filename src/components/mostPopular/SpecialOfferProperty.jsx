@@ -1,3 +1,4 @@
+"use client"
 import usePropertyAllData from '@/hooks/Propertys/usePropertyAllData';
 
 import React from 'react';
@@ -12,45 +13,32 @@ import {
 import { FaLocationArrow } from "react-icons/fa";
 import Image from "next/image";
 import Link from 'next/link';
+import useOfferProperty from '@/hooks/Propertys/useOfferProperty';
 
-const PopularProperty = () => {
-    const { propertyData, isPending, refetch } = usePropertyAllData();
-    const propertiesWithLikes = propertyData?.map(property => ({
-        ...property,
-        likesCount: property?.likeBy?.length,
-      }));
+const SpecialOfferProperty = () => {
+    const {offerProperty, offerPropertyLength,isPending, refetch  } = useOfferProperty();
+    const properties = offerProperty?.products;
+   
+    console.log(properties);
 
-      const sortedProperties = propertiesWithLikes?.sort((propertyA, propertyB) => propertyB.likesCount - propertyA.likesCount);
-      const top8Properties = sortedProperties?.slice(0, Math.min(8, sortedProperties.length));
+
+      
 
 
     return (
         <div>
-          
-
-            
-      {/* <h2>Top 8 Properties with Most Likes</h2>
-      {top8Properties.map(property => (
-        <div key={property._id}>
-          <h3>{property.propertyName}</h3>
-          <p>Location: {property.location}</p>
-          <p>Price: {property.price}</p>
-          
-
-        
-        </div>
-          ))} */}
+ 
 
             <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2  xl:grid-cols-3 2xl:grid-cols-4 gap-2">
-            {top8Properties?.map((property, index) => (
+            {properties?.map((property, index) => (
            
 
 
-             <div key={index}  className="px-2 py-2 container rounded-xl flex justify-center items-center max-w-[450px] bg-base-200 shadow-xl">
+             <div key={index}  className="px-2 py-2 container rounded-xl flex justify-center items-center max-w-[450px] bg-base-100 shadow-xl">
              <div className="w-1/3">
               <Image width={500} height={300}
-                   src={property.image}  
-                   alt={property.title}  
+                   src={property?.image}  
+                   alt={property?.title}  
                    className="rounded-xl w-[160px] h-[100px]"
                  />
              </div >
@@ -78,7 +66,7 @@ const PopularProperty = () => {
                         icon={faBed}
                         className="text-gray-500 mr-1"
                       />
-                      <span className="font-bold"> {property.bedrooms} </span>
+                      <span className="font-bold"> {property?.bedrooms} </span>
                     </div>
                   
                   </div>
@@ -88,7 +76,7 @@ const PopularProperty = () => {
                         icon={faBath}
                         className="text-gray-500 mr-1"
                       />
-                      <span className="font-bold"> {property.bathrooms} </span>
+                      <span className="font-bold"> {property?.bathrooms} </span>
                     </div>
                    
                   </div>
@@ -98,7 +86,7 @@ const PopularProperty = () => {
                         icon={faCouch}
                         className="text-gray-500 mr-1"
                       />
-                      <span className="font-bold"> {property.livingRoom} </span>
+                      <span className="font-bold"> {property?.livingRoom} </span>
                     </div>
                   
                   </div>
@@ -128,4 +116,4 @@ const PopularProperty = () => {
     );
 };
 
-export default PopularProperty;
+export default SpecialOfferProperty;

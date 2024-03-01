@@ -209,7 +209,8 @@ const Navbar = () => {
         </>
       )}
 
-      <div className="py-4 lg:px-4 z-30 bg-[#FFFFFF] flex items-center justify-between w-full md:w-[calc(100vw-230px)]  2xl:w-[calc(100vw-230px)] md:start-[14rem]  fixed h-20">
+      {/* <div className="py-4 lg:px-4 z-30 bg-[#FFFFFF] flex items-center justify-between w-full md:w-[calc(100vw-230px)]  2xl:w-[calc(100vw-230px)] md:start-[14rem]  fixed h-20"> */}
+      <div className="py-4 lg:px-4 z-30 bg-base-100 flex items-center justify-between w-full md:w-[calc(100vw-230px)]  2xl:w-[calc(100vw-230px)] md:start-[14rem]  fixed h-20">
         <div className="   md:hidden">
           {" "}
           <button
@@ -221,16 +222,16 @@ const Navbar = () => {
           </button>
         </div>
 
-        <h2 className="font-extrabold lg:text-3xl text-gray-900">
-          {greeting}!,
-          <span className="text-rose-500 ">Welcome ExpoElite</span>
+        <h2 className="font-extrabold lg:text-3xl ">
+          {greeting}! 
+          <span className="text-rose-500 "> Welcome ExpoElite</span>
         </h2>
-        <div className="bg-gray-100 hidden md:flex gap-2 p-2 rounded-xl">
+        <div className="bg-base-300 hidden md:flex gap-2 p-2 rounded-xl">
           <button
             className={
               btnActive
-                ? " px-3 py-1 text-sm rounded-md bg-rose-200"
-                : " px-3 py-1 text-sm rounded-md bg-rose-50"
+                ? " px-3 py-1 text-sm rounded-md bg-base-100"
+                : " px-3 py-1 text-sm rounded-md bg-base-50"
             }
           >
             Buy
@@ -238,8 +239,8 @@ const Navbar = () => {
           <button
             className={
               nbtnActive
-                ? " px-3 py-1 text-sm rounded-md bg-rose-200"
-                : " px-3 py-1 text-sm rounded-md bg-rose-50"
+                ? " px-3 py-1 text-sm rounded-md bg-base-100"
+                : " px-3 py-1 text-sm rounded-md bg-base-50"
             }
           >
             Rent
