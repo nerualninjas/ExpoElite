@@ -23,9 +23,9 @@ const Map = () => {
     iconSize: [38,38],
   })
 
-  useEffect(()=>{
-    console.log(markerPosition);
-  },[markers])
+  // useEffect(()=>{
+  //   console.log(markerPosition);
+  // },[markers])
 
   const position=[23.774609,90.4219455]
   // https://www.google.com/maps/@23.774609,90.4219455,15z?entry=ttu
@@ -42,8 +42,8 @@ const Map = () => {
 <MarkerClusterGroup
 chunkedLoading
 >
-    {markers?.map(marker =>(
-      <Marker position={marker?.geocode} icon={customImg}>
+    {markers?.map((marker,i) =>(
+      <Marker key={i} position={marker?.geocode} icon={customImg}>
 
       <Popup>
         <>
