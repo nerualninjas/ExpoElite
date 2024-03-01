@@ -9,7 +9,7 @@ const Banner = () => {
           <div className="ml-10 md:pl-0 md:mr-8 order-2 md:order-1 ">
             <h2 className="font-bold text-md  md:text-3xl"> 
             <span className="text-rose-500">Discover</span> a place <br/>
-you'll love to live</h2>
+you&apos;ll love to live</h2>
             <p className="text-lg">
              
             </p>
