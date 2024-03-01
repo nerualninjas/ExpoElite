@@ -34,13 +34,13 @@ const Map = () => {
 <PropertyCard setPosition={setPosition} />
 
        {/* //scrollWheelZoom={false} */}
-<MapContainer center={position} zoom={12} > 
 {typeof window !== 'undefined' && (
+<MapContainer center={position} zoom={12} > 
   <TileLayer
     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
   />
-)}
+
 <MarkerClusterGroup
 chunkedLoading
 >
@@ -67,6 +67,7 @@ chunkedLoading
       
 
   </MapContainer>
+  )}
         </div>
     );
 };
