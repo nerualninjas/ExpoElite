@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect, useState } from 'react';
 import PropertyCard from "@/components/PropertyMapComp/PropertyCard/PropertyCard";
 // import usePropertyAllData from '@/hooks/Propertys/usePropertyAllData';

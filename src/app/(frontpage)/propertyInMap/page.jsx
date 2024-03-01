@@ -1,8 +1,5 @@
 "use client"
 
-import React from 'react';
-
-import { useEffect, useRef, useState } from 'react';
 
 import Map from "@/components/PropertyMapComp/Map/Map";
 
