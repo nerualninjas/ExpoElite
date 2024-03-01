@@ -13,7 +13,7 @@ you&apos;ll love to live</h2>
             <p className="text-lg">
              
             </p>
-            <Link href="/propertyInMap">
+            <Link href="/propertyinmap">
             <button className="rounded-full mt-2 bg-[#FF385D] text-white md:text-3xl">
               <MdArrowOutward />
             </button>
