@@ -1,32 +1,25 @@
-"use client"
+// "use client"
 
-import React from 'react';
 
-import { useEffect, useRef, useState } from 'react';
+// import Map from "@/components/PropertyMapComp/Map/Map";
 
-import Map from "@/components/PropertyMapComp/Map/Map";
-
-const PropertyViewInMap = () => {
+// const PropertyViewInMap = () => {
     
 
     
-    return (
-        <div>
-            <h2 className="text-2xl font-bold"><span className="text-rose-500">Property</span> Map View </h2>
-            {/* list property  */}
-        <div>
-            
-    
-      
-       </div>
+//     return (
+//         <div>
+//             <h2 className="text-2xl font-bold"><span className="text-rose-500">Property</span> Map View </h2>
+//             {/* list property  */}
+   
+//         {/* Map view  */}
+       
+//         { window !== 'undefined' && (
+// <Map  />
+//         )}
+        
+//         </div>
+//     );
+// };
 
-        {/* Map view  */}
-        <div>
-<Map  />
-            
-        </div>
-        </div>
-    );
-};
-
-export default PropertyViewInMap;
+// export default PropertyViewInMap;
