@@ -15,9 +15,9 @@ const ChatWindow = () => {
             <div className="text-center py-3">
                 <button
                     onClick={handleToggleModal}
-                    className="bg-rose-500 text-white px-3 py-2 rounded-full hover:scale-95 transition text-xl"
+                    className="bg-rose-500 text-white px-4 py-4 rounded-full hover:scale-95 transition text-xl"
                 >
-                    <BsFillChatRightDotsFill />
+                    <BsFillChatRightDotsFill className='text-3xl' />
                 </button>
             </div>
             {showModal && <ChatBox onClose={handleToggleModal} visible={showModal} zIndex={45} />}
