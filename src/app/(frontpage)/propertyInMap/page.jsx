@@ -22,8 +22,9 @@ const PropertyViewInMap = () => {
 
         {/* Map view  */}
         <div>
+        {typeof window !== 'undefined' && (
 <Map  />
-            
+        )}
         </div>
         </div>
     );
