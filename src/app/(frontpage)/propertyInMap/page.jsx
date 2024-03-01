@@ -1,25 +1,25 @@
-"use client"
+// "use client"
 
 
-import Map from "@/components/PropertyMapComp/Map/Map";
+// import Map from "@/components/PropertyMapComp/Map/Map";
 
-const PropertyViewInMap = () => {
+// const PropertyViewInMap = () => {
     
 
     
-    return (
-        <div>
-            <h2 className="text-2xl font-bold"><span className="text-rose-500">Property</span> Map View </h2>
-            {/* list property  */}
+//     return (
+//         <div>
+//             <h2 className="text-2xl font-bold"><span className="text-rose-500">Property</span> Map View </h2>
+//             {/* list property  */}
    
-        {/* Map view  */}
+//         {/* Map view  */}
        
-        {typeof window !== 'undefined' && (
-<Map  />
-        )}
+//         { window !== 'undefined' && (
+// <Map  />
+//         )}
         
-        </div>
-    );
-};
+//         </div>
+//     );
+// };
 
-export default PropertyViewInMap;
+// export default PropertyViewInMap;
