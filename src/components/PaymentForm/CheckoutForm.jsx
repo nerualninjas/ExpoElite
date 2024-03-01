@@ -1,3 +1,4 @@
+'use client'
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
 import usePropertyData from "@/hooks/Propertys/usePropertyData";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
@@ -125,27 +126,30 @@ const CheckoutForm = ({ propertyId, params }) => {
             };
 
             await axiosSecure
-              .post("/addPayment", payment)
-              .then(async() => {
-                setLoading(false);
-                Swal.fire({
-                  title: "Payment saved!",
-                  text: `Transaction ID: {transactionId}`,
-                  icon: "success",
-
-                const responsee = await axiosPublic.post(`/storeRentData?propertyId=${propertyId}&buyerId=${user.email}&amout=${packegeData.amount}&duration=${packegeData.packege}`)
-                console.log(responsee.data);
-   
+            .post("/addPayment", payment)
+            .then(async() => {
+              setLoading(false);
+              Swal.fire({
+                title: "Payment saved!",
+                text: `Transaction ID: ${transactionId}`,
+                icon: "success",
               })
-              .catch(() => {
-                setLoading(false);
-                setError("Failed to save payment. Please try again.");
+                // ----------------------------rentCollection
 
-              });
-          }
+              // propertyId, buyerId, amout, duration
+
+              const responsee = await axiosPublic.post(`/storeRentData?propertyId=${propertyId}&buyerId=${user.email}&amout=${packegeData.amount}&duration=${packegeData.packege}`)
+              console.log(responsee.data);
+            })
+            .catch(() => {
+              setLoading(false);
+              setError("Failed to save payment. Please try again.");
+
+            });
         }
       }
-    } catch (err) {
+    }
+  }  catch (err) {
       console.error("Unexpected error:", err);
       setError("An unexpected error occurred. Please try again later.");
     } finally {
@@ -176,7 +180,8 @@ const CheckoutForm = ({ propertyId, params }) => {
           <div className="property-details">
             <p className=" property-type">Property Name:{propertyName}</p>
             <p className="property-type">Property Type: {propertyType}</p>
-            <p className="property-price">Property Price: ${price}</p>
+            {propertyType==="Sell" && <p className="property-price">Property Price:${price}</p>}
+            
           </div>
           <h2 className="text-gray-600 text-lg font-semibold">
             Total Payable Bill: ${packegeData?.amount}

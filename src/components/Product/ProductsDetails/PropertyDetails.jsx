@@ -43,7 +43,7 @@ const PropertyDetail = ({ propertyId }) => {
 
   useEffect(() => {
     if (propertySingleData && propertySingleData.likeBy) {
-      setUserLiked(propertySingleData.likeBy.includes(user?.email));
+      setUserLiked(propertySingleData?.likeBy.includes(user?.email));
     }
   }, [propertySingleData, user]);
 
