@@ -7,7 +7,7 @@ import useAxiosSecure from "./../../hooks/useAxiosSecure";
 const AddProduct = () => {
   const { user, loading } = UserAuth();
   const axiosSecure = useAxiosSecure();
-  const { refetch } = usePropertyAllData();
+  const { propertyData, refetch } = usePropertyAllData();
 
   const email = user?.email;
 
@@ -67,6 +67,7 @@ const AddProduct = () => {
 
       const myData = {
         ...formData,
+        propertyMainId: propertyData?.length + 1,
         propertyType: selectedType === "Sell" ? "Sell" : "Rent",
         likeBy: [],
         email: user?.email,
@@ -140,7 +141,7 @@ const AddProduct = () => {
           <label className="block dark-text-gray-400">Image 2 </label>
           <input
             name="photoURL2"
-           
+
             type="text"
             className="w-full bg-white text-black px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
           />
@@ -149,7 +150,7 @@ const AddProduct = () => {
           <label className="block dark-text-gray-400">Image 3 </label>
           <input
             name="photoURL3"
-             
+
             type="text"
             className="w-full bg-white text-black px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
           />

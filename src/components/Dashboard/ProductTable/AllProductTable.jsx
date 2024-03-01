@@ -7,12 +7,14 @@ import useAxiosSecure from '@/hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 import useNotification from "@/hooks/notifications/useNotificationCreate";
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
+import { FaAngleRight, FaAngleLeft } from 'react-icons/fa';
 
 
 
 
 const AllProductTable = () => {
     const [currentPage, setCurrentPage] = useState(1);
+    console.log('hi', currentPage);
     const [pageLimit, setPageLimit] = useState(5);
     const { propertyData, isPending, refetch } = usePropertyAllData(currentPage, pageLimit);
     const properties = propertyData;
@@ -28,7 +30,7 @@ const AllProductTable = () => {
     useEffect(() => {
         refetch()
         setDisplayData(properties)
-    }, [properties, refetch, pageLimit])
+    }, [properties, refetch, pageLimit, currentPage])
 
 
     // // pagination
@@ -132,10 +134,13 @@ const AllProductTable = () => {
     const handleNextPage = () => {
         if (currentPage < totalPage) {
             setCurrentPage(currentPage + 1)
+
         }
+        // console.log(currentPage, totalPage);
     }
 
     // pagination end
+
 
 
     return (
@@ -149,7 +154,7 @@ const AllProductTable = () => {
                     {/* head */}
                     <thead>
                         <tr>
-                            <th>No</th>
+                            <th>Id</th>
                             <th>Image</th>
                             <th>Property Name</th>
                             <th>Seller Info</th>
@@ -162,7 +167,7 @@ const AllProductTable = () => {
                         {/* rows */}
                         {displayProperty?.map((property, index) => (
                             <tr key={property._id}>
-                                <th>{index + 1}</th>
+                                <th>{property._id}</th>
                                 <td>
                                     <Image
                                         width={100}
@@ -225,31 +230,39 @@ const AllProductTable = () => {
                     activeClassName="text-rose-600 bg-rose-50"
                     disabledClassName="bg-rose-300"
                 /> */}
-                <div className="flex gap-2">
-                    <select onChange={handlePagination} value={pageLimit} className="p-2 border-2 bg-blue-gray-50" name="limit" id="">
+                <div className="flex justify-between items-center gap-2 my-3">
+                    <div className='font-semibold ml-2'>
+                        Rows Per Page
+                        <select onChange={handlePagination} value={pageLimit} className="p-2 border-2 bg-blue-gray-50" name="limit" id="">
 
-                        <option value={3}>
-                            3
-                        </option>
-                        <option value={5}>
-                            5
-                        </option>
-                        <option value={10}>
-                            10
-                        </option>
-                        <option value={20}>
-                            20
-                        </option>
-                    </select>
+                            <option value={3}>
+                                3
+                            </option>
+                            <option value={5}>
+                                5
+                            </option>
+                            <option value={10}>
+                                10
+                            </option>
+                            <option value={20}>
+                                20
+                            </option>
+                        </select>
 
-                    <button className='btn bg-rose-600' onClick={handlePreviousPage} >
-                        Previous
-                    </button>
-
-                    <button className='btn bg-rose-600' onClick={handleNextPage}>
-                        Next
-                    </button>
+                    </div>
+                    <div className="flex justify-between items-center mr-2 text-black font-semibold text-base rounded-lg">
+                        <button className='btn border-none text-rose-600 font-bold text-base' onClick={handlePreviousPage} >
+                            <FaAngleLeft className='text-rose-600 font-bold' />
+                            Previous
+                        </button>
+                        Current Page:{currentPage}
+                        <button className='btn border-none text-base font-bold text-rose-600' onClick={handleNextPage}>
+                            Next
+                            <FaAngleRight className='text-rose-600 font-bold' />
+                        </button>
+                    </div>
                 </div>
+
             </div>
         </div>
     );
