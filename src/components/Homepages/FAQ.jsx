@@ -15,7 +15,7 @@ const FQ = () => {
     <div className="my-10 pb-10 mx-auto w-full ">
       <Title title="Frequently Asked Questions" />
       <div className="w-full md:w-4/5">
-       
+
         <div className="flex flex-col md:flex-row items-center justify-center mx-auto py-10 px-4 gap-5 rounded">
           <div className="w-full md:w-1/2 mt-5 md:mt-1">
             <Image
@@ -31,7 +31,7 @@ const FQ = () => {
               <div>
                 {/* Accordion Item 1 */}
                 <div>
-                  <h2 className="text-gray-700 font-medium">
+                  <h2 className=" font-medium">
                     <button
                       type="button"
                       onClick={() => handleAccordionClick(0)}
@@ -56,7 +56,7 @@ const FQ = () => {
                     </button>
                   </h2>
                   <div className={`p-3 ${activeIndex === 0 ? "" : "hidden"}`}>
-                    <p className="text-gray-500 dark:text-gray-400">
+                    <p className=" dark:text-gray-400">
                       ExpoElite aims to establish a property selling and
                       exhibition platform . The platform is designed to serve
                       three key user groups: individuals looking to buy
@@ -67,7 +67,7 @@ const FQ = () => {
 
                 {/* Accordion Item 2 */}
                 <div>
-                  <h2 className="text-gray-700 font-medium">
+                  <h2 className=" font-medium">
                     <button
                       type="button"
                       onClick={() => handleAccordionClick(1)}
@@ -92,7 +92,7 @@ const FQ = () => {
                     </button>
                   </h2>
                   <div className={`p-3 ${activeIndex === 1 ? "" : "hidden"}`}>
-                    <p className="text-gray-500 dark:text-gray-400">
+                    <p className=" dark:text-gray-400">
                       ExpoElite is a versatile platform, and you can list both
                       residential and commercial properties. Whether it&apos;s a
                       home, apartment, office space, or retail property, you can
@@ -103,7 +103,7 @@ const FQ = () => {
 
                 {/* Accordion Item 3 */}
                 <div>
-                  <h2 className="text-gray-700 font-medium">
+                  <h2 className=" font-medium">
                     <button
                       type="button"
                       onClick={() => handleAccordionClick(2)}
@@ -128,7 +128,7 @@ const FQ = () => {
                     </button>
                   </h2>
                   <div className={`p-3 ${activeIndex === 2 ? "" : "hidden"}`}>
-                    <p className="text-gray-500 dark:text-gray-400">
+                    <p className="dark:text-gray-400">
                       To search for properties, use the search bar on our
                       homepage. You can filter results based on location,
                       property type, price range, and other criteria. Explore
@@ -140,7 +140,7 @@ const FQ = () => {
 
                 {/* Accordion Item 4 */}
                 <div>
-                  <h2 className="text-gray-700 font-medium">
+                  <h2 className=" font-medium">
                     <button
                       type="button"
                       onClick={() => handleAccordionClick(3)}
@@ -165,7 +165,7 @@ const FQ = () => {
                     </button>
                   </h2>
                   <div className={`p-3 ${activeIndex === 3 ? "" : "hidden"}`}>
-                    <p className="text-gray-500 dark:text-gray-400">
+                    <p className=" dark:text-gray-400">
                       ExpoElite prioritizes the security of transactions. We
                       recommend using secure payment methods, and our platform
                       incorporates encryption and other security measures to

@@ -46,7 +46,7 @@ const PopularProperty = () => {
            
 
 
-             <div key={index}  className="px-2 py-2 container rounded-xl flex justify-center items-center max-w-[450px] bg-base-100 shadow-xl">
+             <div key={index}  className="px-2 py-2 container rounded-xl flex justify-center items-center max-w-[450px] bg-base-200 shadow-xl">
              <div className="w-1/3">
               <Image width={500} height={300}
                    src={property.image}  

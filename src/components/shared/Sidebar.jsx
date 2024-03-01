@@ -107,7 +107,7 @@ const Sidebar = () => {
 
       {/* Large device  */}
 
-      <div className="w-[15rem] hidden md:block fixed  bg-[#FFFFFF]  rounded-tl-2xl min-h-screen">
+      <div className="w-[15rem] hidden md:block fixed  bg-base-100  rounded-tl-2xl min-h-screen">
         <div className="px-8 flex flex-col  h-[100vh] justify-between">
           <section>
             <Image
@@ -124,7 +124,7 @@ const Sidebar = () => {
                   <Link
                     className={`${pathName === menu.path
                       ? "flex items-center gap-2  hover:text-rose-600 text-rose-500 "
-                      : "flex items-center gap-2  hover:text-rose-600 text-gray-800 "
+                      : "flex items-center gap-2  hover:text-rose-600"
                       }`}
                     href={menu.path}
                   >
@@ -140,7 +140,7 @@ const Sidebar = () => {
                     <Link
                       className={`${pathName === adminDash.path
                         ? "flex items-center gap-2  hover:text-rose-600 text-rose-500 "
-                        : "flex items-center gap-2  hover:text-rose-600 text-gray-800 "
+                        : "flex items-center gap-2  hover:text-rose-600 "
                         }`}
                       href={adminDash.path}
                     >
@@ -156,7 +156,7 @@ const Sidebar = () => {
                     <Link
                       className={`${pathName === sellerDash.path
                         ? "flex items-center gap-2  hover:text-rose-600 text-rose-500 "
-                        : "flex items-center gap-2  hover:text-rose-600 text-gray-800 "
+                        : "flex items-center gap-2  hover:text-rose-600 "
                         }`}
                       href={sellerDash.path}
                     >
@@ -173,7 +173,7 @@ const Sidebar = () => {
                     <Link
                       className={`${pathName === userDash.path
                         ? "flex items-center gap-2  hover:text-rose-600 text-rose-500 "
-                        : "flex items-center gap-2  hover:text-rose-600 text-gray-800 "
+                        : "flex items-center gap-2  hover:text-rose-600 "
                         }`}
                       href={userDash.path}
                     >
@@ -194,7 +194,7 @@ const Sidebar = () => {
                   <Link
                     className={`${pathName === menu.path
                       ? "flex items-center gap-2  hover:text-rose-600 text-rose-500 "
-                      : "flex items-center gap-2  hover:text-rose-600 text-gray-800 "
+                      : "flex items-center gap-2  hover:text-rose-600  "
                       }`}
                     href={menu.path}
                   >
@@ -208,11 +208,11 @@ const Sidebar = () => {
               <li>
                 {user ? (
                   <button
-                    className="flex items-center gap-2  hover:text-rose-600 text-rose-500 "
+                    className="flex items-center gap-2 btn btn-outline  hover:text-rose-600 text-rose-500 "
                     onClick={() => logOut()}
                   >
                     <Image src={power} width={18} height={18} alt="home" />
-                    <h4> LogOut</h4>
+                    <h4> Sign Out</h4>
                   </button>
                 ) : (
                   <>
