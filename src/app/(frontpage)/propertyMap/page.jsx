@@ -14,9 +14,9 @@ const PropertyMapPage = () => {
    
         {/* Map view  */}
        
-        { window !== 'undefined' && (
-{/* <Map  /> */}
-        )}
+        {/* { window !== 'undefined' && (
+ <Map  /> 
+        )} */}
         
         </div>
     );
