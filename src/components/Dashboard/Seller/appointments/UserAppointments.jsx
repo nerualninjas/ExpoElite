@@ -10,7 +10,7 @@ const getStatusColor = (status) => {
       case 'approved':
         return 'green';
       case 'pending':
-        return '#30A9F2';
+        return '#00719c';
       case 'rejected':
         return 'red';
       default:
@@ -28,8 +28,8 @@ const UserAppointments = () => {
         <div>
               {userAppointmentData?.length > 0 ?(
 
-<div className="overflow-x-auto bg-base-200">
-<table className="table mx-5 w-full mt-5 mb-10 pb-6">
+<div className="bg-base-100 overflow-x-auto">
+<table className="table mx-5 w-full mt-5 mb-10 pb-6 table-zebra">
     {/* head */}
     <thead>
         <tr className='text-lg text-rose-500'>
@@ -38,7 +38,6 @@ const UserAppointments = () => {
             {/* <th>Seller Email</th> */}
             <th> Seller Name</th>
             <th>Property Location</th>
-            <th>Appointment Date</th>
             <th>Appointment Time</th>
             <th>Appointment Status</th>
 
@@ -62,10 +61,11 @@ const UserAppointments = () => {
                     /> */}
                     {appointment?.propertyName}
                 </td>
-                <td>{appointment?.appointmentDate} </td>
-                <td>{appointment?.appointmentStartTime}  - {appointment?.appointmentEndTime} </td>
+                <td>{appointment?.appointmentDate}
+                <br />{appointment?.appointmentStartTime}  - {appointment?.appointmentEndTime}  </td>
+               
                 
-                <td className='text-xl font-semibold' style={{ color: getStatusColor(appointment?.appointmentStatus) }}>
+                <td className=' font-semibold' style={{ color: getStatusColor(appointment?.appointmentStatus) }}>
   {appointment?.appointmentStatus}
 </td>
 

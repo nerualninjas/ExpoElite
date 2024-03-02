@@ -53,7 +53,7 @@ const Comment = ({ propertyId }) => {
     return (
         <div className='mb-10'>
              <div>
-        <h1 className="text-xl my-4 font-extrabold text-black ">Comment Section</h1>   
+        <h1 className="text-xl my-4 font-extrabold text-gray-600 ">Comment Section</h1>   
         </div>
 
             {commentLogs && commentLogs?.length > 1 ? (

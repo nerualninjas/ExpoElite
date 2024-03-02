@@ -174,7 +174,10 @@ const PropertyDetail = ({ propertyId }) => {
           <div className="w-full lg:w-1/2 ml-1 card-body">
             <div className="flex justify-between items-center pb-2">
               <div>
-                <div className="property-title text-2xl font-bold  text-rose-500">
+              <div className="property-type text-sm text-left font-semibold   py-2 rounded  text-gray-700">
+               For {propertyType}
+              </div>
+                <div className="property-title text-2xl font-bold uppercase text-rose-500">
                   {propertyName}
                 </div>
               </div>
@@ -194,7 +197,7 @@ const PropertyDetail = ({ propertyId }) => {
                 </span>
               </div>
             </div>
-            <div className="rating">
+            {/* <div className="rating">
               <input type="radio" name="rating-1" className="mask mask-star bg-red-400" />
               <input type="radio" name="rating-1" className="mask mask-star bg-red-400" />
               <input type="radio" name="rating-1" className="mask mask-star bg-red-400" />
@@ -205,11 +208,9 @@ const PropertyDetail = ({ propertyId }) => {
                 checked
               />
               <input type="radio" name="rating-1" className="mask mask-star bg-red-400" />
-            </div>
+            </div> */}
             <div className="flex justify-between items-center my-1">
-              <div className="property-type text-sm  font-semibold bg-gray-100 px-3 py-2 rounded  text-gray-700">
-                {propertyType}
-              </div>
+             
               <div className="px-3 py-2 bg-rose-100 rounded ">
                 <h1 className=" text-sm font-bold text-rose-900 mx-auto">
                   {propertyCategory}
@@ -279,7 +280,7 @@ const PropertyDetail = ({ propertyId }) => {
                 Property Details
               </h2>
               <div className="grid grid-cols-3 gap-8">
-                <button className="rounded-full px-5 py-1 border-2 text-rose-600">
+                <button className="rounded-full px-5 py-1 border-1 border-gray-400 text-rose-600">
                   {" "}
                   <FontAwesomeIcon
                     icon={faBed}
@@ -287,7 +288,7 @@ const PropertyDetail = ({ propertyId }) => {
                   />{" "}
                   <span className="font-bold"> {bedrooms} </span>
                 </button>
-                <button className="rounded-full px-5 py-1 border-2 text-rose-600">
+                <button className="rounded-full px-5 py-1 border-1 border-gray-400 text-rose-600">
                   {" "}
                   <FontAwesomeIcon
                     icon={faBath}
@@ -295,7 +296,7 @@ const PropertyDetail = ({ propertyId }) => {
                   />{" "}
                   <span className="font-bold"> {bathrooms} </span>
                 </button>
-                <button className="rounded-full px-5 py-1 border-2 text-rose-600">
+                <button className="rounded-full px-5 py-1 border-1 border-gray-400 text-rose-600">
                   {" "}
                   <FontAwesomeIcon
                     icon={faCouch}
@@ -313,9 +314,9 @@ const PropertyDetail = ({ propertyId }) => {
                   Property Creator
                 </h3>
                 <Link href={`/BookAppointment/${propertyId}`}>
-                  <button className="btn btn-sm rounded-none  px-3 py-1 border-2 border-rose-600  text-sm font-semibold text-rose-600 hover:text-white bg-[#FFE4E6] hover:bg-rose-600">
+                  <button className="btn btn-sm rounded-full  px-3 py-1 border-2 border-rose-600  text-sm font-semibold text-rose-600 hover:text-white bg-[#FFE4E6] hover:bg-rose-600">
                     {" "}
-                    Book for Appointment
+                    Book  Appointment
                   </button>
                 </Link>
               </div>

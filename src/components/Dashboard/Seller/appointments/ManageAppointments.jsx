@@ -79,7 +79,7 @@ const ManageAppointments = () => {
                             <th> User Name</th>
                             <th> User Email</th>
                             <th> User Image</th>
-                            <th>Appointment Date</th>
+                           
                             <th>Appointment Time</th>
                             <th>Action</th>
 
@@ -87,7 +87,7 @@ const ManageAppointments = () => {
                     </thead>
                     <tbody>
                         {sellerAppointmentData?.map((appointment, index) => (
-                            <tr key={appointment?._id}>
+                            <tr className='table-pin-rows' key={appointment?._id}>
                                 <th>{index + 1}</th>
                                 <th>{appointment.sellerEmail}</th>
                                 <td>{appointment?.userName}</td>
@@ -101,14 +101,16 @@ const ManageAppointments = () => {
                                         className="rounded-full w-[70px] h-[70px]"
                                     />
                                 </td>
-                                <td>{appointment?.appointmentDate} </td>
-                                <td>{appointment?.appointmentStartTime}  - {appointment?.appointmentEndTime} </td>
+                                <td>{appointment?.appointmentDate} 
+                                <br />
+                                {appointment?.appointmentStartTime}  - {appointment?.appointmentEndTime}</td>
+                                
 
                                 <td>
                                     {appointment?.appointmentStatus === 'pending' ? (
                                       <div>
                                          <button
-                                                className="btn text-white bg-[#3a9648]"
+                                                className="btn text-sm text-white bg-[#477a4f]"
                                                 onClick={() => handleApprove(appointment._id)}
                                             >
                                                 Approve <br /> Request
