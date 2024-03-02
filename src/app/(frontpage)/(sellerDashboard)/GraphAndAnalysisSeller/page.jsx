@@ -15,13 +15,12 @@ import PrivateRoutes from '@/libs/PrivateRoute';
 const GraphAndAnalysisSeller = () => {
     return (
       <PrivateRoutes>
-        <div className="w-full min-h-screen mt-5 flex flex-col justify-center items-center ">
-        {/* <div className="w-full lg:w-11/12 min-h-screen rounded-lg flex justify-center items-center bg-gradient-to-r from-rose-200 via-base-100 to-rose-200 blur-[90px] absolute"> */}
-        {/* </div> */}
+        <div className="w-full min-h-screen mt-5 flex flex-col bg-base-200 justify-center items-center ">
+    
         <div className="w-full flex flex-col justify-center items-center rounded-xl bg-opacity-10 z-10 bg-base-200 pb-20">
-          <div className='w-full h-full flex flex-col bg-rose-100 bg-opacity-20 py-20 rounded-lg'>
+          <div className='w-full h-full flex flex-col py-20 rounded-lg'>
             <div className='flex flex-col lg:flex-row justify-around items-center '>
-              <div className='flex justify-around items-center mb-5 lg:mb-0' >
+              <div className='flex justify-around items-center mb-5 lg:mb-0 ' >
                 <SellerDetail />
               </div>
               <div className='flex flex-col lg:flex-row w-full lg:w-4/6  justify-center items-center gap-4'>

@@ -10,6 +10,7 @@ import MostPopular from "@/components/mostPopular/MostPopular";
 import BestHomeSection from "@/components/BsetHome/BestHomeSection";
 import ChatWindow from "@/components/ChatWindow/ChatWindow";
 import PremiumSeller from "@/components/Dashboard/Seller/PremiumSeller/PremiumSeller"
+import Banner2 from "@/components/Homepages/Banner2";
 
 
 export default function Home() {
@@ -23,7 +24,8 @@ export default function Home() {
             <Navbar />
             <div>
               <div className="md:ml-60 mx-4 md:mx-0 relative top-20 min-h-screen">
-                <Banner />
+                {/* <Banner /> */}
+                <Banner2 />
                 <BestHomeSection />
                 {/* <BestHomeSection/> */}
                 <MostPopular />
