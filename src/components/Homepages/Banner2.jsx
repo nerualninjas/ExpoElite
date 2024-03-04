@@ -11,7 +11,7 @@ import 'swiper/css';
 
 
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-// import Typewriter from 'typewriter-effect';
+import Typewriter from 'typewriter-effect';
 
 const Banner2 = () => {
     return (
@@ -36,7 +36,22 @@ const Banner2 = () => {
            
 
           <div className="w-11/12 lg:w-2/5  ml-10  md:pl-0 md:mr-8  ">
-          {/* <Typewriter
+     
+           {/* <h2 className="font-bold text-3xl text-gray-700"> 
+              <span className="text-rose-400 mt-2">Discover</span> a place 
+  you&apos;ll love <br />to live</h2>  */}
+  <Typewriter
+  
+  options={{ delay: 50, deleteSpeed: 20 }}
+  onInit={(typewriter) => {
+    typewriter
+    
+      .typeString('  <span class="font-bold text-3xl text-gray-700"> <span class="text-rose-400 mt-2">Discover</span> a place you&apos;ll love<br />to live</span>')
+     
+      .start();
+  }}
+/>
+      {/* <Typewriter className="font-bold text-3xl text-gray-700"
   onInit={(typewriter) => {
     typewriter.typeString('Find your perfect property  match')
       
@@ -45,9 +60,6 @@ const Banner2 = () => {
       .start();
   }}
 /> */}
-              <h2 className="font-bold text-3xl text-gray-700"> 
-              <span className="text-rose-400 mt-2">Discover</span> a place 
-  you&apos;ll love <br />to live</h2>
               <p className="text-md mt-1">
               A Journey Through a Diverse Spectrum of Real Estate, Ranging from Opulent Luxury Estates to Intimate Cozy Retreats – Your Personalized Dream Home Experience Awaits.
               </p>

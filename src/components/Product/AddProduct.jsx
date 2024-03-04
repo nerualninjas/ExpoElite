@@ -74,6 +74,7 @@ const AddProduct = () => {
         sellerImage: user?.photoURL,
         sellerName: user?.displayName,
         image: res.data.data.url,
+        AddedDate: new Date(),
         dislikeBy: [" "],
         publishStatus: "unpublish",
         commentLogs: [
@@ -84,6 +85,7 @@ const AddProduct = () => {
             commentTime: " ",
           },
         ],
+
       };
 
       axiosSecure.post("/addProperty", myData).then((res) => {
