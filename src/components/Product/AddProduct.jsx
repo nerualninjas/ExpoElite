@@ -66,16 +66,24 @@ const AddProduct = () => {
       });
 
       const myData = {
+        //product info 
         ...formData,
-        propertyMainId: propertyData?.length + 1,
         propertyType: selectedType === "Sell" ? "Sell" : "Rent",
-        likeBy: [],
+        
+       //sellar info
         email: user?.email,
         sellerImage: user?.photoURL,
         sellerName: user?.displayName,
+        
+        //image link 
         image: res.data.data.url,
         image2: e.target.photoURL2.value,
         image3: e.target.photoURL3.value,
+       
+        //init data 
+        AddedDate: new Date(),
+        propertyMainId: propertyData?.length + 1,
+        likeBy: [],
         dislikeBy: [" "],
         publishStatus: "unpublish",
         commentLogs: [
@@ -86,6 +94,7 @@ const AddProduct = () => {
             commentTime: " ",
           },
         ],
+
       };
 
       axiosSecure.post("/addProperty", myData).then((res) => {
