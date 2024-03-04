@@ -59,7 +59,7 @@ const BestHomeSection = () => {
   };
   return (
     <>
-      <div className="w-full py-12">
+      <div className="w-full py-6">
         <div className="container mx-auto">
 
           {/* <h3 className="text-center w-100 text-xl font-bold text-gray-900 p-4 ">
