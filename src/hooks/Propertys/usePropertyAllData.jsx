@@ -18,7 +18,8 @@ const usePropertyAllData = (page, limit) => {
     enabled: !loading,
     queryFn: async () => {
       const res = await axiosPublic.get(`/getAllProperty?page=${page}&limit=${limitInt}`);
-      // console.log(res?.data);
+      // const res = await axiosPublic.get(`/getAllProperty`);
+      console.log(res?.data);
       return res?.data;
 
     },
