@@ -62,11 +62,7 @@ const BestHomeSection = () => {
       <div className="w-full py-6">
         <div className="container mx-auto">
 
-          {/* <h3 className="text-center w-100 text-xl font-bold text-gray-900 p-4 ">
-
-            Find your Best Home
-          </h3>
-          <hr className="w-1/4 mx-auto border-rose-400 border-2" /> */}
+           
           <Title title="Find your Best Home" /> 
           <br />
 
@@ -147,7 +143,7 @@ const BestHomeSection = () => {
                         <div className="flex items-center gap-1">
                           <FontAwesomeIcon
                             icon={faBed}
-                            className="text-gray-500 mr-1"
+                            className="text-rose-600  mr-1"
                           />
                           <span className="font-bold">{property.bedrooms}</span>
                         </div>
@@ -158,7 +154,7 @@ const BestHomeSection = () => {
                         <div className="flex items-center gap-1">
                           <FontAwesomeIcon
                             icon={faBath}
-                            className="text-gray-500 mr-1"
+                            className="text-rose-600  mr-1"
                           />
                           <span className="font-bold">
                             {" "}
@@ -172,7 +168,7 @@ const BestHomeSection = () => {
                         <div className="flex items-center gap-1">
                           <FontAwesomeIcon
                             icon={faCouch}
-                            className="text-gray-500 mr-1"
+                            className="text-rose-600  mr-1"
                           />
                           <span className="font-bold">
                             {" "}
@@ -190,7 +186,7 @@ const BestHomeSection = () => {
                         <div className="flex items-center gap-1">
                           <FontAwesomeIcon
                             icon={faMapMarkerAlt}
-                            className="text-gray-500 mr-1"
+                            className="text-rose-600  mr-1"
                           />
                           {property.location}
                         </div>
@@ -200,7 +196,8 @@ const BestHomeSection = () => {
                           href="/products/[id]"
                           as={`/products/${property._id}`}
                         >
-                          <span className="   btn btn-1 btn-sm">View</span>
+                          
+                          <span className="           btn btn-1 btn-sm">View</span>
                         </Link>
                       </div>
                     </div>
