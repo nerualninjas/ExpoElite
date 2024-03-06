@@ -33,7 +33,7 @@ const BestHomeSectionV2 = () => {
   const { data: propertyData = [], isLoading, refetch, isPending } = useQuery({
     queryKey: ["allproperty"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`allProperty`)
+      const res = await axiosPublic.get(`/allProperty`)
       // console.log(res.data);
       return res.data;
     }
