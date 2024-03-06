@@ -49,7 +49,7 @@ const CheckoutForm = ({ propertyId, params }) => {
     email,
     sellerName,
     sellerImage,
-    location
+    location,
   } = propertySingleData || {};
 
   const stripe = useStripe();
@@ -125,8 +125,8 @@ const CheckoutForm = ({ propertyId, params }) => {
               price: totalPrice,
               purchaseDate: new Date(),
               image: image,
-              propertyType:propertyType,
-              location:location,
+              propertyType: propertyType,
+              location: location,
 
               //payment info
               transactionId: paymentIntent.id,
@@ -135,12 +135,8 @@ const CheckoutForm = ({ propertyId, params }) => {
 
 
 
-            // todo
-            //update product stutues
-
-
-
-
+ 
+           
 
             await axiosSecure
               .post("/addPayment", payment)
@@ -151,13 +147,17 @@ const CheckoutForm = ({ propertyId, params }) => {
                   text: `Transaction ID: ${transactionId}`,
                   icon: "success",
                 });
+                //update product statues
+
+
+
                 // ----------------------------rentCollection
-                // propertyId, buyerId, amout, duration
+                // propertyId, buyerId, amount, duration
 
                 const responsee = await axiosPublic.post(
                   `/storeRentData?propertyId=${propertyId}&buyerId=${user.email}&amout=${packegeData.amount}&duration=${packegeData.packege}`
                 );
-                
+
                 console.log(responsee.data);
               })
               .catch(() => {
