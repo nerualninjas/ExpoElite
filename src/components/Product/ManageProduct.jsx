@@ -7,20 +7,20 @@ import useAxiosPublic from "./../../hooks/useAxiosPublic";
 import useAxiosSecure from "./../../hooks/useAxiosSecure";
 import EditProduct from "./EditProdut";
 import Image from "next/image";
-import useSellerProperty from '@/hooks/Propertys/useSellerProperty';
+import useSellerProperty from "@/hooks/Propertys/useSellerProperty";
 import SetOffer from "./SetOffer";
 import Link from "next/link";
 import Title2 from "../shared/Title/Title2";
-
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const ManageProduct = () => {
   const axiosSecure = useAxiosSecure();
   const axiosPublic = useAxiosPublic();
   // const { propertyData, isPending, refetch } = usePropertyAllData();
-  const {sellerProperty,isPending, refetch}=useSellerProperty();
+  const { sellerProperty, isPending, refetch } = useSellerProperty();
 
   const [properties, setProperties] = useState(sellerProperty);
- 
 
   useEffect(() => {
     setProperties(sellerProperty);
@@ -61,7 +61,10 @@ const ManageProduct = () => {
         <Title2 title="Manage Properties" />
       </div>
 
-      <h4 className="text-xl text-rose-600">Total Property: <span className="font-bold text-black">{properties?.length}</span></h4>
+      <h4 className="text-xl text-rose-600">
+        Total Property:{" "}
+        <span className="font-bold text-black">{properties?.length}</span>
+      </h4>
 
       <div className=" w-full overflow-x-auto">
         <table className="table">
@@ -88,13 +91,13 @@ const ManageProduct = () => {
                   <div className="flex items-center gap-3">
                     <div className="avatar">
                       <div className="mask mask-squircle w-12 h-12">
-                       <Link href={`/products/${property?._id}`}> 
-                       <Image
-                          height={100}
-                          width={150}
-                          src={property?.image}
-                          alt="Image"
-                        />
+                        <Link href={`/products/${property?._id}`}>
+                          <Image
+                            height={100}
+                            width={150}
+                            src={property?.image}
+                            alt="Image"
+                          />
                         </Link>
                       </div>
                     </div>
@@ -103,7 +106,10 @@ const ManageProduct = () => {
                 <td>
                   <div className="flex items-center gap-3">
                     <div>
-                      <Link href={`/products/${property?._id}`}> {property?.propertyName} </Link>
+                      <Link href={`/products/${property?._id}`}>
+                        {" "}
+                        {property?.propertyName}{" "}
+                      </Link>
                       {/* <div className="font-bold">{property?.propertyName}</div> */}
                     </div>
                   </div>
@@ -128,14 +134,14 @@ const ManageProduct = () => {
                   )}
                 </td>
 
-                <td className="flex items-center gap-2">
+                <td className="flex items-center gap-2  p-0 m-0">
                   <EditProduct propertyData={property} />
                   <SetOffer propertyData={property} />
                   <button
-                    className="btn btn-sm btn-error"
+                    className="btn btn-sm text-white btn-error"
                     onClick={() => handleDeleteProduct(property)}
                   >
-                    Delete
+                    <FontAwesomeIcon icon={faTrash} />
                   </button>
                 </td>
               </tr>
