@@ -4,9 +4,9 @@ import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from 'recharts';
 
 const data = [
 
-  { name: 'Group D', value: 200 },
+  { name: 'Group D', value: 100 },
 ];
-const COLORS = ['#0088FE', '#00C49F'];
+const COLORS = ['#0088FE'];
 const TotalProperty = () => {
   return (
     <div className='bg-[#D4E0EC] rounded-lg'>
