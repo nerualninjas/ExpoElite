@@ -23,3 +23,23 @@ const notificationPost = async (data)=>{
 };
 
 export default useNotification;
+
+
+// notification uses 
+// import useNotification from "@/hooks/notifications/useNotificationCreate";
+// const { notificationPost } = useNotification()
+
+
+ // notifiacation add  start-------------------
+// const data = {
+// userEmail: email,
+// notificationData: [{
+//     notificationText: "user registration success",
+//     notifyUserPhoto: photo,
+//     notificationPath:"/profile",
+//     notificationStatus: "unread"
+// }]
+// }
+// notificationPost(data)
+
+  //notification end----------------
