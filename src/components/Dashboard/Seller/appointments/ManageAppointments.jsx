@@ -1,18 +1,21 @@
 "use client"
-import useAllAppointments from '@/hooks/appointments/useAllAppointments';
+
 import useSellerAllAppointments from '@/hooks/appointments/useSellerAllAppointments';
+import useNotification from '@/hooks/notifications/useNotificationCreate';
 import useAxiosSecure from '@/hooks/useAxiosSecure';
+import { useRouter } from "next/navigation";
 import Image from 'next/image';
 import React from 'react';
 import Swal from 'sweetalert2';
 
 const ManageAppointments = () => {
     const axiosSecure = useAxiosSecure();
+    const router = useRouter();
+    const { notificationPost } = useNotification()
     const { sellerAppointmentData, isPending, refetch } = useSellerAllAppointments();
    console.log(sellerAppointmentData);
 
-
-    const handleApprove = async (appointmentId) => {
+    const handleApprove = async (appointmentId, email, photo) => {
         try {
             console.log('Attempting to approve appointment with ID:', appointmentId);
            
@@ -27,21 +30,40 @@ const ManageAppointments = () => {
              Swal.fire({
           icon: 'success',
           title: 'Appointment Approved!',
-          text: 'Your appointment has been successfully Approved.',
+          text: ' appointment has been successfully Approved.',
         });
+        
       }
-           
-           
+                //    notification add  start
+        const data = {
+            userEmail: email,
+            notificationData: [{
+              notificationText: "Appointment Approved",
+              notificationPath:"/myAppointments",
+              notifyUserPhoto: photo,
+              notificationStatus: "unread"
+            }]
+          }
+          notificationPost(data)
+  
+          //notification end
+          
+          router.push("/");
+    
+        
         
           
 
         } catch (error) {
             console.error('Error approving Appointment status:', error);
         }
+       
 
+    
+    
     };
 
-    const handleReject = async (appointmentId) => {
+    const handleReject = async (appointmentId, email, photo) => {
         try {
             // Update the user's role status to 'approved' and role to 'seller'
          const res=   await axiosSecure.patch(`/updateStatus/${appointmentId}`,{
@@ -58,6 +80,22 @@ const ManageAppointments = () => {
        text: 'This appointment has been  Rejected.',
      });
    }
+         //    notification add  start
+         const data = {
+            userEmail: email,
+            notificationData: [{
+              notificationText: "Appointment Rejected",
+              notificationPath:"/myAppointments",
+              notifyUserPhoto: photo,
+              notificationStatus: "unread"
+            }]
+          }
+          notificationPost(data)
+  
+          //notification end
+          
+          router.push("/");
+    
              
             
 
@@ -116,14 +154,14 @@ const ManageAppointments = () => {
                                       <div>
                                          <button
                                                 className="btn font-semibold text-sm text-white bg-[#477a4f]"
-                                                onClick={() => handleApprove(appointment._id)}
+                                                onClick={() => handleApprove(appointment._id, appointment?.userEmail, appointment?.userPhoto)}
                                             >
                                                 Approve <br /> Request
                                             </button>
 
                                             <button
                                                 className="btn text-white bg-[#e96060]"
-                                                onClick={() => handleReject(appointment._id)}
+                                                onClick={() => handleReject(appointment._id, appointment?.userEmail, appointment?.userPhoto)}
                                             >
                                                 Reject <br /> Request
                                             </button>
