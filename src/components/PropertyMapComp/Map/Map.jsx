@@ -13,8 +13,8 @@ import MarkerClusterGroup from "react-leaflet-cluster"
 
 const Map = () => {
   // const { propertyData, isPending, refetch } = usePropertyAllData();
-  const [markerPosition, setPosition] = useState([0, 0]);
-console.log(markerPosition);
+  const [mapPosition, setMapPosition] = useState([23.774609, 90.4219455]);
+
   const markers = [
     {
       geocode:[23.774609,90.4219455],
@@ -70,13 +70,23 @@ console.log(markerPosition);
 
   const position = [23.774609, 90.4219455];
 
+
+  console.log("Current Map Position:", mapPosition); // Log current map position
+
+  const updateMapPosition = newPosition => {
+    console.log("Setting new Map Position:", newPosition); // Log new position received
+    setMapPosition(newPosition); // Update map position
+  };
   return (
     <div>
-      <PropertyCard setPosition={setPosition} />
+        <button className="btn" onClick={()=>setMapPosition([34.0383255,-118.2435527])}>Set Map Pos</button>
+      <PropertyCard setPosition={setMapPosition} />
 
       {/* Conditionally render the MapContainer only on the client-side */}
       {typeof window !== 'undefined' && (
-        <MapContainer center={markerPosition} zoom={12}>
+        <MapContainer center={mapPosition} zoom={12}
+        
+        >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
