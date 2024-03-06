@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
 import usePropertyData from "@/hooks/Propertys/usePropertyData";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
@@ -16,20 +16,25 @@ const CheckoutForm = ({ propertyId, params }) => {
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
 
-  console.log('from checkoUt page: ', params);
+  console.log("from checkoUt page: ", params);
 
   const [error, setError] = useState("");
   const [transactionId, setTransactionId] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const [loading, setLoading] = useState(true);
 
-  const { data: packegeData = [], isLoading: packegeDataLoading, refetch: packegerefetch, isPending: packegeIsPending } = useQuery({
+  const {
+    data: packegeData = [],
+    isLoading: packegeDataLoading,
+    refetch: packegerefetch,
+    isPending: packegeIsPending,
+  } = useQuery({
     queryKey: ["packege", user?.email],
     queryFn: async () => {
       const res = await axiosPublic.get(`/getPackege?userId=${user.email}`);
       return res.data;
-    }
-  })
+    },
+  });
 
   console.log("from checkOut page::::::::::::::::::::::::", packegeData);
 
@@ -44,6 +49,7 @@ const CheckoutForm = ({ propertyId, params }) => {
     email,
     sellerName,
     sellerImage,
+    location
   } = propertySingleData || {};
 
   const stripe = useStripe();
@@ -119,37 +125,49 @@ const CheckoutForm = ({ propertyId, params }) => {
               price: totalPrice,
               purchaseDate: new Date(),
               image: image,
-              
+              propertyType:propertyType,
+              location:location,
+
               //payment info
               transactionId: paymentIntent.id,
               status: "pending",
             };
 
+
+
+            // todo
+            //update product stutues
+
+
+
+
+
             await axiosSecure
-            .post("/addPayment", payment)
-            .then(async() => {
-              setLoading(false);
-              Swal.fire({
-                title: "Payment saved!",
-                text: `Transaction ID: ${transactionId}`,
-                icon: "success",
-              })
+              .post("/addPayment", payment)
+              .then(async () => {
+                setLoading(false);
+                Swal.fire({
+                  title: "Payment saved!",
+                  text: `Transaction ID: ${transactionId}`,
+                  icon: "success",
+                });
                 // ----------------------------rentCollection
+                // propertyId, buyerId, amout, duration
 
-              // propertyId, buyerId, amout, duration
-
-              const responsee = await axiosPublic.post(`/storeRentData?propertyId=${propertyId}&buyerId=${user.email}&amout=${packegeData.amount}&duration=${packegeData.packege}`)
-              console.log(responsee.data);
-            })
-            .catch(() => {
-              setLoading(false);
-              setError("Failed to save payment. Please try again.");
-
-            });
+                const responsee = await axiosPublic.post(
+                  `/storeRentData?propertyId=${propertyId}&buyerId=${user.email}&amout=${packegeData.amount}&duration=${packegeData.packege}`
+                );
+                
+                console.log(responsee.data);
+              })
+              .catch(() => {
+                setLoading(false);
+                setError("Failed to save payment. Please try again.");
+              });
+          }
         }
       }
-    }
-  }  catch (err) {
+    } catch (err) {
       console.error("Unexpected error:", err);
       setError("An unexpected error occurred. Please try again later.");
     } finally {
@@ -174,14 +192,14 @@ const CheckoutForm = ({ propertyId, params }) => {
           </div>
           <p className=" text-center py-3">{propertyName}</p>
           <p className="error-message">{error}</p>
-
         </div>
         <div className="payment-info">
           <div className="property-details">
             <p className=" property-type">Property Name:{propertyName}</p>
             <p className="property-type">Property Type: {propertyType}</p>
-            {propertyType==="Sell" && <p className="property-price">Property Price:${price}</p>}
-            
+            {propertyType === "Sell" && (
+              <p className="property-price">Property Price:${price}</p>
+            )}
           </div>
           <h2 className="text-gray-600 text-lg font-semibold">
             Total Payable Bill: ${packegeData?.amount}
@@ -196,7 +214,9 @@ const CheckoutForm = ({ propertyId, params }) => {
             <p className="user-name">Your Name: {user?.displayName}</p>
             <p className="user-email">Your Email: {user?.email}</p>
           </div>
-          <h2 className="total-bill">Total Payable Bill: ${packegeData?.amount}</h2>
+          <h2 className="total-bill">
+            Total Payable Bill: ${packegeData?.amount}
+          </h2>
           <CardElement
             className="input input-bordered input-warning pt-3 my-8"
             options={{

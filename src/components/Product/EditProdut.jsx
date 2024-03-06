@@ -28,7 +28,7 @@ const EditProduct = ({ propertyData }) => {
   };
 
   const onSubmit = async (data) => {
-    console.log(propertyData._id);
+     
     try {
       await axiosSecure.patch(`/updateProperty/${propertyData._id}`, data);
 
