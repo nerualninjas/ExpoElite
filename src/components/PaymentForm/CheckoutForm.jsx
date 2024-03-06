@@ -10,10 +10,12 @@ import Swal from "sweetalert2";
 import "./CheckoutForm.css"; // You can create a separate CSS file for styling
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "@/hooks/useAxiosPublic";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 
 const CheckoutForm = ({ propertyId, params }) => {
-  const navigate = useNavigate();
+
+  
+  const router = useRouter();
   const { user } = UserAuth();
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
@@ -166,8 +168,7 @@ const CheckoutForm = ({ propertyId, params }) => {
                 console.log(responsee.data);
 
               
-
-                navigate(location?.state ? location.state : '/paymentList');
+                router.push("/");
 
               })
               .catch(() => {
