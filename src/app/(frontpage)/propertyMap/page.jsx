@@ -2,6 +2,8 @@
 
 
 // import Map from "@/components/PropertyMapComp/Map/Map";
+import  dynamic  from 'next/dynamic';
+const Map = dynamic(()=> import("@/components/PropertyMapComp/Map/Map"), {ssr:false}); //disable server-side redering 
 
 const PropertyMapPage = () => {
     
@@ -14,9 +16,9 @@ const PropertyMapPage = () => {
    
         {/* Map view  */}
        
-        {/* { window !== 'undefined' && (
+       
  <Map  /> 
-        )} */}
+       
         
         </div>
     );
