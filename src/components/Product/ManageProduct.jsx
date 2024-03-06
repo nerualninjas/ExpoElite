@@ -134,7 +134,7 @@ const ManageProduct = () => {
                   )}
                 </td>
 
-                <td className="flex items-center gap-2  p-0 m-0">
+                <td className="flex items-center gap-2  p-0 ">
                   <EditProduct propertyData={property} />
                   <SetOffer propertyData={property} />
                   <button
