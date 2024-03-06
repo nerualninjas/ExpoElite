@@ -28,7 +28,7 @@ const ChatBox2 = ({ propertyId, propertyCreator }) => {
             console.log('from chatBot: ', user)
             console.log('from chatBot: ', propertyId)
             console.log('from chatBot: ', propertyCreator)
-            const res = await axiosPublic.post(`/sendMessage?senderEmail=${user.email}&reciverEmail=${propertyCreator}&propertyId=${propertyId}`, {
+            const res = await axiosPublic.post(`/sendMessage?senderEmail=${user.email}`, {
                 message: message
             });
             console.log(res.data);
