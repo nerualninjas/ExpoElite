@@ -1,5 +1,4 @@
 "use client"
-
 import useSellerAllAppointments from '@/hooks/appointments/useSellerAllAppointments';
 import useNotification from '@/hooks/notifications/useNotificationCreate';
 import useAxiosSecure from '@/hooks/useAxiosSecure';
@@ -7,6 +6,8 @@ import { useRouter } from "next/navigation";
 import Image from 'next/image';
 import React from 'react';
 import Swal from 'sweetalert2';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
 const ManageAppointments = () => {
     const axiosSecure = useAxiosSecure();
@@ -107,15 +108,15 @@ const ManageAppointments = () => {
 
     return (
         <div>
-            <div className="overflow-x-auto table-zebra">
+            <div className="overflow-x-auto table-zebra ">
                 <table className="table mx-5 w-full mt-5 mb-10 pb-6">
                     {/* head */}
                     <thead>
                         <tr className='text-lg text-rose-500' >
                             <th> </th>
-                            <th>Seller Info</th>
+                            <th>User Image</th>
                             <th> User Info</th>
-                            <th> User Image</th>
+                            <th> Property Info</th>
                             <th>Appointment Time</th>
                             <th>Action</th>
 
@@ -124,46 +125,51 @@ const ManageAppointments = () => {
                     <tbody>
                         {sellerAppointmentData?.map((appointment, index) => (
                             <tr className='table-pin-rows' key={appointment?._id}>
-                                <th>{index + 1}</th>
-                                
-                                <td><span className='font-semibold'>Name: </span>{appointment.sellerName}
-                                <br />
-                                <span className='font-semibold'>Email: </span>{appointment.sellerEmail}
-                                </td>
-                                <td><span className='font-semibold'>Name: </span>{appointment?.userName}
-                                <br />
-                                <span className='font-semibold'>Email: </span>{appointment?.userEmail}
-                                </td>
-                              
+                                <td>{index + 1}</td>
                                 <td>
-                                    <Image
-                                        width={60}
-                                        height={60}
+                                <Image
+                                        width={20}
+                                        height={20}
                                         src={appointment?.userPhoto}
                                         alt="image"
                                         className="rounded-full w-[70px] h-[70px]"
                                     />
                                 </td>
+                              
+                                    
+                                <td>
+                                
+                                    <span className='font-semibold'>Name: </span>{appointment?.userName}
+                                <br />
+                                <span className='font-semibold'>Email: </span>{appointment?.userEmail}
+                                </td>
+                              
+
+                                <td><span className='font-semibold'> </span>{appointment?.propertyName}
+                                <br />
+                                <span className='font-semibold'>Location: </span>{appointment?.propertyLocation}
+                                </td>
                                 <td>{appointment?.appointmentDate} 
                                 <br />
-                                {appointment?.appointmentStartTime}  - {appointment?.appointmentEndTime}</td>
+                                {appointment?.appointmentStartTime}  - {appointment?.appointmentEndTime}
+                                </td>
                                 
 
                                 <td>
                                     {appointment?.appointmentStatus === 'pending' ? (
                                       <div>
                                          <button
-                                                className="btn font-semibold text-sm text-white bg-[#477a4f]"
+                                                className="btn  font-semibold text-lg text-white bg-[#477a4f] mr-2 hover:rounded-none"
                                                 onClick={() => handleApprove(appointment._id, appointment?.userEmail, appointment?.userPhoto)}
                                             >
-                                                Approve <br /> Request
+                                               <div><FontAwesomeIcon icon={faCircleCheck} /></div> <div className='text-sm'>Approve </div>
                                             </button>
-
+                                          
                                             <button
-                                                className="btn text-white bg-[#e96060]"
+                                                className="btn text-white bg-[#e96060] hover:rounded-none"
                                                 onClick={() => handleReject(appointment._id, appointment?.userEmail, appointment?.userPhoto)}
                                             >
-                                                Reject <br /> Request
+                                                <div><FontAwesomeIcon icon={faCircleXmark} /></div> <div className='text-sm'> Reject</div>
                                             </button>
                                       </div>
                                         

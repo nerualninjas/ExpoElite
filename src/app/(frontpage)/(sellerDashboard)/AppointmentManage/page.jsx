@@ -4,7 +4,7 @@ import React from 'react';
 
 const AppointmentManage = () => {
     return (
-        <div className='pt-5'>
+        <div className='pt-5 bg-base-100'>
             <Title2  title="Manage Appointments"/>
             <ManageAppointments />
         </div>
