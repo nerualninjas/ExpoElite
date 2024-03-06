@@ -2,12 +2,11 @@ import { UserAuth } from "@/app/(auth)/context/AuthContext";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "./../useAxiosPublic";
 
-const usePropertyAllData = (page, limit) => {
+const useTotalProperty = () => {
 
   const { loading } = UserAuth();
   const axiosPublic = useAxiosPublic();
-  const limitInt = parseInt(limit);
-  console.log(page, limitInt);
+  
 
   const {
     data: propertyData,
@@ -17,15 +16,17 @@ const usePropertyAllData = (page, limit) => {
     queryKey: ["property"],
     enabled: !loading,
     queryFn: async () => {
-      const res = await axiosPublic.get(`/getAllProperty?page=${page}&limit=${limitInt}`);
+      const res = await axiosPublic.get('/getTotalProperty');
       // console.log(res?.data);
       return res?.data;
 
     },
   });
 
-  const  AllPropertyLength = propertyData?.length;
-  return { propertyData, AllPropertyLength, isPending, refetch };
+
+  const  totalPropertyLength = propertyData?.length;
+  console.log('totalPropertyLength',totalPropertyLength );
+  return { propertyData, totalPropertyLength, isPending, refetch };
 };
 
-export default usePropertyAllData;
+export default useTotalProperty;

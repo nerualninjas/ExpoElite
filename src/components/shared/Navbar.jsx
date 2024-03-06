@@ -226,7 +226,7 @@ const Navbar = () => {
           {greeting}! 
           <span className="text-rose-500 "> Welcome ExpoElite</span>
         </h2>
-        <div className="bg-base-300 hidden md:flex gap-2 p-2 rounded-xl">
+        {/* <div className="bg-base-300 hidden md:flex gap-2 p-2 rounded-xl">
           <button
             className={
               btnActive
@@ -245,7 +245,7 @@ const Navbar = () => {
           >
             Rent
           </button>
-        </div>
+        </div> */}
 
         <div className="flex items-center gap-2">
           <ThemeSwitcher />
@@ -326,11 +326,11 @@ const Navbar = () => {
                         Profile
                       </Link>
                     </li>
-                    <li>
+                    {/* <li>
                       <a className="p-2 bg-base-100 border-b-1 border-rose-500 hover:text-rose-500  w-full">
                         Settings
                       </a>
-                    </li>
+                    </li> */}
                     <li>
                       {user ? (
                         <button

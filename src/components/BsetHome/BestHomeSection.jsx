@@ -59,7 +59,7 @@ const BestHomeSection = () => {
   };
   return (
     <>
-      <div className="w-full py-6">
+      <div className="w-full py-4">
         <div className="container mx-auto">
 
           {/* <h3 className="text-center w-100 text-xl font-bold text-gray-900 p-4 ">
@@ -113,7 +113,7 @@ const BestHomeSection = () => {
 
             <div className="mx-auto mt-2 grid 2xl:grid-cols-4 xl:grid-cols-3  md:grid-cols-2 grid-cols-1 gap-2">
                {properties?.slice(0, 6).map((property, index) => (
-                <div key={index} className="card bg-base-200 m-2 ">
+                <div key={index} className="card bg-base-100 shadow-md m-2 ">
                   <div>
                     <Image
                       width={400}

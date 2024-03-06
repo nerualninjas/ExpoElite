@@ -47,7 +47,7 @@ const BestHomeSectionV2 = () => {
 
   return (
     <>
-      <div className="w-full py-6">
+      <div className="w-full py-4">
         <div className="container mx-auto">
           <h3 className="text-center w-100 text-xl font-bold text-gray-900 p-4 ">
             Find your Best Home
@@ -129,7 +129,7 @@ const BestHomeSectionV2 = () => {
           ) : (
             <div className="mx-auto mt-2 grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2">
               {properties?.map((property, index) => (
-                <div key={index} className="card bg-base-100 m-2 ">
+                <div key={index} className="card bg-base-100 m-2  shadow-md">
                   <div>
                     <Image
                       width={400}
