@@ -152,13 +152,7 @@ const CheckoutForm = ({ propertyId, params }) => {
 
               
               
-              const responsee = await axiosPublic.post(`/storeRentData?propertyId=${propertyId}&buyerId=${user.email}&amout=${packegeData.amount}&duration=${packegeData.packege}`, payment)
-              console.log(responsee.data);
-            })
-            .catch(() => {
-              setLoading(false);
-              setError("Failed to save payment. Please try again.");
-
+           
 
                 // ----------------------------rentCollection
                 // propertyId, buyerId, amount, duration
