@@ -47,7 +47,7 @@ const BestHomeSectionV2 = () => {
 
   return (
     <>
-      <div className="w-full py-4">
+      <div className="w-full py-6">
         <div className="container mx-auto">
           <h3 className="text-center w-100 text-xl font-bold text-gray-900 p-4 ">
             Find your Best Home
@@ -129,103 +129,100 @@ const BestHomeSectionV2 = () => {
           ) : (
             <div className="mx-auto mt-2 grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2">
               {properties?.map((property, index) => (
-                <div key={index} className="card bg-base-100 m-2  shadow-md">
-                  <div>
-                    <Image
-                      width={400}
-                      height={200}
-                      src={property.image}
-                      alt={property.propertyName}
-                      className="object-cover rounded-t-md w-full mb-4 h-30 sm:h-60 dark:bg-gray-500"
-                    />
+               <div key={index} className="card bg-base-200 shadow-lg m-2 relative overflow-hidden transition-transform transform hover:scale-105">
+               <div>
+                 <Image
+                   width={400}
+                   height={200}
+                   src={property.image}
+                   alt={property.propertyName}
+                   className="object-cover rounded-t-md w-full mb-4 h-30 sm:h-60 dark:bg-gray-500"
+                 />
 
-                    <h1 className="top-2 right-0 px-3 py-2 bg-slate-100 absolute">{property?.propertyType}</h1>
-                  </div>
+                 <h1 className="top-2 right-0 px-3 py-2 bg-slate-100 absolute">
+                   {property?.propertyType}
+                 </h1>
+               </div>
 
-                  <div className=" px-3   ">
-                    <h2 className="flex justify-between card-title font-bold text-2xl text-[#2C2946] text-left py-2">
-                      {property?.propertyType === "Sell" ? (
-                        <>
-                          ${property?.price}
-                        </>
-                      ) : (
-                        <>
-                          ${property?.month12}
-                        </>
-                      )}
-                      <div className="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
-                        {property?.propertyCategory}
-                      </div>
-                    </h2>
+               <div className=" px-3   ">
 
 
-                    <div className="flex text-xs  w-full    content-stretch justify-between pb-2">
-                      <div>
-                        <div className="flex items-center gap-1">
-                          <FontAwesomeIcon
-                            icon={faBed}
-                            className="text-gray-500 mr-1"
-                          />
-                          <span className="font-bold">
-                            {" "}
-                            {property.bedrooms}{" "}
-                          </span>
-                        </div>
-                        <br />
-                        Bedrooms
-                      </div>
-                      <div>
-                        <div className="flex items-center gap-1">
-                          <FontAwesomeIcon
-                            icon={faBath}
-                            className="text-gray-500 mr-1"
-                          />
-                          <span className="font-bold">
-                            {" "}
-                            {property.bathrooms}{" "}
-                          </span>
-                        </div>
-                        <br />
-                        Bathrooms
-                      </div>
-                      <div>
-                        <div className="flex items-center gap-1">
-                          <FontAwesomeIcon
-                            icon={faCouch}
-                            className="text-gray-500 mr-1"
-                          />
-                          <span className="font-bold">
-                            {" "}
-                            {property.livingRoom}{" "}
-                          </span>
-                        </div>
-                        <br />
-                        LivingRoom
-                      </div>
-                    </div>
+                 <h2 className="flex justify-between card-title font-bold text-2xl text-left py-2">
+                   {property?.propertyType === "Sell" ? (
+                     <>${property?.price}</>
+                   ) : (
+                     <>${property?.month12}</>
+                   )}
+                   <div className="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
+                     {property?.propertyCategory}
+                   </div>
+                 </h2>
 
-                    <hr className="py-2" />
-                    <div className="card-actions py-2 flex justify-between w-full">
-                      <div className="text-xs w-2/4">
-                        <div className="flex items-center gap-1">
-                          <FontAwesomeIcon
-                            icon={faMapMarkerAlt}
-                            className="text-gray-500 mr-1"
-                          />
-                          {property.location}
-                        </div>
-                      </div>
-                      <div className="w-1/4 flex justify-end ">
-                        <Link
-                          href="/products/[id]"
-                          as={`/products/${property._id}`}
-                        >
-                          <span className="   btn btn-1 btn-sm">View</span>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                 <div className="flex text-xs  w-full    content-stretch justify-between pb-2">
+                   <div>
+                     <div className="flex items-center gap-1">
+                       <FontAwesomeIcon
+                         icon={faBed}
+                         className="text-rose-600  mr-1"
+                       />
+                       <span className="font-bold">{property.bedrooms}</span>
+                     </div>
+                     <br />
+                     Bedrooms
+                   </div>
+                   <div>
+                     <div className="flex items-center gap-1">
+                       <FontAwesomeIcon
+                         icon={faBath}
+                         className="text-rose-600  mr-1"
+                       />
+                       <span className="font-bold">
+                         {" "}
+                         {property.bathrooms}{" "}
+                       </span>
+                     </div>
+                     <br />
+                     Bathrooms
+                   </div>
+                   <div>
+                     <div className="flex items-center gap-1">
+                       <FontAwesomeIcon
+                         icon={faCouch}
+                         className="text-rose-600  mr-1"
+                       />
+                       <span className="font-bold">
+                         {" "}
+                         {property.livingRoom}{" "}
+                       </span>
+                     </div>
+                     <br />
+                     LivingRoom
+                   </div>
+                 </div>
+
+                 <hr className="py-2" />
+                 <div className="card-actions py-2 flex justify-between w-full">
+                   <div className="text-xs w-2/4">
+                     <div className="flex items-center gap-1">
+                       <FontAwesomeIcon
+                         icon={faMapMarkerAlt}
+                         className="text-rose-600  mr-1"
+                       />
+                       {property.location}
+                     </div>
+                   </div>
+                   <div className="w-1/4 flex justify-end ">
+                     <Link
+                       href="/products/[id]"
+                       as={`/products/${property._id}`}
+                     >
+                       
+                       <span className="           btn btn-1 btn-sm">View</span>
+                     </Link>
+                   </div>
+                 </div>
+               </div>
+             </div>
               ))}
             </div>
           )}
