@@ -3,7 +3,7 @@ import PropertyVsSold from '@/components/Dashboard/Admin/PropertyVsSold';
 import TotalProperty from '@/components/Dashboard/Seller/graphAnalysisSeller/MySoldProperty';
 import TotalProperty2 from '@/components/Dashboard/Admin/TotalProperty2';
 import TotalSeller from '@/components/Dashboard/Admin/TotalSeller';
-import MySoldVsUnsold from '@/components/Dashboard/Seller/graphAnalysisSeller/MySoldVsUnsold';
+import MySoldVsUnsold from '@/components/Dashboard/Seller/graphAnalysisSeller/MySoldVsDate';
 import TotalPropertyVsMyProperty from '@/components/Dashboard/Seller/graphAnalysisSeller/TotalPropertyVsMyProperty';
 import React from 'react';
 import MySoldProperty from '@/components/Dashboard/Seller/graphAnalysisSeller/MySoldProperty';
@@ -12,6 +12,7 @@ import SellerDetail from '@/components/Dashboard/Seller/graphAnalysisSeller/Sell
 import GotPayment from '@/components/Dashboard/Seller/graphAnalysisSeller/GotPayment';
 import PrivateRoutes from '@/libs/PrivateRoute';
 import Title2 from '@/components/shared/Title/Title2';
+import MySoldVsDate from '@/components/Dashboard/Seller/graphAnalysisSeller/MySoldVsDate';
 
 const GraphAndAnalysisSeller = () => {
     return (
@@ -28,7 +29,7 @@ const GraphAndAnalysisSeller = () => {
                
             </div>
             <div className='flex flex-col md:flex-row justify-center items-center gap-5'>
-                <MySoldVsUnsold className='w-full md:w-1/2 ' />
+                <MySoldVsDate className='w-full md:w-1/2 ' />
                 <TotalPropertyVsMyProperty className='w-full md:w-1/2' />
             </div>
         </div>
