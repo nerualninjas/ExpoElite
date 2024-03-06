@@ -21,8 +21,9 @@ const useGetSellerSoldProperty = () => {
             return res?.data;
         },
     });
+    const sellerSoldPropertylength =sellerSoldPropertyData?.length;
 
-    return { sellerSoldPropertyData, isPending, refetch };
+    return { sellerSoldPropertyData, sellerSoldPropertylength, isPending, refetch };
 
 };
 

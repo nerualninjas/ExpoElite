@@ -41,7 +41,7 @@ const OurStatistics = () => {
     {
       id: 3,
       count: totaluser,
-      title: 'Buyers',
+      title: 'Users',
       icon: <FontAwesomeIcon icon={faUsers} />,
     }
   ]

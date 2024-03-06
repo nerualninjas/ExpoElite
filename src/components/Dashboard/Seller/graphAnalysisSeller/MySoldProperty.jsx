@@ -4,11 +4,12 @@ import React from 'react';
 import {faBuildingCircleCheck} from "@fortawesome/free-solid-svg-icons";
 import { UserAuth } from '@/app/(auth)/context/AuthContext';
 import useSellerSoldProperty from '@/hooks/Propertys/useSellerSoldProperty';
+import useGetSellerSoldProperty from '@/hooks/Seller/useGetSellerSoldProperty';
 
 const MySoldProperty = () => {
     const {user, loading} =UserAuth();
-    const {sellerSoldProperty, sellerSoldPropertyLength} =useSellerSoldProperty();
-    console.log(sellerSoldPropertyLength);
+    const { sellerSoldPropertylength} =useGetSellerSoldProperty();
+    console.log(sellerSoldPropertylength);
     return (
         
           <div className="card shadow-md bg-base-100 px-4 py-10 justify-around items-center flex flex-col lg:flex-row">
@@ -17,7 +18,7 @@ const MySoldProperty = () => {
 
           <div className='ml-2'>
               <h2 className='text-xl font-semibold'>My Sold Propety</h2>
-              <p className='text-lg font-semibold text-red-400 '>{sellerSoldPropertyLength}+</p>
+              <p className='text-lg font-semibold text-red-400 '>{sellerSoldPropertylength}+</p>
           </div>
       </div>
 

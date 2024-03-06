@@ -1,44 +1,17 @@
 "use client"
 import useSellerProperty from '@/hooks/Propertys/useSellerProperty';
+import useSoldPropertyByMonth from '@/hooks/Seller/useSoldPropertyByMonth';
 import { Tooltip } from '@nextui-org/react';
 import React from 'react';
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, XAxis, YAxis } from 'recharts';
 
-const MySoldVsUnsold = () => {
-  const {sellerPropertyLength}=useSellerProperty();
-    const data = [
-        {
-          name: 'Page A',
-          uv: 4000,
-          // pv: 2400,
-        
-        },
-        {
-          name: 'Page B',
-          uv: 3000,
-         
-          
-        },
-        {
-          name: 'Page C',
-          uv: 2000,
-         
-          
-        },
-        {
-          name: 'Page D',
-          uv: 2780,
-          
-       
-        },
-        {
-          name: 'Page E',
-          uv: 1890,
-         
-        },
-        
-      ];
-      
+const MySoldVsDate = () => {
+  const {soldProperty}=useSoldPropertyByMonth();
+    
+  const data = soldProperty?.map(item => ({
+    name: item?.monthYear,
+    uv: item?.count,
+  }));
     return (
         <div className='card p-3 bg-base-100 shadow-md'>
           
@@ -69,4 +42,4 @@ const MySoldVsUnsold = () => {
     );
 };
 
-export default MySoldVsUnsold;
+export default MySoldVsDate;
