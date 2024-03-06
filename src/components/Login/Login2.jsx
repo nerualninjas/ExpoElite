@@ -3,7 +3,7 @@ import Lottie from "lottie-react";
 import LoginAni from "./Login.json";
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
 import Link from "next/link";
-import { FaGoogle, FaTwitter, FaFacebook } from "react-icons/fa6";
+import { FaGoogle } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -11,9 +11,9 @@ import { useEffect, useState } from "react";
 const Login2 = () => {
   const router = useRouter();
   const { signIn, googleSignIn } = UserAuth();
-  const [demologin,setLogin]=useState()
+  const [demologin, setLogin] = useState()
 
-  
+
   const handleLogin = (e) => {
     e.preventDefault();
     console.log(e.currentTarget);
@@ -108,18 +108,18 @@ const Login2 = () => {
             >
               <FaGoogle className="text-2xl"></FaGoogle>
             </button>
-            <button
+            {/* <button
               aria-label="Log in with Twitter"
               className="p-3 rounded-sm text-rose-500"
             >
               <FaTwitter className="text-2xl"></FaTwitter>
-            </button>
-            <button
+            </button> */}
+            {/* <button
               aria-label="Log in with Facebook"
               className="p-3 rounded-sm text-rose-500"
             >
               <FaFacebook className="text-2xl"></FaFacebook>
-            </button>
+            </button> */}
           </div>
           <p className="text-xs text-center sm:px-6 text-rose-700">
             Don&apos;t have an account?
@@ -134,9 +134,9 @@ const Login2 = () => {
 
           <div className="mx-auto text-center pt-10">
             <h3 className="py-2 text-rose-400 text-xl font-bold"> Login as </h3>
-            <button onClick={()=>setLogin({user:"admin@expoelite.com",pass: "123456@Aa"})} className="btn bg-rose-400 text-white btn-sm">Admin</button>
-            <button onClick={()=>setLogin({user:"seller@expoelite.com",pass: "123456@Aa"})} className="btn mx-5 bg-rose-400 text-white btn-sm">Seller</button>
-            <button onClick={()=>setLogin({user:"user@expoelite.com",pass: "123456@Aa"})} className="btn bg-rose-400 text-white btn-sm">User</button>
+            <button onClick={() => setLogin({ user: "admin@expoelite.com", pass: "123456@Aa" })} className="btn bg-rose-400 text-white btn-sm">Admin</button>
+            <button onClick={() => setLogin({ user: "seller@expoelite.com", pass: "123456@Aa" })} className="btn mx-5 bg-rose-400 text-white btn-sm">Seller</button>
+            <button onClick={() => setLogin({ user: "user@expoelite.com", pass: "123456@Aa" })} className="btn bg-rose-400 text-white btn-sm">User</button>
           </div>
         </div>
       </div>
