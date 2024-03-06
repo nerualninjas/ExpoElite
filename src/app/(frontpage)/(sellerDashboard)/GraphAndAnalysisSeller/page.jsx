@@ -21,7 +21,7 @@ const GraphAndAnalysisSeller = () => {
 
       <div className='w-full mx-auto min-h-screen p-5'>
             <Title2 title='Seller Dashboard' />
-            <div className='w-11/12 mx-auto flex flex-col md:flex-row justify-center items-center gap-3 mb-10'>
+            <div className='w-11/12 mx-auto flex flex-col lg:flex-row justify-center items-center gap-3 mb-10'>
                 <SellerDetail  className='w-full md:w-1/2 ' />
                 <MyListedProperty className='w-full md:w-1/2' /> 
                 <MySoldProperty className='w-full md:w-1/2' />
