@@ -4,7 +4,8 @@ import useAxiosSecure from "../useAxiosSecure";
 
 
 const useGetSellerSoldProperty = () => {
-    const { loading } = UserAuth();
+
+    const { loading, user } = UserAuth();
     const axiosSecure = useAxiosSecure();
 
     const {
@@ -15,7 +16,7 @@ const useGetSellerSoldProperty = () => {
         queryKey: ["sellerSoldPropertyData"],
         enabled: !loading,
         queryFn: async () => {
-            const res = await axiosSecure.get("/getSelllerSoldProperty");
+            const res = await axiosSecure.get(`/getSelllerSoldProperty/${user?.email}`);
             // console.log(res?.data);
             return res?.data;
         },
