@@ -4,7 +4,7 @@ import Link from "next/link";
 const Banner = () => {
   return (
     <div>
-      <div className="w-full  my-10  rounded-lg bg-gradient-to-r from-pink-200 to-pink-100  mx-auto">
+      <div className="w-full  my-10 rounded-lg bg-gradient-to-r from-pink-200 to-pink-100  mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between">
           <div className="ml-10 md:pl-0 md:mr-8 order-2 md:order-1 ">
             <h2 className="font-bold text-md  md:text-3xl"> 

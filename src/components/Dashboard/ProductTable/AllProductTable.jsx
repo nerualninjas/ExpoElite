@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import usePropertyAllData from '@/hooks/Propertys/usePropertyAllData';
@@ -33,11 +33,7 @@ const AllProductTable = () => {
     }, [properties, refetch, pageLimit, currentPage])
 
 
-    // // pagination
-    // const [data, setData] = useState([]);
-    // const [limit, setLimit] = useState(5);
-    // const [pageCount, setPageCount] = useState(1);
-    // const currentPage = useRef();
+
 
     useEffect(() => {
         console.log(properties); // Log properties to the console

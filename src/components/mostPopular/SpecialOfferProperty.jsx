@@ -29,7 +29,7 @@ const SpecialOfferProperty = () => {
         <div>
  
 
-            <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2  xl:grid-cols-3 2xl:grid-cols-4 gap-2">
+            <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 bg-base-100 xl:grid-cols-3 2xl:grid-cols-4 gap-2">
             {properties?.map((property, index) => (
            
 

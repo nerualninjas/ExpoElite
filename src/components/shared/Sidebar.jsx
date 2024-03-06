@@ -42,7 +42,7 @@ const Sidebar = () => {
   const [isMenu, setIsMenu] = useState(false);
   const { isAdmin, isPending, refetch } = useAdmin();
   const { isSeller } = useSeller();
-  console.log("is Seller ",isSeller)
+  console.log("is Seller ", isSeller)
   // console.log(isAdmin)
 
   const handleNavMenu = () => {
@@ -61,6 +61,7 @@ const Sidebar = () => {
     { pageName: "Manage Users", path: "/allUsers", icon: faPeopleGroup },
     { pageName: "All Property", path: "/allProducts", icon: faLandmark },
     { pageName: "Sell Report", path: "/allPropertySellReport", icon: faDollarSign },
+    { pageName: "All Appointments", path: "/allAppointments", icon: faCalendarCheck },
     // { pageName: "All Sellers", path: "/allSellers", icon: faUsers },
   ];
   const userDashboard = [
@@ -69,10 +70,13 @@ const Sidebar = () => {
     { pageName: "My Appointments", path: "/myAppointments", icon: faCalendarCheck },
 
   ]
-  const sellerDashboard = [ 
-    { pageName: "My Dashboard", path: "/GraphAndAnalysisSeller", icon:faChartLine }, 
-    { pageName: "Manage Property", path: "/products", icon:faCity },
-    { pageName: "Manage Appointment", path: "/AppointmentManage", icon:faCalendarCheck }, 
+  const sellerDashboard = [
+    { pageName: "My Dashboard", path: "/GraphAndAnalysisSeller", icon: faChartLine },
+    { pageName: "Manage Property", path: "/products", icon: faCity },
+    { pageName: "Appointments", path: "/AppointmentManage", icon: faCalendarCheck },
+    { pageName: "Sold Property", path: "/allSoldProperty", icon: faDollarSign },
+    
+    
 
   ];
   return (
@@ -134,7 +138,7 @@ const Sidebar = () => {
                 </li>
               ))}
               {/* if user login seller and admin  */}
-              {user && isAdmin  && (
+              {user && isAdmin && (
                 adminDashboard.map((adminDash) => (
                   <li key={adminDash.pageName}>
                     <Link
@@ -150,7 +154,7 @@ const Sidebar = () => {
                   </li>
                 ))
               )}
-              {user && isSeller  && (
+              {user && isSeller && (
                 sellerDashboard.map((sellerDash) => (
                   <li key={sellerDash.pageName}>
                     <Link
