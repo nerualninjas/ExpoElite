@@ -59,7 +59,7 @@ const BestHomeSection = () => {
   };
   return (
     <>
-      <div className="w-full py-4">
+      <div className="w-full py-6">
         <div className="container mx-auto">
 
            
@@ -197,7 +197,7 @@ const BestHomeSection = () => {
                           as={`/products/${property._id}`}
                         >
                           
-                          <span className="           btn btn-1 btn-sm">View</span>
+                          <span className=" btn btn-1 btn-sm">View</span>
                         </Link>
                       </div>
                     </div>
