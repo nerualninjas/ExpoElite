@@ -61,6 +61,7 @@ const Sidebar = () => {
     { pageName: "Manage Users", path: "/allUsers", icon: faPeopleGroup },
     { pageName: "All Property", path: "/allProducts", icon: faLandmark },
     { pageName: "Sell Report", path: "/allPropertySellReport", icon: faDollarSign },
+    { pageName: "All Appointments", path: "/allAppointments", icon: faCalendarCheck },
     // { pageName: "All Sellers", path: "/allSellers", icon: faUsers },
   ];
   const userDashboard = [
@@ -72,8 +73,10 @@ const Sidebar = () => {
   const sellerDashboard = [
     { pageName: "My Dashboard", path: "/GraphAndAnalysisSeller", icon: faChartLine },
     { pageName: "Manage Property", path: "/products", icon: faCity },
-    { pageName: "Manage Appointment", path: "/AppointmentManage", icon: faCalendarCheck },
+    { pageName: "Appointments", path: "/AppointmentManage", icon: faCalendarCheck },
     { pageName: "Sold Property", path: "/allSoldProperty", icon: faDollarSign },
+    
+    
 
   ];
   return (

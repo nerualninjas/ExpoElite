@@ -4,8 +4,8 @@ import React from 'react';
 
 const AppointmentManage = () => {
     return (
-        <div>
-            <Title2 title="Manage Appointments"/>
+        <div className='pt-5'>
+            <Title2  title="Manage Appointments"/>
             <ManageAppointments />
         </div>
     );
