@@ -68,8 +68,6 @@ const Navbar = () => {
     
     { pageName: "About Us", path: "/about", icon: faCircleInfo },
     { pageName: "Contact Us", path: "/contact", icon: faAddressBook },
-    
-
   ];
 
 

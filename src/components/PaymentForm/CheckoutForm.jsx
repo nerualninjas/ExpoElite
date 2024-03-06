@@ -138,7 +138,7 @@ const CheckoutForm = ({ propertyId, params }) => {
 
               // propertyId, buyerId, amout, duration
 
-              const responsee = await axiosPublic.post(`/storeRentData?propertyId=${propertyId}&buyerId=${user.email}&amout=${packegeData.amount}&duration=${packegeData.packege}`)
+              const responsee = await axiosPublic.post(`/storeRentData?propertyId=${propertyId}&buyerId=${user.email}&amout=${packegeData.amount}&duration=${packegeData.packege}`, payment)
               console.log(responsee.data);
             })
             .catch(() => {
