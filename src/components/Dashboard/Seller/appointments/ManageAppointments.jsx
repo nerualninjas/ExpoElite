@@ -69,17 +69,15 @@ const ManageAppointments = () => {
 
     return (
         <div>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto table-zebra">
                 <table className="table mx-5 w-full mt-5 mb-10 pb-6">
                     {/* head */}
                     <thead>
-                        <tr className='text-center'>
-                            <th>#</th>
-                            <th>Seller Email</th>
-                            <th> User Name</th>
-                            <th> User Email</th>
+                        <tr className='text-lg text-rose-500' >
+                            <th> </th>
+                            <th>Seller Info</th>
+                            <th> User Info</th>
                             <th> User Image</th>
-                           
                             <th>Appointment Time</th>
                             <th>Action</th>
 
@@ -89,13 +87,20 @@ const ManageAppointments = () => {
                         {sellerAppointmentData?.map((appointment, index) => (
                             <tr className='table-pin-rows' key={appointment?._id}>
                                 <th>{index + 1}</th>
-                                <th>{appointment.sellerEmail}</th>
-                                <td>{appointment?.userName}</td>
-                                <td>{appointment?.userEmail}</td>
+                                
+                                <td><span className='font-semibold'>Name: </span>{appointment.sellerName}
+                                <br />
+                                <span className='font-semibold'>Email: </span>{appointment.sellerEmail}
+                                </td>
+                                <td><span className='font-semibold'>Name: </span>{appointment?.userName}
+                                <br />
+                                <span className='font-semibold'>Email: </span>{appointment?.userEmail}
+                                </td>
+                              
                                 <td>
                                     <Image
-                                        width={100}
-                                        height={100}
+                                        width={60}
+                                        height={60}
                                         src={appointment?.userPhoto}
                                         alt="image"
                                         className="rounded-full w-[70px] h-[70px]"
@@ -110,7 +115,7 @@ const ManageAppointments = () => {
                                     {appointment?.appointmentStatus === 'pending' ? (
                                       <div>
                                          <button
-                                                className="btn text-sm text-white bg-[#477a4f]"
+                                                className="btn font-semibold text-sm text-white bg-[#477a4f]"
                                                 onClick={() => handleApprove(appointment._id)}
                                             >
                                                 Approve <br /> Request

@@ -116,7 +116,7 @@ const CheckoutForm = ({ propertyId, params }) => {
               sellerImage: sellerImage,
               sellerName: sellerName,
               // buyer info
-              buyerEmail: user.email,
+              email: user.email,
               buyerPhotoURL: user.photoURL,
               buyerName: user?.displayName,
               //product info
@@ -147,8 +147,17 @@ const CheckoutForm = ({ propertyId, params }) => {
                   text: `Transaction ID: ${transactionId}`,
                   icon: "success",
                 });
+              
                 //update product statues
 
+              
+              
+              const responsee = await axiosPublic.post(`/storeRentData?propertyId=${propertyId}&buyerId=${user.email}&amout=${packegeData.amount}&duration=${packegeData.packege}`, payment)
+              console.log(responsee.data);
+            })
+            .catch(() => {
+              setLoading(false);
+              setError("Failed to save payment. Please try again.");
 
 
                 // ----------------------------rentCollection

@@ -1,18 +1,28 @@
 'use client'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUsers, faHouse, faUserGear } from '@fortawesome/free-solid-svg-icons';
-import dynamic from 'next/dynamic';
+
 import React, { useState } from 'react';
 import CountUp from 'react-countup';
 import ScrollTrigger from 'react-scroll-trigger';
 import Image from 'next/image';
-import useAllUserData from '@/hooks/users/useAllUserData';
+
 import usePropertyAllData from '@/hooks/Propertys/usePropertyAllData';
+import useAllSellerData from '@/hooks/users/useAllSellerData';
+import useAllUserData from '@/hooks/users/useAllUserData';
 
 
 const OurStatistics = () => {
-  const { propertyData, isPending, refetch } = usePropertyAllData();
+  const { propertyData} = usePropertyAllData();
   const totalProperty = propertyData ? propertyData.length : 0;
+
+  const { AllSellerData} = useAllSellerData();
+  const totalSeller = AllSellerData ? AllSellerData.length : 0;
+
+  const {AllUserData}= useAllUserData();
+  const totaluser = AllUserData ? AllUserData.length : 0;
+
+  
   console.log("Total Property:", totalProperty)
   const [counter, setCounter] = useState(false)
   const countData = [
@@ -24,13 +34,13 @@ const OurStatistics = () => {
     },
     {
       id: 2,
-      count: 399,
+      count: totalSeller,
       title: ' Sellers',
       icon: <FontAwesomeIcon icon={faUserGear} />,
     },
     {
       id: 3,
-      count: 600,
+      count: totaluser,
       title: 'Buyers',
       icon: <FontAwesomeIcon icon={faUsers} />,
     }
