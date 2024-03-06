@@ -110,7 +110,7 @@ const CheckoutForm = ({ propertyId, params }) => {
               sellerImage: sellerImage,
               sellerName: sellerName,
               // buyer info
-              buyerEmail: user.email,
+              email: user.email,
               buyerPhotoURL: user.photoURL,
               buyerName: user?.displayName,
               //product info
