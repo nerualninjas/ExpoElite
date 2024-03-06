@@ -24,6 +24,28 @@ const MeetOurTeam = () => {
                     <div className="text-center space-y-1">
                         <Image
                             className="mx-auto rounded-full object-cover h-32 w-32"
+                            src="https://i.ibb.co/WpqdFH7/istockphoto-1419898772-170667a.webp"
+                            alt="My Image"
+                            width={300}
+                            height={300}
+                        />
+                        <h2 className="text-xl font-semibold">John Smith</h2>
+                        <p className="font-medium">Founder & CEO</p>
+                    </div>
+                    <div className="text-center space-y-1">
+                        <Image
+                            className="mx-auto rounded-full object-cover h-32 w-32"
+                            src="https://i.ibb.co/WpqdFH7/istockphoto-1419898772-170667a.webp"
+                            alt="My Image"
+                            width={300}
+                            height={300}
+                        />
+                        <h2 className="text-xl font-semibold">John Smith</h2>
+                        <p className="font-medium">Founder & CEO</p>
+                    </div>
+                    <div className="text-center space-y-1">
+                        <Image
+                            className="mx-auto rounded-full object-cover h-32 w-32"
                             src="https://i.ibb.co/0Gzpbr1/istockphoto-1342247162-170667a.jpg"
                             alt="My Image"
                             width={300}

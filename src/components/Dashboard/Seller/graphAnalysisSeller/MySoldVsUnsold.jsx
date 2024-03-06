@@ -38,7 +38,7 @@ const MySoldVsUnsold = () => {
       ];
       
     return (
-        <div>
+        <div className='card p-3 bg-base-100 shadow-md'>
               {/* <ResponsiveContainer width="100%" height="100%"> */}
         {/* <AreaChart
           width={500}

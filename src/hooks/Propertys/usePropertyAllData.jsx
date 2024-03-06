@@ -25,7 +25,8 @@ const usePropertyAllData = (page, limit) => {
     },
   });
 
-  return { propertyData, isPending, refetch };
+  const  AllPropertyLength = propertyData?.length;
+  return { propertyData, AllPropertyLength, isPending, refetch };
 };
 
 export default usePropertyAllData;

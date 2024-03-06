@@ -4,7 +4,7 @@ import React from 'react';
 
 const MyAppointments = () => {
     return (
-        <div className='mt-2'>
+        <div className='pt-2'>
             <Title2 title="My Booked Appointments"/>
             <UserAppointments />
         </div>

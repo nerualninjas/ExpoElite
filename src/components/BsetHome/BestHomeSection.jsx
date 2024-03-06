@@ -197,7 +197,7 @@ const BestHomeSection = () => {
                           as={`/products/${property._id}`}
                         >
                           
-                          <span className="           btn btn-1 btn-sm">View</span>
+                          <span className=" btn btn-1 btn-sm">View</span>
                         </Link>
                       </div>
                     </div>
