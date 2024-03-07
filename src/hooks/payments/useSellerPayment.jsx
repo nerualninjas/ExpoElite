@@ -19,8 +19,7 @@ const useSellerPayment = () => {
             },
     })
 
-   
-
+  
     return {sellerPayment, isPending, refetch }
 };
 
