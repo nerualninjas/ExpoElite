@@ -14,7 +14,7 @@ const FQ = () => {
   return (
     <div className="my-10 pb-10 mx-auto w-full ">
       <Title title="Frequently Asked Questions" />
-      <div className="w-full md:w-4/5">
+      <div className="w-full md:w-4/5 mx-auto">
 
         <div className="flex flex-col md:flex-row items-center justify-center mx-auto py-10 px-4 gap-5 rounded">
           <div className="w-full md:w-1/2 mt-5 md:mt-1">

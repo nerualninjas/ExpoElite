@@ -15,9 +15,9 @@ const MostPopular = ({ house }) => {
     }, []);
     return (
         <div className="w-full mx-auto lg:py-16">
-          <Title title="Popular and Offered Properties" className="mb-20 md:mb-10"/>
+          <Title title="Popular and Offered Properties" className="mb-20 md:mb-10 pt-4"/>
             <Tabs className=" mx-auto  flex flex-col justify-center items-center">
-        <TabList>
+        <TabList className='mx-auto pt-6'>
           <Tab>Most Popular</Tab>
          
           <Tab>Special Offers</Tab>
@@ -31,12 +31,12 @@ const MostPopular = ({ house }) => {
             <PopularProperty />
         
         </TabPanel>
-        <TabPanel>
-          <p>
+        <TabPanel className='mx-auto'>
+          
           
            <SpecialOfferProperty />
            
-          </p>
+          
         </TabPanel>
         {/* <TabPanel>
           <p>

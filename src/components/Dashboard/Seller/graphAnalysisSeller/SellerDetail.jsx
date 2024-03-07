@@ -7,9 +7,9 @@ const SellerDetail = () => {
     const { user } = UserAuth();
     return (
         <div className='card p-3 bg-base-100  shadow-md rounded-lg px-5 py-8'>
-            <div className=" justify-around items-center flex flex-col lg:flex-row ">
+            <div className=" justify-center xl:justify-around items-center flex flex-col xl:flex-row">
                 
-                <div className="radial-progress text-rose-500" style={{"--value":"100", "--size": "5rem", "--thickness": "4px"}} role="progressbar"><Image width={300} height={300} className='rounded-full p-1' src={user?.photoURL}  alt="image" /></div>
+                <div className="radial-progress text-rose-500" style={{"--value":"100", "--size": "5rem", "--thickness": "4px"}} role="progressbar"><Image width={150} height={150} className='rounded-full p-1' src={user?.photoURL}  alt="image" /></div>
 
                 <div className='mx-auto lg:ml-2 text-center'>
                     <h2 className='text-lg font-semibold '>{user?.displayName}</h2>

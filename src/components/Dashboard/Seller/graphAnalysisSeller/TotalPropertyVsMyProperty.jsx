@@ -38,14 +38,14 @@ const TotalPropertyVsMyProperty = () => {
         //         <Area type="monotone" dataKey="totalSoldProperty" stackId="1" stroke="#E11D48" fill="#F989B0"  strokeDasharray="5 5"  />
         <div className='card p-3 bg-base-100 shadow-md'>
              {/* <ResponsiveContainer width="100%" height="100%"> */}
-        <PieChart   width={500} height={450} >
+        <PieChart   width={400} height={350} >
           <Pie
             data={data}
             cx="50%"
             cy="50%"
             labelLine={false}
             label={renderCustomizedLabel}
-            outerRadius={140}
+            outerRadius={130}
             fill="#FECDD3"
             dataKey="value"
           >

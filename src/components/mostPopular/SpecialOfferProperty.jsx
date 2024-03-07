@@ -29,12 +29,12 @@ const SpecialOfferProperty = () => {
         <div>
  
 
-            <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 bg-base-100 xl:grid-cols-3 2xl:grid-cols-4 gap-2">
+            <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 bg-base-100 xl:grid-cols-3 2xl:grid-cols-4 gap-4 mt-6">
             {properties?.map((property, index) => (
            
 
 
-             <div key={index}  className="px-2 py-2 container rounded-xl flex justify-center items-center max-w-[450px] bg-base-100 shadow-xl">
+             <div key={index}  className="px-2 py-2 container rounded-xl flex justify-center items-center max-w-[450px] bg-base-100 shadow-xl transition-transform transform hover:scale-105">
              <div className="w-1/3">
               <Image width={500} height={300}
                    src={property?.image}  

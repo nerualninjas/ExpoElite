@@ -16,7 +16,7 @@ const CheckoutForm = ({ propertyId, params }) => {
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
 
-  console.log("from checkoUt page: ", params);
+  console.log("from checkoUt page: ", params, propertyId);
 
   const [error, setError] = useState("");
   const [transactionId, setTransactionId] = useState("");
