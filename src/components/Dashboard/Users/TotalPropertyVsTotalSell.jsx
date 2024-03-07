@@ -53,12 +53,12 @@ const TotalPropertyVsTotalSell = () => {
 
 
         <div className=' bg-gray-100 shadow-md rounded-lg p-5'>
-         
+
             <AreaChart
-                 width={500}
-                 height={300}
-                 data={data}
-                 margin={{
+                width={500}
+                height={300}
+                data={data}
+                margin={{
                     top: 10,
                     right: 30,
                     left: 0,
@@ -70,8 +70,8 @@ const TotalPropertyVsTotalSell = () => {
                 <XAxis dataKey="name" />
                 <YAxis />
                 <Tooltip />
-                <Area type="monotone" dataKey="totalProperty" stackId="1" stroke="#F43F5E" fill="#FECDD3" strokeDasharray="5 5"  />
-                <Area type="monotone" dataKey="totalSoldProperty" stackId="1" stroke="#E11D48" fill="#F989B0"  strokeDasharray="5 5"  />
+                <Area type="monotone" dataKey="totalProperty" stackId="1" stroke="#F43F5E" fill="#FECDD3" strokeDasharray="5 5" />
+                <Area type="monotone" dataKey="totalSoldProperty" stackId="1" stroke="#E11D48" fill="#F989B0" strokeDasharray="5 5" />
 
             </AreaChart>
             {/* </ResponsiveContainer> */}

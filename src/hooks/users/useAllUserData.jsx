@@ -17,13 +17,13 @@ const useAllUserData = () => {
     queryKey: ["AllUserData"],
     enabled: !loading,
     queryFn: async () => {
-      const res = await axiosPublic.get("/getUsers",getLocalStorgeToken);
+      const res = await axiosPublic.get("/getUsers", getLocalStorgeToken);
       console.log(res?.data);
       return res?.data;
     },
   });
-
-  return { AllUserData, isPending, refetch };
+  const AllUserDataLength = AllUserData?.length;
+  return { AllUserData, AllUserDataLength, isPending, refetch };
 };
 
 export default useAllUserData;

@@ -79,7 +79,7 @@ const Map = () => {
   };
   return (
     <div>
-        <button className="btn" onClick={()=>setMapPosition([34.0383255,-118.2435527])}>Set Map Pos</button>
+        
       <PropertyCard setPosition={setMapPosition} />
 
       {/* Conditionally render the MapContainer only on the client-side */}
