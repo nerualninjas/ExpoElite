@@ -19,7 +19,7 @@ const Loading = () => {
         <RiseLoader
         
           color="rgb(220, 20, 60)"
-          size={35}
+          size={20}
           speedMultiplier={1}
         />
       ) : (

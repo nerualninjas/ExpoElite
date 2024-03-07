@@ -1,6 +1,7 @@
 "use client"
+
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
-import { useEffect, useState } from "react";
+
 import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "./../../hooks/useAxiosPublic";

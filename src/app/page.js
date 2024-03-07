@@ -10,20 +10,22 @@ import MostPopular from "@/components/mostPopular/MostPopular";
 import BestHomeSection from "@/components/BsetHome/BestHomeSection";
 import ChatWindow from "@/components/ChatWindow/ChatWindow";
 import PremiumSeller from "@/components/Dashboard/Seller/PremiumSeller/PremiumSeller"
+import Banner2 from "@/components/Homepages/Banner2";
 
 
 export default function Home() {
 
   return (
     <div>
-      <div className="bg-[#F9FAFE]    rounded-t-2xl">
+      <div className="bg-base-100    rounded-t-2xl">
         <div className="flex flex-1">
           <Sidebar />
           <div className=" w-full  min-h-screen shadow-md rounded-t-2xl ">
             <Navbar />
             <div>
               <div className="md:ml-60 mx-4 md:mx-0 relative top-20 min-h-screen">
-                <Banner />
+                {/* <Banner /> */}
+                <Banner2 />
                 <BestHomeSection />
                 {/* <BestHomeSection/> */}
                 <MostPopular />

@@ -11,15 +11,14 @@ import {
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 import "aos/dist/aos.css";
-import usePropertyAllData from "./../../hooks/Propertys/usePropertyAllData";
 import useAxiosPublic from "./../../hooks/useAxiosPublic";
 import useAxiosSecure from "./../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 const BestHomeSectionV2 = () => {
   const axiosSecure = useAxiosSecure();
   const axiosPublic = useAxiosPublic();
-  const { propertyData, isPending, refetch } = usePropertyAllData();
-  const [properties, setProperties] = useState(propertyData);
+
   const [searchParams, setSearchParams] = useState({ location: "" });
   const [loading, setLoading] = useState(false);
   const [noProductFound, setNoProductFound] = useState(false);
@@ -27,6 +26,32 @@ const BestHomeSectionV2 = () => {
   const [type, setType] = useState('');
 
   const [range, setRange] = useState(24000);
+
+  const [btnActive, setBtnActive] = useState(true);
+  const [nbtnActive, setNBtnActive] = useState(false);
+
+  const { data: propertyData = [], isLoading, refetch, isPending } = useQuery({
+    queryKey: ["allproperty"],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/allProperty`)
+      // console.log(res.data);
+      return res.data;
+    }
+  })
+
+  const [properties, setProperties] = useState(propertyData);
+
+  const handleBtnClick = () => {
+    setBtnActive(true);
+    setNBtnActive(false);
+    setProperties([...properties].sort((a, b) => b.propertyType.localeCompare(a.propertyType)));
+  };
+
+  const handleNBtnClick = () => {
+    setBtnActive(false);
+    setNBtnActive(true);
+    setProperties([...properties].sort((a, b) => a.propertyType.localeCompare(b.propertyType)));
+  };
 
 
   useEffect(() => {
@@ -47,8 +72,32 @@ const BestHomeSectionV2 = () => {
 
   return (
     <>
-      <div className="w-full py-12">
-        <div className="container mx-auto">
+      <div className="w-full py-6">
+        <div className="flex justify-end mr-10 mb-0 pb-0">
+          <div className="bg-base-300 hidden md:flex gap-2 p-2 rounded-xl">
+            <button
+              className={
+                btnActive
+                  ? 'px-3 py-1 text-sm rounded-md bg-base-100'
+                  : 'px-3 py-1 text-sm rounded-md bg-base-50'
+              }
+              onClick={handleBtnClick}
+            >
+              Buy
+            </button>
+            <button
+              className={
+                nbtnActive
+                  ? 'px-3 py-1 text-sm rounded-md bg-base-100'
+                  : 'px-3 py-1 text-sm rounded-md bg-base-50'
+              }
+              onClick={handleNBtnClick}
+            >
+              Rent
+            </button>
+          </div>
+        </div>
+        <div className="container pt-0 mx-auto">
           <h3 className="text-center w-100 text-xl font-bold text-gray-900 p-4 ">
             Find your Best Home
           </h3>
@@ -80,6 +129,8 @@ const BestHomeSectionV2 = () => {
                   <option value="Resort">Resort</option>
                   <option value="House">House</option>
                 </select>
+
+
 
                 <fieldset className="space-y-1 sm:w-60 dark:text-gray-100">
                   <div aria-hidden="true" className="px-1">
@@ -129,7 +180,7 @@ const BestHomeSectionV2 = () => {
           ) : (
             <div className="mx-auto mt-2 grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2">
               {properties?.map((property, index) => (
-                <div key={index} className="card bg-base-100 m-2 ">
+                <div key={index} className="card bg-base-100 shadow-lg m-2 relative overflow-hidden transition-transform transform hover:scale-105">
                   <div>
                     <Image
                       width={400}
@@ -139,37 +190,33 @@ const BestHomeSectionV2 = () => {
                       className="object-cover rounded-t-md w-full mb-4 h-30 sm:h-60 dark:bg-gray-500"
                     />
 
-                    <h1 className="top-2 right-0 px-3 py-2 bg-slate-100 absolute">{property?.propertyType}</h1>
+                    <h1 className="top-2 right-0 px-3 py-2 bg-slate-100 absolute">
+                      {property?.propertyType}
+                    </h1>
                   </div>
 
                   <div className=" px-3   ">
-                    <h2 className="flex justify-between card-title font-bold text-2xl text-[#2C2946] text-left py-2">
+
+
+                    <h2 className="flex justify-between card-title font-bold text-2xl text-left py-2">
                       {property?.propertyType === "Sell" ? (
-                        <>
-                          ${property?.price}
-                        </>
+                        <>${property?.price}</>
                       ) : (
-                        <>
-                          ${property?.month12}
-                        </>
+                        <>${property?.month12}</>
                       )}
                       <div className="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
                         {property?.propertyCategory}
                       </div>
                     </h2>
 
-
                     <div className="flex text-xs  w-full    content-stretch justify-between pb-2">
                       <div>
                         <div className="flex items-center gap-1">
                           <FontAwesomeIcon
                             icon={faBed}
-                            className="text-gray-500 mr-1"
+                            className="text-rose-600  mr-1"
                           />
-                          <span className="font-bold">
-                            {" "}
-                            {property.bedrooms}{" "}
-                          </span>
+                          <span className="font-bold">{property.bedrooms}</span>
                         </div>
                         <br />
                         Bedrooms
@@ -178,7 +225,7 @@ const BestHomeSectionV2 = () => {
                         <div className="flex items-center gap-1">
                           <FontAwesomeIcon
                             icon={faBath}
-                            className="text-gray-500 mr-1"
+                            className="text-rose-600  mr-1"
                           />
                           <span className="font-bold">
                             {" "}
@@ -192,7 +239,7 @@ const BestHomeSectionV2 = () => {
                         <div className="flex items-center gap-1">
                           <FontAwesomeIcon
                             icon={faCouch}
-                            className="text-gray-500 mr-1"
+                            className="text-rose-600  mr-1"
                           />
                           <span className="font-bold">
                             {" "}
@@ -210,7 +257,7 @@ const BestHomeSectionV2 = () => {
                         <div className="flex items-center gap-1">
                           <FontAwesomeIcon
                             icon={faMapMarkerAlt}
-                            className="text-gray-500 mr-1"
+                            className="text-rose-600  mr-1"
                           />
                           {property.location}
                         </div>
@@ -220,7 +267,8 @@ const BestHomeSectionV2 = () => {
                           href="/products/[id]"
                           as={`/products/${property._id}`}
                         >
-                          <span className="   btn btn-1 btn-sm">View</span>
+
+                          <span className="btn btn-1 btn-sm">View</span>
                         </Link>
                       </div>
                     </div>

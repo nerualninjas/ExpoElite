@@ -24,7 +24,7 @@ export const AuthContextProvider = ({ children }) => {
   const router = useRouter();
 
   const axiosPublic = useAxiosPublic();
-  console.log(loading)
+ 
   // google sign in
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
@@ -71,6 +71,7 @@ export const AuthContextProvider = ({ children }) => {
   const logOut = () => {
     setLoading(true);
     signOut(auth);
+    router.push("/login");
   };
 
   useEffect(() => {

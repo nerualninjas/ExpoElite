@@ -17,14 +17,17 @@ const usePropertyAllData = (page, limit) => {
     queryKey: ["property"],
     enabled: !loading,
     queryFn: async () => {
+      // const res = await axiosPublic.get(`/getAllPropertyNew?page=${page}&limit=${limitInt}`);
       const res = await axiosPublic.get(`/getAllProperty?page=${page}&limit=${limitInt}`);
-      // console.log(res?.data);
+      // const res = await axiosPublic.get(`/getAllProperty`);
+      console.log(res?.data);
       return res?.data;
 
     },
   });
 
-  return { propertyData, isPending, refetch };
+  const AllPropertyLength = propertyData?.length;
+  return { propertyData, AllPropertyLength, isPending, refetch };
 };
 
 export default usePropertyAllData;

@@ -1,4 +1,4 @@
-import SoldPropertyDetails from '@/components/Dashboard/Admin/propertySellReport/SoldPropertyDetails';
+import SoldPropertyDetails from '@/components/Dashboard/Admin/propertySellReport/PropertySellReport';
 import React from 'react';
 import PrivateRoutes from '@/libs/PrivateRoute';
 const page = () => {

@@ -3,7 +3,9 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
- 
+import { faGift } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import useAxiosSecure from "@/hooks/useAxiosSecure";
 import useSellerProperty from "@/hooks/Propertys/useSellerProperty";
 const SetOffer = ({ propertyData }) => {
@@ -47,15 +49,16 @@ const SetOffer = ({ propertyData }) => {
   };
 
   return (
-    <div className="w-full p-8 rounded-xl">
+    <div className=" ">
       <button
+      
         onClick={() => handleOpenDetails(true)}
-        className="btn btn-sm btn-info"
+        className="btn btn-sm btn-info text-white"
         data-modal-target="offer-modal"
         data-modal-toggle="offer-modal"
         // onClick={() => document.getElementById("my_modal_2").showModal()}
       >
-        Set offer
+        <FontAwesomeIcon icon={faGift} />
       </button>{" "}
       {openDetail && (
         <div
