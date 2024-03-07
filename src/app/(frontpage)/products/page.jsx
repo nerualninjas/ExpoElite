@@ -6,19 +6,16 @@ import React from "react";
 import useAUser from '@/hooks/users/useAUser';
 import { useState } from "react";
 import useSellerProperty from '@/hooks/Propertys/useSellerProperty';
+import PrivateRoutes from "@/libs/PrivateRoute";
 
 
 const ProductPage = () => {
   const { userInfoData } = useAUser();
   const {sellerPropertyLength}=useSellerProperty();
   const [sellerNotify,handleSellerNotify]=useState();
- 
-
-
-
-
   return (
-    <div className=" w-full">
+    <PrivateRoutes>
+      <div className=" w-full">
       <div className="  font-bold ml-4 mt-10 ">
 
         {userInfoData?.membership === "free" ?
@@ -51,7 +48,7 @@ const ProductPage = () => {
 
         {sellerNotify && <>
         
-          <p className="text-rose-400 py-1">free seller limit end! need Premium Subscription</p> 
+          <p className="text-rose-400 py-1">Free seller limit end! need Premium Subscription</p> 
           <Link className='p-1  rounded-md bg-rose-400 text-white'  href="/profile"
         > Choose a Plan 
                 </Link>
@@ -71,9 +68,8 @@ const ProductPage = () => {
           </div>
         </div>
       </dialog>
-
-      
     </div>
+    </PrivateRoutes>
   );
 };
 

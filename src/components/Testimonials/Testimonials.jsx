@@ -16,16 +16,15 @@ const Testimonials = () => {
       <Title title="Clients Reviews"  />
 
 
-      <div className="grid grid-cols-1 md:grid-cols-2   lg:grid-cols-3 2xl:grid-cols-4 pt-5 gap-4 place-items-center " >
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 pt-5 gap-4 place-items-center " >
         {DisplayedReviews?.map((person, index) => (
           <div
             key={index}
-            className="flex flex-col justify-center mx-auto items-center mx-4 rounded border-2 shadow-2xl my-5 w-full h-64 "
-
+            className="flex flex-col justify-center items-center mx-4 rounded border-2 shadow-2xl my-5 w-full h-64 "
           >
             <div className="">
-              <div className=" text-blue-950 h-32 pt-8 text-sm bg-blue-100">
-                <p className="text-center px-4">{person?.review}</p>
+              <div className="w-full text-blue-950 h-32 pt-8 text-sm  bg-blue-100">
+                <p className="text-center px-4 w-full bg-blue-100">{person?.review}</p>
               </div>
 
               <div className="text-center h-32 pt-14 text-sm">

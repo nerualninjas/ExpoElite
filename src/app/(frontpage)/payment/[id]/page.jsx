@@ -1,6 +1,7 @@
 "use client";
 import CheckoutForm from "@/components/PaymentForm/CheckoutForm";
 import usePropertyData from "@/hooks/Propertys/usePropertyData";
+import PrivateRoutes from "@/libs/PrivateRoute";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import React from "react";
@@ -12,11 +13,13 @@ const Payment = ({ params }) => {
 
   console.log('from payment: ',params);
   return (
-    <div>
+   <PrivateRoutes>
+     <div>
       <Elements stripe={stripePromise}>
         <CheckoutForm propertyId={params?.id} params={params}/>
       </Elements>
     </div>
+   </PrivateRoutes>
   );
 };
 

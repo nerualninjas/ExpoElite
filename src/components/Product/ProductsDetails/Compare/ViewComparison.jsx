@@ -17,18 +17,28 @@ import Swal from 'sweetalert2';
 const ViewComparison = ({ propertyId }) => {
     const { propertySingleData, isPending } = usePropertyData(propertyId);
     const { propertyName, propertyCategory, price, image, bathrooms, bedrooms, livingRoom } = propertySingleData || {};
-
-    const productIds = localStorage.getItem('productIds');
-    const compareList = JSON.parse(productIds);
-    // console.log(compareList[0], compareList[1]);
-
-
-    const { propertySingleData: product1, isPending: isPending1, refetch: refetch1 } = usePropertyData(compareList[0]);
-    const { propertySingleData: product2, isPending: isPending2, refetch: refetch2 } = usePropertyData(compareList[1]);
+    const [compareList, setCompareList] = useState([]);
 
     useEffect(() => {
-        refetch1();
-        refetch2();
+        if (typeof window !== 'undefined') {
+            const productIds = localStorage.getItem('productIds');
+            if (productIds) {
+                const compareListParse = JSON.parse(productIds);
+                setCompareList(compareListParse);
+            }
+        }
+    }, []);
+
+    const { propertySingleData: product1, isPending: isPending1, refetch: refetch1 } = usePropertyData(compareList[0] || null);
+    const { propertySingleData: product2, isPending: isPending2, refetch: refetch2 } = usePropertyData(compareList[1] || null);
+
+    useEffect(() => {
+        if (compareList.length > 0) {
+            refetch1();
+        }
+        if (compareList.length > 1) {
+            refetch2();
+        }
     }, [compareList, refetch1, refetch2]);
     // console.log(compareList)
 
@@ -118,7 +128,7 @@ const ViewComparison = ({ propertyId }) => {
             ) : (
                 <>
                     <Title2 title="Property Compare" />
-                    <div className='flex flex-col justify-between items-center mb-10'>
+                    <div className='flex flex-col justify-between items-center mb-10 ml-4'>
                         <div className="flex flex-col md:flex-row  justify-between items-center mx-auto my-2 gap-2 md:gap-20 ">
                             {/* Product 1 details */}
                             {product1 && (
