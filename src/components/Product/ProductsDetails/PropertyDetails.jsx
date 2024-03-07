@@ -74,13 +74,15 @@ const PropertyDetail = ({ propertyId }) => {
     propertyCategory,
     price,
     image,
+    image2,
+    image3,
     bathrooms,
     bedrooms,
     livingRoom,
-    propertyDetails,
     propertyCreator,
     sellerImage,
     sellerName,
+    description,
     month1,
     month6,
     month12,
@@ -142,7 +144,7 @@ const PropertyDetail = ({ propertyId }) => {
 
         <div className="w-full lg:w-11/12 border-red-500 flex flex-col lg:flex-row justify-center items-center rounded-xl ">
           {/*------------------- image carousel and seller info container section------------------------- */}
-          <div className="w-11/12 lg:w-1/2 text-center flex flex-col justify-center items-center  ">
+          <div className="w-11/12 lg:w-1/2 text-center flex flex-col justify-center   ">
             {/*------------------- image carousel section------------------------- */}
             <div className="w-full  text-center flex justify-center items-center py-2">
               <Carousel className="text-center " autoPlay>
@@ -150,10 +152,10 @@ const PropertyDetail = ({ propertyId }) => {
                   <img src={image} className="w-full h-full" />
                 </div>
                 <div>
-                  <img src="https://i.ibb.co/jZJhPPq/apartment-bed-bedroom-book-shelves-439227.jpg" />
+                <img src={image2} className="w-full h-full object-fit" />
                 </div>
                 <div>
-                  <img src="https://i.ibb.co/dPsnkq1/apartment-bed-bedroom-comfort-545034.jpg" />
+                <img src={image3} className="w-full h-full" />
                 </div>
               </Carousel>
             </div>
@@ -163,10 +165,31 @@ const PropertyDetail = ({ propertyId }) => {
             </div>
           </Carousel> */}
 
-            {/*------------------- seller info section------------------------- */}
-            <div className=" text-justify text-sm text-gray-700 mb-2 ">
-              <p>{propertyDetails}</p>
+  {/* information of prpperty creator */}
+            <div className="py-3">
+              <div className="flex items-center">
+                <h3 className=" text-gray-900 font-bold text-lg mr-2 my-2 ">
+                  Property Creator
+                </h3>
+                <Link href={`/BookAppointment/${propertyId}`}>
+                  <button className="btn btn-sm rounded-full  px-3 py-1 border-2 border-rose-600  text-sm font-semibold text-rose-600 hover:text-white bg-[#FFE4E6] hover:bg-rose-600">
+                    {" "}
+                    Book  Appointment
+                  </button>
+                </Link>
+              </div>
+              <div className="flex items-center">
+                <Image
+                  width={40}
+                  height={40}
+                  className="w-full h-full rounded-full"
+                  src={sellerImage}
+                  alt="photo"
+                />
+                <p className=" text-md ml-2"> {sellerName}</p>
+              </div>
             </div>
+          
           </div>
 
           {/* property details */}
@@ -197,18 +220,7 @@ const PropertyDetail = ({ propertyId }) => {
                 </span>
               </div>
             </div>
-            {/* <div className="rating">
-              <input type="radio" name="rating-1" className="mask mask-star bg-red-400" />
-              <input type="radio" name="rating-1" className="mask mask-star bg-red-400" />
-              <input type="radio" name="rating-1" className="mask mask-star bg-red-400" />
-              <input
-                type="radio"
-                name="rating-1"
-                className="mask mask-star bg-red-400"
-                checked
-              />
-              <input type="radio" name="rating-1" className="mask mask-star bg-red-400" />
-            </div> */}
+          
             <div className="flex justify-between items-center my-1">
              
               <div className="px-3 py-2 bg-rose-100 rounded ">
@@ -307,30 +319,13 @@ const PropertyDetail = ({ propertyId }) => {
               </div>
             </div>
 
-            {/* information of prpperty creator */}
-            <div className="py-3">
-              <div className="flex items-center">
-                <h3 className=" text-gray-900 font-bold text-lg mr-2 my-2 ">
-                  Property Creator
-                </h3>
-                <Link href={`/BookAppointment/${propertyId}`}>
-                  <button className="btn btn-sm rounded-full  px-3 py-1 border-2 border-rose-600  text-sm font-semibold text-rose-600 hover:text-white bg-[#FFE4E6] hover:bg-rose-600">
-                    {" "}
-                    Book  Appointment
-                  </button>
-                </Link>
-              </div>
-              <div className="flex items-center">
-                <Image
-                  width={40}
-                  height={40}
-                  className="w-full h-full rounded-full"
-                  src={sellerImage}
-                  alt="photo"
-                />
-                <p className=" text-md ml-2"> {sellerName}</p>
-              </div>
+{/*------------------- seller info section------------------------- */}
+<div className="  text-sm text-gray-700 mb-2 ">
+              <p>{description}</p>
             </div>
+           
+
+
           </div>
         </div>
         {/* comment Section*/}

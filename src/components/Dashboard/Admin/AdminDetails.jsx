@@ -7,26 +7,24 @@ import React from 'react';
 const AdminDetails = () => {
     const { user } = UserAuth();
     const { isAdmin } = useAdmin();
-    
     return (
         <div>
             {
                 user?.email && isAdmin ? (
-                    <div className="max-w-xs p-6 h-[230px]  rounded-md shadow-md flex flex-col justify-center items-center bg-gray-100 dark:bg-gray-900 dark:text-gray-50 border-gray-200 mb-0 md:mb-5">
-                    <Image width={60} height={60} src={user?.photoURL} alt="admin" className="w-[70px] h-[70px] object-center  rounded-full border-rose-500 border-3 dark:bg-gray-500" />
-                    <div className="mt-6 mb-2 text-center">
-    
-                        <h2 className="text-lg font-semibold text-rose-500">{user.displayName}</h2>
-                        <h2 className="text-md font-semibold text-gray-700">{user?.email}</h2>
-                        {/* <h2 className="text-sm font-semibold text-rose-500">{user?.userRole}</h2> */}
+                    <div className='card p-3 bg-base-100  shadow-md rounded-lg px-5 py-8'>
+                        <div className=" justify-around items-center flex flex-col lg:flex-row ">
+
+                            <div className="radial-progress text-rose-500" style={{ "--value": "100", "--size": "5rem", "--thickness": "4px" }} role="progressbar"><Image width={300} height={300} className='rounded-full p-1' src={user?.photoURL} alt="image" /></div>
+
+                            <div className='mx-auto lg:ml-2 text-center'>
+                                <h2 className='text-lg font-semibold '>{user?.displayName}</h2>
+                                <p className='text-md font-semibold text-gray-600 '>{user?.email}</p>
+                                {/* <p className='text-md font-semibold text-red-400 '>Seller</p> */}
+                            </div>
+                        </div>
                     </div>
-                    <div className="dark:text-gray-100">
-    
-                    </div>
-                </div>
                 ) : null
             }
-           
         </div>
     );
 };

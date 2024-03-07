@@ -9,9 +9,13 @@ import React, { useState } from 'react';
 import useAxiosSecure from '@/hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 import Title2 from '../shared/Title/Title2';
+import useNotification from '@/hooks/notifications/useNotificationCreate';
+import { useRouter } from 'next/navigation';
 
 
 const AppointmentForm = ({ propertyId }) => {
+  const router = useRouter();
+  const { notificationPost } = useNotification()
   const { user } = UserAuth();
   console.log(user);
   const { propertySingleData, isPending, refetch } = usePropertyData(propertyId);
@@ -50,6 +54,7 @@ const AppointmentForm = ({ propertyId }) => {
         sellerName: sellerName,
         sellerPhoto: sellerImage,
         propertyName: propertyName,
+        propertyLocation:location,
         propertyId: propertyId,
         appointmentDate: formattedDate,
         appointmentStartTime: formattedStartTime,
@@ -71,6 +76,22 @@ const AppointmentForm = ({ propertyId }) => {
      
       // Refetch  data after appointment
       refetch();
+      //    notification add  start
+      const data = {
+        userEmail: email,
+        notificationData: [{
+          notificationText: "Appointment Booked",
+          notificationPath:"/AppointmentManage",
+          notifyUserPhoto: sellerImage,
+          notificationStatus: "unread"
+        }]
+      }
+      notificationPost(data)
+
+      //notification end
+      
+      router.push("/");
+
 
       // Clear the date and time input field
 

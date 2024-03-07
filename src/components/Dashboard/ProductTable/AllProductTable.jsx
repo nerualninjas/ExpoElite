@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import usePropertyAllData from '@/hooks/Propertys/usePropertyAllData';
@@ -247,14 +247,12 @@ const AllProductTable = () => {
 
                     </div>
                     <div className="flex justify-between items-center mr-2 text-black font-semibold text-base rounded-lg">
-                        <button className='btn border-none text-rose-600 font-bold text-base' onClick={handlePreviousPage} >
-                            <FaAngleLeft className='text-rose-600 font-bold' />
-                            Previous
+                        <button className='btn border-none  rounded-full font-bold text-base' onClick={handlePreviousPage} >
+                            <FaAngleLeft className='text-rose-600 text-xl font-bold' />
                         </button>
-                        Current Page:{currentPage}
-                        <button className='btn border-none text-base font-bold text-rose-600' onClick={handleNextPage}>
-                            Next
-                            <FaAngleRight className='text-rose-600 font-bold' />
+                        <h1 className='text-xl font-bold'>{currentPage}</h1>
+                        <button className='btn border-none text-base font-bold rounded-full' onClick={handleNextPage}>
+                            <FaAngleRight className='text-rose-600 text-xl font-bold' />
                         </button>
                     </div>
                 </div>

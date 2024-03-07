@@ -1,12 +1,14 @@
 
 
 import AdminDetails from '@/components/Dashboard/Admin/AdminDetails';
-import PropertyVsSold from '@/components/Dashboard/Admin/PropertyVsSold';
+import PropertyVsSold2 from '@/components/Dashboard/Admin/PropertyVsSold2';
 
-import TotalProperty2 from '@/components/Dashboard/Admin/TotalProperty2';
-import TotalSeller from '@/components/Dashboard/Admin/TotalSeller';
-import TotalUser from '@/components/Dashboard/Admin/TotalUser';
-import UserVsSeller from '@/components/Dashboard/Admin/UserVsSeller';
+
+// import TotalProperty2 from '@/components/Dashboard/Admin/TotalProperty2';
+import TotalProperty3 from '@/components/Dashboard/Admin/TotalProperty3';
+import TotalSeller2 from '@/components/Dashboard/Admin/TotalSeller2';
+import TotalUser2 from '@/components/Dashboard/Admin/TotalUser2';
+import UserVsSeller2 from '@/components/Dashboard/Admin/UserVsSeller2';
 import PrivateRoutes from '@/libs/PrivateRoute'
 import React from 'react';
 
@@ -23,14 +25,15 @@ const DashBoard = () => {
                 <AdminDetails />
               </div>
               <div className='flex w-4/6  justify-center items-center gap-4'>
-                <TotalProperty2 />
-                <TotalSeller />
-                <TotalUser />
+                {/* <TotalProperty2 /> */}
+                <TotalProperty3 />
+                <TotalSeller2 />
+                <TotalUser2 />
               </div>
             </div>
             <div className='flex mt-8 gap-4'>
-              <div className='w-1/2 flex justify-center items-end'> <PropertyVsSold /></div>
-              <div className='w-1/2 flex justify-center items-end'> <UserVsSeller /></div>
+              <div className='w-1/2 flex justify-center items-end'> <PropertyVsSold2 /></div>
+              <div className='w-1/2 flex justify-center items-end'> <UserVsSeller2 /></div>
             </div>
             <div>
             </div>

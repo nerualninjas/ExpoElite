@@ -11,26 +11,26 @@ import {
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 import "aos/dist/aos.css";
-import usePropertyAllData from "./../../hooks/Propertys/usePropertyAllData";
 import useAxiosPublic from "./../../hooks/useAxiosPublic";
 import useAxiosSecure from "./../../hooks/useAxiosSecure";
 import Title from "../shared/Title/Tilte";
+import useAllPublishProperty from "@/hooks/Propertys/useAllPublishProperty";
 
 const BestHomeSection = () => {
   const axiosSecure = useAxiosSecure();
   const axiosPublic = useAxiosPublic();
-  const { propertyData, isPending, refetch } = usePropertyAllData();
+  const { publishProperty, isPending, refetch } = useAllPublishProperty();
 
   const [searchParams, setSearchParams] = useState({ location: "" });
   const [loading, setLoading] = useState(false);
   const [noProductFound, setNoProductFound] = useState(false);
 
-  const [properties, setProperties] = useState(propertyData);
+  const [properties, setProperties] = useState(publishProperty);
 
   useEffect(() => {
-    setProperties(propertyData);
+    setProperties(publishProperty);
     refetch();
-  }, [propertyData, refetch]);
+  }, [publishProperty, refetch]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -59,11 +59,11 @@ const BestHomeSection = () => {
   };
   return (
     <>
-      <div className="w-full py-6">
+      <div className="w-full py-4">
         <div className="container mx-auto">
 
-           
-          <Title title="Find your Best Home" /> 
+
+          <Title title="Find your Best Home" />
           <br />
 
           <form onSubmit={handleSubmit} className="flex w-full  p-4">
@@ -108,8 +108,8 @@ const BestHomeSection = () => {
           ) : (
 
             <div className="mx-auto mt-2 grid 2xl:grid-cols-4 xl:grid-cols-3  md:grid-cols-2 grid-cols-1 gap-2">
-               {properties?.slice(0, 6).map((property, index) => (
-                <div key={index} className="card bg-base-200 shadow-lg m-2 relative overflow-hidden transition-transform transform hover:scale-105">
+              {properties?.slice(0, 6).map((property, index) => (
+                <div key={index} className="card bg-base-100 shadow-lg m-2 relative overflow-hidden transition-transform transform hover:scale-105">
                   <div>
                     <Image
                       width={400}
@@ -196,8 +196,8 @@ const BestHomeSection = () => {
                           href="/products/[id]"
                           as={`/products/${property._id}`}
                         >
-                          
-                          <span className="           btn btn-1 btn-sm">View</span>
+
+                          <span className=" btn btn-1 btn-sm">View</span>
                         </Link>
                       </div>
                     </div>

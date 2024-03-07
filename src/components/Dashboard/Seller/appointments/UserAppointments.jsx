@@ -36,8 +36,8 @@ const UserAppointments = () => {
             <th> </th>
            
             {/* <th>Seller Email</th> */}
-            <th> Seller Name</th>
-            <th>Property Location</th>
+            <th> Seller Info</th>
+            <th>Property Name</th>
             <th>Appointment Time</th>
             <th>Appointment Status</th>
 
@@ -48,8 +48,11 @@ const UserAppointments = () => {
             <tr key={appointment?._id}>
                 <th>{index + 1}</th>
               
-                {/* <th>{appointment.sellerEmail}</th> */}
-                <td>{appointment?.sellerName}</td>
+            
+                <td><span className='font-semibold'>Name: </span>{appointment.sellerName}
+                                <br />
+                                <span className='font-semibold'>Email: </span>{appointment.sellerEmail}
+                                </td>
                 
                 <td>
                     {/* <Image
@@ -65,7 +68,7 @@ const UserAppointments = () => {
                 <br />{appointment?.appointmentStartTime}  - {appointment?.appointmentEndTime}  </td>
                
                 
-                <td className=' font-semibold' style={{ color: getStatusColor(appointment?.appointmentStatus) }}>
+                <td className=' font-semibold capitalize' style={{ color: getStatusColor(appointment?.appointmentStatus) }}>
   {appointment?.appointmentStatus}
 </td>
 

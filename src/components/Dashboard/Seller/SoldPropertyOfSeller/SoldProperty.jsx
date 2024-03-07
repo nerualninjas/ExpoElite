@@ -1,18 +1,18 @@
 "use client";
 import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
-import useGetSoldProperty from '@/hooks/soldProperty/useGetSoldProperty';
 import { useReactToPrint } from 'react-to-print';
 import Swal from 'sweetalert2';
+import useGetSellerSoldProperty from '@/hooks/Seller/useGetSellerSoldProperty';
 // import { ToastContainer, toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 
 const SoldProperty = () => {
 
 
-    const { soldPropertyData, isPending, refetch } = useGetSoldProperty();
-    console.log('hello', soldPropertyData);
-    const soldProperties = soldPropertyData;
+    const { sellerSoldPropertyData, isPending, refetch } = useGetSellerSoldProperty();
+    console.log('hello', sellerSoldPropertyData);
+    const SellerSoldProperties = sellerSoldPropertyData;
 
     // const notify = () => toast("Wow so easy!");
 
@@ -21,9 +21,9 @@ const SoldProperty = () => {
 
 
     useEffect(() => {
-        console.log(soldProperties); // Log properties to the console
+        console.log(SellerSoldProperties); // Log properties to the console
         // setSoldProperties(soldProperties); // Log properties to the console
-    }, [soldProperties]); // Make sure to add properties to the dependency array
+    }, [SellerSoldProperties]); // Make sure to add properties to the dependency array
 
 
     // generatePDF
@@ -42,13 +42,13 @@ const SoldProperty = () => {
         <div>
             <div className='bg-rose-50 rounded-xl'>
                 <div className="flex items-center justify-between w-full p-8 rounded-lg">
-                    <h2 className="text-xl font-semibold">All Property Sell Report</h2>
+                    <h2 className="text-xl font-semibold">All Sold Property</h2>
                     {/* <button className="px-4 py-2 font-medium bg-rose-600 text-white rounded-lg hover:bg-rose-200">Refresh</button> */}
                     <button
                         className="btn text-white bg-[#46df6c] hover:bg-[#2f8a43] transition duration-700 ease-in-out"
                         onClick={generatePDF}
                     >
-                        Download Sell Report
+                        Download Sold Report
                     </button>
                 </div>
                 <div ref={componentPDF} style={{ width: '100%' }} className="overflow-x-auto">
@@ -66,7 +66,7 @@ const SoldProperty = () => {
                         </thead>
                         <tbody>
                             {/* rows */}
-                            {soldProperties?.map((soldProperty, index) => (
+                            {SellerSoldProperties?.map((soldProperty, index) => (
                                 <tr key={soldProperty._id}>
                                     <th>{index + 1}</th>
                                     {/* <td>
@@ -80,11 +80,11 @@ const SoldProperty = () => {
                                     <td>{soldProperty.propertyName}</td>
                                     {/* <td>{property.SellerName}</td> */}
                                     <td className="px-3 py-2">
-                                        <span>{soldProperty.name}</span>
+                                        <span>{soldProperty.sellerName}</span>
                                         <p className="dark:text-gray-400">{soldProperty.email}</p>
                                     </td>
                                     <td className="px-3 py-2">
-                                        <span>{soldProperty.name}</span>
+                                        <span>{soldProperty.buyerName}</span>
                                         <p className="dark:text-gray-400">{soldProperty.email}</p>
                                     </td>
                                     <td>
