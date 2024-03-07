@@ -15,16 +15,21 @@ const PropertyDetailsSmallPart = ({ propertyId }) => {
     const [compareList, setCompareList] = useState(false);
 
     useEffect(() => {
+        if(typeof window !== 'undefined'){
         const productIds = localStorage.getItem('productIds');
         const length = productIds ? JSON.parse(productIds).length : 0;
         if (length === 2) {
             setCompareList(true)
         }
-        console.log(length);
+        // console.log(length);
+    }
     }, [])
 
 
     const addToCompare = () => {
+        
+        
+        if(typeof window !== 'undefined'){
         let productIds = localStorage.getItem('productIds');
 
         if (!productIds) {
@@ -72,6 +77,7 @@ const PropertyDetailsSmallPart = ({ propertyId }) => {
         }
 
         localStorage.setItem('productIds', JSON.stringify(productIds));
+    }
     };
 
 

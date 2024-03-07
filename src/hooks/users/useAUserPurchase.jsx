@@ -16,7 +16,7 @@ const useAUserPurchase = () => {
         queryKey: ["MyPurchases"],
         enabled: !loading, 
         queryFn: async () => {
-          const res = await axiosPublic.get(`/showPayment?email=${user?.email}`);
+          const res = await axiosPublic.get(`/showPayment/${user?.email}`);
           console.log(res?.data);
           return res?.data;
         },

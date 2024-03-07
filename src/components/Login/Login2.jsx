@@ -7,6 +7,8 @@ import { FaGoogle, FaTwitter, FaFacebook } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { faTentArrowTurnLeft } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Login2 = () => {
   const router = useRouter();
@@ -43,10 +45,15 @@ const Login2 = () => {
   };
 
   return (
-    <div className="min-h-screen ">
+    <div className="flex flex-col ">
+      <div className="mx-4 mt-4">
+      <Link href="/" className="text-rose-600 text-2xl mx-10"> <FontAwesomeIcon icon={faTentArrowTurnLeft} className="w-10 h-10"/> </Link>
+      </div>
+      <div className="min-h-screen ">
       <h1 className="text-3xl md:text-5xl font-bold text-center text-rose-600 py-10 ">
         Login
       </h1>
+     
       <div className="flex flex-col md:flex-row items-center justify-center gap-4  mb-20 ">
         <div className="w-1/3">
           <Lottie animationData={LoginAni} loop={true} />
@@ -133,14 +140,16 @@ const Login2 = () => {
           </p>
 
           <div className="mx-auto text-center pt-10">
-            <h3 className="py-2 text-rose-400 text-xl font-bold"> Login as </h3>
-            <button onClick={()=>setLogin({user:"admin@expoelite.com",pass: "123456@Aa"})} className="btn bg-rose-400 text-white hover:bg-rose-800 btn-sm">Admin</button>
-            <button onClick={()=>setLogin({user:"seller@expoelite.com",pass: "123456@Aa"})} className="btn mx-5 bg-rose-400 text-white hover:bg-rose-800 btn-sm">Seller</button>
-            <button onClick={()=>setLogin({user:"user@expoelite.com",pass: "123456@Aa"})} className="btn bg-rose-400 text-white hover:bg-rose-800 btn-sm">User</button>
+            <h3 className="py-2 text-rose-600  text-xl font-bold"> Login as </h3>
+            <button onClick={()=>setLogin({user:"admin@expoelite.com",pass: "123456@Aa"})} className="btn bg-rose-600 text-white hover:bg-rose-800 btn-sm">Admin</button>
+            <button onClick={()=>setLogin({user:"seller@expoelite.com",pass: "123456@Aa"})} className="btn mx-5 bg-rose-600 text-white hover:bg-rose-800 btn-sm">Seller</button>
+            <button onClick={()=>setLogin({user:"user@expoelite.com",pass: "123456@Aa"})} className="btn bg-rose-600 text-white hover:bg-rose-800 btn-sm">User</button>
           </div>
         </div>
       </div>
     </div>
+    </div>
+    
   );
 };
 

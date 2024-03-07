@@ -5,7 +5,8 @@ import Lottie from "lottie-react";
 import RegAni from "./Regi.json";
 import { FaGoogle, FaTwitter, FaFacebook } from "react-icons/fa6";
 import Swal from "sweetalert2";
-
+import { faTentArrowTurnLeft } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/navigation";
 import { UserAuth } from "@/app/(auth)/context/AuthContext";
 import Link from "next/link";
@@ -100,6 +101,10 @@ const Register2 = () => {
   };
 
   return (
+    <div className="flex flex-col ">
+      <div className="mx-4 mt-4">
+      <Link href="/" className="text-rose-600 text-2xl mx-10"> <FontAwesomeIcon icon={faTentArrowTurnLeft} className="w-10 h-10"/> </Link>
+      </div>
     <div className="min-h-screen ">
       <h1 className="text-3xl md:text-5xl font-bold text-center text-rose-600 py-10 ">
         Register
@@ -215,6 +220,7 @@ const Register2 = () => {
           </p>
         </div>
       </div>
+    </div>
     </div>
   );
 };
