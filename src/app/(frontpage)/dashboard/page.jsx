@@ -1,7 +1,8 @@
 
 
 import AdminDetails from '@/components/Dashboard/Admin/AdminDetails';
-import PropertyVsSold from '@/components/Dashboard/Admin/PropertyVsSold';
+import PropertyVsSold2 from '@/components/Dashboard/Admin/PropertyVsSold2';
+
 
 // import TotalProperty2 from '@/components/Dashboard/Admin/TotalProperty2';
 import TotalProperty3 from '@/components/Dashboard/Admin/TotalProperty3';
@@ -31,7 +32,7 @@ const DashBoard = () => {
               </div>
             </div>
             <div className='flex mt-8 gap-4'>
-              <div className='w-1/2 flex justify-center items-end'> <PropertyVsSold /></div>
+              <div className='w-1/2 flex justify-center items-end'> <PropertyVsSold2 /></div>
               <div className='w-1/2 flex justify-center items-end'> <UserVsSeller /></div>
             </div>
             <div>

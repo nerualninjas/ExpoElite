@@ -8,13 +8,13 @@ import { RadialBarChart, RadialBar, Legend, ResponsiveContainer } from 'recharts
   
 
 const TotalPropertyVsTotalSell = () => {
-    const {soldPropertyLength} =useGetSoldProperty();
+    const {AllSoldPropertyLength} =useGetSoldProperty();
     const { totalPropertyLength } = useTotalProperty();
     
 const data = [
     {
       name: 'Sold Property',
-      uv: soldPropertyLength,
+      uv: AllSoldPropertyLength,
       pv: 2400,
       stroke:'#E11D48',
       fill:'#F989B0',
@@ -82,5 +82,3 @@ const data = [
 };
 
 export default TotalPropertyVsTotalSell;
-
-
