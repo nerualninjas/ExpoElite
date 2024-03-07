@@ -14,13 +14,12 @@ const useSellerPayment = () => {
         enabled: !loading,
         queryFn: async () => {
             const res = await axiosSecure.get(`/getTotalPaymentSeller/${user?.email}`,getLocalStorgeToken);
-           
+           console.log(res.data);
               return res?.data;
             },
     })
 
-   
-
+  
     return {sellerPayment, isPending, refetch }
 };
 

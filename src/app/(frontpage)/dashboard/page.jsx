@@ -8,7 +8,7 @@ import PropertyVsSold2 from '@/components/Dashboard/Admin/PropertyVsSold2';
 import TotalProperty3 from '@/components/Dashboard/Admin/TotalProperty3';
 import TotalSeller2 from '@/components/Dashboard/Admin/TotalSeller2';
 import TotalUser2 from '@/components/Dashboard/Admin/TotalUser2';
-import UserVsSeller from '@/components/Dashboard/Admin/UserVsSeller';
+import UserVsSeller2 from '@/components/Dashboard/Admin/UserVsSeller2';
 import PrivateRoutes from '@/libs/PrivateRoute'
 import React from 'react';
 
@@ -33,7 +33,7 @@ const DashBoard = () => {
             </div>
             <div className='flex mt-8 gap-4'>
               <div className='w-1/2 flex justify-center items-end'> <PropertyVsSold2 /></div>
-              <div className='w-1/2 flex justify-center items-end'> <UserVsSeller /></div>
+              <div className='w-1/2 flex justify-center items-end'> <UserVsSeller2 /></div>
             </div>
             <div>
             </div>
