@@ -180,7 +180,7 @@ const BestHomeSectionV2 = () => {
           ) : (
             <div className="mx-auto mt-2 grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2">
               {properties?.map((property, index) => (
-                <div key={index} className="card bg-base-200 shadow-lg m-2 relative overflow-hidden transition-transform transform hover:scale-105">
+                <div key={index} className="card bg-base-100 shadow-lg m-2 relative overflow-hidden transition-transform transform hover:scale-105">
                   <div>
                     <Image
                       width={400}
