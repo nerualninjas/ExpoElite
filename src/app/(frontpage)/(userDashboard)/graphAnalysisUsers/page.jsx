@@ -3,13 +3,13 @@ import React from 'react';
 import PrivateRoutes from '@/libs/PrivateRoute';
 
 const GraphAnalysisUser = () => {
-    return (
-      <PrivateRoutes>
-        <div>
-          <UserGraph></UserGraph>
-        </div>
-        </PrivateRoutes>
-    );
+  return (
+    <PrivateRoutes>
+      <div>
+        <UserGraph></UserGraph>
+      </div>
+    </PrivateRoutes>
+  );
 };
 
 export default GraphAnalysisUser;
