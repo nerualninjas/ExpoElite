@@ -12,10 +12,11 @@ import {
 import { FaLocationArrow } from "react-icons/fa";
 import Image from "next/image";
 import Link from 'next/link';
+import useAllPublishProperty from '@/hooks/Propertys/useAllPublishProperty';
 
 const PopularProperty = () => {
-    const { propertyData, isPending, refetch } = usePropertyAllData();
-    const propertiesWithLikes = propertyData?.map(property => ({
+    const { publishProperty, isPending, refetch } = useAllPublishProperty();
+    const propertiesWithLikes = publishProperty?.map(property => ({
         ...property,
         likesCount: property?.likeBy?.length,
       }));
@@ -28,18 +29,6 @@ const PopularProperty = () => {
         <div>
           
 
-            
-      {/* <h2>Top 8 Properties with Most Likes</h2>
-      {top8Properties.map(property => (
-        <div key={property._id}>
-          <h3>{property.propertyName}</h3>
-          <p>Location: {property.location}</p>
-          <p>Price: {property.price}</p>
-          
-
-        
-        </div>
-          ))} */}
 
             <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2  xl:grid-cols-3 2xl:grid-cols-4 gap-2">
             {top8Properties?.map((property, index) => (
