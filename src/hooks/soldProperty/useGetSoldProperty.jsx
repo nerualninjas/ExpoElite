@@ -20,8 +20,10 @@ const useGetSoldProperty = () => {
             return res?.data;
         },
     });
+    const soldPropertyLength= soldPropertyData?.length;
 
-    return { soldPropertyData, isPending, refetch };
+    return { soldPropertyData,soldPropertyLength, isPending, refetch };
+    
 
 };
 
