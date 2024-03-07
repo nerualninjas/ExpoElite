@@ -4,6 +4,7 @@ import React from 'react';
 import { faDollarSign} from "@fortawesome/free-solid-svg-icons";
 import useSellerPayment from '@/hooks/payments/useSellerPayment';
 
+
 const GotPayment = () => {
     const {sellerPayment, refetch} = useSellerPayment();
     console.log('SellAmount',sellerPayment);
