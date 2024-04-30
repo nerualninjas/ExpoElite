@@ -15,7 +15,7 @@ import Typewriter from 'typewriter-effect';
 
 const Banner2 = () => {
     return (
-        <div className='w-full min-h-[50vh]'>
+        <div className='w-full min-h-[50vh] '>
        
         <Swiper 
         spaceBetween={30}
@@ -60,7 +60,7 @@ const Banner2 = () => {
       .start();
   }}
 /> */}
-              <p className="text-md mt-1">
+              <p className="text-sm mt-1 text-rose-600">
               A Journey Through a Diverse Spectrum of Real Estate, Ranging from Opulent Luxury Estates to Intimate Cozy Retreats – Your Personalized Dream Home Experience Awaits.
               </p>
               <Link href="/propertyMap">
@@ -96,7 +96,7 @@ const Banner2 = () => {
               <h2 className="font-bold text-3xl mt-1 text-gray-700"> 
               <span className="text-rose-400">Find</span> your perfect property <br /> match</h2>
     
-              <p className="text-md mt-1">
+              <p className="text-sm mt-1 text-rose-600">
               A world of real estate variety, spanning opulent luxury estates to intimate cozy retreats. Your ideal home is out there, waiting to be discovered.
               </p>
               <Link href="/propertyMap">
@@ -133,7 +133,7 @@ const Banner2 = () => {
        <div className="w-11/12 lg:w-2/5  ml-10 md:pl-0 md:mr-8  ">
            <h2 className="font-bold mt-1  text-3xl text-gray-700"> 
            <span className="text-rose-400">Explore</span> our collection of  <br />exclusive properties</h2>
-           <p className="text-md mt-1">
+           <p className="text-sm mt-1 text-rose-600">
            A rich tapestry of real estate options, from opulent luxury estates to intimate cozy retreats. Your dream home is within reach, promising a personalized haven for every discerning taste.
            </p>
            <Link href="/propertyMap">

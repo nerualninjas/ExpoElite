@@ -27,7 +27,7 @@ const Testimonials = () => {
                 <p className="text-center px-4 w-full bg-blue-100">{person?.review}</p>
               </div>
 
-              <div className="text-center h-32 pt-14 text-sm">
+              <div className="text-center h-32 pt-14 text-sm bg-white">
                 <p>{person?.userName}</p>
                 <p>{person?.userEmail}</p>
                 {/* <h2>{person.designation}</h2> */}
